@@ -1,3 +1,5 @@
-"""Tokka-bench: A benchmark for comparing different tokenizers."""
+"""Tokka-bench tokenizer benchmarking package."""
 
-__version__ = "0.1.0"
+from .benchmark import run_benchmark
+
+__all__ = ["run_benchmark"]

@@ -1,5 +1,17 @@
-"""Main benchmarking logic."""
+"""
+Tokka-Bench: Tokenizer benchmarking for multiple languages.
 
+This module provides the core functionality for benchmarking HuggingFace tokenizers
+across multiple languages using real data from the FineWeb-2 dataset.
+
+Key Features:
+- Universal tokenizer support for any HuggingFace model
+- Real-world data from top 5 languages by FineWeb-2 size
+- Efficiency metrics (bytes per token)
+- JSON output with detailed results
+"""
+
+import gc
 import json
 import os
 import time
@@ -34,11 +46,13 @@ class UniversalTokenizer:
         # Basic metrics from the actual text we're tokenizing
         text_bytes = len(text.encode("utf-8"))
         num_tokens = len(token_ids)
+        unique_tokens = len(set(token_ids))  # Count unique token IDs
 
         return {
             "bytes_per_token": text_bytes / num_tokens if num_tokens > 0 else 0,
             "total_bytes": text_bytes,
             "total_tokens": num_tokens,
+            "unique_tokens": unique_tokens,
         }
 
 
@@ -106,15 +120,19 @@ def load_real_sample_text(
         accumulated_text = []
         total_bytes = 0
 
-        for sample in fw:
-            text = sample.get("text", "")
-            if text:
-                accumulated_text.append(text)
-                total_bytes += len(text.encode("utf-8"))
+        # Use iterator to ensure we can clean up properly
+        dataset_iter = iter(fw)
 
-                # Check if we've reached our target
-                if total_bytes >= target_bytes:
-                    break
+        try:
+            while total_bytes < target_bytes:
+                sample = next(dataset_iter)
+                text = sample.get("text", "")
+                if text:
+                    accumulated_text.append(text)
+                    total_bytes += len(text.encode("utf-8"))
+        except StopIteration:
+            # End of dataset reached
+            pass
 
         # Join all accumulated text
         full_text = "\n".join(accumulated_text)
@@ -125,6 +143,12 @@ def load_real_sample_text(
             full_text = text_bytes[:target_bytes].decode("utf-8", errors="ignore")
 
         print(f"    Loaded {len(full_text.encode('utf-8')):,} bytes of real data")
+
+        # Simple cleanup
+        del fw
+        del dataset_iter
+        gc.collect()
+
         return full_text
 
     except Exception as e:
@@ -180,7 +204,7 @@ def benchmark_tokenizer(
         }
 
         print(
-            f"    Bytes/token: {metrics['bytes_per_token']:.2f} (higher = more efficient)"
+            f"    Bytes/token: {metrics['bytes_per_token']:.2f} | Unique tokens: {metrics['unique_tokens']:,d}"
         )
 
     return results
@@ -194,17 +218,16 @@ def save_results(results: Dict[str, Any], output_path: str):
 
 
 def run_benchmark(
-    tokenizer_name: str, output_dir: str = "data/results", sample_size_mb: float = 1.0
+    tokenizer_name: str, output_name: str = None, sample_size_mb: float = 1.0
 ):
-    """Run benchmark for a specific tokenizer."""
-
+    """Run the complete benchmark process."""
     # Load language data
     df = load_language_data()
-    top_languages = get_top_languages(df, n=5)
+    languages = get_top_languages(df, n=5)
 
     print("Top 5 languages by size:")
-    for lang in top_languages:
-        # Note: we still show size in the CLI output for reference, just don't save it
+    for lang in languages:
+        # Get size from CSV for display
         lang_size = df.loc[df["ISO 639-3 code"] == lang["iso_code"], "Disk size"].iloc[
             0
         ]
@@ -215,13 +238,33 @@ def run_benchmark(
     tokenizer = UniversalTokenizer(tokenizer_name)
 
     # Run benchmark
-    results = benchmark_tokenizer(tokenizer, top_languages, sample_size_mb)
+    results = benchmark_tokenizer(tokenizer, languages, sample_size_mb)
+
+    # Generate output path
+    if output_name:
+        filename = f"{output_name}.json"
+    else:
+        # Convert tokenizer name to safe filename
+        safe_name = tokenizer_name.replace("/", "_").replace("-", "_")
+        filename = f"{safe_name}.json"
+
+    output_path = f"data/results/{filename}"
+
+    # Ensure output directory exists
+    os.makedirs("data/results", exist_ok=True)
 
     # Save results
-    os.makedirs(output_dir, exist_ok=True)
-    # Clean tokenizer name for filename
-    safe_name = tokenizer_name.replace("/", "_").replace("-", "_")
-    output_path = f"{output_dir}/{safe_name}.json"
     save_results(results, output_path)
+
+    # Aggressive cleanup
+    del tokenizer
+    del languages
+    del df
+    gc.collect()
+
+    print(f"Results saved to {output_path}")
+    print("--------------------------------------------------")
+    print("✅ Benchmark completed successfully!")
+    print(f"Results saved for {len(results['languages'])} languages")
 
     return results

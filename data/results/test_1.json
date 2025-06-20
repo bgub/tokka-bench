@@ -1,7 +1,7 @@
 {
-  "tokenizer": "openai-community/gpt2",
-  "benchmark_size_mb": 0.01,
-  "timestamp": 1750385887.821253,
+  "tokenizer": "Xenova/gpt-4",
+  "benchmark_size_mb": 1.0,
+  "timestamp": 1750388698.1146529,
   "languages": {
     "rus-Cyrl": {
       "language_info": {
@@ -10,9 +10,10 @@
         "name": "Russian"
       },
       "metrics": {
-        "bytes_per_token": 1.7097195042400521,
-        "total_bytes": 10484,
-        "total_tokens": 6132
+        "bytes_per_token": 3.788796670002927,
+        "total_bytes": 1048576,
+        "total_tokens": 276757,
+        "unique_tokens": 2889
       }
     },
     "cmn-Hani": {
@@ -22,9 +23,10 @@
         "name": "Mandarin Chinese"
       },
       "metrics": {
-        "bytes_per_token": 1.4038564542046064,
-        "total_bytes": 10484,
-        "total_tokens": 7468
+        "bytes_per_token": 2.302895269135065,
+        "total_bytes": 1048575,
+        "total_tokens": 455329,
+        "unique_tokens": 5670
       }
     },
     "deu-Latn": {
@@ -34,9 +36,10 @@
         "name": "German"
       },
       "metrics": {
-        "bytes_per_token": 2.7065049044914815,
-        "total_bytes": 10485,
-        "total_tokens": 3874
+        "bytes_per_token": 3.6067251864285517,
+        "total_bytes": 1048576,
+        "total_tokens": 290728,
+        "unique_tokens": 12544
       }
     },
     "jpn-Jpan": {
@@ -46,9 +49,10 @@
         "name": "Japanese"
       },
       "metrics": {
-        "bytes_per_token": 2.247588424437299,
-        "total_bytes": 10485,
-        "total_tokens": 4665
+        "bytes_per_token": 2.7481667077268224,
+        "total_bytes": 1048574,
+        "total_tokens": 381554,
+        "unique_tokens": 4596
       }
     },
     "spa-Latn": {
@@ -58,9 +62,10 @@
         "name": "Spanish"
       },
       "metrics": {
-        "bytes_per_token": 3.0146635997699827,
-        "total_bytes": 10485,
-        "total_tokens": 3478
+        "bytes_per_token": 3.847999442199788,
+        "total_bytes": 1048576,
+        "total_tokens": 272499,
+        "unique_tokens": 11990
       }
     }
   }

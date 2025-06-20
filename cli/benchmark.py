@@ -1,110 +1,81 @@
 #!/usr/bin/env python3
-"""CLI script for running tokenizer benchmarks."""
+"""CLI for running tokka-bench."""
 
-import argparse
-import os
 import sys
 
-from omegaconf import DictConfig, OmegaConf
-
-# Add src to Python path so we can import our modules
-sys.path.insert(0, os.path.join(os.path.dirname(__file__), "..", "src"))
+from omegaconf import OmegaConf
 
 from tokka_bench.benchmark import run_benchmark
 
 
-def create_config() -> DictConfig:
-    """Create default configuration."""
-    default_config = OmegaConf.create(
-        {
-            "tokenizer": None,  # Required
-            "output_dir": "data/results",
-            "sample_size_mb": 1.0,
-        }
-    )
-    return default_config
+def print_summary(results):
+    """Print a summary of benchmark results."""
+    print("📊 Summary (ranked by efficiency):")
+
+    # Sort languages by bytes_per_token (descending - higher is better)
+    lang_results = []
+    for lang_key, lang_data in results["languages"].items():
+        lang_name = lang_data["language_info"]["name"]
+        bytes_per_token = lang_data["metrics"]["bytes_per_token"]
+        unique_tokens = lang_data["metrics"]["unique_tokens"]
+        lang_results.append((lang_name, bytes_per_token, unique_tokens))
+
+    # Sort by efficiency (higher bytes/token = more efficient)
+    lang_results.sort(key=lambda x: x[1], reverse=True)
+
+    for i, (name, efficiency, unique_tokens) in enumerate(lang_results, 1):
+        print(
+            f"  {i:2d}. {name:<20} | Bytes/token: {efficiency:6.2f} | Unique tokens: {unique_tokens:>5,d}"
+        )
 
 
 def main():
-    """Run tokenizer benchmark on top 5 languages from FineWeb-2."""
-
-    # Create argument parser
-    parser = argparse.ArgumentParser(
-        description="Run tokenizer benchmark on top 5 languages from FineWeb-2"
-    )
-    parser.add_argument(
-        "--tokenizer",
-        "-t",
-        required=True,
-        help='Tokenizer model name (e.g., "openai-community/gpt2", "Xenova/gpt-4", "meta-llama/Meta-Llama-3-8B")',
-    )
-    parser.add_argument(
-        "--output-dir", "-o", default="data/results", help="Directory to save results"
-    )
-    parser.add_argument(
-        "--sample-size",
-        "-s",
-        type=float,
-        default=1.0,
-        help="Sample size in MB per language",
-    )
-    parser.add_argument("--config", help="Path to YAML config file (optional)")
-
-    args = parser.parse_args()
-
-    # Create base config
-    config = create_config()
-
-    # Load config file if provided
-    if args.config:
-        file_config = OmegaConf.load(args.config)
-        config = OmegaConf.merge(config, file_config)
-
-    # Override with command line arguments
-    cli_config = OmegaConf.create(
-        {
-            "tokenizer": args.tokenizer,
-            "output_dir": args.output_dir,
-            "sample_size_mb": args.sample_size,
-        }
-    )
-    config = OmegaConf.merge(config, cli_config)
-
+    """Main CLI function."""
     print("🚀 Starting tokka-bench")
-    print(f"Tokenizer: {config.tokenizer}")
-    print(f"Sample size: {config.sample_size_mb}MB per language")
-    print(f"Output directory: {config.output_dir}")
-    print("-" * 50)
+
+    # Parse arguments with OmegaConf
+    config = OmegaConf.from_cli()
+
+    # Get required and optional parameters
+    tokenizer = config.get("tokenizer")
+    sample_size = config.get("sample_size", 1.0)
+    output_name = config.get("output_name", None)
+
+    if not tokenizer:
+        print("❌ Error: tokenizer is required")
+        print("Example: uv run cli/benchmark.py tokenizer=Xenova/gpt-4 sample_size=1.0")
+        sys.exit(1)
+
+    print(f"Tokenizer: {tokenizer}")
+    print(f"Sample size: {sample_size}MB per language")
+
+    if output_name:
+        print(f"Output filename: data/results/{output_name}.json")
+    else:
+        safe_name = tokenizer.replace("/", "_").replace("-", "_")
+        print(f"Output filename: data/results/{safe_name}.json")
+
+    print("--------------------------------------------------")
 
     try:
-        results = run_benchmark(
-            tokenizer_name=config.tokenizer,
-            output_dir=config.output_dir,
-            sample_size_mb=config.sample_size_mb,
-        )
+        print("🔄 Loading language data...")
+        results = run_benchmark(tokenizer, output_name, sample_size)
 
-        print("-" * 50)
+        print("🔄 Printing summary...")
+        print_summary(results)
+
         print("✅ Benchmark completed successfully!")
-        print(f"Results saved for {len(results['languages'])} languages")
 
-        # Print summary with efficiency ranking
-        print("\n📊 Summary (ranked by efficiency):")
-
-        # Sort languages by bytes_per_token (higher = more efficient)
-        lang_items = list(results["languages"].items())
-        lang_items.sort(key=lambda x: x[1]["metrics"]["bytes_per_token"], reverse=True)
-
-        for i, (lang_key, lang_data) in enumerate(lang_items, 1):
-            metrics = lang_data["metrics"]
-            lang_info = lang_data["language_info"]
-            print(
-                f"  {i}. {lang_info['name']:20} | "
-                f"Bytes/token: {metrics['bytes_per_token']:6.2f}"
-            )
-
+    except KeyboardInterrupt:
+        print("\n❌ Interrupted by user")
+        sys.exit(1)
     except Exception as e:
         print(f"❌ Error running benchmark: {e}")
         sys.exit(1)
+
+    # Simple exit
+    print("🔄 Exiting...")
+    sys.exit(0)
 
 
 if __name__ == "__main__":
