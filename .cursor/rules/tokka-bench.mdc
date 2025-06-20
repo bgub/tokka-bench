@@ -1,0 +1,80 @@
+---
+description: 
+globs: 
+alwaysApply: true
+---
+# Tokka-Bench Project Guide
+
+## Overview
+Tokka-bench is a **tokenizer benchmarking tool** that compares different tokenizers across multiple languages. It evaluates how efficiently different tokenizers (GPT-2, GPT-4, Llama, etc.) handle text from various language families using real-world data.
+
+## Core Metrics
+- **Bytes per token**: How many UTF-8 bytes each token represents (higher = more efficient)  
+- **Words per token**: How many words each token captures (language-aware counting)
+
+## Project Structure
+
+### Main Package: [src/tokka_bench/](mdc:src/tokka_bench)
+- [benchmark.py](mdc:src/tokka_bench/benchmark.py) - **All core logic in one file**:
+  - `UniversalTokenizer` class - works with any HuggingFace model
+  - Language-aware word counting (handles Chinese, Arabic, European languages differently)
+  - Benchmark execution and JSON result generation
+- [__init__.py](mdc:src/tokka_bench/__init__.py) - Package initialization
+
+### CLI Interface: [cli/](mdc:cli)
+- [benchmark.py](mdc:cli/benchmark.py) - **Simple CLI script** using OmegaConf and argparse
+  - Requires full HuggingFace model paths (e.g., "openai-community/gpt2")
+  - No hardcoded tokenizer lists - supports any model
+
+### Data & Configuration
+- [src/fineweb-2-languages.csv](mdc:src/fineweb-2-languages.csv) - Language metadata (internal, never changes)
+- [pyproject.toml](mdc:pyproject.toml) - Dependencies: transformers, pandas, omegaconf
+- `data/results/` - Output JSON files with benchmark results
+
+## Key Design Principles
+
+### Simplicity & Extensibility  
+- **No tokenizer registry** - use any HuggingFace model directly
+- **Minimal configuration** - only tokenizer name and sample size required
+- **Single source of truth** - all logic consolidated in benchmark.py
+
+### Language-Aware Processing
+- **Chinese/Japanese**: Character counting (no word boundaries)
+- **Arabic/Hebrew**: Unicode-aware word boundaries  
+- **European languages**: Standard regex word boundaries
+
+### Efficiency Interpretation
+- **Higher bytes/token = MORE efficient** (each token captures more content)
+- Results ranked by efficiency (highest bytes/token first)
+
+## Usage Examples
+```bash
+# Benchmark GPT-2 with 1MB samples
+uv run cli/benchmark.py --tokenizer openai-community/gpt2
+
+# Quick test with smaller samples  
+uv run cli/benchmark.py --tokenizer Xenova/gpt-4 --sample-size 0.1
+
+# Any HuggingFace model works
+uv run cli/benchmark.py --tokenizer meta-llama/Meta-Llama-3-8B
+```
+
+## Test Data
+Benchmarks run on **top 5 languages by FineWeb-2 size**:
+1. Russian (rus-Cyrl) - 1.65TB
+2. Mandarin Chinese (cmn-Hani) - 1.34TB  
+3. German (deu-Latn) - 640.76GB
+4. Japanese (jpn-Jpan) - 636.71GB
+5. Spanish (spa-Latn) - 554.08GB
+
+## Output Format
+Results saved as JSON in `data/results/{model_name}.json` with:
+- Tokenizer metadata and timestamp
+- Per-language metrics and processing times
+- Sample text information
+
+## Dependencies
+- **transformers**: AutoTokenizer for any model
+- **pandas**: CSV processing for language data
+- **omegaconf**: Configuration management
+- **Python 3.13+**: Modern Python features

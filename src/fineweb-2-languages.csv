@@ -1,0 +1,1895 @@
+ISO 639-3 code,Script,Name,Language Family,Subset,Words,Documents,Disk size
+rus,Cyrl,Russian,Indo-European,rus_Cyrl,"537,248,642,150","605,468,615",1.65TB
+cmn,Hani,Mandarin Chinese,Sino-Tibetan,cmn_Hani,"301,260,059,157","578,332,129",1.34TB
+deu,Latn,German,Indo-European,deu_Latn,"234,845,525,340","427,700,394",640.76GB
+jpn,Jpan,Japanese,Japonic,jpn_Jpan,"133,338,461,195","376,134,745",636.71GB
+spa,Latn,Spanish,Indo-European,spa_Latn,"244,541,319,983","405,634,303",554.08GB
+fra,Latn,French,Indo-European,fra_Latn,"206,642,953,127","332,646,715",476.55GB
+ita,Latn,Italian,Indo-European,ita_Latn,"128,812,336,382","219,117,921",305.96GB
+por,Latn,Portuguese,Indo-European,por_Latn,"105,274,251,441","189,851,449",246.33GB
+pol,Latn,Polish,Indo-European,pol_Latn,"67,348,057,023","138,337,436",193.34GB
+nld,Latn,Dutch,Indo-European,nld_Latn,"69,031,468,676","133,855,612",162.98GB
+ind,Latn,Indonesian,Austronesian,ind_Latn,"57,058,990,049","92,992,647",134.84GB
+tur,Latn,Turkish,Turkic,tur_Latn,"39,147,774,979","88,769,907",116.64GB
+ces,Latn,Czech,Indo-European,ces_Latn,"34,180,069,985","62,703,458",98.30GB
+kor,Hang,Korean,Koreanic,kor_Hang,"47,231,383,119","58,160,164",94.73GB
+arb,Arab,Standard Arabic,Afro-Asiatic,arb_Arab,"31,018,164,224","57,752,149",94.52GB
+hun,Latn,Hungarian,Uralic,hun_Latn,"29,020,551,784","46,879,826",85.72GB
+fas,Arab,Persian,Indo-European,fas_Arab,"35,470,813,197","51,043,666",85.16GB
+ron,Latn,Romanian,Indo-European,ron_Latn,"33,510,926,028","54,128,784",81.30GB
+vie,Latn,Vietnamese,Austro-Asiatic,vie_Latn,"33,145,536,765","40,741,340",78.95GB
+ukr,Cyrl,Ukrainian,Indo-European,ukr_Cyrl,"23,370,443,644","47,552,562",77.40GB
+nob,Latn,Norwegian Bokmål,Indo-European,nob_Latn,"30,468,659,206","35,502,989",74.48GB
+tha,Thai,Thai,Kra-Dai,tha_Thai,"25,047,743,431","35,949,449",70.86GB
+ell,Grek,Modern Greek (1453-),Indo-European,ell_Grek,"21,559,658,874","44,202,550",68.91GB
+swe,Latn,Swedish,Indo-European,swe_Latn,"25,442,802,114","45,329,979",63.27GB
+dan,Latn,Danish,Indo-European,dan_Latn,"26,976,451,710","42,975,661",63.04GB
+fin,Latn,Finnish,Uralic,fin_Latn,"18,558,719,801","33,162,591",56.79GB
+bul,Cyrl,Bulgarian,Indo-European,bul_Cyrl,"15,267,314,656","23,838,661",43.04GB
+slk,Latn,Slovak,Indo-European,slk_Latn,"14,094,646,493","26,470,482",40.43GB
+hrv,Latn,Croatian,Indo-European,hrv_Latn,"12,671,235,751","20,637,731",32.91GB
+hin,Deva,Hindi,Indo-European,hin_Deva,"10,627,216,436","20,587,135",30.59GB
+lit,Latn,Lithuanian,Indo-European,lit_Latn,"8,778,132,954","12,364,135",24.52GB
+bos,Latn,Bosnian,Indo-European,bos_Latn,"8,423,093,759","19,390,133",23.03GB
+heb,Hebr,Hebrew,Afro-Asiatic,heb_Hebr,"8,112,550,066","13,639,095",22.20GB
+ben,Beng,Bengali,Indo-European,ben_Beng,"5,684,497,360","14,129,440",20.48GB
+slv,Latn,Slovenian,Indo-European,slv_Latn,"7,596,809,203","11,561,268",18.91GB
+ekk,Latn,Standard Estonian,Uralic,ekk_Latn,"6,379,499,093","9,629,380",17.73GB
+cat,Latn,Catalan,Indo-European,cat_Latn,"7,596,471,602","15,512,049",16.66GB
+lvs,Latn,Standard Latvian,Indo-European,lvs_Latn,"5,284,221,488","7,754,179",14.41GB
+zsm,Latn,Standard Malay,Austronesian,zsm_Latn,"5,465,873,952","8,832,556",12.87GB
+azj,Latn,North Azerbaijani,Turkic,azj_Latn,"3,650,335,666","6,753,102",9.72GB
+tam,Taml,Tamil,Dravidian,tam_Taml,"1,921,191,055","5,450,192",8.64GB
+srp,Cyrl,Serbian,Indo-European,srp_Cyrl,"2,699,692,738","3,842,269",8.12GB
+als,Latn,Tosk Albanian,Indo-European,als_Latn,"3,277,161,199","8,016,293",7.95GB
+kat,Geor,Georgian,Kartvelian,kat_Geor,"1,407,709,680","3,645,892",6.22GB
+kaz,Cyrl,Kazakh,Turkic,kaz_Cyrl,"1,837,049,585","3,316,631",6.21GB
+urd,Arab,Urdu,Indo-European,urd_Arab,"2,483,704,532","4,164,316",5.80GB
+ary,Arab,Moroccan Arabic,Afro-Asiatic,ary_Arab,"1,737,061,304","6,111,598",5.79GB
+mar,Deva,Marathi,Indo-European,mar_Deva,"1,512,164,293","3,762,395",5.70GB
+npi,Deva,Nepali (individual language),Indo-European,npi_Deva,"1,461,508,712","4,264,777",5.53GB
+mal,Mlym,Malayalam,Dravidian,mal_Mlym,"1,055,322,995","3,406,035",5.50GB
+tel,Telu,Telugu,Dravidian,tel_Telu,"1,094,792,783","2,811,760",4.56GB
+mkd,Cyrl,Macedonian,Indo-European,mkd_Cyrl,"1,510,099,711","3,885,664",4.52GB
+isl,Latn,Icelandic,Indo-European,isl_Latn,"1,635,293,855","2,818,643",4.40GB
+bel,Cyrl,Belarusian,Indo-European,bel_Cyrl,"1,113,445,856","1,978,448",3.69GB
+afr,Latn,Afrikaans,Indo-European,afr_Latn,"1,585,916,310","1,963,230",3.36GB
+kan,Knda,Kannada,Dravidian,kan_Knda,"731,507,322","2,309,261",3.20GB
+fil,Latn,Filipino,Austronesian,fil_Latn,"1,539,873,576","2,179,703",3.16GB
+mya,Mymr,Burmese,Sino-Tibetan,mya_Mymr,"881,917,647","1,619,895",3.05GB
+glg,Latn,Galician,Indo-European,glg_Latn,"1,217,033,695","2,483,607",2.87GB
+guj,Gujr,Gujarati,Indo-European,guj_Gujr,"856,121,025","1,944,408",2.84GB
+anp,Deva,Angika,Indo-European,anp_Deva,"986,990,685","1,577,180",2.76GB
+khk,Cyrl,Halh Mongolian,Mongolic,khk_Cyrl,"792,199,677","1,566,203",2.50GB
+gmh,Latn,Middle High German (ca. 1050-1500),Indo-European,gmh_Latn,"893,015,355","431,052",2.21GB
+khm,Khmr,Khmer,Austro-Asiatic,khm_Khmr,"610,578,779","1,467,637",1.95GB
+eus,Latn,Basque,Language isolate,eus_Latn,"710,683,241","1,611,832",1.90GB
+ars,Arab,Najdi Arabic,Afro-Asiatic,ars_Arab,"562,612,688","1,639,585",1.81GB
+sin,Sinh,Sinhala,Indo-European,sin_Sinh,"481,573,894","1,077,501",1.74GB
+hye,Armn,Armenian,Indo-European,hye_Armn,"476,562,063","1,370,205",1.70GB
+uzn,Latn,Northern Uzbek,Turkic,uzn_Latn,"616,563,348","1,098,843",1.68GB
+uzn,Cyrl,Northern Uzbek,Turkic,uzn_Cyrl,"492,264,125","1,247,285",1.68GB
+lat,Latn,Latin,Indo-European,lat_Latn,"712,528,440","1,488,583",1.64GB
+arz,Arab,Egyptian Arabic,Afro-Asiatic,arz_Arab,"439,877,753","1,410,134",1.40GB
+pan,Guru,Panjabi,Indo-European,pan_Guru,"482,517,682","864,180",1.34GB
+kir,Cyrl,Kirghiz,Turkic,kir_Cyrl,"385,676,123","1,033,688",1.33GB
+swh,Latn,Swahili (individual language),Niger-Congo,swh_Latn,"553,991,794","1,166,177",1.31GB
+srp,Latn,Serbian,Indo-European,srp_Latn,"513,095,250","1,061,122",1.30GB
+bew,Latn,Betawi,Creole,bew_Latn,"484,897,962","985,298",1.21GB
+nno,Latn,Norwegian Nynorsk,Indo-European,nno_Latn,"477,892,927","1,139,655",1.20GB
+ory,Orya,Odia,Indo-European,ory_Orya,"298,519,091","1,158,595",1.14GB
+tgk,Cyrl,Tajik,Indo-European,tgk_Cyrl,"382,508,382","650,793",1.11GB
+tat,Cyrl,Tatar,Turkic,tat_Cyrl,"294,230,594","538,005",973.32MB
+cym,Latn,Welsh,Indo-European,cym_Latn,"455,436,005","710,320",972.73MB
+som,Latn,Somali,Afro-Asiatic,som_Latn,"353,960,176","1,017,436",908.41MB
+gle,Latn,Irish,Indo-European,gle_Latn,"380,239,711","534,443",842.60MB
+pbt,Arab,Southern Pashto,Indo-European,pbt_Arab,"314,932,104","592,983",759.09MB
+ckb,Arab,Central Kurdish,Indo-European,ckb_Arab,"217,589,474","495,859",722.73MB
+rmy,Latn,Vlax Romani,Indo-European,rmy_Latn,"352,511,453","127,035",714.45MB
+nap,Latn,Neapolitan,Indo-European,nap_Latn,"261,670,185","360,655",595.76MB
+mlt,Latn,Maltese,Afro-Asiatic,mlt_Latn,"245,205,669","425,681",587.48MB
+lao,Laoo,Lao,Kra-Dai,lao_Laoo,"187,033,627","346,324",552.85MB
+hif,Latn,Fiji Hindi,Indo-European,hif_Latn,"271,674,807","166,209",530.84MB
+amh,Ethi,Amharic,Afro-Asiatic,amh_Ethi,"146,925,120","280,355",530.70MB
+kmr,Latn,Northern Kurdish,Indo-European,kmr_Latn,"202,189,014","393,683",489.01MB
+epo,Latn,Esperanto,Constructed language,epo_Latn,"203,459,718","291,191",485.72MB
+ltz,Latn,Luxembourgish,Indo-European,ltz_Latn,"178,752,854","347,654",462.09MB
+yue,Hani,Yue Chinese,Sino-Tibetan,yue_Hani,"148,436,179","292,199",405.80MB
+bod,Tibt,Tibetan,Sino-Tibetan,bod_Tibt,"138,486,091","155,315",389.13MB
+gsw,Latn,Swiss German,Indo-European,gsw_Latn,"266,701,270","206,047",360.25MB
+div,Thaa,Dhivehi,Indo-European,div_Thaa,"88,498,130","338,364",352.22MB
+plt,Latn,Plateau Malagasy,Austronesian,plt_Latn,"154,032,076","254,482",343.76MB
+asm,Beng,Assamese,Indo-European,asm_Beng,"92,134,659","239,357",334.14MB
+snd,Arab,Sindhi,Indo-European,snd_Arab,"141,700,175","193,119",332.32MB
+gla,Latn,Scottish Gaelic,Indo-European,gla_Latn,"155,140,058","195,647",317.78MB
+nrm,Latn,Narom,Austronesian,nrm_Latn,"100,394,769","263,125",303.58MB
+jav,Latn,Javanese,Austronesian,jav_Latn,"132,233,895","172,668",299.66MB
+fry,Latn,Western Frisian,Indo-European,fry_Latn,"122,289,313","334,159",297.67MB
+uig,Arab,Uighur,Turkic,uig_Arab,"84,382,822","156,755",295.69MB
+pcm,Latn,Nigerian Pidgin,Creole,pcm_Latn,"154,756,466","467,114",295.61MB
+tuk,Latn,Turkmen,Turkic,tuk_Latn,"97,605,670","236,553",294.71MB
+hat,Latn,Haitian,Creole,hat_Latn,"134,707,151","222,184",281.06MB
+bak,Cyrl,Bashkir,Turkic,bak_Cyrl,"78,681,703","179,964",273.20MB
+hyw,Armn,Western Armenian,Indo-European,hyw_Armn,"75,183,202","143,967",251.65MB
+fao,Latn,Faroese,Indo-European,fao_Latn,"95,066,797","261,937",249.96MB
+ydd,Hebr,Eastern Yiddish,Indo-European,ydd_Hebr,"90,363,432","125,061",247.93MB
+ceb,Latn,Cebuano,Austronesian,ceb_Latn,"117,057,498","173,644",236.42MB
+aeb,Arab,Tunisian Arabic,Afro-Asiatic,aeb_Arab,"65,751,442","262,884",202.95MB
+pap,Latn,Papiamento,Creole,pap_Latn,"91,647,585","176,641",196.14MB
+mri,Latn,Maori,Austronesian,mri_Latn,"118,024,259","158,804",194.75MB
+mww,Latn,Hmong Daw,Hmong-Mien,mww_Latn,"118,548,108","132,520",186.29MB
+zul,Latn,Zulu,Niger-Congo,zul_Latn,"61,995,832","116,693",182.96MB
+cos,Latn,Corsican,Indo-European,cos_Latn,"78,240,439","108,548",174.21MB
+sun,Latn,Sundanese,Austronesian,sun_Latn,"70,978,221","102,316",171.27MB
+kin,Latn,Kinyarwanda,Niger-Congo,kin_Latn,"58,407,371","199,112",170.48MB
+urd,Latn,Urdu,Indo-European,urd_Latn,"70,185,720","119,354",155.02MB
+nya,Latn,Nyanja,Niger-Congo,nya_Latn,"59,438,885","97,692",151.73MB
+sah,Cyrl,Yakut,Turkic,sah_Cyrl,"42,116,408","72,004",150.24MB
+smo,Latn,Samoan,Austronesian,smo_Latn,"88,739,849","106,185",146.42MB
+hin,Latn,Hindi,Indo-European,hin_Latn,"72,265,326","84,501",143.98MB
+ibo,Latn,Igbo,Niger-Congo,ibo_Latn,"74,162,858","95,184",139.08MB
+xho,Latn,Xhosa,Niger-Congo,xho_Latn,"45,278,182","99,567",134.72MB
+sdh,Arab,Southern Kurdish,Indo-European,sdh_Arab,"40,724,011","106,917",134.09MB
+hbo,Hebr,Ancient Hebrew,Afro-Asiatic,hbo_Hebr,"39,090,721","44,958",130.00MB
+sot,Latn,Southern Sotho,Niger-Congo,sot_Latn,"72,283,044","83,329",127.57MB
+kiu,Latn,Kirmanjki (individual language),Indo-European,kiu_Latn,"39,923,564","83,511",124.90MB
+chv,Cyrl,Chuvash,Turkic,chv_Cyrl,"36,101,473","77,005",123.39MB
+tir,Ethi,Tigrinya,Afro-Asiatic,tir_Ethi,"32,335,783","65,569",114.29MB
+sna,Latn,Shona,Niger-Congo,sna_Latn,"39,881,207","80,003",113.29MB
+azb,Arab,South Azerbaijani,Turkic,azb_Arab,"33,841,273","66,088",108.35MB
+ast,Latn,Asturian,Indo-European,ast_Latn,"41,945,813","63,347",102.78MB
+bar,Latn,Bavarian,Indo-European,bar_Latn,"36,729,165","88,675",100.99MB
+rue,Cyrl,Rusyn,Indo-European,rue_Cyrl,"28,693,558","68,691",98.67MB
+yor,Latn,Yoruba,Niger-Congo,yor_Latn,"49,165,864","67,447",96.55MB
+glk,Arab,Gilaki,Indo-European,glk_Arab,"31,225,449","112,158",89.76MB
+haw,Latn,Hawaiian,Austronesian,haw_Latn,"55,776,561","71,087",89.19MB
+lus,Latn,Lushai,Sino-Tibetan,lus_Latn,"44,450,187","81,748",88.11MB
+oci,Latn,Occitan (post 1500),Indo-European,oci_Latn,"34,955,196","70,426",87.66MB
+san,Deva,Sanskrit,Indo-European,san_Deva,"16,815,844","22,118",83.47MB
+nds,Latn,Low German,Indo-European,nds_Latn,"32,118,804","64,948",82.90MB
+sme,Latn,Northern Sami,Uralic,sme_Latn,"26,667,910","70,158",82.57MB
+dag,Latn,Dagbani,Niger-Congo,dag_Latn,"36,489,534","37,026",81.65MB
+run,Latn,Rundi,Niger-Congo,run_Latn,"25,051,735","88,823",71.38MB
+sco,Latn,Scots,Indo-European,sco_Latn,"27,479,371","75,821",70.76MB
+frp,Latn,Arpitan,Indo-European,frp_Latn,"24,611,764","58,413",69.22MB
+mui,Latn,Musi,Austronesian,mui_Latn,"26,492,914","88,835",65.86MB
+acm,Arab,Mesopotamian Arabic,Afro-Asiatic,acm_Arab,"19,288,606","95,315",63.18MB
+inh,Cyrl,Ingush,Nakh-Daghestanian,inh_Cyrl,"18,821,795","26,988",60.81MB
+oss,Cyrl,Ossetian,Indo-European,oss_Cyrl,"19,387,220","38,729",59.41MB
+crh,Latn,Crimean Tatar,Turkic,crh_Latn,"21,365,608","41,908",59.28MB
+bre,Latn,Breton,Indo-European,bre_Latn,"25,607,484","54,409",56.88MB
+kal,Latn,Kalaallisut,Eskimo-Aleut,kal_Latn,"15,099,271","45,066",55.52MB
+zea,Latn,Zeeuws,Indo-European,zea_Latn,"22,952,523","34,971",54.96MB
+roh,Latn,Romansh,Indo-European,roh_Latn,"21,385,822","74,442",50.73MB
+gaz,Latn,West Central Oromo,Afro-Asiatic,gaz_Latn,"17,177,245","43,468",49.21MB
+lij,Latn,Ligurian,Indo-European,lij_Latn,"26,344,020","16,575",47.95MB
+uig,Latn,Uighur,Turkic,uig_Latn,"15,718,693","24,729",46.26MB
+mhr,Cyrl,Eastern Mari,Uralic,mhr_Cyrl,"14,888,927","30,385",45.94MB
+hil,Latn,Hiligaynon,Austronesian,hil_Latn,"20,072,734","39,624",44.26MB
+cnh,Latn,Hakha Chin,Sino-Tibetan,cnh_Latn,"23,463,983","49,403",44.00MB
+hsb,Latn,Upper Sorbian,Indo-European,hsb_Latn,"14,311,284","40,297",43.75MB
+mai,Deva,Maithili,Indo-European,mai_Deva,"13,616,365","22,544",43.46MB
+udm,Cyrl,Udmurt,Uralic,udm_Cyrl,"13,511,257","25,583",43.10MB
+lim,Latn,Limburgan,Indo-European,lim_Latn,"15,383,105","35,699",42.43MB
+hac,Arab,Gurani,Indo-European,hac_Arab,"12,281,541","26,439",41.91MB
+fro,Latn,Old French (842-ca. 1400),Indo-European,fro_Latn,"22,085,406","9,040",39.80MB
+gag,Latn,Gagauz,Turkic,gag_Latn,"13,440,173","30,764",38.35MB
+cbk,Latn,Chavacano,Creole,cbk_Latn,"15,939,567","53,233",38.21MB
+tyv,Cyrl,Tuvinian,Turkic,tyv_Cyrl,"11,509,170","16,811",33.37MB
+dzo,Tibt,Dzongkha,Sino-Tibetan,dzo_Tibt,"10,786,574","23,066",32.15MB
+lmo,Latn,Lombard,Indo-European,lmo_Latn,"14,233,524","21,746",31.28MB
+lug,Latn,Ganda,Niger-Congo,lug_Latn,"9,845,873","32,954",30.24MB
+grc,Grek,Ancient Greek (to 1453),Indo-European,grc_Grek,"9,397,616","10,500",30.04MB
+wuu,Hani,Wu Chinese,Sino-Tibetan,wuu_Hani,"10,961,531","35,970",29.55MB
+crs,Latn,Seselwa Creole French,Creole,crs_Latn,"18,175,854","3,494",28.96MB
+goh,Latn,Old High German (ca. 750-1050),Indo-European,goh_Latn,"15,505,909","12,984",28.78MB
+tat,Latn,Tatar,Turkic,tat_Latn,"9,278,919","27,911",28.69MB
+raw,Latn,Rawang,Sino-Tibetan,raw_Latn,"7,839,752","5,873",28.29MB
+che,Cyrl,Chechen,Nakh-Daghestanian,che_Cyrl,"9,073,242","25,249",28.10MB
+srd,Latn,Sardinian,Indo-European,srd_Latn,"11,355,268","23,431",27.58MB
+mfe,Latn,Morisyen,Creole,mfe_Latn,"16,315,521","20,214",27.32MB
+wol,Latn,Wolof,Niger-Congo,wol_Latn,"9,194,182","24,103",24.63MB
+brh,Arab,Brahui,Dravidian,brh_Arab,"8,183,788","19,448",23.86MB
+non,Latn,Old Norse,Indo-European,non_Latn,"10,917,775","5,596",23.73MB
+pnb,Arab,Western Panjabi,Indo-European,pnb_Arab,"9,763,242","14,334",23.72MB
+new,Deva,Newari,Sino-Tibetan,new_Deva,"6,384,667","17,256",23.30MB
+uig,Cyrl,Uighur,Turkic,uig_Cyrl,"6,919,190","14,403",23.22MB
+bho,Deva,Bhojpuri,Indo-European,bho_Deva,"7,587,524","17,935",22.99MB
+pfl,Latn,Pfaelzisch,Indo-European,pfl_Latn,"8,641,831","33,226",22.97MB
+pan,Latn,Panjabi,Indo-European,pan_Latn,"9,657,836","26,653",22.65MB
+ban,Latn,Balinese,Austronesian,ban_Latn,"11,296,596","14,624",22.55MB
+arg,Latn,Aragonese,Indo-European,arg_Latn,"8,919,109","21,977",21.91MB
+kpv,Cyrl,Komi-Zyrian,Uralic,kpv_Cyrl,"7,430,461","7,852",21.81MB
+bxr,Cyrl,Russia Buriat,Mongolic,bxr_Cyrl,"6,304,810","11,055",21.32MB
+kha,Latn,Khasi,Austro-Asiatic,kha_Latn,"11,072,105","25,577",20.06MB
+lin,Latn,Lingala,Niger-Congo,lin_Latn,"9,573,421","15,241",20.03MB
+shn,Mymr,Shan,Kra-Dai,shn_Mymr,"3,957,730","21,366",19.76MB
+hne,Deva,Chhattisgarhi,Indo-European,hne_Deva,"7,321,665","11,894",19.64MB
+ilo,Latn,Iloko,Austronesian,ilo_Latn,"8,427,372","18,838",19.21MB
+scn,Latn,Sicilian,Indo-European,scn_Latn,"6,576,200","21,135",18.65MB
+san,Latn,Sanskrit,Indo-European,san_Latn,"4,560,615","2,437",18.62MB
+eml,Latn,Emilian-Romagnol,Indo-European,eml_Latn,"7,412,017","9,853",17.04MB
+uzs,Arab,Southern Uzbek,Turkic,uzs_Arab,"6,134,114","20,805",17.03MB
+gug,Latn,Paraguayan Guaraní,Tupian,gug_Latn,"6,307,130","10,609",16.68MB
+iba,Latn,Iban,Austronesian,iba_Latn,"7,985,933","16,554",16.25MB
+nde,Latn,North Ndebele,Niger-Congo,nde_Latn,"5,075,882","20,662",16.08MB
+rmn,Latn,Balkan Romani,Indo-European,rmn_Latn,"6,191,157","10,913",15.87MB
+myv,Cyrl,Erzya,Uralic,myv_Cyrl,"4,888,848","8,090",15.82MB
+fij,Latn,Fijian,Austronesian,fij_Latn,"9,625,209","11,497",15.63MB
+ava,Cyrl,Avaric,Nakh-Daghestanian,ava_Cyrl,"4,468,182","8,401",15.26MB
+wln,Latn,Walloon,Indo-European,wln_Latn,"7,383,792","14,833",15.07MB
+ltg,Latn,Latgalian,Indo-European,ltg_Latn,"5,142,439","9,735",14.67MB
+csb,Latn,Kashubian,Indo-European,csb_Latn,"4,806,552","6,744",14.13MB
+mwl,Latn,Mirandese,Indo-European,mwl_Latn,"6,171,673","7,473",13.75MB
+kbd,Cyrl,Kabardian,Abkhaz-Adyghe,kbd_Cyrl,"3,804,861","6,475",13.31MB
+twi,Latn,Twi,Atlantic-Congo,twi_Latn,"5,486,865","5,655",13.11MB
+kaa,Cyrl,Kara-Kalpak,Turkic,kaa_Cyrl,"3,841,844","10,503",12.64MB
+ike,Cans,Eastern Canadian Inuktitut,Eskimo-Aleut,ike_Cans,"2,242,554","7,355",12.30MB
+pms,Latn,Piemontese,Indo-European,pms_Latn,"6,434,442","12,054",12.14MB
+ctd,Latn,Tedim Chin,Sino-Tibetan,ctd_Latn,"6,448,257","7,077",12.05MB
+lez,Cyrl,Lezghian,Nakh-Daghestanian,lez_Cyrl,"3,762,297","6,126",11.78MB
+ady,Cyrl,Adyghe,Abkhaz-Adyghe,ady_Cyrl,"3,081,612","6,672",11.55MB
+jam,Latn,Jamaican Creole English,Creole,jam_Latn,"4,579,418","11,116",11.19MB
+cmr,Latn,Mro-Khimi Chin,Sino-Tibetan,cmr_Latn,"3,758,084","2,438",10.99MB
+fit,Latn,Tornedalen Finnish,Uralic,fit_Latn,"3,382,561","9,029",10.85MB
+szl,Latn,Silesian,Indo-European,szl_Latn,"3,661,924","6,629",10.57MB
+tam,Latn,Tamil,Dravidian,tam_Latn,"3,578,879","4,380",10.55MB
+vls,Latn,Vlaams,Indo-European,vls_Latn,"4,233,268","10,572",10.50MB
+tso,Latn,Tsonga,Niger-Congo,tso_Latn,"5,647,115","5,591",10.14MB
+tel,Latn,Telugu,Dravidian,tel_Latn,"3,284,085","4,114",10.06MB
+gom,Deva,Goan Konkani,Indo-European,gom_Deva,"2,648,702","5,598",10.01MB
+krc,Cyrl,Karachay-Balkar,Turkic,krc_Cyrl,"3,370,673","4,681",9.99MB
+lad,Latn,Ladino,Indo-European,lad_Latn,"4,176,037","9,444",9.81MB
+ksh,Latn,Kölsch,Indo-European,ksh_Latn,"3,706,550","8,975",9.61MB
+tsn,Latn,Tswana,Niger-Congo,tsn_Latn,"5,634,304","5,530",9.57MB
+azj,Cyrl,North Azerbaijani,Turkic,azj_Cyrl,"3,129,528","4,799",9.52MB
+vro,Latn,Võro,Uralic,vro_Latn,"3,369,701","6,692",9.29MB
+bbc,Latn,Batak Toba,Austronesian,bbc_Latn,"4,961,746","4,362",9.25MB
+bcl,Latn,Central Bikol,Austronesian,bcl_Latn,"4,190,902","8,312",9.21MB
+bam,Latn,Bambara,Niger-Congo,bam_Latn,"4,615,051","14,044",8.90MB
+apc,Arab,Levantine Arabic,Afro-Asiatic,apc_Arab,"2,125,590","17,627",8.75MB
+nso,Latn,Pedi,Niger-Congo,nso_Latn,"5,102,432","5,180",8.64MB
+mrj,Cyrl,Western Mari,Uralic,mrj_Cyrl,"2,882,216","3,769",8.54MB
+ndo,Latn,Ndonga,Niger-Congo,ndo_Latn,"3,582,340","8,257",8.50MB
+ton,Latn,Tonga (Tonga Islands),Austronesian,ton_Latn,"5,165,162","6,427",8.48MB
+kum,Cyrl,Kumyk,Turkic,kum_Cyrl,"2,681,619","4,346",8.46MB
+syl,Latn,Sylheti,Indo-European,syl_Latn,"14,311,794",648,8.46MB
+tah,Latn,Tahitian,Austronesian,tah_Latn,"5,933,309","4,808",8.27MB
+ayr,Latn,Central Aymara,Aymaran,ayr_Latn,"2,788,708","7,036",8.17MB
+ina,Latn,Interlingua (International Auxiliary Language Association),Artificial Language,ina_Latn,"3,578,295","8,410",8.10MB
+ven,Latn,Venda,Niger-Congo,ven_Latn,"7,232,802","3,994",7.99MB
+mni,Beng,Manipuri,Sino-Tibetan,mni_Beng,"2,209,261","2,721",7.90MB
+mbf,Latn,Baba Malay,Creole,mbf_Latn,"3,028,384","4,509",7.88MB
+tuk,Cyrl,Turkmen,Turkic,tuk_Cyrl,"2,565,488",971,7.87MB
+diq,Latn,Dimli (individual language),Indo-European,diq_Latn,"3,046,960","6,700",7.76MB
+enm,Latn,Middle English (1100-1500),Indo-European,enm_Latn,"5,997,353","5,640",7.68MB
+fur,Latn,Friulian,Indo-European,fur_Latn,"3,268,623","11,194",7.64MB
+alt,Cyrl,Southern Altai,Turkic,alt_Cyrl,"2,851,971","1,790",7.53MB
+cfm,Latn,Falam Chin,Sino-Tibetan,cfm_Latn,"3,866,865","8,674",7.27MB
+mdf,Cyrl,Moksha,Uralic,mdf_Cyrl,"2,318,324","3,693",7.06MB
+kac,Latn,Kachin,Sino-Tibetan,kac_Latn,"4,920,267","6,326",7.06MB
+tcz,Latn,Thado Chin,Sino-Tibetan,tcz_Latn,"3,408,189","2,160",6.95MB
+gom,Latn,Goan Konkani,Indo-European,gom_Latn,"3,338,905","3,771",6.93MB
+syc,Syrc,Classical Syriac,Afro-Asiatic,syc_Syrc,"2,102,394","1,157",6.72MB
+sag,Latn,Sango,Creole,sag_Latn,"4,846,772","4,537",6.60MB
+abk,Cyrl,Abkhazian,Abkhaz-Adyghe,abk_Cyrl,"2,232,687","3,367",6.54MB
+dsb,Latn,Lower Sorbian,Indo-European,dsb_Latn,"2,140,119","6,375",6.36MB
+srn,Latn,Sranan Tongo,Creole,srn_Latn,"3,799,216","3,562",6.19MB
+olo,Latn,Livvi,Uralic,olo_Latn,"2,023,981","4,752",6.13MB
+ang,Latn,Old English (ca. 450-1100),Indo-European,ang_Latn,"6,121,950","3,003",6.12MB
+crh,Cyrl,Crimean Tatar,Turkic,crh_Cyrl,"1,934,168","2,275",6.10MB
+lbe,Cyrl,Lak,Nakh-Daghestanian,lbe_Cyrl,"1,824,103","3,378",6.09MB
+kea,Latn,Kabuverdianu,Creole,kea_Latn,"2,585,843","5,399",5.95MB
+pcd,Latn,Picard,Indo-European,pcd_Latn,"3,111,755","7,229",5.90MB
+pam,Latn,Pampanga,Austronesian,pam_Latn,"2,828,793","6,321",5.77MB
+ido,Latn,Ido,Artificial Language,ido_Latn,"2,341,008","7,047",5.76MB
+arb,Latn,Standard Arabic,Afro-Asiatic,arb_Latn,"2,054,985","4,485",5.72MB
+awa,Deva,Awadhi,Indo-European,awa_Deva,"1,843,891","4,873",5.60MB
+pdc,Latn,Pennsylvania German,Indo-European,pdc_Latn,"3,964,483","7,407",5.60MB
+tly,Latn,Talysh,Indo-European,tly_Latn,"2,108,231","3,945",5.45MB
+bis,Latn,Bislama,Creole,bis_Latn,"2,959,464","5,083",5.42MB
+ace,Latn,Achinese,Austronesian,ace_Latn,"2,763,910","3,339",5.40MB
+krl,Latn,Karelian,Uralic,krl_Latn,"1,810,424","3,247",5.34MB
+lzh,Hani,Literary Chinese,Sino-Tibetan,lzh_Hani,"2,976,679","1,348",5.28MB
+kab,Latn,Kabyle,Afro-Asiatic,kab_Latn,"1,899,585","7,717",5.16MB
+rcf,Latn,Réunion Creole French,Creole,rcf_Latn,"2,330,886","7,853",5.15MB
+pck,Latn,Paite Chin,Sino-Tibetan,pck_Latn,"2,560,629","1,576",4.77MB
+efi,Latn,Efik,Niger-Congo,efi_Latn,"2,302,228","3,678",4.72MB
+vec,Latn,Venetian,Indo-European,vec_Latn,"2,152,286","4,562",4.56MB
+zom,Latn,Zou,Sino-Tibetan,zom_Latn,"2,163,131","3,968",4.51MB
+mnw,Mymr,Mon,Austro-Asiatic,mnw_Mymr,"926,972","1,932",4.49MB
+aln,Latn,Gheg Albanian,Indo-European,aln_Latn,"1,489,849","1,325",4.39MB
+ron,Cyrl,Romanian,Indo-European,ron_Cyrl,"1,723,670","1,604",4.36MB
+szy,Latn,Sakizaya,Austronesian,szy_Latn,"1,432,002","2,198",4.35MB
+vep,Latn,Veps,Uralic,vep_Latn,"1,477,760","4,153",4.34MB
+tpi,Latn,Tok Pisin,Creole,tpi_Latn,"2,588,814","4,027",4.34MB
+cak,Latn,Kaqchikel,Mayan,cak_Latn,"2,612,137","4,432",4.23MB
+ben,Latn,Bengali,Indo-European,ben_Latn,"1,724,327","3,797",4.20MB
+nan,Latn,Min Nan Chinese,Sino-Tibetan,nan_Latn,"1,780,266","3,024",4.19MB
+xmf,Geor,Mingrelian,Kartvelian,xmf_Geor,"998,252","3,254",4.14MB
+lfn,Latn,Lingua Franca Nova,Artificial Language,lfn_Latn,"2,045,230","5,308",4.06MB
+kaa,Latn,Kara-Kalpak,Turkic,kaa_Latn,"1,311,819","2,864",3.91MB
+cor,Latn,Cornish,Indo-European,cor_Latn,"1,861,347","3,463",3.88MB
+loz,Latn,Lozi,Niger-Congo,loz_Latn,"2,109,042","2,599",3.86MB
+ext,Latn,Extremaduran,Indo-European,ext_Latn,"1,587,609","3,873",3.83MB
+kas,Latn,Kashmiri,Indo-European,kas_Latn,"1,555,403","3,313",3.80MB
+rop,Latn,Kriol,Creole,rop_Latn,"2,303,674","3,049",3.79MB
+smn,Latn,Inari Sami,Uralic,smn_Latn,"1,096,400","3,248",3.74MB
+frr,Latn,Northern Frisian,Indo-European,frr_Latn,"1,388,028","5,445",3.69MB
+nov,Latn,Novial,Artificial Language,nov_Latn,"2,473,556","4,514",3.65MB
+ksw,Mymr,S'gaw Karen,Sino-Tibetan,ksw_Mymr,"596,637","2,263",3.60MB
+kua,Latn,Kuanyama,Niger-Congo,kua_Latn,"1,561,903","3,300",3.48MB
+kng,Latn,Koongo,Niger-Congo,kng_Latn,"2,237,555","1,830",3.47MB
+bjn,Latn,Banjar,Austronesian,bjn_Latn,"1,707,908","2,932",3.47MB
+rup,Latn,Macedo-Romanian,Indo-European,rup_Latn,"1,540,503","1,224",3.41MB
+hwc,Latn,Hawai'i Creole English,Creole,hwc_Latn,"1,942,276","2,715",3.39MB
+tcy,Knda,Tulu,Dravidian,tcy_Knda,"842,413","1,581",3.39MB
+cop,Copt,Coptic,Afro-Asiatic,cop_Copt,"1,097,440","1,559",3.38MB
+bjn,Arab,Banjar,Austronesian,bjn_Arab,"1,261,648","1,910",3.25MB
+gag,Cyrl,Gagauz,Turkic,gag_Cyrl,"932,283",537,3.21MB
+gaa,Latn,Ga,Niger-Congo,gaa_Latn,"1,746,447","2,610",3.18MB
+gos,Latn,Gronings,Indo-European,gos_Latn,"1,352,859","2,974",3.14MB
+mos,Latn,Mossi,Niger-Congo,mos_Latn,"1,824,683","1,747",3.10MB
+qug,Latn,Chimborazo Highland Quichua,Quechuan,qug_Latn,"1,172,655","1,167",3.09MB
+ewe,Latn,Ewe,Niger-Congo,ewe_Latn,"1,423,991","2,972",3.06MB
+knc,Arab,Central Kanuri,Nilo-Saharan,knc_Arab,"1,079,707",290,3.06MB
+tzo,Latn,Tzotzil,Mayan,tzo_Latn,"1,722,801","2,175",3.06MB
+sma,Latn,Southern Sami,Uralic,sma_Latn,"1,047,023","2,991",3.04MB
+nhu,Latn,Noone,Niger-Congo,nhu_Latn,"1,492,038",400,3.04MB
+pnt,Grek,Pontic,Indo-European,pnt_Grek,"973,335","2,040",3.00MB
+tet,Latn,Tetum,Austronesian,tet_Latn,"1,618,324","3,166",2.91MB
+mam,Latn,Mam,Mayan,mam_Latn,"1,627,986","1,804",2.89MB
+quz,Latn,Cusco Quechua,Quechuan,quz_Latn,"1,020,872","1,977",2.88MB
+yua,Latn,Yucateco,Mayan,yua_Latn,"1,373,672","2,173",2.83MB
+koi,Cyrl,Komi-Permyak,Uralic,koi_Cyrl,"792,360","2,096",2.79MB
+hmr,Latn,Hmar,Sino-Tibetan,hmr_Latn,"1,576,141","1,174",2.78MB
+gcf,Latn,Guadeloupean Creole French,Creole,gcf_Latn,"1,351,576","2,811",2.78MB
+ssw,Latn,Swati,Niger-Congo,ssw_Latn,"1,007,751","1,668",2.77MB
+vol,Latn,Volapük,Artificial Language,vol_Latn,"1,362,135","3,861",2.75MB
+tzm,Tfng,Central Atlas Tamazight,Afro-Asiatic,tzm_Tfng,"801,615","2,376",2.75MB
+rmn,Grek,Balkan Romani,Indo-European,rmn_Grek,"887,762",486,2.69MB
+avk,Latn,Kotava,Artificial Language,avk_Latn,"1,224,353","4,076",2.67MB
+quy,Latn,Ayacucho Quechua,Quechuan,quy_Latn,"859,168","2,739",2.66MB
+tzh,Latn,Tzeltal,Mayan,tzh_Latn,"1,539,826","1,532",2.65MB
+tlh,Latn,Klingon,Artificial Language,tlh_Latn,"1,421,195","3,466",2.60MB
+sms,Latn,Skolt Sami,Uralic,sms_Latn,"754,622","2,268",2.60MB
+brx,Deva,Bodo (India),Sino-Tibetan,brx_Deva,"673,793","2,817",2.57MB
+gil,Latn,Gilbertese,Austronesian,gil_Latn,"1,619,797","2,370",2.55MB
+kos,Latn,Kosraean,Austronesian,kos_Latn,"1,499,454","2,205",2.47MB
+hak,Hani,Hakka Chinese,Sino-Tibetan,hak_Hani,"1,863,611",878,2.42MB
+mup,Deva,Malvi,Indo-European,mup_Deva,"845,202","2,695",2.42MB
+luo,Latn,Luo (Kenya and Tanzania),Nilo-Saharan,luo_Latn,"1,149,848","2,210",2.38MB
+sgs,Latn,Samogitian,Indo-European,sgs_Latn,"803,471","2,249",2.37MB
+pon,Latn,Pohnpeian,Austronesian,pon_Latn,"1,146,637","2,373",2.36MB
+nog,Cyrl,Nogai,Turkic,nog_Cyrl,"727,734","1,387",2.36MB
+acn,Latn,Achang,Sino-Tibetan,acn_Latn,"1,501,144",821,2.36MB
+bru,Latn,Eastern Bru,Austro-Asiatic,bru_Latn,"1,375,495",920,2.32MB
+trv,Latn,Sediq,Austronesian,trv_Latn,"970,706","1,572",2.32MB
+btx,Latn,Batak Karo,Austronesian,btx_Latn,"1,157,765","1,897",2.31MB
+kik,Latn,Kikuyu,Niger-Congo,kik_Latn,"686,867","7,022",2.30MB
+wal,Latn,Wolaytta,Afro-Asiatic,wal_Latn,"952,506","1,739",2.27MB
+fuv,Latn,Nigerian Fulfulde,Niger-Congo,fuv_Latn,"851,049","2,169",2.27MB
+xal,Cyrl,Kalmyk,Mongolic,xal_Cyrl,"804,164","1,385",2.26MB
+sat,Olck,Santali,Austro-Asiatic,sat_Olck,"688,213","1,468",2.22MB
+taq,Latn,Tamasheq,Afro-Asiatic,taq_Latn,"1,186,637","1,729",2.22MB
+tiv,Latn,Tiv,Niger-Congo,tiv_Latn,"1,433,260","1,667",2.21MB
+arn,Latn,Mapudungun,Mapudungu,arn_Latn,"926,060","1,522",2.17MB
+cmo,Latn,Central Mnong,Austro-Asiatic,cmo_Latn,"1,370,492","3,046",2.16MB
+amp,Latn,Alamblak,Sepik,amp_Latn,"2,401,760","1,165",2.12MB
+tog,Latn,Tonga (Nyasa),Niger-Congo,tog_Latn,"954,524","1,576",2.07MB
+abs,Latn,Ambonese Malay,Creole,abs_Latn,"1,525,774","2,449",2.06MB
+tab,Cyrl,Tabassaran,Nakh-Daghestanian,tab_Cyrl,"676,393",962,2.03MB
+chu,Cyrl,Church Slavic,Indo-European,chu_Cyrl,"561,822","1,852",2.03MB
+fon,Latn,Fon,Niger-Congo,fon_Latn,"1,151,878","1,263",2.01MB
+doi,Deva,Dogri (macrolanguage),Indo-European,doi_Deva,"647,921","1,804",1.98MB
+pdt,Latn,Plautdietsch,Indo-European,pdt_Latn,"884,129","1,772",1.98MB
+mah,Latn,Marshallese,Austronesian,mah_Latn,"981,100","1,383",1.97MB
+ach,Latn,Acoli,Nilo-Saharan,ach_Latn,"1,124,828","2,311",1.97MB
+rmc,Latn,Carpathian Romani,Indo-European,rmc_Latn,"977,801","1,135",1.96MB
+iso,Latn,Isoko,Niger-Congo,iso_Latn,"1,207,029","1,527",1.94MB
+bts,Latn,Batak Simalungun,Austronesian,bts_Latn,"961,507","2,004",1.94MB
+glv,Latn,Manx,Indo-European,glv_Latn,"792,521","2,509",1.93MB
+poh,Latn,Poqomchi',Mayan,poh_Latn,"1,343,175","2,084",1.92MB
+chk,Latn,Chuukese,Austronesian,chk_Latn,"1,027,771","1,186",1.92MB
+lub,Latn,Luba-Katanga,Niger-Congo,lub_Latn,"882,797","1,569",1.91MB
+fuf,Latn,Pular,Niger-Congo,fuf_Latn,"896,877","1,645",1.89MB
+quc,Latn,K'iche',Mayan,quc_Latn,"1,117,373","2,238",1.89MB
+mzn,Arab,Mazanderani,Indo-European,mzn_Arab,"672,779","1,975",1.86MB
+mal,Latn,Malayalam,Dravidian,mal_Latn,"575,684","1,152",1.83MB
+asm,Latn,Assamese,Indo-European,asm_Latn,"826,274","1,104",1.81MB
+dar,Cyrl,Dargwa,Nakh-Daghestanian,dar_Cyrl,"534,860",893,1.81MB
+lld,Latn,Ladin,Indo-European,lld_Latn,"819,546","1,793",1.79MB
+cac,Latn,Chuj,Mayan,cac_Latn,"1,195,448","1,701",1.78MB
+kdr,Latn,Karaim,Turkic,kdr_Latn,"663,756",381,1.77MB
+guw,Latn,Gun,Niger-Congo,guw_Latn,"914,603","1,540",1.76MB
+tvl,Latn,Tuvalu,Austronesian,tvl_Latn,"1,279,685","1,131",1.72MB
+crn,Latn,El Nayar Cora,Uto-Aztecan,crn_Latn,"892,143","1,418",1.72MB
+abt,Latn,Ambulas,Sepik,abt_Latn,"1,011,212","3,289",1.70MB
+nzi,Latn,Nzima,Niger-Congo,nzi_Latn,"939,099","1,559",1.69MB
+nch,Latn,Central Huasteca Nahuatl,Uto-Aztecan,nch_Latn,"770,961",918,1.68MB
+dyu,Latn,Dyula,Niger-Congo,dyu_Latn,"1,041,710","2,209",1.67MB
+dtp,Latn,Kadazan Dusun,Austronesian,dtp_Latn,"667,832","3,617",1.63MB
+smj,Latn,Lule Sami,Uralic,smj_Latn,"533,538","1,843",1.61MB
+lki,Arab,Laki,Indo-European,lki_Arab,"603,049","3,097",1.60MB
+aak,Latn,Ankave,Trans-New Guinea,aak_Latn,"758,540","1,353",1.60MB
+bem,Latn,Bemba (Zambia),Niger-Congo,bem_Latn,"699,328","1,143",1.60MB
+hmo,Latn,Hiri Motu,Pidgin,hmo_Latn,"1,170,912","1,473",1.59MB
+fkv,Latn,Kven Finnish,Uralic,fkv_Latn,"563,702","1,158",1.57MB
+jac,Latn,Popti',Mayan,jac_Latn,"938,031",872,1.57MB
+snd,Latn,Sindhi,Indo-European,snd_Latn,"626,591","2,499",1.54MB
+dhv,Latn,Dehu,Austronesian,dhv_Latn,"870,834","1,821",1.54MB
+swg,Latn,Swabian,Indo-European,swg_Latn,"989,722",312,1.54MB
+amu,Latn,Guerrero Amuzgo,Otomanguean,amu_Latn,"754,479","1,075",1.51MB
+jbo,Latn,Lojban,Artificial Language,jbo_Latn,"876,269","1,190",1.49MB
+hus,Latn,Huastec,Mayan,hus_Latn,"805,567","1,928",1.48MB
+aii,Syrc,Assyrian Neo-Aramaic,Afro-Asiatic,aii_Syrc,"433,981",420,1.46MB
+ify,Latn,Keley-I Kallahan,Austronesian,ify_Latn,"904,627","1,031",1.46MB
+kas,Deva,Kashmiri,Indo-European,kas_Deva,"510,245",992,1.46MB
+krj,Latn,Kinaray-A,Austronesian,krj_Latn,"789,748",895,1.45MB
+aoj,Latn,Mufian,Torricelli,aoj_Latn,"829,798",927,1.44MB
+ium,Latn,Iu Mien,Hmong-Mien,ium_Latn,"1,020,808",904,1.44MB
+cha,Latn,Chamorro,Austronesian,cha_Latn,"758,567","1,032",1.43MB
+min,Latn,Minangkabau,Austronesian,min_Latn,"804,943",754,1.43MB
+nyn,Latn,Nyankole,Niger-Congo,nyn_Latn,"531,902","1,483",1.43MB
+blk,Mymr,Pa'o Karen,Sino-Tibetan,blk_Mymr,"284,807",794,1.42MB
+npi,Latn,Nepali (individual language),Indo-European,npi_Latn,"542,083","1,052",1.41MB
+rar,Latn,Rarotongan,Austronesian,rar_Latn,"953,406","1,549",1.41MB
+shi,Latn,Tachelhit,Afro-Asiatic,shi_Latn,"1,961,276",705,1.41MB
+sgc,Latn,Kipsigis,Nilo-Saharan,sgc_Latn,"617,892","2,140",1.41MB
+kmb,Latn,Kimbundu,Niger-Congo,kmb_Latn,"862,635","1,132",1.41MB
+ffm,Latn,Maasina Fulfulde,Niger-Congo,ffm_Latn,"628,320",810,1.40MB
+mag,Deva,Magahi,Indo-European,mag_Deva,"414,762",818,1.39MB
+yap,Latn,Yapese,Austronesian,yap_Latn,"899,166","1,197",1.37MB
+toi,Latn,Tonga (Zambia),Niger-Congo,toi_Latn,"541,163","1,036",1.37MB
+ile,Latn,Interlingue,Artificial Language,ile_Latn,"720,481","1,963",1.36MB
+naq,Latn,Khoekhoe,Khoe-Kwadi,naq_Latn,"900,026","1,842",1.35MB
+mar,Latn,Marathi,Indo-European,mar_Latn,"579,013",976,1.35MB
+ami,Latn,Amis,Austronesian,ami_Latn,"635,614","1,110",1.34MB
+kek,Latn,Kekchí,Mayan,kek_Latn,"766,778","1,072",1.32MB
+ewo,Latn,Ewondo,Niger-Congo,ewo_Latn,"727,627","2,340",1.32MB
+ubu,Latn,Umbu-Ungu,Trans-New Guinea,ubu_Latn,"870,902",564,1.32MB
+mps,Latn,Dadibi,Trans-New Guinea,mps_Latn,"1,008,652",681,1.31MB
+her,Latn,Herero,Niger-Congo,her_Latn,"540,849","1,141",1.30MB
+nbl,Latn,South Ndebele,Niger-Congo,nbl_Latn,"386,566","1,260",1.26MB
+gur,Latn,Farefare,Niger-Congo,gur_Latn,"763,219","1,683",1.26MB
+acr,Latn,Achi,Mayan,acr_Latn,"887,249","2,389",1.25MB
+tbz,Latn,Ditammari,Niger-Congo,tbz_Latn,"577,457",961,1.25MB
+yrk,Cyrl,Nenets,Uralic,yrk_Cyrl,"464,282",500,1.24MB
+tzj,Latn,Tz'utujil,Mayan,tzj_Latn,"746,904","1,284",1.24MB
+mad,Latn,Madurese,Austronesian,mad_Latn,"605,721",726,1.23MB
+swc,Latn,Congo Swahili,Niger-Congo,swc_Latn,"419,888","2,161",1.22MB
+hak,Latn,Hakka Chinese,Sino-Tibetan,hak_Latn,"671,886","2,332",1.22MB
+bba,Latn,Baatonum,Niger-Congo,bba_Latn,"715,795","1,632",1.22MB
+stq,Latn,Saterfriesisch,Indo-European,stq_Latn,"493,054","1,472",1.21MB
+dwr,Latn,Dawro,Afro-Asiatic,dwr_Latn,"491,760",265,1.21MB
+kwn,Latn,Kwangali,Niger-Congo,kwn_Latn,"495,921","1,110",1.21MB
+lrc,Arab,Northern Luri,Indo-European,lrc_Arab,"452,655","2,440",1.21MB
+kjh,Cyrl,Khakas,Turkic,kjh_Cyrl,"367,813",504,1.20MB
+wes,Latn,Cameroon Pidgin,Creole,wes_Latn,"561,729","2,480",1.18MB
+hnj,Latn,Hmong Njua,Hmong-Mien,hnj_Latn,"787,835",849,1.17MB
+qve,Latn,Eastern Apurímac Quechua,Quechuan,qve_Latn,"429,026",724,1.15MB
+xav,Latn,Xavánte,Jean,xav_Latn,"596,100","1,054",1.14MB
+gym,Latn,Ngäbere,Chibchan,gym_Latn,"665,464","1,174",1.13MB
+nhe,Latn,Eastern Huasteca Nahuatl,Uto-Aztecan,nhe_Latn,"502,635","1,043",1.12MB
+nah,Latn,Nahuatl languages,Uto-Aztecan,nah_Latn,"423,862","1,869",1.11MB
+kmg,Latn,Kâte,Trans-New Guinea,kmg_Latn,"630,968",698,1.10MB
+rmy,Cyrl,Vlax Romani,Indo-European,rmy_Cyrl,"393,632",569,1.09MB
+pau,Latn,Palauan,Austronesian,pau_Latn,"703,850",486,1.07MB
+meu,Latn,Motu,Austronesian,meu_Latn,"740,782",818,1.07MB
+abq,Cyrl,Abaza,Abkhaz-Adyghe,abq_Cyrl,"299,863",565,1.06MB
+bqc,Latn,Boko (Benin),Niger-Congo,bqc_Latn,"488,034",940,1.06MB
+dik,Latn,Southwestern Dinka,Nilo-Saharan,dik_Latn,"521,801",969,1.06MB
+zai,Latn,Isthmus Zapotec,Otomanguean,zai_Latn,"548,816","1,007",1.05MB
+cuk,Latn,San Blas Kuna,Chibchan,cuk_Latn,"603,347",651,1.04MB
+jra,Latn,Jarai,Austronesian,jra_Latn,"676,393",599,1.04MB
+mjw,Latn,Karbi,Sino-Tibetan,mjw_Latn,"443,871","1,648",1.02MB
+atj,Latn,Atikamekw,Algic,atj_Latn,"446,548","1,130",1.01MB
+nhw,Latn,Western Huasteca Nahuatl,Uto-Aztecan,nhw_Latn,"469,450",704,1.01MB
+gum,Latn,Guambiano,Paezan,gum_Latn,"474,532",838,1019.88KB
+maa,Latn,San Jerónimo Tecóatl Mazatec,Otomanguean,maa_Latn,"492,436",694,1011.42KB
+cnk,Latn,Khumi Chin,Sino-Tibetan,cnk_Latn,"610,209",705,1003.73KB
+nyu,Latn,Nyungwe,Niger-Congo,nyu_Latn,"449,626",955,1002.75KB
+rad,Latn,Rade,Austronesian,rad_Latn,"668,835",764,996.92KB
+thl,Deva,Dangaura Tharu,Indo-European,thl_Deva,"293,666",242,996.30KB
+sid,Latn,Sidamo,Afro-Asiatic,sid_Latn,"345,299","1,174",986.72KB
+nqo,Nkoo,N'Ko,Mixed language,nqo_Nkoo,"366,093",423,983.95KB
+aaz,Latn,Amarasi,Austronesian,aaz_Latn,"590,775","2,097",978.29KB
+ape,Latn,Bukiyip,Torricelli,ape_Latn,"535,042","1,437",970.49KB
+bci,Latn,Baoulé,Niger-Congo,bci_Latn,"643,310",881,966.83KB
+top,Latn,Papantla Totonac,Totonacan,top_Latn,"374,175",702,965.55KB
+njo,Latn,Ao Naga,Sino-Tibetan,njo_Latn,"437,826",435,963.79KB
+kam,Latn,Kamba (Kenya),Niger-Congo,kam_Latn,"405,946","1,218",961.03KB
+mbt,Latn,Matigsalug Manobo,Austronesian,mbt_Latn,"644,327",784,960.98KB
+jvn,Latn,Caribbean Javanese,Austronesian,jvn_Latn,"530,710",400,956.77KB
+lua,Latn,Luba-Lulua,Niger-Congo,lua_Latn,"452,075",749,955.95KB
+agx,Cyrl,Aghul,Nakh-Daghestanian,agx_Cyrl,"300,985",712,953.02KB
+ikt,Latn,Inuinnaqtun,Eskimo-Aleut,ikt_Latn,"249,091",471,939.64KB
+acd,Latn,Gikyode,Niger-Congo,acd_Latn,"584,738","2,182",925.90KB
+cab,Latn,Garifuna,Maipurean,cab_Latn,"379,094",784,923.82KB
+snd,Deva,Sindhi,Indo-European,snd_Deva,"326,242",398,904.38KB
+acf,Latn,Saint Lucian Creole French,Creole,acf_Latn,"539,603","1,135",893.02KB
+nia,Latn,Nias,Austronesian,nia_Latn,"466,754",688,891.27KB
+seh,Latn,Sena,Niger-Congo,seh_Latn,"410,200",660,890.37KB
+kbp,Latn,Kabiyè,Niger-Congo,kbp_Latn,"363,382","1,231",880.80KB
+hns,Latn,Caribbean Hindustani,Indo-European,hns_Latn,"384,108","1,032",874.87KB
+mdy,Ethi,Male (Ethiopia),Afro-Asiatic,mdy_Ethi,"298,266",509,872.68KB
+knv,Latn,Tabo,South-Central Papuan,knv_Latn,"467,125",370,870.63KB
+gnn,Latn,Gumatj,Australian,gnn_Latn,"385,247",348,860.95KB
+aau,Latn,Abau,Sepik,aau_Latn,"645,981","1,689",857.31KB
+agg,Latn,Angor,Senagi,agg_Latn,"450,965",732,857.29KB
+alz,Latn,Alur,Nilo-Saharan,alz_Latn,"478,559","1,376",852.87KB
+agu,Latn,Aguacateco,Mayan,agu_Latn,"579,100","1,068",848.46KB
+byr,Latn,Baruya,Trans-New Guinea,byr_Latn,"388,180",378,843.74KB
+mbb,Latn,Western Bukidnon Manobo,Austronesian,mbb_Latn,"496,650","1,038",826.51KB
+fuh,Latn,Western Niger Fulfulde,Niger-Congo,fuh_Latn,"355,969",524,826.39KB
+avu,Latn,Avokaya,Nilo-Saharan,avu_Latn,"565,757",350,825.77KB
+vmw,Latn,Makhuwa,Niger-Congo,vmw_Latn,"353,250",672,825.51KB
+ptu,Latn,Bambam,Austronesian,ptu_Latn,"494,937",585,825.01KB
+msy,Latn,Aruamu,Ramu-Lower Sepik,msy_Latn,"490,464",512,824.50KB
+esk,Latn,Northwest Alaska Inupiatun,Eskimo-Aleut,esk_Latn,"253,764",235,819.45KB
+bhl,Latn,Bimin,Trans-New Guinea,bhl_Latn,"647,338",414,817.39KB
+kas,Arab,Kashmiri,Indo-European,kas_Arab,"307,600",442,817.35KB
+med,Latn,Melpa,Trans-New Guinea,med_Latn,"617,229",830,813.60KB
+pjt,Latn,Pitjantjatjara,Australian,pjt_Latn,"378,394",443,804.63KB
+sus,Arab,Susu,Niger-Congo,sus_Arab,"409,220",532,800.46KB
+bvz,Latn,Bauzi,East Geelvink Bay,bvz_Latn,"582,211",474,798.66KB
+qwh,Latn,Huaylas Ancash Quechua,Quechuan,qwh_Latn,"277,281",621,797.76KB
+mni,Latn,Manipuri,Sino-Tibetan,mni_Latn,"296,463",314,796.34KB
+cgc,Latn,Kagayanen,Austronesian,cgc_Latn,"306,542",413,793.17KB
+kpg,Latn,Kapingamarangi,Austronesian,kpg_Latn,"575,948",550,784.91KB
+nas,Latn,Naasioi,South Bougainville,nas_Latn,"407,888",495,783.71KB
+ngu,Latn,Guerrero Nahuatl,Uto-Aztecan,ngu_Latn,"335,381",538,774.44KB
+sop,Latn,Songe,Niger-Congo,sop_Latn,"365,040",574,773.64KB
+ndc,Latn,Ndau,Niger-Congo,ndc_Latn,"320,019",655,770.88KB
+dig,Latn,Digo,Niger-Congo,dig_Latn,"361,636",483,767.90KB
+rwo,Latn,Rawa,Trans-New Guinea,rwo_Latn,"509,375",344,764.91KB
+zyp,Latn,Zyphe Chin,Sino-Tibetan,zyp_Latn,"412,013",525,757.98KB
+tlf,Latn,Telefol,Trans-New Guinea,tlf_Latn,"571,601","1,337",756.28KB
+sua,Latn,Sulka,Language isolate,sua_Latn,"633,402",364,745.30KB
+mpx,Latn,Misima-Panaeati,Austronesian,mpx_Latn,"483,275",601,744.42KB
+kwy,Latn,San Salvador Kongo,Niger-Congo,kwy_Latn,"370,916",692,743.93KB
+rug,Latn,Roviana,Austronesian,rug_Latn,"479,644",495,743.87KB
+aom,Latn,Ömie,Trans-New Guinea,aom_Latn,"359,584",883,738.70KB
+ote,Latn,Mezquital Otomi,Otomanguean,ote_Latn,"396,868",747,733.06KB
+xla,Latn,Kamula,Trans-New Guinea,xla_Latn,"529,613",459,728.89KB
+zpu,Latn,Yalálag Zapotec,Otomanguean,zpu_Latn,"463,861",550,726.83KB
+cbu,Latn,Candoshi-Shapra,Language isolate,cbu_Latn,"313,027",377,714.74KB
+dak,Latn,Dakota,Siouan-Catawban,dak_Latn,"450,601",117,713.71KB
+ada,Latn,Adangme,Niger-Congo,ada_Latn,"525,399",576,712.44KB
+mfq,Latn,Moba,Niger-Congo,mfq_Latn,"422,526",716,711.43KB
+dob,Latn,Dobu,Austronesian,dob_Latn,"466,762",447,710.18KB
+khs,Latn,Kasua,Trans-New Guinea,khs_Latn,"457,334","1,226",710.03KB
+cok,Latn,Santa Teresa Cora,Uto-Aztecan,cok_Latn,"332,801",918,707.99KB
+pwn,Latn,Paiwan,Austronesian,pwn_Latn,"221,914",439,707.30KB
+kmh,Latn,Kalam,Trans-New Guinea,kmh_Latn,"522,713",421,705.50KB
+qxh,Latn,Panao Huánuco Quechua,Quechuan,qxh_Latn,"302,161",480,705.15KB
+sus,Latn,Susu,Niger-Congo,sus_Latn,"516,896",570,704.95KB
+gul,Latn,Sea Island Creole English,Creole,gul_Latn,"459,410",363,704.06KB
+bku,Latn,Buhid,Austronesian,bku_Latn,"803,518",385,702.84KB
+cbc,Latn,Carapana,Tucanoan,cbc_Latn,"337,442",312,702.54KB
+zpa,Latn,Lachiguiri Zapotec,Otomanguean,zpa_Latn,"308,624","1,088",701.32KB
+tay,Latn,Atayal,Austronesian,tay_Latn,"268,961",587,699.21KB
+ncj,Latn,Northern Puebla Nahuatl,Uto-Aztecan,ncj_Latn,"280,176",724,695.20KB
+gfk,Latn,Patpatar,Austronesian,gfk_Latn,"513,974",446,695.12KB
+mrw,Latn,Maranao,Austronesian,mrw_Latn,"388,244",163,694.45KB
+hto,Latn,Minica Huitoto,Witotoan,hto_Latn,"300,064",483,692.82KB
+bmr,Latn,Muinane,Witotoan,bmr_Latn,"240,420",460,692.56KB
+chz,Latn,Ozumacín Chinantec,Otomanguean,chz_Latn,"322,226",479,691.57KB
+bum,Latn,Bulu (Cameroon),Niger-Congo,bum_Latn,"425,034",740,688.97KB
+teo,Latn,Teso,Nilo-Saharan,teo_Latn,"285,176",611,687.19KB
+qub,Latn,Huallaga Huánuco Quechua,Quechuan,qub_Latn,"243,431",458,684.18KB
+mux,Latn,Bo-Ung,Trans-New Guinea,mux_Latn,"503,460",251,682.64KB
+mak,Latn,Makasar,Austronesian,mak_Latn,"272,401",393,681.87KB
+quh,Latn,South Bolivian Quechua,Quechuan,quh_Latn,"264,950",251,678.46KB
+nak,Latn,Nakanai,Austronesian,nak_Latn,"463,959","1,672",673.39KB
+grt,Beng,Garo,Sino-Tibetan,grt_Beng,"186,984",339,668.76KB
+hui,Latn,Huli,Trans-New Guinea,hui_Latn,"363,805",330,667.98KB
+des,Latn,Desano,Tucanoan,des_Latn,"331,249",649,666.65KB
+boj,Latn,Anjam,Trans-New Guinea,boj_Latn,"455,298",369,663.31KB
+cco,Latn,Comaltepec Chinantec,Otomanguean,cco_Latn,"346,127",249,663.01KB
+kan,Latn,Kannada,Dravidian,kan_Latn,"196,243",540,662.49KB
+vap,Latn,Vaiphei,Sino-Tibetan,vap_Latn,"343,558",660,661.95KB
+kyq,Latn,Kenga,Nilo-Saharan,kyq_Latn,"400,257",550,661.60KB
+tos,Latn,Highland Totonac,Totonacan,tos_Latn,"262,966",267,659.41KB
+bsn,Latn,Barasana-Eduria,Tucanoan,bsn_Latn,"356,255",922,656.78KB
+yby,Latn,Yaweyuha,Trans-New Guinea,yby_Latn,"358,094",748,652.34KB
+xsm,Latn,Kasem,Niger-Congo,xsm_Latn,"457,124",661,645.68KB
+aeu,Latn,Akeu,Sino-Tibetan,aeu_Latn,"523,881","1,880",642.85KB
+maq,Latn,Chiquihuitlán Mazatec,Otomanguean,maq_Latn,"384,484","1,271",642.16KB
+hla,Latn,Halia,Austronesian,hla_Latn,"419,941","1,796",638.61KB
+ata,Latn,Pele-Ata,Yele-West New Britain,ata_Latn,"409,958",543,637.03KB
+mer,Latn,Meru,Niger-Congo,mer_Latn,"199,521","1,879",633.84KB
+quf,Latn,Lambayeque Quechua,Quechuan,quf_Latn,"268,916",379,632.45KB
+ded,Latn,Dedua,Trans-New Guinea,ded_Latn,"418,993",473,630.68KB
+cav,Latn,Cavineña,Tacanan,cav_Latn,"315,553","1,144",630.52KB
+koo,Latn,Konzo,Niger-Congo,koo_Latn,"243,959",517,627.35KB
+zpz,Latn,Texmelucan Zapotec,Otomanguean,zpz_Latn,"479,889",434,624.68KB
+bnp,Latn,Bola,Austronesian,bnp_Latn,"515,613",469,622.89KB
+guc,Latn,Wayuu,Maipurean,guc_Latn,"246,270",404,622.12KB
+guj,Latn,Gujarati,Indo-European,guj_Latn,"242,168",259,622.11KB
+bvr,Latn,Burarra,Australian,bvr_Latn,"505,611","1,256",620.83KB
+mgr,Latn,Mambwe-Lungu,Niger-Congo,mgr_Latn,"266,944",568,620.60KB
+tuc,Latn,Mutu,Austronesian,tuc_Latn,"397,171",780,616.24KB
+zyb,Latn,Yongbei Zhuang,Kra-Dai,zyb_Latn,"212,671",458,615.17KB
+cbs,Latn,Cashinahua,Panoan,cbs_Latn,"284,336",793,614.33KB
+tuo,Latn,Tucano,Tucanoan,tuo_Latn,"316,174",327,613.64KB
+sja,Latn,Epena,Chocoan,sja_Latn,"304,316",473,613.45KB
+otq,Latn,Querétaro Otomi,Otomanguean,otq_Latn,"345,377",751,612.81KB
+tpz,Latn,Tinputz,Austronesian,tpz_Latn,"459,352","1,168",608.52KB
+tbg,Latn,North Tairora,Trans-New Guinea,tbg_Latn,"347,408",336,608.39KB
+niu,Latn,Niuean,Austronesian,niu_Latn,"422,662",739,607.58KB
+dyi,Latn,Djimini Senoufo,Niger-Congo,dyi_Latn,"419,174",358,604.37KB
+ksd,Latn,Kuanua,Austronesian,ksd_Latn,"510,178",441,603.34KB
+klv,Latn,Maskelynes,Austronesian,klv_Latn,"360,484",594,602.57KB
+kmr,Cyrl,Northern Kurdish,Indo-European,kmr_Cyrl,"195,623",639,601.84KB
+bjv,Latn,Bedjond,Nilo-Saharan,bjv_Latn,"398,660","1,316",601.44KB
+miq,Latn,Mískito,Misumalpan,miq_Latn,"340,554",366,599.85KB
+yal,Latn,Yalunka,Niger-Congo,yal_Latn,"374,064",461,597.08KB
+yss,Latn,Yessan-Mayo,Sepik,yss_Latn,"473,582",389,594.71KB
+skg,Latn,Sakalava Malagasy,Austronesian,skg_Latn,"290,979",724,594.00KB
+bmh,Latn,Kein,Trans-New Guinea,bmh_Latn,"438,286",361,592.73KB
+adj,Latn,Adioukrou,Niger-Congo,adj_Latn,"356,683",716,592.45KB
+lex,Latn,Luang,Austronesian,lex_Latn,"349,224",318,591.05KB
+dad,Latn,Marik,Austronesian,dad_Latn,"460,330",422,591.03KB
+lgg,Latn,Lugbara,Nilo-Saharan,lgg_Latn,"367,045",402,590.65KB
+bmu,Latn,Somba-Siawari,Trans-New Guinea,bmu_Latn,"299,240",303,590.01KB
+chd,Latn,Highland Oaxaca Chontal,Tequistlatecan,chd_Latn,"315,788",260,588.63KB
+bon,Latn,Bine,Eastern Trans-Fly,bon_Latn,"338,070",999,588.03KB
+sps,Latn,Saposa,Austronesian,sps_Latn,"400,178",653,582.05KB
+bin,Latn,Bini,Niger-Congo,bin_Latn,"346,339",595,581.43KB
+aso,Latn,Dano,Trans-New Guinea,aso_Latn,"407,674",256,578.63KB
+dop,Latn,Lukpa,Niger-Congo,dop_Latn,"316,347",569,576.98KB
+dnj,Latn,Dan,Niger-Congo,dnj_Latn,"443,235",410,576.68KB
+ljp,Latn,Lampung Api,Austronesian,ljp_Latn,"300,471",459,575.13KB
+noa,Latn,Woun Meu,Chocoan,noa_Latn,"219,097",184,574.93KB
+umb,Latn,Umbundu,Niger-Congo,umb_Latn,"281,649",709,574.01KB
+taj,Deva,Eastern Tamang,Sino-Tibetan,taj_Deva,"190,688",261,572.53KB
+knj,Latn,Western Kanjobal,Mayan,knj_Latn,"441,497",460,572.44KB
+mwq,Latn,Mün Chin,Sino-Tibetan,mwq_Latn,"380,464",576,572.36KB
+tac,Latn,Lowland Tarahumara,Uto-Aztecan,tac_Latn,"316,585",401,567.46KB
+ojb,Cans,Northwestern Ojibwa,Algic,ojb_Cans,"144,910",249,565.96KB
+myy,Latn,Macuna,Tucanoan,myy_Latn,"331,371",331,562.74KB
+bno,Latn,Bantoanon,Austronesian,bno_Latn,"245,149",746,561.35KB
+nij,Latn,Ngaju,Austronesian,nij_Latn,"289,450",550,560.86KB
+tee,Latn,Huehuetla Tepehua,Totonacan,tee_Latn,"305,062",326,558.34KB
+rmo,Latn,Sinte Romani,Indo-European,rmo_Latn,"344,486",568,555.67KB
+ixl,Latn,Ixil,Mayan,ixl_Latn,"334,211",315,552.89KB
+irk,Latn,Iraqw,Afro-Asiatic,irk_Latn,"295,078",439,552.67KB
+viv,Latn,Iduna,Austronesian,viv_Latn,"341,455",283,548.94KB
+wrk,Latn,Garrwa,Australian,wrk_Latn,"322,296",966,548.73KB
+pir,Latn,Piratapuyo,Tucanoan,pir_Latn,"304,380",342,547.61KB
+acu,Latn,Achuar-Shiwiar,Jivaroan,acu_Latn,"258,762",544,547.38KB
+tbc,Latn,Takia,Austronesian,tbc_Latn,"354,453",554,544.39KB
+gui,Latn,Eastern Bolivian Guaraní,Tupian,gui_Latn,"329,049",543,542.98KB
+tok,Latn,Toki Pona,Artificial Language,tok_Latn,"372,930","1,228",541.73KB
+agn,Latn,Agutaynen,Austronesian,agn_Latn,"339,099",367,539.92KB
+bbr,Latn,Girawa,Trans-New Guinea,bbr_Latn,"390,998",513,537.66KB
+cnt,Latn,Tepetotutla Chinantec,Otomanguean,cnt_Latn,"235,664",311,537.66KB
+zty,Latn,Yatee Zapotec,Otomanguean,zty_Latn,"421,820",769,536.99KB
+sas,Latn,Sasak,Austronesian,sas_Latn,"296,875",393,536.11KB
+bss,Latn,Akoose,Niger-Congo,bss_Latn,"245,011",334,535.91KB
+ura,Latn,Urarina,Language isolate,ura_Latn,"258,490",448,531.28KB
+lee,Latn,Lyélé,Niger-Congo,lee_Latn,"322,889",494,528.32KB
+nhi,Latn,Zacatlán-Ahuacatlán-Tepetzintla Nahuatl,Uto-Aztecan,nhi_Latn,"230,213",346,528.31KB
+spy,Latn,Sabaot,Nilo-Saharan,spy_Latn,"226,452",392,527.68KB
+bdd,Latn,Bunama,Austronesian,bdd_Latn,"341,204",369,527.56KB
+agr,Latn,Aguaruna,Jivaroan,agr_Latn,"214,598",342,526.64KB
+bjr,Latn,Binumarien,Trans-New Guinea,bjr_Latn,"224,110",241,526.51KB
+yuj,Latn,Karkar-Yuri,Pauwasi,yuj_Latn,"361,624",281,525.71KB
+blh,Latn,Kuwaa,Niger-Congo,blh_Latn,"300,898",368,522.91KB
+abx,Latn,Inabaknon,Austronesian,abx_Latn,"316,535",788,522.09KB
+gbi,Latn,Galela,West Papuan,gbi_Latn,"332,501",352,521.50KB
+gux,Latn,Gourmanchéma,Niger-Congo,gux_Latn,"339,560",471,521.47KB
+tca,Latn,Ticuna,Language isolate,tca_Latn,"270,088",316,520.66KB
+qvn,Latn,North Junín Quechua,Quechuan,qvn_Latn,"199,886",314,518.50KB
+txu,Latn,Kayapó,Jean,txu_Latn,"345,964",244,518.02KB
+xon,Latn,Konkomba,Niger-Congo,xon_Latn,"369,845",592,517.74KB
+enb,Latn,Markweeta,Nilo-Saharan,enb_Latn,"239,755",389,517.30KB
+fat,Latn,Fanti,Atlantic-Congo,fat_Latn,"258,605",330,512.75KB
+kkj,Latn,Kako,Niger-Congo,kkj_Latn,"321,596",472,509.70KB
+urh,Latn,Urhobo,Niger-Congo,urh_Latn,"276,634",515,508.71KB
+mlp,Latn,Bargam,Trans-New Guinea,mlp_Latn,"319,720",296,507.81KB
+mcu,Latn,Cameroon Mambila,Niger-Congo,mcu_Latn,"304,415",492,507.75KB
+heh,Latn,Hehe,Niger-Congo,heh_Latn,"205,296",354,505.82KB
+bfd,Latn,Bafut,Niger-Congo,bfd_Latn,"278,435",262,505.14KB
+gnd,Latn,Zulgo-Gemzek,Afro-Asiatic,gnd_Latn,"382,151",238,504.97KB
+cwt,Latn,Kuwaataay,Niger-Congo,cwt_Latn,"258,535",392,504.75KB
+aai,Latn,Arifama-Miniafia,Austronesian,aai_Latn,"302,465",424,504.15KB
+ntu,Latn,Natügu,Austronesian,ntu_Latn,"297,061",427,503.96KB
+mco,Latn,Coatlán Mixe,Mixe-Zoquean,mco_Latn,"213,689",360,503.08KB
+kyc,Latn,Kyaka,Trans-New Guinea,kyc_Latn,"268,428",327,502.44KB
+bao,Latn,Waimaha,Tucanoan,bao_Latn,"294,786",330,502.32KB
+lfn,Cyrl,Lingua Franca Nova,Artificial Language,lfn_Cyrl,"196,311",257,501.19KB
+pag,Latn,Pangasinan,Austronesian,pag_Latn,"195,814",828,499.05KB
+lid,Latn,Nyindrou,Austronesian,lid_Latn,"407,501",267,498.86KB
+qvh,Latn,Huamalíes-Dos de Mayo Huánuco Quechua,Quechuan,qvh_Latn,"184,909",341,498.76KB
+coe,Latn,Koreguaje,Tucanoan,coe_Latn,"218,369",316,498.66KB
+pri,Latn,Paicî,Austronesian,pri_Latn,"287,912",251,497.40KB
+nrf,Latn,Jèrriais,Indo-European,nrf_Latn,"166,554",454,497.25KB
+mif,Latn,Mofu-Gudur,Afro-Asiatic,mif_Latn,"370,929",537,496.83KB
+lhu,Latn,Lahu,Sino-Tibetan,lhu_Latn,"401,886",468,495.35KB
+npy,Latn,Napu,Austronesian,npy_Latn,"270,386",451,495.08KB
+jae,Latn,Yabem,Austronesian,jae_Latn,"313,588",331,494.60KB
+kwi,Latn,Awa-Cuaiquer,Barbacoan,kwi_Latn,"250,516",363,494.30KB
+urk,Thai,Urak Lawoi',Austronesian,urk_Thai,"353,658",346,493.22KB
+kpr,Latn,Korafe-Yegha,Trans-New Guinea,kpr_Latn,"327,528",300,492.59KB
+inb,Latn,Inga,Quechuan,inb_Latn,"227,901",340,489.44KB
+aey,Latn,Amele,Trans-New Guinea,aey_Latn,"334,440",293,488.06KB
+trn,Latn,Trinitario,Maipurean,trn_Latn,"241,532",335,486.92KB
+dgz,Latn,Daga,Trans-New Guinea,dgz_Latn,"356,127",331,486.14KB
+kez,Latn,Kukele,Niger-Congo,kez_Latn,"237,477",423,486.06KB
+toj,Latn,Tojolabal,Mayan,toj_Latn,"261,461",458,485.31KB
+tfr,Latn,Teribe,Chibchan,tfr_Latn,"310,858",401,485.22KB
+gmv,Latn,Gamo,Afro-Asiatic,gmv_Latn,"211,995",371,484.03KB
+ppk,Latn,Uma,Austronesian,ppk_Latn,"361,762",273,482.19KB
+mqb,Latn,Mbuko,Afro-Asiatic,mqb_Latn,"352,837",337,481.84KB
+jbu,Latn,Jukun Takum,Niger-Congo,jbu_Latn,"318,645",589,481.82KB
+twu,Latn,Termanu,Austronesian,twu_Latn,"310,436",294,481.12KB
+mop,Latn,Mopán Maya,Mayan,mop_Latn,"386,760",325,477.65KB
+ayp,Arab,North Mesopotamian Arabic,Afro-Asiatic,ayp_Arab,"213,271",89,475.58KB
+skr,Arab,Saraiki,Indo-European,skr_Arab,"177,863",250,472.30KB
+kqp,Latn,Kimré,Afro-Asiatic,kqp_Latn,"318,381",518,471.84KB
+zpl,Latn,Lachixío Zapotec,Otomanguean,zpl_Latn,"290,305",301,469.99KB
+smk,Latn,Bolinao,Austronesian,smk_Latn,"255,510",318,467.80KB
+gde,Latn,Gude,Afro-Asiatic,gde_Latn,"277,418",411,466.74KB
+aby,Latn,Aneme Wake,Trans-New Guinea,aby_Latn,"261,889",759,463.26KB
+gbo,Latn,Northern Grebo,Niger-Congo,gbo_Latn,"260,437",370,462.33KB
+xsi,Latn,Sio,Austronesian,xsi_Latn,"376,241",253,461.70KB
+nod,Thai,Northern Thai,Kra-Dai,nod_Thai,"207,339",462,460.99KB
+tsz,Latn,Purepecha,Tarascan,tsz_Latn,"178,185",531,458.90KB
+pad,Latn,Paumarí,Arauan,pad_Latn,"251,989",221,457.68KB
+hay,Latn,Haya,Niger-Congo,hay_Latn,"169,870",338,457.17KB
+kup,Latn,Kunimaipa,Trans-New Guinea,kup_Latn,"297,466",206,455.35KB
+kpe,Latn,Kpelle,Niger-Congo,kpe_Latn,"193,546",314,454.59KB
+qvm,Latn,Margos-Yarowilca-Lauricocha Quechua,Quechuan,qvm_Latn,"177,403",322,452.88KB
+emp,Latn,Northern Emberá,Chocoan,emp_Latn,"210,259",308,452.08KB
+car,Latn,Galibi Carib,Cariban,car_Latn,"231,257",354,451.90KB
+mfi,Latn,Wandala,Afro-Asiatic,mfi_Latn,"286,273",370,451.31KB
+sml,Latn,Central Sama,Austronesian,sml_Latn,"243,094",395,451.01KB
+bib,Latn,Bissa,Niger-Congo,bib_Latn,"309,888",609,450.36KB
+qvs,Latn,San Martín Quechua,Quechuan,qvs_Latn,"185,506",293,450.15KB
+ipi,Latn,Ipili,Trans-New Guinea,ipi_Latn,"324,842",241,448.90KB
+itv,Latn,Itawit,Austronesian,itv_Latn,"293,331",404,447.65KB
+ifk,Latn,Tuwali Ifugao,Austronesian,ifk_Latn,"260,543",420,447.38KB
+sig,Latn,Paasaal,Niger-Congo,sig_Latn,"299,747",300,443.98KB
+cas,Latn,Tsimané,Mosetenan,cas_Latn,"294,006",389,443.42KB
+ozm,Latn,Koonzime,Niger-Congo,ozm_Latn,"256,704",386,443.20KB
+thk,Latn,Tharaka,Niger-Congo,thk_Latn,"194,882",339,442.15KB
+imo,Latn,Imbongu,Trans-New Guinea,imo_Latn,"262,192",529,441.78KB
+dyo,Latn,Jola-Fonyi,Niger-Congo,dyo_Latn,"195,518",319,441.41KB
+yli,Latn,Angguruk Yali,Trans-New Guinea,yli_Latn,"249,605",349,441.14KB
+mpp,Latn,Migabac,Trans-New Guinea,mpp_Latn,"240,554",310,440.73KB
+pma,Latn,Paama,Austronesian,pma_Latn,"304,515",301,439.59KB
+gvl,Latn,Gulay,Nilo-Saharan,gvl_Latn,"293,840",311,437.90KB
+djr,Latn,Djambarrpuyngu,Australian,djr_Latn,"220,842",92,436.86KB
+sgw,Ethi,Sebat Bet Gurage,Afro-Asiatic,sgw_Ethi,"135,454",253,436.01KB
+dww,Latn,Dawawa,Austronesian,dww_Latn,"308,520",284,434.75KB
+cso,Latn,Sochiapam Chinantec,Otomanguean,cso_Latn,"223,170",206,434.60KB
+ory,Latn,Odia,Indo-European,ory_Latn,"169,176",299,433.83KB
+bgr,Latn,Bawm Chin,Sino-Tibetan,bgr_Latn,"279,305",433,433.40KB
+lam,Latn,Lamba,Niger-Congo,lam_Latn,"185,692",321,433.16KB
+men,Latn,Mende (Sierra Leone),Niger-Congo,men_Latn,"241,395",410,430.86KB
+yml,Latn,Iamalele,Austronesian,yml_Latn,"245,249",209,430.19KB
+crx,Latn,Carrier,Eyak-Athabaskan,crx_Latn,"281,795",239,429.94KB
+ntr,Latn,Delo,Niger-Congo,ntr_Latn,"285,165",321,428.60KB
+ter,Latn,Tereno,Maipurean,ter_Latn,"185,673",223,428.48KB
+gof,Latn,Gofa,Afro-Asiatic,gof_Latn,"186,942",362,428.43KB
+mcq,Latn,Ese,Trans-New Guinea,mcq_Latn,"229,426",280,427.64KB
+vun,Latn,Vunjo,Niger-Congo,vun_Latn,"216,424",270,425.17KB
+mwv,Latn,Mentawai,Austronesian,mwv_Latn,"205,962",329,423.59KB
+mtp,Latn,Wichí Lhamtés Nocten,Matacoan,mtp_Latn,"261,522",232,421.65KB
+kbr,Latn,Kafa,Afro-Asiatic,kbr_Latn,"186,594",304,420.95KB
+cax,Latn,Chiquitano,Language isolate,cax_Latn,"186,547",286,420.50KB
+muh,Latn,Mündü,Niger-Congo,muh_Latn,"364,915",198,420.28KB
+zne,Latn,Zande (individual language),Niger-Congo,zne_Latn,"219,916",520,416.27KB
+agm,Latn,Angaataha,Trans-New Guinea,agm_Latn,"181,764",145,416.05KB
+cni,Latn,Asháninka,Maipurean,cni_Latn,"153,017",283,415.25KB
+qvw,Latn,Huaylla Wanca Quechua,Quechuan,qvw_Latn,"137,256",282,414.70KB
+yon,Latn,Yongkom,Trans-New Guinea,yon_Latn,"280,772",261,413.54KB
+bas,Latn,Basa (Cameroon),Niger-Congo,bas_Latn,"267,737",300,412.11KB
+sny,Latn,Saniyo-Hiyewe,Sepik,sny_Latn,"314,568",838,411.92KB
+kto,Latn,Kuot,Language isolate,kto_Latn,"293,921",280,410.67KB
+rej,Latn,Rejang,Austronesian,rej_Latn,"240,619",232,410.45KB
+yom,Latn,Yombe,Niger-Congo,yom_Latn,"185,440",497,409.39KB
+lsm,Latn,Saamia,Niger-Congo,lsm_Latn,"176,637",260,409.33KB
+gcr,Latn,Guianese Creole French,Creole,gcr_Latn,"173,944",882,409.08KB
+opm,Latn,Oksapmin,Trans-New Guinea,opm_Latn,"239,954",203,408.80KB
+bpr,Latn,Koronadal Blaan,Austronesian,bpr_Latn,"262,671",352,408.79KB
+gog,Latn,Gogo,Niger-Congo,gog_Latn,"201,509",283,408.68KB
+kxc,Ethi,Konso,Afro-Asiatic,kxc_Ethi,"142,146",251,408.40KB
+sim,Latn,Mende (Papua New Guinea),Sepik,sim_Latn,"275,522",280,407.36KB
+zia,Latn,Zia,Trans-New Guinea,zia_Latn,"304,398",250,406.09KB
+kkc,Latn,Odoodee,Trans-New Guinea,kkc_Latn,"274,665",546,405.87KB
+lef,Latn,Lelemi,Niger-Congo,lef_Latn,"225,802",296,405.55KB
+usp,Latn,Uspanteco,Mayan,usp_Latn,"236,062",228,405.43KB
+dah,Latn,Gwahatike,Trans-New Guinea,dah_Latn,"304,510",216,405.35KB
+mxp,Latn,Tlahuitoltepec Mixe,Mixe-Zoquean,mxp_Latn,"168,893",297,404.76KB
+mxb,Latn,Tezoatlán Mixtec,Otomanguean,mxb_Latn,"241,767",598,402.28KB
+sue,Latn,Suena,Trans-New Guinea,sue_Latn,"259,713",389,401.34KB
+isd,Latn,Isnag,Austronesian,isd_Latn,"247,946",408,400.37KB
+nnb,Latn,Nande,Niger-Congo,nnb_Latn,"156,731",269,399.57KB
+qvz,Latn,Northern Pastaza Quichua,Quechuan,qvz_Latn,"165,495",242,398.77KB
+ksr,Latn,Borong,Trans-New Guinea,ksr_Latn,"227,016",201,398.27KB
+bzh,Latn,Mapos Buang,Austronesian,bzh_Latn,"304,163",241,398.27KB
+kpz,Latn,Kupsabiny,Nilo-Saharan,kpz_Latn,"188,917",271,396.89KB
+suk,Latn,Sukuma,Niger-Congo,suk_Latn,"191,119",287,395.56KB
+blz,Latn,Balantak,Austronesian,blz_Latn,"253,064",272,394.31KB
+uvh,Latn,Uri,Trans-New Guinea,uvh_Latn,"268,542",169,393.92KB
+soq,Latn,Kanasi,Trans-New Guinea,soq_Latn,"218,038",294,393.18KB
+cce,Latn,Chopi,Niger-Congo,cce_Latn,"215,866",284,392.10KB
+bud,Latn,Ntcham,Niger-Congo,bud_Latn,"218,447",240,390.78KB
+tnn,Latn,North Tanna,Austronesian,tnn_Latn,"258,612",216,389.44KB
+vmy,Latn,Ayautla Mazatec,Otomanguean,vmy_Latn,"200,423",365,388.87KB
+ztq,Latn,Quioquitani-Quierí Zapotec,Otomanguean,ztq_Latn,"224,460",413,388.80KB
+csy,Latn,Siyin Chin,Sino-Tibetan,csy_Latn,"234,472",294,386.80KB
+rav,Deva,Sampang,Sino-Tibetan,rav_Deva,"108,598",169,386.04KB
+kqn,Latn,Kaonde,Niger-Congo,kqn_Latn,"185,281",339,384.67KB
+cya,Latn,Nopala Chatino,Otomanguean,cya_Latn,"337,055",275,384.62KB
+pah,Latn,Tenharim,Tupian,pah_Latn,"201,041",396,382.63KB
+kki,Latn,Kagulu,Niger-Congo,kki_Latn,"159,683",308,382.16KB
+kze,Latn,Kosena,Trans-New Guinea,kze_Latn,"189,683",207,381.10KB
+rmn,Cyrl,Balkan Romani,Indo-European,rmn_Cyrl,"137,693",412,380.99KB
+byx,Latn,Qaqet,East New Britain,byx_Latn,"327,234",233,380.97KB
+amm,Latn,Ama (Papua New Guinea),Arai (Left May),amm_Latn,"283,745",225,377.81KB
+rme,Latn,Angloromani,Mixed language,rme_Latn,"201,920",814,377.69KB
+kmu,Latn,Kanite,Trans-New Guinea,kmu_Latn,"209,560",195,377.36KB
+sbl,Latn,Botolan Sambal,Austronesian,sbl_Latn,"246,404",229,375.66KB
+tuk,Arab,Turkmen,Turkic,tuk_Arab,"114,885",457,375.21KB
+ziw,Latn,Zigula,Niger-Congo,ziw_Latn,"165,482",281,375.19KB
+akp,Latn,Siwu,Niger-Congo,akp_Latn,"202,685",381,375.03KB
+tif,Latn,Tifal,Trans-New Guinea,tif_Latn,"259,968",117,374.47KB
+lia,Latn,West-Central Limba,Niger-Congo,lia_Latn,"222,414",216,373.81KB
+knf,Latn,Mankanya,Niger-Congo,knf_Latn,"186,186",311,373.79KB
+sur,Latn,Mwaghavul,Afro-Asiatic,sur_Latn,"254,069",292,373.39KB
+nyo,Latn,Nyoro,Niger-Congo,nyo_Latn,"141,119",249,372.27KB
+atb,Latn,Zaiwa,Sino-Tibetan,atb_Latn,"187,959",313,372.26KB
+jiv,Latn,Shuar,Jivaroan,jiv_Latn,"153,605",240,370.74KB
+zpv,Latn,Chichicapan Zapotec,Otomanguean,zpv_Latn,"200,732",200,370.20KB
+mkn,Latn,Kupang Malay,Creole,mkn_Latn,"231,729",226,370.18KB
+tpt,Latn,Tlachichilco Tepehua,Totonacan,tpt_Latn,"170,197",274,369.58KB
+aji,Latn,Ajië,Austronesian,aji_Latn,"254,010",418,367.30KB
+aly,Latn,Alyawarr,Australian,aly_Latn,"234,342",204,367.03KB
+myw,Latn,Muyuw,Austronesian,myw_Latn,"222,776",257,366.86KB
+mil,Latn,Peñoles Mixtec,Otomanguean,mil_Latn,"196,922",272,366.81KB
+lue,Latn,Luvale,Niger-Congo,lue_Latn,"148,423",230,366.10KB
+mva,Latn,Manam,Austronesian,mva_Latn,"257,953",203,365.96KB
+nho,Latn,Takuu,Austronesian,nho_Latn,"280,366",308,365.21KB
+sbe,Latn,Saliba,Austronesian,sbe_Latn,"209,139",321,364.79KB
+mzw,Latn,Deg,Niger-Congo,mzw_Latn,"231,667",483,364.05KB
+meq,Latn,Merey,Afro-Asiatic,meq_Latn,"263,958",218,363.73KB
+spp,Latn,Supyire Senoufo,Niger-Congo,spp_Latn,"219,796",319,363.24KB
+gaw,Latn,Nobonob,Trans-New Guinea,gaw_Latn,"242,041",207,359.04KB
+cle,Latn,Lealao Chinantec,Otomanguean,cle_Latn,"153,941",261,358.08KB
+crm,Cans,Moose Cree,Algic,crm_Cans,"124,260",180,357.44KB
+sgb,Latn,Mag-antsi Ayta,Austronesian,sgb_Latn,"220,131",353,356.83KB
+lac,Latn,Lacandon,Mayan,lac_Latn,"271,141",178,354.79KB
+alq,Latn,Algonquin,Algic,alq_Latn,"180,171",284,354.64KB
+nop,Latn,Numanggang,Trans-New Guinea,nop_Latn,"187,910",212,353.94KB
+izr,Latn,Izere,Niger-Congo,izr_Latn,"229,997",484,353.59KB
+snp,Latn,Siane,Trans-New Guinea,snp_Latn,"242,992",201,352.64KB
+cui,Latn,Cuiba,Guajiboan,cui_Latn,"181,420",755,351.88KB
+buk,Latn,Bugawac,Austronesian,buk_Latn,"265,872",226,351.58KB
+tby,Latn,Tabaru,West Papuan,tby_Latn,"240,968",207,351.49KB
+chr,Cher,Cherokee,Iroquoian,chr_Cher,"127,206",71,350.31KB
+wim,Latn,Wik-Mungkan,Australian,wim_Latn,"217,940",176,349.06KB
+cpy,Latn,South Ucayali Ashéninka,Maipurean,cpy_Latn,"179,594",246,348.19KB
+nab,Latn,Southern Nambikuára,Nambikwara,nab_Latn,"86,288",142,347.65KB
+yuw,Latn,Yau (Morobe Province),Trans-New Guinea,yuw_Latn,"208,647",186,345.31KB
+tkr,Cyrl,Tsakhur,Nakh-Daghestanian,tkr_Cyrl,"101,357",159,345.04KB
+kij,Latn,Kilivila,Austronesian,kij_Latn,"163,120",222,344.85KB
+kca,Cyrl,Khanty,Uralic,kca_Cyrl,"122,271",218,344.54KB
+esu,Latn,Central Yupik,Eskimo-Aleut,esu_Latn,"132,182",256,343.46KB
+yao,Latn,Yao,Niger-Congo,yao_Latn,"148,071",151,341.36KB
+knk,Latn,Kuranko,Niger-Congo,knk_Latn,"232,494",275,341.18KB
+cbv,Latn,Cacua,Puinavean,cbv_Latn,"201,076",378,340.93KB
+biv,Latn,Southern Birifor,Niger-Congo,biv_Latn,"222,917",384,340.72KB
+fal,Latn,South Fali,Niger-Congo,fal_Latn,"209,952",380,340.66KB
+gor,Latn,Gorontalo,Austronesian,gor_Latn,"179,211",378,339.36KB
+mau,Latn,Huautla Mazatec,Otomanguean,mau_Latn,"143,662",267,338.83KB
+kyz,Latn,Kayabí,Tupian,kyz_Latn,"243,702",231,338.82KB
+heg,Latn,Helong,Austronesian,heg_Latn,"244,647",185,338.20KB
+mhl,Latn,Mauwake,Trans-New Guinea,mhl_Latn,"250,034",204,338.15KB
+ifb,Latn,Batad Ifugao,Austronesian,ifb_Latn,"181,982",205,335.83KB
+kpw,Latn,Kobon,Trans-New Guinea,kpw_Latn,"269,701",195,335.11KB
+wos,Latn,Hanga Hundi,Sepik,wos_Latn,"233,153",176,335.01KB
+zpc,Latn,Choapan Zapotec,Otomanguean,zpc_Latn,"172,678",178,334.90KB
+sdc,Latn,Sassarese Sardinian,Indo-European,sdc_Latn,"261,244",445,334.87KB
+ckt,Cyrl,Chukot,Chukotko-Kamchatkan,ckt_Cyrl,"90,566",108,334.51KB
+gun,Latn,Mbyá Guaraní,Tupian,gun_Latn,"186,051",252,334.15KB
+nwi,Latn,Southwest Tanna,Austronesian,nwi_Latn,"213,771",178,332.19KB
+dgi,Latn,Northern Dagara,Niger-Congo,dgi_Latn,"222,049",423,330.73KB
+xrb,Latn,Eastern Karaboro,Niger-Congo,xrb_Latn,"229,289",435,330.56KB
+tte,Latn,Bwanabwana,Austronesian,tte_Latn,"172,995",183,330.00KB
+alp,Latn,Alune,Austronesian,alp_Latn,"192,582",650,329.62KB
+khz,Latn,Keapara,Austronesian,khz_Latn,"225,404",212,329.02KB
+mhx,Latn,Maru,Sino-Tibetan,mhx_Latn,"366,674",32,328.01KB
+mmo,Latn,Mangga Buang,Austronesian,mmo_Latn,"214,743",380,326.55KB
+mmx,Latn,Madak,Austronesian,mmx_Latn,"227,400",237,325.55KB
+sat,Latn,Santali,Austro-Asiatic,sat_Latn,"116,189",308,325.41KB
+mxq,Latn,Juquila Mixe,Mixe-Zoquean,mxq_Latn,"137,704",258,324.33KB
+tvk,Latn,Southeast Ambrym,Austronesian,tvk_Latn,"216,876",201,323.79KB
+mfz,Latn,Mabaan,Nilo-Saharan,mfz_Latn,"192,259",253,323.14KB
+mmn,Latn,Mamanwa,Austronesian,mmn_Latn,"202,609",578,321.14KB
+otw,Latn,Ottawa,Algic,otw_Latn,"127,757",251,320.95KB
+kmo,Latn,Kwoma,Sepik,kmo_Latn,"224,198",203,320.71KB
+agd,Latn,Agarabi,Trans-New Guinea,agd_Latn,"176,765",738,320.63KB
+kud,Latn,Auhelawa,Austronesian,kud_Latn,"183,407",235,320.39KB
+wrs,Latn,Waris,Border,wrs_Latn,"176,407",170,318.02KB
+ncx,Latn,Central Puebla Nahuatl,Uto-Aztecan,ncx_Latn,"118,507",407,316.02KB
+bch,Latn,Bariai,Austronesian,bch_Latn,"236,477",213,315.88KB
+maz,Latn,Central Mazahua,Otomanguean,maz_Latn,"182,041",759,315.58KB
+xtn,Latn,Northern Tlaxiaco Mixtec,Otomanguean,xtn_Latn,"246,170",203,315.55KB
+yle,Latn,Yele,Yele-West New Britain,yle_Latn,"252,152",212,315.36KB
+mas,Latn,Masai,Nilo-Saharan,mas_Latn,"113,646",761,312.80KB
+hig,Latn,Kamwe,Afro-Asiatic,hig_Latn,"207,077",300,312.42KB
+kwj,Latn,Kwanga,Sepik,kwj_Latn,"227,870",198,312.22KB
+bpy,Beng,Bishnupriya,Indo-European,bpy_Beng,"81,270",195,312.03KB
+guk,Ethi,Gumuz,Nilo-Saharan,guk_Ethi,"96,134",176,311.17KB
+hrx,Latn,Hunsrik,Indo-European,hrx_Latn,"206,718",199,310.42KB
+tcf,Latn,Malinaltepec Me'phaa,Otomanguean,tcf_Latn,"144,364",313,309.87KB
+cko,Latn,Anufo,Niger-Congo,cko_Latn,"227,879",238,308.20KB
+apr,Latn,Arop-Lokep,Austronesian,apr_Latn,"225,454",524,307.96KB
+ceg,Latn,Chamacoco,Zamucoan,ceg_Latn,"175,542",182,306.32KB
+nfr,Latn,Nafaanra,Niger-Congo,nfr_Latn,"208,862",484,305.88KB
+nin,Latn,Ninzo,Niger-Congo,nin_Latn,"123,686",181,305.60KB
+swp,Latn,Suau,Austronesian,swp_Latn,"197,075",229,304.75KB
+ota,Arab,Ottoman Turkish (1500-1928),Turkic,ota_Arab,"90,829",260,304.52KB
+mnk,Latn,Mandinka,Niger-Congo,mnk_Latn,"197,656",106,301.07KB
+ppo,Latn,Folopa,Trans-New Guinea,ppo_Latn,"204,748",168,300.57KB
+rnd,Latn,Ruund,Niger-Congo,rnd_Latn,"136,665",428,300.10KB
+xsr,Deva,Sherpa,Sino-Tibetan,xsr_Deva,"100,998",117,299.43KB
+bdh,Latn,Baka (South Sudan),Nilo-Saharan,bdh_Latn,"166,612",588,298.60KB
+quw,Latn,Tena Lowland Quichua,Quechuan,quw_Latn,"127,376",256,297.88KB
+pab,Latn,Parecís,Maipurean,pab_Latn,"135,254",221,296.69KB
+keo,Latn,Kakwa,Nilo-Saharan,keo_Latn,"185,287",183,296.37KB
+toh,Latn,Gitonga,Niger-Congo,toh_Latn,"161,104",234,295.20KB
+snf,Latn,Noon,Niger-Congo,snf_Latn,"128,435",154,292.50KB
+caf,Latn,Southern Carrier,Eyak-Athabaskan,caf_Latn,"178,617",163,292.48KB
+knc,Latn,Central Kanuri,Nilo-Saharan,knc_Latn,"135,146",437,292.01KB
+pis,Latn,Pijin,Creole,pis_Latn,"100,739",638,291.02KB
+cpa,Latn,Palantla Chinantec,Otomanguean,cpa_Latn,"132,897",438,289.45KB
+leu,Latn,Kara (Papua New Guinea),Austronesian,leu_Latn,"214,175",184,283.83KB
+mox,Latn,Molima,Austronesian,mox_Latn,"206,574",171,283.59KB
+kew,Latn,West Kewa,Trans-New Guinea,kew_Latn,"196,325",182,283.41KB
+gso,Latn,Southwest Gbaya,Niger-Congo,gso_Latn,"191,368",183,283.32KB
+cjp,Latn,Cabécar,Chibchan,cjp_Latn,"156,784",250,283.20KB
+guh,Latn,Guahibo,Guajiboan,guh_Latn,"118,333",145,281.77KB
+bzi,Thai,Bisu,Sino-Tibetan,bzi_Thai,"181,232",120,281.68KB
+dgr,Latn,Tlicho,Eyak-Athabaskan,dgr_Latn,"130,017",202,281.27KB
+bus,Latn,Bokobaru,Niger-Congo,bus_Latn,"131,058",197,279.77KB
+nim,Latn,Nilamba,Niger-Congo,nim_Latn,"105,893",188,279.75KB
+war,Latn,Waray (Philippines),Austronesian,war_Latn,"109,997",554,278.48KB
+dgc,Latn,Casiguran Dumagat Agta,Austronesian,dgc_Latn,"178,921",353,278.17KB
+nii,Latn,Nii,Trans-New Guinea,nii_Latn,"221,764",139,275.33KB
+eve,Cyrl,Even,Tungusic,eve_Cyrl,"76,665",117,274.34KB
+dua,Latn,Duala,Niger-Congo,dua_Latn,"164,097",329,273.76KB
+ubr,Latn,Ubir,Austronesian,ubr_Latn,"175,907",180,273.35KB
+mie,Latn,Ocotepec Mixtec,Otomanguean,mie_Latn,"103,885",152,273.22KB
+hag,Latn,Hanga,Niger-Congo,hag_Latn,"202,181",270,273.21KB
+bgt,Latn,Bughotu,Austronesian,bgt_Latn,"175,064",466,273.17KB
+eza,Latn,Ezaa,Niger-Congo,eza_Latn,"158,521",376,271.99KB
+ken,Latn,Kenyang,Niger-Congo,ken_Latn,"128,996",241,271.67KB
+rtm,Latn,Rotuman,Austronesian,rtm_Latn,"208,885",203,271.04KB
+snc,Latn,Sinaugoro,Austronesian,snc_Latn,"172,109",159,270.96KB
+kus,Latn,Kusaal,Niger-Congo,kus_Latn,"169,501",269,270.75KB
+nhy,Latn,Northern Oaxaca Nahuatl,Uto-Aztecan,nhy_Latn,"130,119",182,269.68KB
+kix,Latn,Khiamniungan Naga,Sino-Tibetan,kix_Latn,"132,715",238,268.04KB
+tum,Latn,Tumbuka,Niger-Congo,tum_Latn,"96,252",443,266.37KB
+aoi,Latn,Anindilyakwa,Australian,aoi_Latn,"174,541",88,265.42KB
+rro,Latn,Waima,Austronesian,rro_Latn,"171,076",186,265.41KB
+ybb,Latn,Yemba,Niger-Congo,ybb_Latn,"103,519",193,265.15KB
+gng,Latn,Ngangam,Niger-Congo,gng_Latn,"175,063",223,264.88KB
+auy,Latn,Awiyaana,Trans-New Guinea,auy_Latn,"139,076",139,264.60KB
+qup,Latn,Southern Pastaza Quechua,Quechuan,qup_Latn,"106,686",290,264.18KB
+chw,Latn,Chuwabu,Niger-Congo,chw_Latn,"100,806",284,263.48KB
+kde,Latn,Makonde,Niger-Congo,kde_Latn,"113,841",271,262.36KB
+ong,Latn,Olo,Torricelli,ong_Latn,"199,029",156,262.21KB
+row,Latn,Dela-Oenale,Austronesian,row_Latn,"170,020",137,262.01KB
+usa,Latn,Usarufa,Trans-New Guinea,usa_Latn,"146,056",126,261.85KB
+dts,Latn,Toro So Dogon,Niger-Congo,dts_Latn,"149,675",381,261.75KB
+cta,Latn,Tataltepec Chatino,Otomanguean,cta_Latn,"170,086",100,261.73KB
+azg,Latn,San Pedro Amuzgos Amuzgo,Otomanguean,azg_Latn,"142,883",122,261.59KB
+gai,Latn,Borei,Ramu-Lower Sepik,gai_Latn,"150,666",424,261.17KB
+kjs,Latn,East Kewa,Trans-New Guinea,kjs_Latn,"190,450",193,259.43KB
+big,Latn,Biangai,Trans-New Guinea,big_Latn,"126,628",139,258.88KB
+cap,Latn,Chipaya,Chipaya-Uru,cap_Latn,"111,897",172,258.77KB
+nba,Latn,Nyemba,Niger-Congo,nba_Latn,"146,453",287,258.68KB
+lmk,Latn,Lamkang,Sino-Tibetan,lmk_Latn,"130,918",93,257.46KB
+taq,Tfng,Tamasheq,Afro-Asiatic,taq_Tfng,"78,308",208,257.42KB
+mek,Latn,Mekeo,Austronesian,mek_Latn,"176,775",159,256.66KB
+kdi,Latn,Kumam,Nilo-Saharan,kdi_Latn,"162,338",255,256.47KB
+hae,Latn,Eastern Oromo,Afro-Asiatic,hae_Latn,"74,956",169,256.46KB
+bef,Latn,Benabena,Trans-New Guinea,bef_Latn,"127,462",149,256.25KB
+att,Latn,Pamplona Atta,Austronesian,att_Latn,"160,840",524,255.76KB
+trp,Latn,Kok Borok,Sino-Tibetan,trp_Latn,"99,262",219,254.48KB
+akb,Latn,Batak Angkola,Austronesian,akb_Latn,"124,210",128,254.22KB
+chf,Latn,Tabasco Chontal,Mayan,chf_Latn,"159,594",162,254.15KB
+ctu,Latn,Chol,Mayan,ctu_Latn,"147,958",220,254.11KB
+tsc,Latn,Tswa,Niger-Congo,tsc_Latn,"135,738",269,254.07KB
+mbi,Latn,Ilianen Manobo,Austronesian,mbi_Latn,"161,903",530,252.81KB
+kms,Latn,Kamasau,Torricelli,kms_Latn,"196,632",165,252.81KB
+kwd,Latn,Kwaio,Austronesian,kwd_Latn,"189,020",134,252.51KB
+zat,Latn,Tabaa Zapotec,Otomanguean,zat_Latn,"186,695",163,252.29KB
+cuc,Latn,Usila Chinantec,Otomanguean,cuc_Latn,"106,999",177,252.26KB
+guo,Latn,Guayabero,Guajiboan,guo_Latn,"137,860",140,251.66KB
+wuv,Latn,Wuvulu-Aua,Austronesian,wuv_Latn,"173,943",190,251.62KB
+gvf,Latn,Golin,Trans-New Guinea,gvf_Latn,"211,206",155,251.59KB
+wbp,Latn,Warlpiri,Australian,wbp_Latn,"131,972",116,250.56KB
+uvl,Latn,Lote,Austronesian,uvl_Latn,"207,973",162,249.85KB
+kgp,Latn,Kaingang,Jean,kgp_Latn,"177,144",376,249.54KB
+kpf,Latn,Komba,Trans-New Guinea,kpf_Latn,"148,006",184,248.08KB
+kbm,Latn,Iwal,Austronesian,kbm_Latn,"192,090",120,247.84KB
+wnc,Latn,Wantoat,Trans-New Guinea,wnc_Latn,"154,850",132,247.55KB
+mic,Latn,Mi'kmaq,Algic,mic_Latn,"104,314",152,247.37KB
+otm,Latn,Eastern Highland Otomi,Otomanguean,otm_Latn,"167,480",136,246.68KB
+ctp,Latn,Western Highland Chatino,Otomanguean,ctp_Latn,"168,785",118,244.60KB
+caa,Latn,Chortí,Mayan,caa_Latn,"156,094",149,243.31KB
+crk,Cans,Plains Cree,Algic,crk_Cans,"59,902",154,243.17KB
+npl,Latn,Southeastern Puebla Nahuatl,Uto-Aztecan,npl_Latn,"103,220",162,242.79KB
+nca,Latn,Iyo,Trans-New Guinea,nca_Latn,"155,493",153,241.41KB
+mcd,Latn,Sharanahua,Panoan,mcd_Latn,"114,363",128,239.71KB
+aia,Latn,Arosi,Austronesian,aia_Latn,"157,197",145,239.42KB
+gub,Latn,Guajajára,Tupian,gub_Latn,"156,017",134,238.24KB
+tsg,Latn,Tausug,Austronesian,tsg_Latn,"127,215",272,237.97KB
+spl,Latn,Selepet,Trans-New Guinea,spl_Latn,"127,547",389,235.90KB
+mwp,Latn,Kala Lagaw Ya,Australian,mwp_Latn,"124,917",116,235.88KB
+pwg,Latn,Gapapaiwa,Austronesian,pwg_Latn,"142,737",242,235.25KB
+suz,Deva,Sunwar,Sino-Tibetan,suz_Deva,"93,343",115,233.88KB
+qvi,Latn,Imbabura Highland Quichua,Quechuan,qvi_Latn,"87,906",242,233.10KB
+mej,Latn,Meyah,East Bird’s Head-Sentani,mej_Latn,"153,934",178,232.89KB
+kzj,Latn,Coastal Kadazan,Austronesian,kzj_Latn,"104,161",225,232.77KB
+kqw,Latn,Kandas,Austronesian,kqw_Latn,"183,279",152,230.99KB
+amn,Latn,Amanab,Border,amn_Latn,"155,494",157,229.56KB
+kue,Latn,Kuman (Papua New Guinea),Trans-New Guinea,kue_Latn,"155,831",150,228.62KB
+zac,Latn,Ocotlán Zapotec,Otomanguean,zac_Latn,"117,501",185,228.56KB
+awx,Latn,Awara,Trans-New Guinea,awx_Latn,"111,430",183,227.24KB
+mbl,Latn,Maxakalí,Maxakalian,mbl_Latn,"176,576",145,227.09KB
+lww,Latn,Lewo,Austronesian,lww_Latn,"141,043",95,226.85KB
+roo,Latn,Rotokas,North Bougainville,roo_Latn,"153,085",115,226.47KB
+sll,Latn,Salt-Yui,Trans-New Guinea,sll_Latn,"179,235",151,226.26KB
+kao,Latn,Xaasongaxango,Niger-Congo,kao_Latn,"137,520",434,226.21KB
+ncl,Latn,Michoacán Nahuatl,Uto-Aztecan,ncl_Latn,"114,534",123,226.11KB
+aca,Latn,Achagua,Maipurean,aca_Latn,"90,584",132,225.51KB
+nhg,Latn,Tetelcingo Nahuatl,Uto-Aztecan,nhg_Latn,"100,357",153,224.38KB
+llg,Latn,Lole,Austronesian,llg_Latn,"147,415",110,224.19KB
+wer,Latn,Weri,Trans-New Guinea,wer_Latn,"143,950",146,223.92KB
+gkn,Latn,Gokana,Niger-Congo,gkn_Latn,"113,688",321,223.86KB
+mxv,Latn,Metlatónoc Mixtec,Otomanguean,mxv_Latn,"100,024",180,223.23KB
+tnp,Latn,Whitesands,Austronesian,tnp_Latn,"118,059",268,222.06KB
+bug,Latn,Buginese,Austronesian,bug_Latn,"108,580",145,220.39KB
+rai,Latn,Ramoaaina,Austronesian,rai_Latn,"189,353",150,220.15KB
+apb,Latn,Sa'a,Austronesian,apb_Latn,"152,016",120,219.57KB
+mur,Latn,Murle,Nilo-Saharan,mur_Latn,"113,238",129,219.47KB
+yut,Latn,Yopno,Trans-New Guinea,yut_Latn,"140,612",130,219.25KB
+nsn,Latn,Nehan,Austronesian,nsn_Latn,"133,637",150,219.20KB
+mee,Latn,Mengen,Austronesian,mee_Latn,"174,905",130,218.92KB
+mav,Latn,Sateré-Mawé,Tupian,mav_Latn,"112,471",142,218.16KB
+ibg,Latn,Ibanag,Austronesian,ibg_Latn,"101,546",368,217.66KB
+gdn,Latn,Umanakaina,Trans-New Guinea,gdn_Latn,"150,022",115,217.12KB
+mxt,Latn,Jamiltepec Mixtec,Otomanguean,mxt_Latn,"133,615",325,216.98KB
+xbi,Latn,Kombio,Torricelli,xbi_Latn,"155,394",314,215.94KB
+qxr,Latn,Cañar Highland Quichua,Quechuan,qxr_Latn,"91,462",151,215.38KB
+bjp,Latn,Fanamaket,Austronesian,bjp_Latn,"152,430",155,215.15KB
+pao,Latn,Northern Paiute,Uto-Aztecan,pao_Latn,"129,360",134,214.67KB
+kbc,Latn,Kadiwéu,Guaykuruan,kbc_Latn,"95,817",113,214.06KB
+naf,Latn,Nabak,Trans-New Guinea,naf_Latn,"113,204",109,212.74KB
+nus,Latn,Nuer,Nilo-Saharan,nus_Latn,"100,450",152,212.61KB
+sgz,Latn,Sursurunga,Austronesian,sgz_Latn,"142,620",119,211.51KB
+lmp,Latn,Limbum,Niger-Congo,lmp_Latn,"156,818",227,211.43KB
+moh,Latn,Mohawk,Iroquoian,moh_Latn,"88,064",113,211.05KB
+gnw,Latn,Western Bolivian Guaraní,Tupian,gnw_Latn,"120,412",181,209.82KB
+tiy,Latn,Tiruray,Austronesian,tiy_Latn,"119,681",230,209.48KB
+ino,Latn,Inoke-Yate,Trans-New Guinea,ino_Latn,"121,195",107,209.21KB
+bqp,Latn,Busa,Niger-Congo,bqp_Latn,"100,218",141,208.49KB
+cbi,Latn,Chachi,Barbacoan,cbi_Latn,"106,545",87,208.35KB
+lif,Deva,Limbu,Sino-Tibetan,lif_Deva,"49,482",65,207.01KB
+tbo,Latn,Tawala,Austronesian,tbo_Latn,"121,328",135,206.98KB
+apy,Latn,Apalaí,Cariban,apy_Latn,"113,507",132,206.92KB
+cek,Latn,Eastern Khumi Chin,Sino-Tibetan,cek_Latn,"117,437",156,205.08KB
+bhp,Latn,Bima,Austronesian,bhp_Latn,"115,243",254,204.45KB
+tll,Latn,Tetela,Niger-Congo,tll_Latn,"90,867",132,203.15KB
+msb,Latn,Masbatenyo,Austronesian,msb_Latn,"96,508",218,203.12KB
+zab,Latn,Western Tlacolula Valley Zapotec,Otomanguean,zab_Latn,"120,230",171,201.08KB
+tcs,Latn,Torres Strait Creole,Creole,tcs_Latn,"109,319",229,200.08KB
+kyf,Latn,Kouya,Niger-Congo,kyf_Latn,"127,775",110,199.90KB
+rkb,Latn,Rikbaktsa,Language isolate,rkb_Latn,"98,079",87,199.70KB
+nsu,Latn,Sierra Negra Nahuatl,Uto-Aztecan,nsu_Latn,"123,460",112,199.17KB
+sab,Latn,Buglere,Chibchan,sab_Latn,"141,262",110,199.12KB
+ain,Latn,Ainu (Japan),Language isolate,ain_Latn,"79,341",210,198.25KB
+txq,Latn,Tii,Austronesian,txq_Latn,"126,378",156,197.88KB
+hub,Latn,Huambisa,Jivaroan,hub_Latn,"80,078",142,197.38KB
+kbh,Latn,Camsá,Language isolate,kbh_Latn,"81,170",98,196.39KB
+nbq,Latn,Nggem,Trans-New Guinea,nbq_Latn,"129,220",96,195.43KB
+lbb,Latn,Label,Austronesian,lbb_Latn,"146,164",134,194.90KB
+kss,Latn,Southern Kisi,Niger-Congo,kss_Latn,"101,349",214,194.79KB
+plu,Latn,Palikúr,Maipurean,plu_Latn,"95,432",152,194.50KB
+apz,Latn,Safeyoka,Trans-New Guinea,apz_Latn,"101,282",86,193.61KB
+kne,Latn,Kankanaey,Austronesian,kne_Latn,"104,726",166,193.35KB
+arq,Arab,Algerian Arabic,Afro-Asiatic,arq_Arab,"56,276",167,192.67KB
+nss,Latn,Nali,Austronesian,nss_Latn,"117,236",169,192.20KB
+bgs,Latn,Tagabawa,Austronesian,bgs_Latn,"122,200",260,191.36KB
+pot,Latn,Potawatomi,Algic,pot_Latn,"86,538",55,191.21KB
+iou,Latn,Tuma-Irumu,Trans-New Guinea,iou_Latn,"106,505",103,190.37KB
+bim,Latn,Bimoba,Niger-Congo,bim_Latn,"123,264",128,190.19KB
+ssg,Latn,Seimat,Austronesian,ssg_Latn,"129,393",131,189.74KB
+zos,Latn,Francisco León Zoque,Mixe-Zoquean,zos_Latn,"81,994",112,189.18KB
+mni,Mtei,Manipuri,Sino-Tibetan,mni_Mtei,"45,448",166,188.62KB
+lif,Limb,Limbu,Sino-Tibetan,lif_Limb,"43,519",74,188.26KB
+zar,Latn,Rincón Zapotec,Otomanguean,zar_Latn,"139,242",98,188.08KB
+ese,Latn,Ese Ejja,Tacanan,ese_Latn,"115,831",86,188.02KB
+bzj,Latn,Belize Kriol English,Creole,bzj_Latn,"80,347",370,187.77KB
+kwf,Latn,Kwara'ae,Austronesian,kwf_Latn,"113,372",92,185.73KB
+zpm,Latn,Mixtepec Zapotec,Otomanguean,zpm_Latn,"176,240",115,185.66KB
+nyy,Latn,Nyakyusa-Ngonde,Niger-Congo,nyy_Latn,"76,047",159,184.59KB
+ngl,Latn,Lomwe,Niger-Congo,ngl_Latn,"70,985",219,183.52KB
+omw,Latn,South Tairora,Trans-New Guinea,omw_Latn,"110,507",96,183.23KB
+iws,Latn,Sepik Iwam,Sepik,iws_Latn,"109,610",86,182.95KB
+mti,Latn,Maiwa (Papua New Guinea),Trans-New Guinea,mti_Latn,"120,176",136,182.87KB
+tod,Latn,Toma,Niger-Congo,tod_Latn,"101,732",113,182.54KB
+kpx,Latn,Mountain Koiali,Trans-New Guinea,kpx_Latn,"119,243",134,181.64KB
+nmf,Latn,Tangkhul Naga (India),Sino-Tibetan,nmf_Latn,"65,245",99,181.46KB
+qxn,Latn,Northern Conchucos Ancash Quechua,Quechuan,qxn_Latn,"67,411",98,180.65KB
+nbu,Latn,Rongmei Naga,Sino-Tibetan,nbu_Latn,"77,685",198,180.63KB
+mpm,Latn,Yosondúa Mixtec,Otomanguean,mpm_Latn,"130,624",103,180.51KB
+enl,Latn,Enlhet,Mascoyan,enl_Latn,"79,526",16,180.37KB
+caq,Latn,Car Nicobarese,Austro-Asiatic,caq_Latn,"107,787",176,180.29KB
+nuy,Latn,Nunggubuyu,Australian,nuy_Latn,"145,607",92,179.97KB
+wsk,Latn,Waskia,Trans-New Guinea,wsk_Latn,"107,040",119,179.89KB
+amr,Latn,Amarakaeri,Harákmbut,amr_Latn,"79,324",93,179.80KB
+geb,Latn,Kire,Ramu-Lower Sepik,geb_Latn,"123,313",89,179.48KB
+liv,Latn,Liv,Uralic,liv_Latn,"63,248",125,178.74KB
+gmv,Ethi,Gamo,Afro-Asiatic,gmv_Ethi,"60,943",110,178.65KB
+vid,Latn,Vidunda,Niger-Congo,vid_Latn,"86,346",118,176.97KB
+emi,Latn,Mussau-Emira,Austronesian,emi_Latn,"107,557",125,176.03KB
+csw,Latn,Swampy Cree,Algic,csw_Latn,"69,744",117,176.03KB
+tnk,Latn,Kwamera,Austronesian,tnk_Latn,"113,206",106,175.97KB
+zgh,Tfng,Standard Moroccan Tamazight,Afro-Asiatic,zgh_Tfng,"49,846",134,174.35KB
+tgo,Latn,Sudest,Austronesian,tgo_Latn,"95,565",115,174.05KB
+luc,Latn,Aringa,Nilo-Saharan,luc_Latn,"90,673",81,173.09KB
+arl,Latn,Arabela,Zaparoan,arl_Latn,"74,889",83,172.95KB
+tgp,Latn,Tangoa,Austronesian,tgp_Latn,"126,434",124,172.43KB
+mto,Latn,Totontepec Mixe,Mixe-Zoquean,mto_Latn,"78,678",88,172.37KB
+mca,Latn,Maca,Matacoan,mca_Latn,"102,424",170,172.34KB
+mqj,Latn,Mamasa,Austronesian,mqj_Latn,"94,514",125,171.87KB
+tim,Latn,Timbe,Trans-New Guinea,tim_Latn,"90,921",93,171.21KB
+nct,Latn,Chothe Naga,Sino-Tibetan,nct_Latn,"68,851",329,170.07KB
+qvc,Latn,Cajamarca Quechua,Quechuan,qvc_Latn,"70,262",87,169.00KB
+pls,Latn,San Marcos Tlacoyalco Popoloca,Otomanguean,pls_Latn,"91,593",125,166.73KB
+cao,Latn,Chácobo,Panoan,cao_Latn,"98,775",113,166.36KB
+trc,Latn,Copala Triqui,Otomanguean,trc_Latn,"85,758",145,165.36KB
+eko,Latn,Koti,Niger-Congo,eko_Latn,"73,254",105,165.22KB
+snn,Latn,Siona,Tucanoan,snn_Latn,"88,153",81,164.79KB
+dga,Latn,Southern Dagaare,Niger-Congo,dga_Latn,"86,779",168,164.70KB
+kje,Latn,Kisar,Austronesian,kje_Latn,"99,461",99,163.88KB
+tew,Latn,Tewa (USA),Kiowa-Tanoan,tew_Latn,"64,258",78,163.70KB
+ted,Latn,Tepo Krumen,Niger-Congo,ted_Latn,"132,973",282,163.54KB
+toc,Latn,Coyutla Totonac,Totonacan,toc_Latn,"61,487",72,163.10KB
+too,Latn,Xicotepec De Juárez Totonac,Totonacan,too_Latn,"86,310",85,161.88KB
+cbr,Latn,Cashibo-Cacataibo,Panoan,cbr_Latn,"98,490",93,160.71KB
+wmw,Latn,Mwani,Niger-Congo,wmw_Latn,"70,529",77,160.57KB
+enq,Latn,Enga,Trans-New Guinea,enq_Latn,"93,190",101,160.31KB
+bbb,Latn,Barai,Trans-New Guinea,bbb_Latn,"91,167",92,159.21KB
+fai,Latn,Faiwol,Trans-New Guinea,fai_Latn,"79,876",390,158.66KB
+cto,Latn,Emberá-Catío,Chocoan,cto_Latn,"66,109",127,158.20KB
+msk,Latn,Mansaka,Austronesian,msk_Latn,"88,771",96,157.73KB
+bvd,Latn,Baeggu,Austronesian,bvd_Latn,"115,919",101,157.10KB
+crk,Latn,Plains Cree,Algic,crk_Latn,"58,119",64,157.09KB
+mbs,Latn,Sarangani Manobo,Austronesian,mbs_Latn,"106,301",145,156.46KB
+czt,Latn,Zotung Chin,Sino-Tibetan,czt_Latn,"56,810",187,156.17KB
+ndh,Latn,Ndali,Niger-Congo,ndh_Latn,"63,477",103,155.42KB
+cwe,Latn,Kwere,Niger-Congo,cwe_Latn,"64,897",89,153.27KB
+blw,Latn,Balangao,Austronesian,blw_Latn,"96,626",99,152.99KB
+gdg,Latn,Ga'dang,Austronesian,gdg_Latn,"55,955",86,152.14KB
+lcm,Latn,Tungag,Austronesian,lcm_Latn,"112,044",91,152.09KB
+nif,Latn,Nek,Trans-New Guinea,nif_Latn,"92,529",56,151.95KB
+cof,Latn,Colorado,Barbacoan,cof_Latn,"80,036",99,151.50KB
+mbc,Latn,Macushi,Cariban,mbc_Latn,"80,313",82,150.45KB
+kvn,Latn,Border Kuna,Chibchan,kvn_Latn,"96,188",82,150.26KB
+mbh,Latn,Mangseng,Austronesian,mbh_Latn,"129,061",90,150.05KB
+rml,Latn,Baltic Romani,Indo-European,rml_Latn,"61,521",83,150.00KB
+mcp,Latn,Makaa,Niger-Congo,mcp_Latn,"62,209",135,149.90KB
+xmv,Latn,Antankarana Malagasy,Austronesian,xmv_Latn,"76,401",181,149.85KB
+xtd,Latn,Diuxi-Tilantongo Mixtec,Otomanguean,xtd_Latn,"83,645",106,149.83KB
+nki,Latn,Thangal Naga,Sino-Tibetan,nki_Latn,"122,182",55,149.63KB
+bzd,Latn,Bribri,Chibchan,bzd_Latn,"92,936",92,149.08KB
+ame,Latn,Yanesha',Maipurean,ame_Latn,"64,018",70,148.08KB
+ptp,Latn,Patep,Austronesian,ptp_Latn,"117,259",92,146.93KB
+yre,Latn,Yaouré,Niger-Congo,yre_Latn,"99,753",732,145.89KB
+izz,Latn,Izii,Niger-Congo,izz_Latn,"78,000",78,145.53KB
+udu,Latn,Uduk,Nilo-Saharan,udu_Latn,"93,008",350,144.93KB
+rmq,Latn,Caló,Mixed language,rmq_Latn,"71,143",161,144.20KB
+apu,Latn,Apurinã,Maipurean,apu_Latn,"66,280",85,143.95KB
+nou,Latn,Ewage-Notu,Trans-New Guinea,nou_Latn,"103,371",85,141.81KB
+bps,Latn,Sarangani Blaan,Austronesian,bps_Latn,"71,258",91,141.40KB
+xed,Latn,Hdi,Afro-Asiatic,xed_Latn,"77,558",87,141.17KB
+kkl,Latn,Kosarek Yale,Trans-New Guinea,kkl_Latn,"71,190",63,140.08KB
+lwg,Latn,Wanga,Niger-Congo,lwg_Latn,"48,394",167,139.97KB
+huv,Latn,San Mateo Del Mar Huave,Huavean,huv_Latn,"67,273",97,139.83KB
+urt,Latn,Urat,Torricelli,urt_Latn,"84,575",82,139.78KB
+idu,Latn,Idoma,Niger-Congo,idu_Latn,"80,982",151,139.45KB
+zas,Latn,Santo Domingo Albarradas Zapotec,Otomanguean,zas_Latn,"68,491",87,138.25KB
+pem,Latn,Phende,Niger-Congo,pem_Latn,"59,245",210,138.04KB
+mvp,Latn,Duri,Austronesian,mvp_Latn,"92,936",109,137.60KB
+beq,Latn,Beembe,Niger-Congo,beq_Latn,"67,947",84,137.26KB
+ogo,Latn,Khana,Niger-Congo,ogo_Latn,"76,901",189,136.34KB
+zaw,Latn,Mitla Zapotec,Otomanguean,zaw_Latn,"59,046",173,135.94KB
+dng,Cyrl,Dungan,Sino-Tibetan,dng_Cyrl,"47,849",107,135.51KB
+upv,Latn,Uripiv-Wala-Rano-Atchin,Austronesian,upv_Latn,"75,053",81,135.03KB
+gam,Latn,Kandawo,Trans-New Guinea,gam_Latn,"107,140",82,135.02KB
+fuq,Latn,Central-Eastern Niger Fulfulde,Niger-Congo,fuq_Latn,"196,999",27,134.96KB
+apw,Latn,Western Apache,Eyak-Athabaskan,apw_Latn,"51,912",73,134.45KB
+blt,Latn,Tai Dam,Kra-Dai,blt_Latn,"48,206",25,134.14KB
+pbb,Latn,Páez,Paezan,pbb_Latn,"48,136",103,133.77KB
+poi,Latn,Highland Popoluca,Mixe-Zoquean,poi_Latn,"62,705",92,133.55KB
+hnn,Latn,Hanunoo,Austronesian,hnn_Latn,"66,039",84,131.92KB
+tkl,Latn,Tokelau,Austronesian,tkl_Latn,"75,427",165,131.21KB
+yaq,Latn,Yaqui,Uto-Aztecan,yaq_Latn,"75,308",60,130.49KB
+okv,Latn,Orokaiva,Trans-New Guinea,okv_Latn,"90,974",112,129.79KB
+tku,Latn,Upper Necaxa Totonac,Totonacan,tku_Latn,"53,422",81,128.42KB
+kri,Latn,Krio,Creole,kri_Latn,"61,293",198,128.05KB
+sxb,Latn,Suba,Niger-Congo,sxb_Latn,"56,875",69,127.56KB
+kyg,Latn,Keyagana,Trans-New Guinea,kyg_Latn,"65,625",78,125.96KB
+ttc,Latn,Tektiteko,Mayan,ttc_Latn,"72,731",78,125.61KB
+ccp,Latn,Chakma,Indo-European,ccp_Latn,"60,638",229,125.32KB
+faa,Latn,Fasu,Trans-New Guinea,faa_Latn,"68,520",72,125.29KB
+bhg,Latn,Binandere,Trans-New Guinea,bhg_Latn,"67,775",63,124.99KB
+cpb,Latn,Ucayali-Yurúa Ashéninka,Maipurean,cpb_Latn,"45,557",86,124.59KB
+cpc,Latn,Ajyíninka Apurucayali,Maipurean,cpc_Latn,"43,451",74,124.47KB
+yrb,Latn,Yareba,Trans-New Guinea,yrb_Latn,"91,374",76,124.39KB
+lbj,Tibt,Ladakhi,Sino-Tibetan,lbj_Tibt,"60,582",52,124.39KB
+ncu,Latn,Chumburung,Niger-Congo,ncu_Latn,"74,228",83,123.96KB
+zaa,Latn,Sierra de Juárez Zapotec,Otomanguean,zaa_Latn,"75,595",59,123.49KB
+hot,Latn,Hote,Austronesian,hot_Latn,"88,383",103,123.38KB
+tue,Latn,Tuyuca,Tucanoan,tue_Latn,"52,110",80,123.21KB
+avt,Latn,Au,Torricelli,avt_Latn,"82,925",66,122.34KB
+eri,Latn,Ogea,Trans-New Guinea,eri_Latn,"73,085",118,122.16KB
+trq,Latn,San Martín Itunyoso Triqui,Otomanguean,trq_Latn,"80,879",62,122.11KB
+sda,Latn,Toraja-Sa'dan,Austronesian,sda_Latn,"51,122",57,121.42KB
+nko,Latn,Nkonya,Niger-Congo,nko_Latn,"50,518",70,121.09KB
+amk,Latn,Ambai,Austronesian,amk_Latn,"60,211",68,120.81KB
+bsq,Latn,Bassa,Niger-Congo,bsq_Latn,"68,521",117,120.68KB
+btd,Latn,Batak Dairi,Austronesian,btd_Latn,"48,312",80,120.14KB
+nuj,Latn,Nyole,Niger-Congo,nuj_Latn,"43,566",90,119.17KB
+gvn,Latn,Kuku-Yalanji,Australian,gvn_Latn,"59,251",87,118.67KB
+ttq,Latn,Tawallammat Tamajaq,Afro-Asiatic,ttq_Latn,"104,162",21,118.65KB
+got,Goth,Gothic,Indo-European,got_Goth,"22,321",118,116.98KB
+bfo,Latn,Malba Birifor,Niger-Congo,bfo_Latn,"75,551",312,116.82KB
+mgh,Latn,Makhuwa-Meetto,Niger-Congo,mgh_Latn,"61,371",174,116.20KB
+tav,Latn,Tatuyo,Tucanoan,tav_Latn,"62,920",47,115.84KB
+kdc,Latn,Kutu,Niger-Congo,kdc_Latn,"53,459",85,115.59KB
+guz,Latn,Gusii,Niger-Congo,guz_Latn,"43,250",124,115.46KB
+bco,Latn,Kaluli,Trans-New Guinea,bco_Latn,"58,544",60,114.21KB
+tdx,Latn,Tandroy-Mahafaly Malagasy,Austronesian,tdx_Latn,"62,152",94,113.35KB
+clu,Latn,Caluyanun,Austronesian,clu_Latn,"54,640",99,113.06KB
+mwn,Latn,Nyamwanga,Niger-Congo,mwn_Latn,"42,412",80,112.85KB
+pui,Latn,Puinave,Puinavean,pui_Latn,"42,959",28,112.01KB
+tna,Latn,Tacana,Tacanan,tna_Latn,"62,526",66,111.91KB
+aoz,Latn,Uab Meto,Austronesian,aoz_Latn,"50,520",186,111.88KB
+tke,Latn,Takwane,Niger-Congo,tke_Latn,"41,207",17,110.89KB
+icr,Latn,Islander Creole English,Creole,icr_Latn,"45,448",135,110.74KB
+wls,Latn,Wallisian,Austronesian,wls_Latn,"45,802",133,110.71KB
+ikk,Latn,Ika,Niger-Congo,ikk_Latn,"55,824",69,110.42KB
+azz,Latn,Highland Puebla Nahuatl,Uto-Aztecan,azz_Latn,"54,180",73,109.45KB
+ssd,Latn,Siroi,Trans-New Guinea,ssd_Latn,"64,030",70,108.90KB
+mbj,Latn,Nadëb,Puinavean,mbj_Latn,"70,601",42,108.88KB
+klt,Latn,Nukna,Trans-New Guinea,klt_Latn,"47,497",46,108.62KB
+dsh,Latn,Daasanach,Afro-Asiatic,dsh_Latn,"41,730",38,108.50KB
+lsi,Latn,Lashi,Sino-Tibetan,lsi_Latn,"81,862",75,108.03KB
+wnu,Latn,Usan,Trans-New Guinea,wnu_Latn,"72,030",62,107.84KB
+adz,Latn,Adzera,Austronesian,adz_Latn,"91,828",78,107.00KB
+mna,Latn,Mbula,Austronesian,mna_Latn,"71,145",59,106.88KB
+atd,Latn,Ata Manobo,Austronesian,atd_Latn,"59,605",91,106.53KB
+cbt,Latn,Chayahuita,Cahuapanan,cbt_Latn,"53,890",52,106.50KB
+nnq,Latn,Ngindo,Niger-Congo,nnq_Latn,"42,047",66,106.47KB
+bbj,Latn,Ghomálá',Niger-Congo,bbj_Latn,"75,712",50,106.42KB
+kbq,Latn,Kamano,Trans-New Guinea,kbq_Latn,"37,047",68,106.41KB
+rgu,Latn,Ringgou,Austronesian,rgu_Latn,"67,316",57,106.33KB
+kck,Latn,Kalanga,Niger-Congo,kck_Latn,"32,231",121,106.19KB
+kqc,Latn,Doromu-Koki,Trans-New Guinea,kqc_Latn,"62,673",68,106.01KB
+lcp,Thai,Western Lawa,Austro-Asiatic,lcp_Thai,"65,330",42,105.45KB
+kdl,Latn,Tsikimba,Niger-Congo,kdl_Latn,"62,404",60,105.13KB
+rng,Latn,Ronga,Niger-Congo,rng_Latn,"82,803",103,105.08KB
+yka,Latn,Yakan,Austronesian,yka_Latn,"48,760",48,104.91KB
+myu,Latn,Mundurukú,Tupian,myu_Latn,"53,952",60,104.77KB
+apn,Latn,Apinayé,Jean,apn_Latn,"72,575",45,104.64KB
+mit,Latn,Southern Puebla Mixtec,Otomanguean,mit_Latn,"48,300",60,104.46KB
+mio,Latn,Pinotepa Nacional Mixtec,Otomanguean,mio_Latn,"78,987",81,103.38KB
+ria,Latn,Riang (India),Sino-Tibetan,ria_Latn,"42,778",98,102.85KB
+zpo,Latn,Amatlán Zapotec,Otomanguean,zpo_Latn,"65,976",73,102.58KB
+kgk,Latn,Kaiwá,Tupian,kgk_Latn,"59,679",64,102.56KB
+cnw,Latn,Ngawn Chin,Sino-Tibetan,cnw_Latn,"61,951",19,102.50KB
+cut,Latn,Teutila Cuicatec,Otomanguean,cut_Latn,"71,517",80,102.27KB
+loq,Latn,Lobala,Niger-Congo,loq_Latn,"48,719",52,101.90KB
+kog,Latn,Cogui,Chibchan,kog_Latn,"37,469",113,101.64KB
+srr,Latn,Serer,Niger-Congo,srr_Latn,"55,282",90,101.62KB
+gdr,Latn,Wipi,Eastern Trans-Fly,gdr_Latn,"42,066",445,101.34KB
+etr,Latn,Edolo,Trans-New Guinea,etr_Latn,"61,451",56,101.11KB
+bla,Latn,Siksika,Algic,bla_Latn,"25,600",56,100.60KB
+akh,Latn,Angal Heneng,Trans-New Guinea,akh_Latn,"72,609",35,100.16KB
+min,Arab,Minangkabau,Austronesian,min_Arab,"30,418",59,100.09KB
+syb,Latn,Central Subanen,Austronesian,syb_Latn,"49,345",58,99.95KB
+nph,Latn,Phom Naga,Sino-Tibetan,nph_Latn,"57,691",17,99.70KB
+mih,Latn,Chayuco Mixtec,Otomanguean,mih_Latn,"68,192",114,99.60KB
+zpt,Latn,San Vicente Coatlán Zapotec,Otomanguean,zpt_Latn,"58,373",66,99.54KB
+miy,Latn,Ayutla Mixtec,Otomanguean,miy_Latn,"56,870",55,99.45KB
+not,Latn,Nomatsiguenga,Maipurean,not_Latn,"40,526",69,99.32KB
+soy,Latn,Miyobe,Niger-Congo,soy_Latn,"48,181",56,98.92KB
+tuf,Latn,Central Tunebo,Chibchan,tuf_Latn,"53,735",62,98.73KB
+ifu,Latn,Mayoyao Ifugao,Austronesian,ifu_Latn,"57,923",63,98.61KB
+kaq,Latn,Capanahua,Panoan,kaq_Latn,"42,455",66,98.41KB
+tsw,Latn,Tsishingini,Niger-Congo,tsw_Latn,"64,250",67,98.34KB
+myk,Latn,Mamara Senoufo,Niger-Congo,myk_Latn,"63,358",57,97.82KB
+plw,Latn,Brooke's Point Palawano,Austronesian,plw_Latn,"51,370",54,96.93KB
+lew,Latn,Ledo Kaili,Austronesian,lew_Latn,"36,827",162,96.60KB
+hch,Latn,Huichol,Uto-Aztecan,hch_Latn,"29,232",68,96.24KB
+prg,Latn,Prussian,Indo-European,prg_Latn,"34,934",136,95.41KB
+yva,Latn,Yawa,West Papuan,yva_Latn,"49,840",95,94.86KB
+ake,Latn,Akawaio,Cariban,ake_Latn,"55,524",59,94.65KB
+huu,Latn,Murui Huitoto,Witotoan,huu_Latn,"48,192",62,93.94KB
+qul,Latn,North Bolivian Quechua,Quechuan,qul_Latn,"35,245",51,93.43KB
+dhm,Latn,Zemba,Niger-Congo,dhm_Latn,"45,123",52,93.40KB
+far,Latn,Fataleka,Austronesian,far_Latn,"60,736",50,93.05KB
+cag,Latn,Nivaclé,Matacoan,cag_Latn,"44,479",85,93.05KB
+bwd,Latn,Bwaidoka,Austronesian,bwd_Latn,"39,918",65,92.89KB
+myx,Latn,Masaaba,Niger-Congo,myx_Latn,"36,698",102,92.16KB
+aba,Latn,Abé,Niger-Congo,aba_Latn,"40,910",162,92.15KB
+ycn,Latn,Yucuna,Maipurean,ycn_Latn,"42,688",40,92.06KB
+sey,Latn,Secoya,Tucanoan,sey_Latn,"38,985",56,91.91KB
+nhr,Latn,Naro,Khoe-Kwadi,nhr_Latn,"50,954",49,91.76KB
+wed,Latn,Wedau,Austronesian,wed_Latn,"49,253",98,91.75KB
+bkd,Latn,Binukid,Austronesian,bkd_Latn,"52,188",74,90.76KB
+wiu,Latn,Wiru,Trans-New Guinea,wiu_Latn,"51,357",57,90.68KB
+agt,Latn,Central Cagayan Agta,Austronesian,agt_Latn,"58,853",105,90.56KB
+yad,Latn,Yagua,Yaguan,yad_Latn,"31,140",52,90.31KB
+mir,Latn,Isthmus Mixe,Mixe-Zoquean,mir_Latn,"37,694",47,89.60KB
+mks,Latn,Silacayoapan Mixtec,Otomanguean,mks_Latn,"52,793",55,89.52KB
+miz,Latn,Coatzospan Mixtec,Otomanguean,miz_Latn,"50,792",50,89.37KB
+swb,Latn,Maore Comorian,Niger-Congo,swb_Latn,"45,304",16,89.23KB
+gwi,Latn,Gwichʼin,Eyak-Athabaskan,gwi_Latn,"35,065",40,88.56KB
+bhw,Latn,Biak,Austronesian,bhw_Latn,"32,537",181,88.47KB
+ige,Latn,Igede,Niger-Congo,ige_Latn,"47,797",59,88.46KB
+atg,Latn,Ivbie North-Okpela-Arhe,Niger-Congo,atg_Latn,"47,666",53,88.43KB
+orv,Cyrl,Old Russian,Indo-European,orv_Cyrl,"19,580",301,88.28KB
+amx,Latn,Anmatyerre,Australian,amx_Latn,"54,626",38,87.72KB
+kff,Telu,Koya,Dravidian,kff_Telu,"23,168",6,87.68KB
+cnl,Latn,Lalana Chinantec,Otomanguean,cnl_Latn,"48,218",50,87.48KB
+fub,Latn,Adamawa Fulfulde,Niger-Congo,fub_Latn,"34,647",71,87.35KB
+sxn,Latn,Sangir,Austronesian,sxn_Latn,"38,234",163,87.03KB
+ann,Latn,Obolo,Niger-Congo,ann_Latn,"40,506",120,86.06KB
+mwc,Latn,Are,Austronesian,mwc_Latn,"44,834",74,85.84KB
+kxm,Thai,Northern Khmer,Austro-Asiatic,kxm_Thai,"32,289",129,85.68KB
+lln,Latn,Lele (Chad),Afro-Asiatic,lln_Latn,"62,407",60,85.30KB
+anv,Latn,Denya,Niger-Congo,anv_Latn,"41,223",47,85.21KB
+mza,Latn,Santa María Zacatepec Mixtec,Otomanguean,mza_Latn,"59,073",49,85.10KB
+wbm,Latn,Wa,Austro-Asiatic,wbm_Latn,"50,308",40,84.81KB
+ngp,Latn,Ngulu,Niger-Congo,ngp_Latn,"36,366",53,84.37KB
+qxo,Latn,Southern Conchucos Ancash Quechua,Quechuan,qxo_Latn,"27,121",57,84.26KB
+kjb,Latn,Q'anjob'al,Mayan,kjb_Latn,"37,559",42,84.11KB
+spm,Latn,Akukem,Ramu-Lower Sepik,spm_Latn,"41,084",32,83.88KB
+nyf,Latn,Giryama,Niger-Congo,nyf_Latn,"32,862",75,83.83KB
+zao,Latn,Ozolotepec Zapotec,Otomanguean,zao_Latn,"48,115",63,83.73KB
+wmt,Latn,Walmajarri,Australian,wmt_Latn,"30,616",72,83.60KB
+boa,Latn,Bora,Witotoan,boa_Latn,"24,298",52,83.30KB
+qxl,Latn,Salasaca Highland Quichua,Quechuan,qxl_Latn,"30,675",56,83.02KB
+mjc,Latn,San Juan Colorado Mixtec,Otomanguean,mjc_Latn,"49,563",56,82.86KB
+auc,Latn,Waorani,Language isolate,auc_Latn,"39,524",38,82.33KB
+kub,Latn,Kutep,Niger-Congo,kub_Latn,"55,410",25,81.84KB
+ikw,Latn,Ikwere,Niger-Congo,ikw_Latn,"37,459",52,81.31KB
+aer,Latn,Eastern Arrernte,Australian,aer_Latn,"47,722",38,81.16KB
+cpu,Latn,Pichis Ashéninka,Maipurean,cpu_Latn,"27,891",32,79.94KB
+shp,Latn,Shipibo-Conibo,Panoan,shp_Latn,"33,688",74,79.21KB
+mib,Latn,Atatláhuca Mixtec,Otomanguean,mib_Latn,"48,688",49,79.14KB
+prf,Latn,Paranan,Austronesian,prf_Latn,"43,506",55,78.94KB
+laj,Latn,Lango (Uganda),Nilo-Saharan,laj_Latn,"43,730",51,78.87KB
+mck,Latn,Mbunda,Niger-Congo,mck_Latn,"37,712",64,78.54KB
+pib,Latn,Yine,Maipurean,pib_Latn,"28,187",57,78.05KB
+nkf,Latn,Inpui Naga,Sino-Tibetan,nkf_Latn,"40,918",77,77.94KB
+sil,Latn,Tumulung Sisaala,Niger-Congo,sil_Latn,"49,187",62,77.64KB
+abn,Latn,Abua,Niger-Congo,abn_Latn,"27,895",113,77.14KB
+sgh,Cyrl,Shughni,Indo-European,sgh_Cyrl,"17,252",41,77.09KB
+yam,Latn,Yamba,Niger-Congo,yam_Latn,"49,374",11,76.99KB
+yaa,Latn,Yaminahua,Panoan,yaa_Latn,"34,541",43,76.91KB
+lud,Latn,Ludian,Uralic,lud_Latn,"56,179",27,76.81KB
+zae,Latn,Yareni Zapotec,Otomanguean,zae_Latn,"36,731",43,76.47KB
+vmk,Latn,Makhuwa-Shirima,Niger-Congo,vmk_Latn,"32,578",21,76.44KB
+poy,Latn,Pogolo,Niger-Congo,poy_Latn,"29,638",43,76.01KB
+ign,Latn,Ignaciano,Maipurean,ign_Latn,"29,429",47,75.87KB
+mcb,Latn,Machiguenga,Maipurean,mcb_Latn,"23,268",51,75.72KB
+mqy,Latn,Manggarai,Austronesian,mqy_Latn,"27,243",42,74.81KB
+maj,Latn,Jalapa De Díaz Mazatec,Otomanguean,maj_Latn,"34,818",49,74.41KB
+pio,Latn,Piapoco,Maipurean,pio_Latn,"29,895",36,74.12KB
+whk,Latn,Wahau Kenyah,Austronesian,whk_Latn,"54,351",31,73.96KB
+mcf,Latn,Matsés,Panoan,mcf_Latn,"34,716",44,73.92KB
+lbk,Latn,Central Bontok,Austronesian,lbk_Latn,"36,989",40,73.76KB
+waj,Latn,Waffa,Trans-New Guinea,waj_Latn,"33,431",32,73.70KB
+gnb,Latn,Gangte,Sino-Tibetan,gnb_Latn,"30,816",38,73.43KB
+nhx,Latn,Isthmus-Mecayapan Nahuatl,Uto-Aztecan,nhx_Latn,"28,004",57,73.33KB
+kyu,Latn,Western Kayah,Sino-Tibetan,kyu_Latn,"20,386",51,73.26KB
+kqe,Latn,Kalagan,Austronesian,kqe_Latn,"48,782",52,72.72KB
+sba,Latn,Ngambay,Nilo-Saharan,sba_Latn,"45,418",18,72.71KB
+ace,Arab,Achinese,Austronesian,ace_Arab,"14,607",72,72.12KB
+syl,Beng,Sylheti,Indo-European,syl_Beng,"19,838",33,71.76KB
+gyr,Latn,Guarayu,Tupian,gyr_Latn,"34,447",46,71.74KB
+abz,Latn,Abui,Trans-New Guinea,abz_Latn,"29,812",156,71.41KB
+leh,Latn,Lenje,Niger-Congo,leh_Latn,"21,655",112,70.93KB
+rap,Latn,Rapanui,Austronesian,rap_Latn,"39,400",45,70.91KB
+ktu,Latn,Kituba (Democratic Republic of Congo),Creole,ktu_Latn,"27,243",104,70.86KB
+mfy,Latn,Mayo,Uto-Aztecan,mfy_Latn,"23,643",82,70.81KB
+kqf,Latn,Kakabai,Austronesian,kqf_Latn,"31,485",87,70.30KB
+oke,Latn,Okpe (Southwestern Edo),Niger-Congo,oke_Latn,"26,189",106,70.09KB
+box,Latn,Buamu,Niger-Congo,box_Latn,"35,209",35,69.93KB
+gah,Latn,Alekano,Trans-New Guinea,gah_Latn,"31,278",42,69.83KB
+cot,Latn,Caquinte,Maipurean,cot_Latn,"16,923",33,68.74KB
+mlh,Latn,Mape,Trans-New Guinea,mlh_Latn,"34,027",39,68.47KB
+drg,Latn,Rungus,Austronesian,drg_Latn,"28,500",53,68.46KB
+dru,Latn,Rukai,Austronesian,dru_Latn,"16,961",53,68.20KB
+cux,Latn,Tepeuxila Cuicatec,Otomanguean,cux_Latn,"35,861",35,68.20KB
+dln,Latn,Darlong,Sino-Tibetan,dln_Latn,"27,536",18,68.00KB
+hix,Latn,Hixkaryána,Cariban,hix_Latn,"43,372",39,67.72KB
+ati,Latn,Attié,Niger-Congo,ati_Latn,"30,644",95,66.83KB
+amf,Latn,Hamer-Banna,Afro-Asiatic,amf_Latn,"22,924",61,66.76KB
+for,Latn,Fore,Trans-New Guinea,for_Latn,"30,266",34,65.50KB
+xsu,Latn,Sanumá,Yanomaman,xsu_Latn,"53,927",17,65.28KB
+nsm,Latn,Sumi Naga,Sino-Tibetan,nsm_Latn,"24,526",75,65.20KB
+kgr,Latn,Abun,Language isolate,kgr_Latn,"29,327",36,64.98KB
+tar,Latn,Central Tarahumara,Uto-Aztecan,tar_Latn,"19,335",81,64.97KB
+mig,Latn,San Miguel El Grande Mixtec,Otomanguean,mig_Latn,"28,774",39,64.79KB
+law,Latn,Lauje,Austronesian,law_Latn,"32,449",54,64.41KB
+con,Latn,Cofán,Language isolate,con_Latn,"24,018",42,63.03KB
+ajg,Latn,Aja (Benin),Niger-Congo,ajg_Latn,"28,642",70,62.83KB
+kmm,Latn,Kom (India),Sino-Tibetan,kmm_Latn,"33,774",31,62.63KB
+ish,Latn,Esan,Niger-Congo,ish_Latn,"32,680",48,61.86KB
+tob,Latn,Toba,Guaykuruan,tob_Latn,"27,599",56,61.58KB
+xtm,Latn,Magdalena Peñasco Mixtec,Otomanguean,xtm_Latn,"39,364",37,61.25KB
+twx,Latn,Tewe,Niger-Congo,twx_Latn,"24,942",44,60.97KB
+cub,Latn,Cubeo,Tucanoan,cub_Latn,"27,571",35,60.81KB
+bsp,Latn,Baga Sitemu,Niger-Congo,bsp_Latn,"25,157",34,60.46KB
+jic,Latn,Tol,Jicaquean,jic_Latn,"37,283",37,59.71KB
+esi,Latn,North Alaskan Inupiatun,Eskimo-Aleut,esi_Latn,"14,454",29,59.29KB
+ood,Latn,Tohono O'odham,Uto-Aztecan,ood_Latn,"20,303",72,59.13KB
+wap,Latn,Wapishana,Maipurean,wap_Latn,"23,101",20,59.00KB
+zpi,Latn,Santa María Quiegolani Zapotec,Otomanguean,zpi_Latn,"30,693",54,58.57KB
+rel,Latn,Rendille,Afro-Asiatic,rel_Latn,"27,433",77,58.49KB
+njm,Latn,Angami Naga,Sino-Tibetan,njm_Latn,"18,242",12,58.24KB
+mhw,Latn,Mbukushu,Niger-Congo,mhw_Latn,"24,968",7,57.69KB
+ian,Latn,Iatmul,Sepik,ian_Latn,"33,976",31,57.67KB
+bav,Latn,Vengo,Niger-Congo,bav_Latn,"39,878",10,57.67KB
+dje,Latn,Zarma,Nilo-Saharan,dje_Latn,"30,657",77,57.65KB
+aui,Latn,Anuki,Austronesian,aui_Latn,"22,785",67,57.57KB
+kxw,Latn,Konai,Trans-New Guinea,kxw_Latn,"30,708",33,57.52KB
+ttj,Latn,Tooro,Niger-Congo,ttj_Latn,"20,075",32,57.05KB
+srq,Latn,Sirionó,Tupian,srq_Latn,"25,935",33,57.04KB
+mrg,Latn,Mising,Sino-Tibetan,mrg_Latn,"25,360",28,56.53KB
+yan,Latn,Mayangna,Misumalpan,yan_Latn,"24,480",42,56.29KB
+crl,Cans,Northern East Cree,Algic,crl_Cans,"15,795",20,56.18KB
+xmm,Latn,Manado Malay,Creole,xmm_Latn,"19,011",84,55.37KB
+sck,Deva,Sadri,Indo-European,sck_Deva,"13,128",27,55.26KB
+ebk,Latn,Eastern Bontok,Austronesian,ebk_Latn,"23,032",24,55.16KB
+nmo,Latn,Moyon Naga,Sino-Tibetan,nmo_Latn,"16,359",20,54.97KB
+nio,Cyrl,Nganasan,Uralic,nio_Cyrl,"15,845",3,54.36KB
+ahk,Latn,Akha,Sino-Tibetan,ahk_Latn,"30,719",53,54.32KB
+ksc,Latn,Southern Kalinga,Austronesian,ksc_Latn,"21,872",32,54.14KB
+kcg,Latn,Tyap,Niger-Congo,kcg_Latn,"18,504",114,53.83KB
+kei,Latn,Kei,Austronesian,kei_Latn,"24,609",22,53.66KB
+fue,Latn,Borgu Fulfulde,Niger-Congo,fue_Latn,"17,932",26,53.38KB
+ruf,Latn,Luguru,Niger-Congo,ruf_Latn,"15,850",32,53.35KB
+cjs,Cyrl,Shor,Turkic,cjs_Cyrl,"13,232",34,53.32KB
+cri,Latn,Sãotomense,Creole,cri_Latn,"26,771",102,53.16KB
+ker,Latn,Kera,Afro-Asiatic,ker_Latn,"15,456",13,53.14KB
+ons,Latn,Ono,Trans-New Guinea,ons_Latn,"26,860",27,52.62KB
+daa,Latn,Dangaléat,Afro-Asiatic,daa_Latn,"20,198",27,52.59KB
+zdj,Latn,Ngazidja Comorian,Niger-Congo,zdj_Latn,"16,837",61,52.26KB
+neb,Latn,Toura (Côte d'Ivoire),Niger-Congo,neb_Latn,"19,339",38,52.17KB
+srm,Latn,Saramaccan,Creole,srm_Latn,"23,571",147,52.13KB
+zav,Latn,Yatzachi Zapotec,Otomanguean,zav_Latn,"31,565",28,51.62KB
+sby,Latn,Soli,Niger-Congo,sby_Latn,"14,103",84,51.45KB
+zsr,Latn,Southern Rincon Zapotec,Otomanguean,zsr_Latn,"23,442",34,51.36KB
+pmf,Latn,Pamona,Austronesian,pmf_Latn,"24,450",35,51.25KB
+var,Latn,Huarijio,Uto-Aztecan,var_Latn,"21,206",25,51.18KB
+cme,Latn,Cerma,Niger-Congo,cme_Latn,"28,908",33,50.89KB
+dnw,Latn,Western Dani,Trans-New Guinea,dnw_Latn,"22,960",41,50.54KB
+lwo,Latn,Luwo,Nilo-Saharan,lwo_Latn,"24,839",28,50.48KB
+llb,Latn,Lolo,Niger-Congo,llb_Latn,"23,554",67,50.13KB
+xuo,Latn,Kuo,Niger-Congo,xuo_Latn,"25,125",134,50.04KB
+njn,Latn,Liangmai Naga,Sino-Tibetan,njn_Latn,"16,971",59,49.93KB
+ksp,Latn,Kaba,Nilo-Saharan,ksp_Latn,"22,091",23,49.62KB
+suc,Latn,Western Subanon,Austronesian,suc_Latn,"26,446",28,49.43KB
+daf,Latn,Dan,Mande,daf_Latn,"17,951",53,49.27KB
+tlb,Latn,Tobelo,West Papuan,tlb_Latn,"14,165",4,49.27KB
+gqr,Latn,Gor,Nilo-Saharan,gqr_Latn,"22,935",25,49.24KB
+any,Latn,Anyin,Niger-Congo,any_Latn,"22,507",21,49.02KB
+bxh,Latn,Buhutu,Austronesian,bxh_Latn,"20,592",55,48.97KB
+ghs,Latn,Guhu-Samane,Trans-New Guinea,ghs_Latn,"24,534",21,48.79KB
+plg,Latn,Pilagá,Guaykuruan,plg_Latn,"22,803",27,48.63KB
+mpt,Latn,Mian,Trans-New Guinea,mpt_Latn,"18,315",18,48.29KB
+tmd,Latn,Haruai,Piawi,tmd_Latn,"27,633",26,48.07KB
+tih,Latn,Timugon Murut,Austronesian,tih_Latn,"23,087",112,47.98KB
+cjo,Latn,Ashéninka Pajonal,Maipurean,cjo_Latn,"19,861",10,47.89KB
+pov,Latn,Upper Guinea Crioulo,Creole,pov_Latn,"19,301",56,47.23KB
+kmy,Latn,Koma,Niger-Congo,kmy_Latn,"22,955",32,47.04KB
+cjk,Latn,Chokwe,Niger-Congo,cjk_Latn,"15,180",44,46.99KB
+tpw,Latn,Lingua Geral Paulista,Tupian,tpw_Latn,"13,796",5,46.62KB
+snw,Latn,Selee,Niger-Congo,snw_Latn,"18,814",24,46.54KB
+mim,Latn,Alacatlatzala Mixtec,Otomanguean,mim_Latn,"27,583",22,46.34KB
+uth,Latn,ut-Hun,Niger-Congo,uth_Latn,"24,088",20,46.11KB
+mns,Cyrl,Mansi,Uralic,mns_Cyrl,"10,060",16,46.10KB
+are,Latn,Western Arrarnta,Australian,are_Latn,"17,212",29,45.84KB
+arp,Latn,Arapaho,Algic,arp_Latn,"15,749",21,45.75KB
+pne,Latn,Western Penan,Austronesian,pne_Latn,"23,817",12,45.62KB
+lip,Latn,Sekpele,Niger-Congo,lip_Latn,"17,865",23,45.36KB
+muy,Latn,Muyang,Afro-Asiatic,muy_Latn,"26,196",24,45.31KB
+mlu,Latn,To'abaita,Austronesian,mlu_Latn,"20,322",48,44.89KB
+njb,Latn,Nocte Naga,Sino-Tibetan,njb_Latn,"18,097",24,44.40KB
+dur,Latn,Dii,Niger-Congo,dur_Latn,"18,339",18,43.98KB
+kvg,Latn,Kuni-Boazi,Trans-New Guinea,kvg_Latn,"21,868",19,43.96KB
+ldi,Latn,Laari,Niger-Congo,ldi_Latn,"18,928",43,43.85KB
+mrq,Latn,North Marquesan,Austronesian,mrq_Latn,"29,407",35,43.65KB
+wlx,Latn,Wali (Ghana),Niger-Congo,wlx_Latn,"23,409",14,43.35KB
+mta,Latn,Cotabato Manobo,Austronesian,mta_Latn,"23,934",14,43.23KB
+nlg,Latn,Gela,Austronesian,nlg_Latn,"21,639",27,42.83KB
+pmq,Latn,Northern Pame,Otomanguean,pmq_Latn,"11,218",11,42.62KB
+qva,Latn,Ambo-Pasco Quechua,Quechuan,qva_Latn,"11,843",20,42.57KB
+cjv,Latn,Chuave,Trans-New Guinea,cjv_Latn,"26,174",19,42.42KB
+kmk,Latn,Limos Kalinga,Austronesian,kmk_Latn,"14,683",24,42.15KB
+kny,Latn,Kanyok,Niger-Congo,kny_Latn,"39,375",34,42.12KB
+bcw,Latn,Bana,Afro-Asiatic,bcw_Latn,"22,470",14,42.03KB
+wib,Latn,Southern Toussian,Niger-Congo,wib_Latn,"21,763",24,41.33KB
+adh,Latn,Adhola,Nilo-Saharan,adh_Latn,"12,463",56,41.03KB
+sdq,Latn,Semandang,Austronesian,sdq_Latn,"15,026",41,40.55KB
+nlc,Latn,Nalca,Trans-New Guinea,nlc_Latn,"11,267",4,39.55KB
+ktj,Latn,Plapo Krumen,Niger-Congo,ktj_Latn,"30,878",14,39.47KB
+nhk,Latn,Isthmus-Cosoleacaque Nahuatl,Uto-Aztecan,nhk_Latn,"18,701",104,39.38KB
+fan,Latn,Fang (Equatorial Guinea),Niger-Congo,fan_Latn,"14,907",61,39.36KB
+mhy,Latn,Ma'anyan,Austronesian,mhy_Latn,"12,499",11,39.12KB
+kgf,Latn,Kube,Trans-New Guinea,kgf_Latn,"14,496",19,39.09KB
+mhi,Latn,Ma'di,Nilo-Saharan,mhi_Latn,"17,778",29,39.01KB
+nav,Latn,Navajo,Eyak-Athabaskan,nav_Latn,"9,874",28,38.92KB
+frd,Latn,Fordata,Austronesian,frd_Latn,"17,351",22,38.89KB
+ses,Latn,Koyraboro Senni Songhai,Nilo-Saharan,ses_Latn,"14,353",40,38.84KB
+uri,Latn,Urim,Torricelli,uri_Latn,"14,482",34,38.73KB
+old,Latn,Mochi,Niger-Congo,old_Latn,"10,734",28,38.67KB
+kru,Deva,Kurukh,Dravidian,kru_Deva,"9,946",15,38.44KB
+stp,Latn,Southeastern Tepehuan,Uto-Aztecan,stp_Latn,"15,996",16,37.95KB
+cul,Latn,Culina,Arauan,cul_Latn,"15,528",14,37.76KB
+mzz,Latn,Maiadomu,Austronesian,mzz_Latn,"21,966",20,37.69KB
+bdq,Latn,Bahnar,Austro-Asiatic,bdq_Latn,"15,813",42,37.62KB
+oto,Latn,Otomian languages,Oto-Manguean,oto_Latn,"11,548",19,37.39KB
+tpp,Latn,Pisaflores Tepehua,Totonacan,tpp_Latn,"13,702",25,36.89KB
+lai,Latn,Lambya,Niger-Congo,lai_Latn,"10,110",32,36.62KB
+xog,Latn,Soga,Niger-Congo,xog_Latn,"9,099",40,36.52KB
+nbc,Latn,Chang Naga,Sino-Tibetan,nbc_Latn,"6,271",14,36.28KB
+ncq,Laoo,Northern Katang,Austro-Asiatic,ncq_Laoo,"21,566",14,36.08KB
+bqj,Latn,Bandial,Niger-Congo,bqj_Latn,"9,823",19,35.96KB
+bmk,Latn,Ghayavi,Austronesian,bmk_Latn,"19,636",16,35.59KB
+ddg,Latn,Fataluku,Trans-New Guinea,ddg_Latn,"17,773",45,35.49KB
+ade,Latn,Adele,Niger-Congo,ade_Latn,"33,368",14,35.15KB
+adi,Latn,Adi,Sino-Tibetan,adi_Latn,"7,970",21,35.09KB
+mnb,Latn,Muna,Austronesian,mnb_Latn,"9,111",10,34.83KB
+nfa,Latn,Dhao,Austronesian,nfa_Latn,"19,184",17,34.70KB
+swk,Latn,Malawi Sena,Niger-Congo,swk_Latn,"12,749",11,34.65KB
+bwu,Latn,Buli (Ghana),Niger-Congo,bwu_Latn,"17,650",28,34.46KB
+zpq,Latn,Zoogocho Zapotec,Otomanguean,zpq_Latn,"9,956",11,34.32KB
+taw,Latn,Tai,Trans-New Guinea,taw_Latn,"18,725",20,33.75KB
+szb,Latn,Ngalum,Trans-New Guinea,szb_Latn,"10,101",2,33.39KB
+tbl,Latn,Tboli,Austronesian,tbl_Latn,"23,004",27,33.33KB
+obo,Latn,Obo Manobo,Austronesian,obo_Latn,"12,741",29,33.31KB
+mzk,Latn,Nigeria Mambila,Niger-Congo,mzk_Latn,"14,304",12,33.25KB
+omb,Latn,East Ambae,Austronesian,omb_Latn,"15,919",33,33.09KB
+djk,Latn,Eastern Maroon Creole,Creole,djk_Latn,"12,287",79,33.02KB
+tnc,Latn,Tanimuca-Retuarã,Tucanoan,tnc_Latn,"8,687",13,32.87KB
+ntp,Latn,Northern Tepehuan,Uto-Aztecan,ntp_Latn,"10,021",19,32.82KB
+qus,Latn,Santiago del Estero Quichua,Quechuan,qus_Latn,"14,271",7,32.81KB
+otd,Latn,Ot Danum,Austronesian,otd_Latn,"10,998",2,32.60KB
+whg,Latn,North Wahgi,Trans-New Guinea,whg_Latn,"17,846",26,32.60KB
+lun,Latn,Lunda,Niger-Congo,lun_Latn,"7,973",8,32.44KB
+dug,Latn,Duruma,Niger-Congo,dug_Latn,"9,002",19,32.14KB
+lnd,Latn,Lundayeh,Austronesian,lnd_Latn,"11,386",16,31.93KB
+cly,Latn,Eastern Highland Chatino,Otomanguean,cly_Latn,"7,336",38,31.92KB
+nnp,Latn,Wancho Naga,Sino-Tibetan,nnp_Latn,"6,683",32,31.78KB
+fuv,Arab,Nigerian Fulfulde,Niger-Congo,fuv_Arab,"8,749",16,31.58KB
+pse,Latn,Central Malay,Austronesian,pse_Latn,"9,000",4,31.38KB
+msc,Latn,Sankaran Maninka,Niger-Congo,msc_Latn,"15,609",14,31.19KB
+wba,Latn,Warao,Language isolate,wba_Latn,"10,455",59,31.14KB
+mbd,Latn,Dibabawon Manobo,Austronesian,mbd_Latn,"12,349",11,31.05KB
+maw,Latn,Mampruli,Niger-Congo,maw_Latn,"11,889",31,30.93KB
+tro,Latn,Tarao Naga,Sino-Tibetan,tro_Latn,"7,367",32,30.47KB
+kak,Latn,Kalanguya,Austronesian,kak_Latn,"10,029",36,30.37KB
+ojb,Latn,Northwestern Ojibwa,Algic,ojb_Latn,"9,944",13,30.36KB
+tmc,Latn,Tumak,Afro-Asiatic,tmc_Latn,"6,858",10,30.29KB
+mfh,Latn,Matal,Afro-Asiatic,mfh_Latn,"15,357",18,30.14KB
+zsm,Arab,Standard Malay,Austronesian,zsm_Arab,"5,075",31,30.03KB
+rhg,Latn,Rohingya,Indo-European,rhg_Latn,"7,621",20,29.93KB
+apt,Latn,Apatani,Sino-Tibetan,apt_Latn,"8,199",36,29.90KB
+shu,Arab,Chadian Arabic,Afro-Asiatic,shu_Arab,"6,084",18,29.54KB
+zad,Latn,Cajonos Zapotec,Otomanguean,zad_Latn,"16,734",23,29.29KB
+wsg,Telu,Adilabad Gondi,Dravidian,wsg_Telu,"4,914",17,29.28KB
+nre,Latn,Southern Rengma Naga,Sino-Tibetan,nre_Latn,"7,257",17,29.23KB
+pfe,Latn,Pere,Niger-Congo,pfe_Latn,"6,188",18,29.17KB
+rjs,Deva,Rajbanshi,Indo-European,rjs_Deva,"8,386",6,28.85KB
+kle,Deva,Kulung (Nepal),Sino-Tibetan,kle_Deva,"4,061",7,28.80KB
+dks,Latn,Southeastern Dinka,Nilo-Saharan,dks_Latn,"8,991",18,28.78KB
+mog,Latn,Mongondow,Austronesian,mog_Latn,"7,656",23,28.67KB
+moa,Latn,Mwan,Niger-Congo,moa_Latn,"14,535",8,28.55KB
+nnw,Latn,Southern Nuni,Niger-Congo,nnw_Latn,"9,922",19,28.51KB
+alj,Latn,Alangan,Austronesian,alj_Latn,"8,060",24,28.49KB
+xsb,Latn,Sambal,Austronesian,xsb_Latn,"9,435",52,28.33KB
+nst,Latn,Tase Naga,Sino-Tibetan,nst_Latn,"4,047",9,28.10KB
+tuv,Latn,Turkana,Nilo-Saharan,tuv_Latn,"9,383",30,27.77KB
+wlv,Latn,Wichí Lhamtés Vejoz,Matacoan,wlv_Latn,"18,575",14,27.65KB
+lad,Hebr,Ladino,Indo-European,lad_Hebr,"5,935",39,27.57KB
+mtg,Latn,Una,Trans-New Guinea,mtg_Latn,"10,125",12,27.50KB
+niy,Latn,Ngiti,Nilo-Saharan,niy_Latn,"8,202",10,27.45KB
+mgo,Latn,Meta',Niger-Congo,mgo_Latn,"3,220",7,27.37KB
+cdf,Latn,Chiru,Sino-Tibetan,cdf_Latn,"9,545",16,27.06KB
+biu,Latn,Biete,Sino-Tibetan,biu_Latn,"9,245",21,26.93KB
+smt,Latn,Simte,Sino-Tibetan,smt_Latn,"9,061",15,26.85KB
+way,Latn,Wayana,Cariban,way_Latn,"8,505",14,26.73KB
+duo,Latn,Dupaninan Agta,Austronesian,duo_Latn,"10,279",10,26.70KB
+chq,Latn,Quiotepec Chinantec,Otomanguean,chq_Latn,"11,812",10,26.64KB
+mph,Latn,Maung,Australian,mph_Latn,"12,137",7,26.63KB
+dtb,Latn,Labuk-Kinabatangan Kadazan,Austronesian,dtb_Latn,"6,538",20,26.55KB
+urw,Latn,Sop,Trans-New Guinea,urw_Latn,"4,375",6,26.40KB
+nzm,Latn,Zeme Naga,Sino-Tibetan,nzm_Latn,"6,837",16,26.27KB
+kpj,Latn,Karajá,Karajá,kpj_Latn,"8,347",17,26.04KB
+mgm,Latn,Mambae,Austronesian,mgm_Latn,"9,753",36,26.04KB
+fmu,Deva,Far Western Muria,Dravidian,fmu_Deva,"3,657",14,26.04KB
+kmd,Latn,Majukayang Kalinga,Austronesian,kmd_Latn,"7,520",22,25.40KB
+ife,Latn,Ifè,Niger-Congo,ife_Latn,"5,434",16,25.39KB
+sld,Latn,Sissala,Niger-Congo,sld_Latn,"3,544",15,25.14KB
+kqo,Latn,Eastern Krahn,Niger-Congo,kqo_Latn,"7,331",24,25.12KB
+mtj,Latn,Moskona,East Bird’s Head-Sentani,mtj_Latn,"5,955",3,24.90KB
+zpj,Latn,Quiavicuzas Zapotec,Otomanguean,zpj_Latn,"8,514",21,24.78KB
+hvn,Latn,Sabu,Austronesian,hvn_Latn,"10,355",26,24.77KB
+rub,Latn,Gungu,Niger-Congo,rub_Latn,"8,643",10,24.63KB
+mkl,Latn,Mokole,Niger-Congo,mkl_Latn,"9,701",12,24.60KB
+ajz,Latn,Amri Karbi,Sino-Tibetan,ajz_Latn,"3,374",14,24.50KB
+pss,Latn,Kaulong,Austronesian,pss_Latn,"3,825",23,24.35KB
+tem,Latn,Timne,Niger-Congo,tem_Latn,"9,514",16,24.34KB
+ots,Latn,Estado de México Otomi,Otomanguean,ots_Latn,"7,054",25,24.13KB
+kvj,Latn,Psikye,Afro-Asiatic,kvj_Latn,"4,801",7,24.10KB
+qvo,Latn,Napo Lowland Quechua,Quechuan,qvo_Latn,"5,002",12,24.01KB
+ivb,Latn,Ibatan,Austronesian,ivb_Latn,"5,056",31,24.01KB
+trs,Latn,Chicahuaxtla Triqui,Otomanguean,trs_Latn,"4,478",11,24.00KB
+sjo,Mong,Xibe,Tungusic,sjo_Mong,"2,741",8,23.98KB
+nmw,Latn,Nimoa,Austronesian,nmw_Latn,"7,720",18,23.87KB
+mda,Latn,Mada (Nigeria),Niger-Congo,mda_Latn,"5,512",11,23.73KB
+mny,Latn,Manyawa,Niger-Congo,mny_Latn,"3,570",30,23.71KB
+gvc,Latn,Guanano,Tucanoan,gvc_Latn,"7,502",14,23.65KB
+poe,Latn,San Juan Atzingo Popoloca,Otomanguean,poe_Latn,"8,020",11,23.54KB
+yim,Latn,Yimchungru Naga,Sino-Tibetan,yim_Latn,"6,158",4,23.49KB
+byv,Latn,Medumba,Niger-Congo,byv_Latn,"3,807",13,23.26KB
+ssx,Latn,Samberigi,Trans-New Guinea,ssx_Latn,"5,459",6,23.17KB
+naw,Latn,Nawuri,Niger-Congo,naw_Latn,"8,138",9,23.14KB
+iqw,Latn,Ikwo,Niger-Congo,iqw_Latn,"9,907",17,23.11KB
+kex,Deva,Kukna,Indo-European,kex_Deva,"1,768",7,22.94KB
+diu,Latn,Diriku,Niger-Congo,diu_Latn,"5,983",5,22.92KB
+met,Latn,Mato,Austronesian,met_Latn,"4,379",9,22.77KB
+myb,Latn,Mbay,Nilo-Saharan,myb_Latn,"4,543",10,22.58KB
+lap,Latn,Laka (Chad),Nilo-Saharan,lap_Latn,"6,336",12,22.42KB
+ndj,Latn,Ndamba,Niger-Congo,ndj_Latn,"2,976",8,22.33KB
+mgc,Latn,Morokodo,Nilo-Saharan,mgc_Latn,"2,437",4,22.26KB
+hav,Latn,Havu,Niger-Congo,hav_Latn,"3,310",24,22.25KB
+hop,Latn,Hopi,Uto-Aztecan,hop_Latn,"5,547",16,22.25KB
+vag,Latn,Vagla,Niger-Congo,vag_Latn,"11,404",33,22.23KB
+moc,Latn,Mocoví,Guaykuruan,moc_Latn,"4,945",6,22.16KB
+ifa,Latn,Amganad Ifugao,Austronesian,ifa_Latn,"5,871",10,21.97KB
+awb,Latn,Awa (Papua New Guinea),Trans-New Guinea,awb_Latn,"5,133",7,21.92KB
+kzf,Latn,Da'a Kaili,Austronesian,kzf_Latn,"5,478",31,21.86KB
+kyu,Kali,Western Kayah,Sino-Tibetan,kyu_Kali,"1,488",6,21.70KB
+mfg,Latn,Mogofin,Niger-Congo,mfg_Latn,"2,090",8,21.59KB
+lgl,Latn,Wala,Austronesian,lgl_Latn,"12,293",11,21.51KB
+goa,Latn,Guro,Niger-Congo,goa_Latn,"4,844",24,21.42KB
+rim,Latn,Nyaturu,Niger-Congo,rim_Latn,"2,774",6,21.33KB
+kuj,Latn,Kuria,Niger-Congo,kuj_Latn,"1,042",2,21.30KB
+ilb,Latn,Ila,Niger-Congo,ilb_Latn,"3,382",5,21.17KB
+adl,Latn,Galo,Sino-Tibetan,adl_Latn,744,1,21.17KB
+mzh,Latn,Wichí Lhamtés Güisnay,Matacoan,mzh_Latn,"5,136",8,21.14KB
+mus,Latn,Creek,Muskogean,mus_Latn,"2,422",9,21.11KB
+bvc,Latn,Baelelea,Austronesian,bvc_Latn,"2,829",21,21.04KB
+loe,Latn,Saluan,Austronesian,loe_Latn,"2,754",8,20.78KB
+ury,Latn,Orya,Tor-Kwerba,ury_Latn,"8,794",18,20.73KB
+gwr,Latn,Gwere,Niger-Congo,gwr_Latn,"3,783",7,20.70KB
+tui,Latn,Tupuri,Niger-Congo,tui_Latn,"6,859",20,20.55KB
+mzm,Latn,Mumuye,Niger-Congo,mzm_Latn,"1,378",2,20.48KB
+gbr,Latn,Gbagyi,Niger-Congo,gbr_Latn,"4,595",7,20.46KB
+sju,Latn,Ume Sami,Uralic,sju_Latn,"3,867",10,20.45KB
+lom,Latn,Loma (Liberia),Niger-Congo,lom_Latn,"2,901",13,20.43KB
+pkb,Latn,Pokomo,Niger-Congo,pkb_Latn,"4,289",9,20.41KB
+stn,Latn,Owa,Austronesian,stn_Latn,"8,181",65,20.35KB
+mip,Latn,Apasco-Apoala Mixtec,Otomanguean,mip_Latn,"6,836",12,20.32KB
+yup,Latn,Yukpa,Cariban,yup_Latn,"5,824",15,20.28KB
+tpm,Latn,Tampulma,Niger-Congo,tpm_Latn,"5,910",10,20.26KB
+agw,Latn,Kahua,Austronesian,agw_Latn,899,1,20.25KB
+mfk,Latn,North Mofu,Afro-Asiatic,mfk_Latn,"2,244",3,20.19KB
+mrv,Latn,Mangareva,Austronesian,mrv_Latn,"4,483",16,20.15KB
+tqo,Latn,Toaripi,Trans-New Guinea,tqo_Latn,"4,786",30,20.09KB
+dty,Deva,Dotyali,Indo-European,dty_Deva,"1,173",10,19.94KB
+nse,Latn,Nsenga,Niger-Congo,nse_Latn,"3,769",12,19.84KB
+ktb,Ethi,Kambaata,Afro-Asiatic,ktb_Ethi,634,2,19.82KB
+cgg,Latn,Chiga,Niger-Congo,cgg_Latn,"1,758",13,19.81KB
+awi,Latn,Aekyom,Trans-New Guinea,awi_Latn,"3,502",22,19.78KB
+tap,Latn,Taabwa,Niger-Congo,tap_Latn,"7,609",2,19.78KB
+jaa,Latn,Jamamadí,Arauan,jaa_Latn,"1,642",3,19.75KB
+ktz,Latn,Juǀʼhoan,Kx’a,ktz_Latn,"2,640",7,19.73KB
+btt,Latn,Bete-Bendi,Niger-Congo,btt_Latn,"6,754",5,19.46KB
+fud,Latn,East Futuna,Austronesian,fud_Latn,"14,624",13,19.45KB
+maf,Latn,Mafa,Afro-Asiatic,maf_Latn,"2,773",4,19.44KB
+pxm,Latn,Quetzaltepec Mixe,Mixe-Zoquean,pxm_Latn,"4,420",10,19.42KB
+giz,Latn,South Giziga,Afro-Asiatic,giz_Latn,"4,121",7,19.36KB
+tul,Latn,Tula,Niger-Congo,tul_Latn,752,1,19.35KB
+rnl,Latn,Ranglong,Sino-Tibetan,rnl_Latn,"4,292",5,19.33KB
+gej,Latn,Gen,Niger-Congo,gej_Latn,"4,314",7,19.24KB
+mcn,Latn,Masana,Afro-Asiatic,mcn_Latn,"6,859",10,19.10KB
+pww,Thai,Pwo Northern Karen,Sino-Tibetan,pww_Thai,"9,210",12,19.08KB
+cou,Latn,Wamey,Niger-Congo,cou_Latn,"2,571",5,19.06KB
+zca,Latn,Coatecas Altas Zapotec,Otomanguean,zca_Latn,"9,110",12,18.95KB
+lem,Latn,Nomaande,Niger-Congo,lem_Latn,"5,540",10,18.93KB
+yrl,Latn,Nhengatu,Tupian,yrl_Latn,"4,253",18,18.84KB
+atq,Latn,Aralle-Tabulahan,Austronesian,atq_Latn,"2,732",10,18.79KB
+sri,Latn,Siriano,Tucanoan,sri_Latn,"6,378",9,18.74KB
+sdo,Latn,Bukar-Sadung Bidayuh,Austronesian,sdo_Latn,"6,225",14,18.70KB
+iri,Latn,Rigwe,Niger-Congo,iri_Latn,"3,710",8,18.69KB
+gud,Latn,Yocoboué Dida,Niger-Congo,gud_Latn,"3,480",4,18.68KB
+bgz,Latn,Banggai,Austronesian,bgz_Latn,"5,526",14,18.64KB
+wwa,Latn,Waama,Niger-Congo,wwa_Latn,"4,545",4,18.57KB
+guq,Latn,Aché,Tupian,guq_Latn,"7,788",12,18.54KB
+bmq,Latn,Bomu,Niger-Congo,bmq_Latn,"5,707",23,18.50KB
+otn,Latn,Tenango Otomi,Otomanguean,otn_Latn,"7,701",8,18.41KB
+csk,Latn,Jola-Kasa,Niger-Congo,csk_Latn,"2,008",4,18.37KB
+lgm,Latn,Lega-Mwenga,Niger-Congo,lgm_Latn,"1,081",2,18.37KB
+tlj,Latn,Talinga-Bwisi,Niger-Congo,tlj_Latn,"1,381",3,18.29KB
+aim,Latn,Aimol,Sino-Tibetan,aim_Latn,"4,902",13,18.21KB
+ksj,Latn,Uare,Trans-New Guinea,ksj_Latn,"3,670",5,18.20KB
+jmc,Latn,Machame,Niger-Congo,jmc_Latn,"7,329",13,18.14KB
+wob,Latn,Wè Northern,Niger-Congo,wob_Latn,"4,644",10,18.06KB
+wat,Latn,Kaninuwa,Austronesian,wat_Latn,"2,555",8,18.02KB
+ksf,Latn,Bafia,Niger-Congo,ksf_Latn,617,1,17.87KB
+krx,Latn,Karon,Niger-Congo,krx_Latn,"4,964",4,17.84KB
+mev,Latn,Mano,Niger-Congo,mev_Latn,"3,533",14,17.73KB
+khy,Latn,Kele (Democratic Republic of Congo),Niger-Congo,khy_Latn,"1,515",9,17.70KB
+bth,Latn,Biatah Bidayuh,Austronesian,bth_Latn,"6,045",9,17.69KB
+sfw,Latn,Sehwi,Niger-Congo,sfw_Latn,"3,975",18,17.64KB
+tpa,Latn,Taupota,Austronesian,tpa_Latn,"3,333",5,17.60KB
+kqy,Ethi,Koorete,Afro-Asiatic,kqy_Ethi,"1,799",3,17.41KB
+pmx,Latn,Poumei Naga,Sino-Tibetan,pmx_Latn,"3,534",7,17.40KB
+ktm,Latn,Kurti,Austronesian,ktm_Latn,"6,022",8,17.34KB
+iry,Latn,Iraya,Austronesian,iry_Latn,"1,154",6,17.27KB
+etu,Latn,Ejagham,Niger-Congo,etu_Latn,"3,476",10,17.24KB
+lob,Latn,Lobi,Niger-Congo,lob_Latn,"2,295",7,17.13KB
+yuz,Latn,Yuracare,Language isolate,yuz_Latn,888,2,17.10KB
+gof,Ethi,Gofa,Afro-Asiatic,gof_Ethi,"1,728",4,17.03KB
+pos,Latn,Sayula Popoluca,Mixe-Zoquean,pos_Latn,503,1,17.03KB
+kpq,Latn,Korupun-Sela,Trans-New Guinea,kpq_Latn,"2,199",8,17.01KB
+ddn,Latn,Dendi (Benin),Nilo-Saharan,ddn_Latn,"1,845",5,17.01KB
+nxd,Latn,Ngando (Democratic Republic of Congo),Niger-Congo,nxd_Latn,"1,164",4,16.96KB
+phm,Latn,Phimbi,Niger-Congo,phm_Latn,741,2,16.90KB
+led,Latn,Lendu,Nilo-Saharan,led_Latn,"2,549",9,16.87KB
+dhg,Latn,Dhangu-Djangu,Australian,dhg_Latn,"3,542",3,16.69KB
+kbo,Latn,Keliko,Nilo-Saharan,kbo_Latn,"4,940",7,16.68KB
+gjn,Latn,Gonja,Niger-Congo,gjn_Latn,"8,221",12,16.57KB
+dip,Latn,Northeastern Dinka,Nilo-Saharan,dip_Latn,"3,031",6,16.44KB
+eka,Latn,Ekajuk,Niger-Congo,eka_Latn,"1,750",9,16.39KB
+ndi,Latn,Samba Leko,Niger-Congo,ndi_Latn,"1,834",5,16.36KB
+mor,Latn,Moro,Niger-Congo,mor_Latn,"2,667",2,16.17KB
+nri,Latn,Chokri Naga,Sino-Tibetan,nri_Latn,"4,128",3,16.06KB
+kby,Latn,Manga Kanuri,Nilo-Saharan,kby_Latn,"3,207",7,16.04KB
+crt,Latn,Iyojwa'ja Chorote,Matacoan,crt_Latn,"3,758",2,15.96KB
+lea,Latn,Lega-Shabunda,Niger-Congo,lea_Latn,323,1,15.89KB
+niq,Latn,Nandi,Nilo-Saharan,niq_Latn,"1,756",7,15.74KB
+pps,Latn,San Luís Temalacayuca Popoloca,Otomanguean,pps_Latn,902,3,15.67KB
+zpg,Latn,Guevea De Humboldt Zapotec,Otomanguean,zpg_Latn,"2,590",20,15.57KB
+crj,Cans,Southern East Cree,Algic,crj_Cans,"1,909",9,15.57KB
+kqs,Latn,Northern Kissi,Niger-Congo,kqs_Latn,"2,325",3,15.55KB
+nla,Latn,Ngombale,Niger-Congo,nla_Latn,"3,786",22,15.42KB
+hra,Latn,Hrangkhol,Sino-Tibetan,hra_Latn,"3,299",54,15.34KB
+nsa,Latn,Sangtam Naga,Sino-Tibetan,nsa_Latn,"1,699",2,15.34KB
+zam,Latn,Miahuatlán Zapotec,Otomanguean,zam_Latn,"1,908",12,15.31KB
+tig,Ethi,Tigre,Afro-Asiatic,tig_Ethi,"1,042",6,15.17KB
+anm,Latn,Anal,Sino-Tibetan,anm_Latn,"3,316",30,15.06KB
+abi,Latn,Abidji,Niger-Congo,abi_Latn,"1,381",3,14.96KB
+avn,Latn,Avatime,Niger-Congo,avn_Latn,"2,264",2,14.96KB
+nma,Latn,Maram Naga,Sino-Tibetan,nma_Latn,"4,706",6,14.90KB
+cho,Latn,Choctaw,Muskogean,cho_Latn,"3,341",10,14.87KB
+mpg,Latn,Marba,Afro-Asiatic,mpg_Latn,"5,223",6,14.83KB
+bkl,Latn,Berik,Tor-Kwerba,bkl_Latn,"5,489",4,14.82KB
+mse,Latn,Musey,Afro-Asiatic,mse_Latn,542,1,14.80KB
+guu,Latn,Yanomamö,Yanomaman,guu_Latn,"2,612",4,14.68KB
+dis,Latn,Dimasa,Sino-Tibetan,dis_Latn,"2,593",11,14.50KB
+asg,Latn,Cishingini,Niger-Congo,asg_Latn,466,1,14.44KB
+tnr,Latn,Ménik,Niger-Congo,tnr_Latn,"1,494",2,14.39KB
+bea,Latn,Beaver,Eyak-Athabaskan,bea_Latn,"3,969",5,14.37KB
+bbk,Latn,Babanki,Niger-Congo,bbk_Latn,"1,933",4,14.16KB
+knx,Latn,Kendayan,Austronesian,knx_Latn,"1,998",7,14.15KB
+kdh,Latn,Tem,Niger-Congo,kdh_Latn,"1,004",4,14.13KB
+pbi,Latn,Parkwa,Afro-Asiatic,pbi_Latn,"2,413",5,14.03KB
+nnh,Latn,Ngiemboon,Niger-Congo,nnh_Latn,"4,963",2,14.00KB
+vot,Latn,Votic,Uralic,vot_Latn,"1,527",11,13.97KB
+bsc,Latn,Bassari,Niger-Congo,bsc_Latn,"3,855",8,13.81KB
+vut,Latn,Vute,Niger-Congo,vut_Latn,"5,190",3,13.81KB
+bov,Latn,Tuwuli,Niger-Congo,bov_Latn,825,3,13.76KB
+bkq,Latn,Bakairí,Cariban,bkq_Latn,"1,821",5,13.67KB
+bkv,Latn,Bekwarra,Niger-Congo,bkv_Latn,"5,237",4,13.64KB
+nmz,Latn,Nawdm,Niger-Congo,nmz_Latn,"4,014",5,13.59KB
+bhz,Latn,Bada (Indonesia),Austronesian,bhz_Latn,"4,255",9,13.56KB
+kno,Latn,Kono (Sierra Leone),Niger-Congo,kno_Latn,"5,582",10,13.50KB
+nyk,Latn,Nyaneka,Niger-Congo,nyk_Latn,606,2,13.41KB
+nuz,Latn,Tlamacazapa Nahuatl,Uto-Aztecan,nuz_Latn,538,3,13.15KB
+ksb,Latn,Shambala,Niger-Congo,ksb_Latn,958,3,13.15KB
+tcc,Latn,Datooga,Nilo-Saharan,tcc_Latn,"3,000",7,13.11KB
+mnx,Latn,Manikion,East Bird’s Head-Sentani,mnx_Latn,737,2,13.10KB
+lis,Lisu,Lisu,Sino-Tibetan,lis_Lisu,"1,713",14,12.95KB
+bnj,Latn,Eastern Tawbuid,Austronesian,bnj_Latn,297,1,12.86KB
+kdj,Latn,Karamojong,Nilo-Saharan,kdj_Latn,"2,308",6,12.78KB
+lhi,Latn,Lahu Shi,Sino-Tibetan,lhi_Latn,"4,405",5,12.68KB
+kia,Latn,Kim,Niger-Congo,kia_Latn,"3,246",13,12.68KB
+kzn,Latn,Kokola,Niger-Congo,kzn_Latn,"1,557",4,12.62KB
+wew,Latn,Wejewa,Austronesian,wew_Latn,574,2,12.57KB
+gna,Latn,Kaansa,Niger-Congo,gna_Latn,"1,162",7,12.57KB
+mwm,Latn,Sar,Nilo-Saharan,mwm_Latn,"4,063",4,12.27KB
+lol,Latn,Mongo,Niger-Congo,lol_Latn,644,3,12.14KB
+ndz,Latn,Ndogo,Niger-Congo,ndz_Latn,"4,177",3,11.79KB
+khq,Latn,Koyra Chiini Songhay,Nilo-Saharan,khq_Latn,"1,040",10,11.71KB
+hlt,Latn,Matu Chin,Sino-Tibetan,hlt_Latn,"2,653",2,11.66KB
+urb,Latn,Urubú-Kaapor,Tupian,urb_Latn,"1,754",2,11.64KB
+ivv,Latn,Ivatan,Austronesian,ivv_Latn,"1,512",6,11.60KB
+ngc,Latn,Ngombe (Democratic Republic of Congo),Niger-Congo,ngc_Latn,582,3,11.60KB
+bom,Latn,Berom,Niger-Congo,bom_Latn,833,3,11.55KB
+twb,Latn,Western Tawbuid,Austronesian,twb_Latn,910,5,11.53KB
+pny,Latn,Pinyin,Niger-Congo,pny_Latn,230,1,11.50KB
+due,Latn,Umiray Dumaget Agta,Austronesian,due_Latn,"2,485",10,11.40KB
+npo,Latn,Pochuri Naga,Sino-Tibetan,npo_Latn,"3,193",5,11.24KB
+did,Latn,Didinga,Nilo-Saharan,did_Latn,"3,327",5,11.00KB
+log,Latn,Logo,Nilo-Saharan,log_Latn,"2,491",3,10.71KB
+njz,Latn,Nyishi,Sino-Tibetan,njz_Latn,"1,093",5,10.62KB
+oym,Latn,Wayampi,Tupian,oym_Latn,"3,178",2,10.53KB
+mua,Latn,Mundang,Niger-Congo,mua_Latn,"1,853",6,10.52KB
+gya,Latn,Northwest Gbaya,Niger-Congo,gya_Latn,"1,812",2,10.47KB
+nwb,Latn,Nyabwa,Niger-Congo,nwb_Latn,"3,018",5,10.44KB
+brx,Latn,Bodo (India),Sino-Tibetan,brx_Latn,160,1,10.26KB
+xbr,Latn,Kambera,Austronesian,xbr_Latn,"1,727",9,10.12KB
+nbe,Latn,Konyak Naga,Sino-Tibetan,nbe_Latn,"2,017",4,10.09KB
+bex,Latn,Jur Modo,Nilo-Saharan,bex_Latn,"2,361",3,10.00KB
+saj,Latn,Sahu,West Papuan,saj_Latn,310,2,9.91KB
+mvn,Latn,Minaveha,Austronesian,mvn_Latn,"2,578",4,9.75KB
+tik,Latn,Tikar,Niger-Congo,tik_Latn,"2,368",9,9.74KB
+jun,Orya,Juang,Austro-Asiatic,jun_Orya,433,2,9.73KB
+enx,Latn,Enxet,Mascoyan,enx_Latn,"2,200",4,9.67KB
+tbk,Latn,Calamian Tagbanwa,Austronesian,tbk_Latn,792,9,9.53KB
+ngb,Latn,Northern Ngbandi,Niger-Congo,ngb_Latn,"1,251",5,9.43KB
+eto,Latn,Eton (Cameroon),Niger-Congo,eto_Latn,"4,733",2,9.30KB
+sbs,Latn,Subiya,Niger-Congo,sbs_Latn,499,4,9.27KB
+max,Latn,North Moluccan Malay,Creole,max_Latn,748,4,9.21KB
+nng,Latn,Maring Naga,Sino-Tibetan,nng_Latn,820,2,9.17KB
+shk,Latn,Shilluk,Nilo-Saharan,shk_Latn,"2,135",3,8.93KB
+ald,Latn,Alladian,Niger-Congo,ald_Latn,126,1,8.92KB
+chj,Latn,Ojitlán Chinantec,Otomanguean,chj_Latn,"2,119",2,8.85KB
+bwi,Latn,Baniwa,Maipurean,bwi_Latn,127,1,8.82KB
+nnl,Latn,Northern Rengma Naga,Sino-Tibetan,nnl_Latn,89,1,8.72KB
+xnn,Latn,Northern Kankanay,Austronesian,xnn_Latn,425,3,8.44KB
+mzl,Latn,Mazatlán Mixe,Mixe-Zoquean,mzl_Latn,"1,475",1,8.35KB
+dos,Latn,Dogosé,Niger-Congo,dos_Latn,"1,421",2,8.19KB
+bmv,Latn,Bum,Niger-Congo,bmv_Latn,171,2,8.18KB
+aha,Latn,Ahanta,Niger-Congo,aha_Latn,214,2,8.10KB
+fad,Latn,Wagi,Trans-New Guinea,fad_Latn,"1,869",1,8.02KB
+ess,Latn,Central Siberian Yupik,Eskimo-Aleut,ess_Latn,933,4,7.96KB
+ayo,Latn,Ayoreo,Zamucoan,ayo_Latn,"1,007",3,7.90KB
+chr,Latn,Cherokee,Iroquoian,chr_Latn,399,4,7.86KB
+tzl,Latn,Talossan,Artificial Language,tzl_Latn,187,2,7.83KB
+sbd,Latn,Southern Samo,Niger-Congo,sbd_Latn,450,5,7.80KB
+hoc,Latn,Ho,Austro-Asiatic,hoc_Latn,97,1,7.74KB
+mug,Latn,Musgu,Afro-Asiatic,mug_Latn,"2,191",2,7.71KB
+soe,Latn,Songomeno,Niger-Congo,soe_Latn,403,5,7.63KB
+ldn,Latn,Láadan,Artificial Language,ldn_Latn,684,3,7.61KB
+kql,Latn,Kyenele,Yuat,kql_Latn,"1,259",1,7.25KB
+prq,Latn,Ashéninka Perené,Maipurean,prq_Latn,"1,640",2,7.20KB
+nwx,Deva,Middle Newar,Sino-Tibetan,nwx_Deva,740,1,7.00KB
+nhd,Latn,Chiripá,Tupian,nhd_Latn,92,1,6.97KB
+mnf,Latn,Mundani,Niger-Congo,mnf_Latn,355,5,6.94KB
+dbq,Latn,Daba,Afro-Asiatic,dbq_Latn,"1,318",1,6.93KB
+mkz,Latn,Makasae,Trans-New Guinea,mkz_Latn,138,1,6.91KB
+dow,Latn,Doyayo,Niger-Congo,dow_Latn,"1,197",1,6.70KB
+bwq,Latn,Southern Bobo Madaré,Niger-Congo,bwq_Latn,92,1,6.26KB
+kyu,Mymr,Western Kayah,Sino-Tibetan,kyu_Mymr,314,1,6.26KB
+pbc,Latn,Patamona,Cariban,pbc_Latn,72,1,6.17KB
+yas,Latn,Nugunu (Cameroon),Niger-Congo,yas_Latn,680,1,6.11KB
+Total,,,,,"2,712,064,831,293","4,567,627,672",7.92TB

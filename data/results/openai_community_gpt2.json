@@ -1,0 +1,67 @@
+{
+  "tokenizer": "openai-community/gpt2",
+  "benchmark_size_mb": 0.01,
+  "timestamp": 1750385302.280478,
+  "languages": {
+    "rus-Cyrl": {
+      "language_info": {
+        "iso_code": "rus",
+        "script": "Cyrl",
+        "name": "Russian"
+      },
+      "metrics": {
+        "bytes_per_token": 1.7097195042400521,
+        "total_bytes": 10484,
+        "total_tokens": 6132
+      }
+    },
+    "cmn-Hani": {
+      "language_info": {
+        "iso_code": "cmn",
+        "script": "Hani",
+        "name": "Mandarin Chinese"
+      },
+      "metrics": {
+        "bytes_per_token": 1.4038564542046064,
+        "total_bytes": 10484,
+        "total_tokens": 7468
+      }
+    },
+    "deu-Latn": {
+      "language_info": {
+        "iso_code": "deu",
+        "script": "Latn",
+        "name": "German"
+      },
+      "metrics": {
+        "bytes_per_token": 2.7065049044914815,
+        "total_bytes": 10485,
+        "total_tokens": 3874
+      }
+    },
+    "jpn-Jpan": {
+      "language_info": {
+        "iso_code": "jpn",
+        "script": "Jpan",
+        "name": "Japanese"
+      },
+      "metrics": {
+        "bytes_per_token": 2.247588424437299,
+        "total_bytes": 10485,
+        "total_tokens": 4665
+      }
+    },
+    "spa-Latn": {
+      "language_info": {
+        "iso_code": "spa",
+        "script": "Latn",
+        "name": "Spanish"
+      },
+      "metrics": {
+        "bytes_per_token": 3.0146635997699827,
+        "total_bytes": 10485,
+        "total_tokens": 3478
+      }
+    }
+  }
+}

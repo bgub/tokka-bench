@@ -1,0 +1,284 @@
+ada
+add data
+about 2 years ago
+agda
+add data
+about 2 years ago
+alloy
+add data
+about 2 years ago
+antlr
+add data
+about 2 years ago
+applescript
+add data
+about 2 years ago
+assembly
+add data
+about 2 years ago
+augeas
+add data
+about 2 years ago
+awk
+add data
+about 2 years ago
+batchfile
+add data
+about 2 years ago
+bluespec
+add data
+about 2 years ago
+c-sharp
+add data
+about 2 years ago
+c
+add data
+about 2 years ago
+clojure
+add data
+about 2 years ago
+cmake
+add data
+about 2 years ago
+coffeescript
+add data
+about 2 years ago
+common-lisp
+add data
+about 2 years ago
+cpp
+add data
+about 2 years ago
+css
+add data
+about 2 years ago
+cuda
+add data
+about 2 years ago
+dart
+add data
+about 2 years ago
+dockerfile
+add data
+about 2 years ago
+elixir
+add data
+about 2 years ago
+elm
+add data
+about 2 years ago
+emacs-lisp
+add data
+about 2 years ago
+erlang
+add data
+about 2 years ago
+f-sharp
+add data
+about 2 years ago
+fortran
+add data
+about 2 years ago
+git-commits-cleaned
+add data
+about 2 years ago
+github-issues-filtered-structured
+add data
+about 2 years ago
+glsl
+add data
+about 2 years ago
+go
+add data
+about 2 years ago
+groovy
+add data
+about 2 years ago
+haskell
+add data
+about 2 years ago
+html
+add data
+about 2 years ago
+idris
+add data
+about 2 years ago
+isabelle
+add data
+about 2 years ago
+java-server-pages
+add data
+about 2 years ago
+java
+add data
+about 2 years ago
+javascript
+add data
+about 2 years ago
+json
+add data
+about 2 years ago
+julia
+add data
+about 2 years ago
+jupyter-scripts-dedup-filtered
+add data
+about 2 years ago
+jupyter-structured-clean-dedup
+add data
+about 2 years ago
+kotlin
+add data
+about 2 years ago
+lean
+add data
+about 2 years ago
+literate-agda
+add data
+about 2 years ago
+literate-coffeescript
+add data
+about 2 years ago
+literate-haskell
+add data
+about 2 years ago
+lua
+add data
+about 2 years ago
+makefile
+add data
+about 2 years ago
+maple
+add data
+about 2 years ago
+markdown
+add data
+about 2 years ago
+mathematica
+add data
+about 2 years ago
+matlab
+add data
+about 2 years ago
+ocaml
+add data
+about 2 years ago
+pascal
+add data
+about 2 years ago
+perl
+add data
+about 2 years ago
+php
+add data
+about 2 years ago
+powershell
+add data
+about 2 years ago
+prolog
+add data
+about 2 years ago
+protocol-buffer
+add data
+about 2 years ago
+python
+add data
+about 2 years ago
+r
+add data
+about 2 years ago
+racket
+add data
+about 2 years ago
+restructuredtext
+add data
+about 2 years ago
+rmarkdown
+add data
+about 2 years ago
+ruby
+add data
+about 2 years ago
+rust
+add data
+about 2 years ago
+sas
+add data
+about 2 years ago
+scala
+add data
+about 2 years ago
+scheme
+add data
+about 2 years ago
+shell
+add data
+about 2 years ago
+smalltalk
+add data
+about 2 years ago
+solidity
+add data
+about 2 years ago
+sparql
+add data
+about 2 years ago
+sql
+add data
+about 2 years ago
+stan
+add data
+about 2 years ago
+standard-ml
+add data
+about 2 years ago
+stata
+add data
+about 2 years ago
+systemverilog
+add data
+about 2 years ago
+tcl
+add data
+about 2 years ago
+tcsh
+add data
+about 2 years ago
+tex
+add data
+about 2 years ago
+thrift
+add data
+about 2 years ago
+typescript
+add data
+about 2 years ago
+verilog
+add data
+about 2 years ago
+vhdl
+add data
+about 2 years ago
+visual-basic
+add data
+about 2 years ago
+xslt
+add data
+about 2 years ago
+yacc
+add data
+about 2 years ago
+yaml
+add data
+about 2 years ago
+zig
+add data
+about 2 years ago
+.gitattributes
+2.27 kB
+initial commit
+about 2 years ago
+README.md
+3.39 kB
+Update README.md
+about 2 years ago
