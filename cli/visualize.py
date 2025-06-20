@@ -15,8 +15,121 @@ import plotly.express as px
 import plotly.graph_objects as go
 import streamlit as st
 
+# Constants
+RESULTS_DIR = "data/results"
+CHART_HEIGHT = 500
+LEGEND_CONFIG = dict(orientation="h", yanchor="bottom", y=1.02, xanchor="right", x=1)
 
-def load_all_results(results_dir: str = "data/results") -> Dict[str, Any]:
+# Script grouping mappings
+SCRIPT_GROUPS = {
+    "Latn": "Latin",
+    "Cyrl": "Cyrillic",
+    "Arab": "Arabic",
+    "Hani": "CJK",
+    "Jpan": "CJK",
+    "Hang": "CJK",
+    "Deva": "Indic",
+    "Beng": "Indic",
+    "Guru": "Indic",
+    "Taml": "Indic",
+    "Telu": "Indic",
+    "Knda": "Indic",
+    "Mlym": "Indic",
+    "Gujr": "Indic",
+    "Orya": "Indic",
+    "Thai": "Southeast Asian",
+    "Laoo": "Southeast Asian",
+    "Khmr": "Southeast Asian",
+    "Mymr": "Southeast Asian",
+    "Grek": "Other European/Middle Eastern",
+    "Armn": "Other European/Middle Eastern",
+    "Geor": "Other European/Middle Eastern",
+    "Hebr": "Other European/Middle Eastern",
+}
+
+
+def detect_language_types(df: pd.DataFrame) -> Dict[str, List[str]]:
+    """Detect and categorize languages from the data."""
+    # Get languages in their original order from the data (preserves CSV order)
+    all_languages = list(df["language"].unique())
+
+    # Detect programming languages (those with "code" in script or name)
+    programming_languages = []
+    natural_languages = []
+    english_languages = []
+
+    for lang in all_languages:
+        lang_data = df[df["language"] == lang].iloc[0]
+        # Check if language name contains "(code)" or script is "code"
+        if "(code)" in str(lang).lower() or str(lang_data["script"]).lower() == "code":
+            programming_languages.append(lang)
+        elif "english" in str(lang).lower() and "fineweb" in str(lang).lower():
+            english_languages.append(lang)
+        else:
+            natural_languages.append(lang)
+
+    # Preserve proper ordering: English → Natural → Programming
+    ordered_all_languages = (
+        english_languages + natural_languages + programming_languages
+    )
+
+    # For natural languages, get top by order (FineWeb-2 size order)
+    top_natural = (
+        natural_languages[:10] if len(natural_languages) >= 10 else natural_languages
+    )
+
+    # Categories for natural languages
+    non_latin = (
+        df[(df["script"] != "Latn") & (~df["script"].isin(["code"]))]["language"]
+        .unique()
+        .tolist()
+    )
+
+    # Very rare languages (low efficiency)
+    lang_efficiency = (
+        df[~df["script"].isin(["code"])].groupby("language")["bytes_per_token"].mean()
+    )
+    very_rare = lang_efficiency[lang_efficiency < 1.8].index.tolist()
+
+    # European languages (Latin + some others)
+    european_scripts = ["Latn", "Cyrl", "Grek"]
+    european = df[df["script"].isin(european_scripts)]["language"].unique().tolist()
+
+    # Asian languages
+    asian_scripts = [
+        "Hani",
+        "Jpan",
+        "Hang",
+        "Thai",
+        "Laoo",
+        "Khmr",
+        "Mymr",
+        "Deva",
+        "Beng",
+        "Guru",
+        "Taml",
+        "Telu",
+        "Knda",
+        "Mlym",
+        "Gujr",
+        "Orya",
+    ]
+    asian = df[df["script"].isin(asian_scripts)]["language"].unique().tolist()
+
+    return {
+        "All Languages": ordered_all_languages,  # Properly ordered
+        "Natural Languages": natural_languages,
+        "Programming Languages": programming_languages,
+        "English": english_languages,
+        "Top Natural": top_natural,
+        "Non-Latin": non_latin,
+        "Very Rare": very_rare,
+        "European": european,
+        "Asian": asian,
+    }
+
+
+def load_all_results(results_dir: str = RESULTS_DIR) -> Dict[str, Any]:
     """Load all JSON result files from the results directory."""
     results = {}
     results_path = Path(results_dir)
@@ -28,9 +141,7 @@ def load_all_results(results_dir: str = "data/results") -> Dict[str, Any]:
         try:
             with open(json_file, "r", encoding="utf-8") as f:
                 data = json.load(f)
-                # Use filename (without .json) as key
-                key = json_file.stem
-                results[key] = data
+                results[json_file.stem] = data
         except Exception as e:
             st.warning(f"Could not load {json_file}: {e}")
 
@@ -45,6 +156,7 @@ def results_to_dataframe(results: Dict[str, Any]) -> pd.DataFrame:
         tokenizer_name = result.get("tokenizer", tokenizer_key)
         benchmark_size = result.get("benchmark_size_mb", 1.0)
         timestamp = result.get("timestamp", 0)
+        vocab_size = result.get("vocab_size", None)
 
         for lang_key, lang_data in result.get("languages", {}).items():
             lang_info = lang_data["language_info"]
@@ -62,6 +174,7 @@ def results_to_dataframe(results: Dict[str, Any]) -> pd.DataFrame:
                     "total_bytes": metrics["total_bytes"],
                     "total_tokens": metrics["total_tokens"],
                     "unique_tokens": metrics["unique_tokens"],
+                    "vocab_size": vocab_size,
                     "benchmark_size_mb": benchmark_size,
                     "timestamp": timestamp,
                     "datetime": datetime.fromtimestamp(timestamp)
@@ -73,79 +186,156 @@ def results_to_dataframe(results: Dict[str, Any]) -> pd.DataFrame:
     return pd.DataFrame(rows)
 
 
+def get_global_tokenizer_order(
+    df: pd.DataFrame, selected_tokenizers: List[str]
+) -> List[str]:
+    """Get consistent global ordering of tokenizers for all charts."""
+    filtered_df = df[df["tokenizer_key"].isin(selected_tokenizers)]
+    return sorted(filtered_df["tokenizer_name"].unique())
+
+
+def prepare_chart_data(
+    df: pd.DataFrame, selected_tokenizers: List[str]
+) -> pd.DataFrame:
+    """Prepare and sort dataframe with consistent tokenizer ordering for charts."""
+    filtered_df = df[df["tokenizer_key"].isin(selected_tokenizers)].copy()
+
+    # Apply consistent categorical ordering
+    global_order = get_global_tokenizer_order(df, selected_tokenizers)
+    filtered_df["tokenizer_name"] = pd.Categorical(
+        filtered_df["tokenizer_name"], categories=global_order, ordered=True
+    )
+
+    # Sort to ensure consistent color assignment across all charts
+    return filtered_df.sort_values("tokenizer_name")
+
+
+def create_bar_chart(
+    df: pd.DataFrame,
+    x: str,
+    y: str,
+    title: str,
+    y_label: str,
+    x_label: str = "Language",
+) -> go.Figure:
+    """Create a standardized bar chart with consistent styling."""
+    fig = px.bar(
+        df,
+        x=x,
+        y=y,
+        color="tokenizer_name",
+        title=title,
+        labels={y: y_label, x: x_label},
+        barmode="group",
+        height=CHART_HEIGHT,
+    )
+
+    fig.update_layout(xaxis_tickangle=-45, legend=LEGEND_CONFIG)
+    return fig
+
+
 def create_efficiency_chart(
     df: pd.DataFrame, selected_tokenizers: List[str]
 ) -> go.Figure:
     """Create a bar chart comparing bytes per token across languages."""
-    filtered_df = df[df["tokenizer_key"].isin(selected_tokenizers)]
-
-    fig = px.bar(
-        filtered_df,
+    chart_data = prepare_chart_data(df, selected_tokenizers)
+    return create_bar_chart(
+        chart_data,
         x="language",
         y="bytes_per_token",
-        color="tokenizer_name",
         title="Tokenization Efficiency (Bytes per Token)",
-        labels={
-            "bytes_per_token": "Bytes per Token (Higher = More Efficient)",
-            "language": "Language",
-        },
-        barmode="group",
-        height=500,
+        y_label="Bytes per Token (Higher = More Efficient)",
     )
-
-    fig.update_layout(
-        xaxis_tickangle=-45,
-        legend=dict(orientation="h", yanchor="bottom", y=1.02, xanchor="right", x=1),
-    )
-
-    return fig
 
 
 def create_coverage_chart(
     df: pd.DataFrame, selected_tokenizers: List[str]
 ) -> go.Figure:
     """Create a bar chart comparing unique tokens (vocabulary coverage)."""
-    filtered_df = df[df["tokenizer_key"].isin(selected_tokenizers)]
-
-    fig = px.bar(
-        filtered_df,
+    chart_data = prepare_chart_data(df, selected_tokenizers)
+    return create_bar_chart(
+        chart_data,
         x="language",
         y="unique_tokens",
-        color="tokenizer_name",
         title="Vocabulary Coverage (Unique Tokens Used)",
+        y_label="Unique Tokens (Higher = Better Coverage)",
+    )
+
+
+def create_vocab_coverage_scatter(
+    df: pd.DataFrame, selected_tokenizers: List[str]
+) -> go.Figure:
+    """Create a scatter plot showing average coverage vs vocabulary size."""
+    filtered_df = df[df["tokenizer_key"].isin(selected_tokenizers)]
+
+    # Calculate average coverage per tokenizer
+    summary_data = []
+    for tokenizer in selected_tokenizers:
+        tokenizer_df = filtered_df[filtered_df["tokenizer_key"] == tokenizer]
+        if not tokenizer_df.empty:
+            vocab_size = tokenizer_df["vocab_size"].iloc[0]
+            if pd.notna(vocab_size):  # Only include if vocab_size is available
+                avg_coverage = tokenizer_df["unique_tokens"].mean()
+                tokenizer_name = tokenizer_df["tokenizer_name"].iloc[0]
+
+                summary_data.append(
+                    {
+                        "tokenizer_name": tokenizer_name,
+                        "vocab_size": vocab_size,
+                        "avg_coverage": avg_coverage,
+                        "languages_count": len(tokenizer_df),
+                    }
+                )
+
+    if not summary_data:
+        # Return empty figure if no vocab size data available
+        fig = go.Figure()
+        fig.add_annotation(
+            text="Vocabulary size data not available<br>Run benchmarks with updated script",
+            xref="paper",
+            yref="paper",
+            x=0.5,
+            y=0.5,
+            xanchor="center",
+            yanchor="middle",
+            showarrow=False,
+            font=dict(size=16, color="gray"),
+        )
+        fig.update_layout(
+            title="Average Coverage vs Vocabulary Size",
+            xaxis=dict(visible=False),
+            yaxis=dict(visible=False),
+            height=CHART_HEIGHT,
+        )
+        return fig
+
+    summary_df = pd.DataFrame(summary_data)
+
+    # Apply consistent ordering
+    global_order = get_global_tokenizer_order(df, selected_tokenizers)
+    summary_df["tokenizer_name"] = pd.Categorical(
+        summary_df["tokenizer_name"], categories=global_order, ordered=True
+    )
+    summary_df = summary_df.sort_values("tokenizer_name")
+
+    fig = px.scatter(
+        summary_df,
+        x="vocab_size",
+        y="avg_coverage",
+        color="tokenizer_name",
+        size="languages_count",
+        hover_data=["languages_count"],
+        title="Average Coverage vs Vocabulary Size",
         labels={
-            "unique_tokens": "Unique Tokens (Higher = Better Coverage)",
-            "language": "Language",
+            "vocab_size": "Vocabulary Size (tokens)",
+            "avg_coverage": "Average Unique Tokens Used",
+            "languages_count": "Languages Tested",
         },
-        barmode="group",
-        height=500,
+        height=CHART_HEIGHT,
     )
 
     fig.update_layout(
-        xaxis_tickangle=-45,
-        legend=dict(orientation="h", yanchor="bottom", y=1.02, xanchor="right", x=1),
-    )
-
-    return fig
-
-
-def create_scatter_plot(df: pd.DataFrame, selected_tokenizers: List[str]) -> go.Figure:
-    """Create a scatter plot showing efficiency vs coverage."""
-    filtered_df = df[df["tokenizer_key"].isin(selected_tokenizers)]
-
-    fig = px.scatter(
-        filtered_df,
-        x="unique_tokens",
-        y="bytes_per_token",
-        color="tokenizer_name",
-        size="total_tokens",
-        hover_data=["language", "script"],
-        title="Efficiency vs Coverage (size = total tokens)",
-        labels={
-            "unique_tokens": "Unique Tokens (Coverage)",
-            "bytes_per_token": "Bytes per Token (Efficiency)",
-        },
-        height=500,
+        xaxis=dict(type="log", title="Vocabulary Size (log scale)"), showlegend=True
     )
 
     return fig
@@ -156,25 +346,25 @@ def create_summary_table(
 ) -> pd.DataFrame:
     """Create a summary table with rankings."""
     filtered_df = df[df["tokenizer_key"].isin(selected_tokenizers)]
-
-    # Calculate rankings for each metric
     summary_rows = []
 
     for tokenizer in selected_tokenizers:
         tokenizer_df = filtered_df[filtered_df["tokenizer_key"] == tokenizer]
         tokenizer_name = tokenizer_df["tokenizer_name"].iloc[0]
 
-        # Calculate averages and rankings
-        avg_efficiency = tokenizer_df["bytes_per_token"].mean()
-        avg_coverage = tokenizer_df["unique_tokens"].mean()
-        total_tokens = tokenizer_df["total_tokens"].sum()
+        vocab_size = (
+            tokenizer_df["vocab_size"].iloc[0]
+            if not tokenizer_df["vocab_size"].isna().iloc[0]
+            else None
+        )
 
         summary_rows.append(
             {
                 "Tokenizer": tokenizer_name,
-                "Avg Efficiency (bytes/token)": f"{avg_efficiency:.3f}",
-                "Avg Coverage (unique tokens)": f"{avg_coverage:.0f}",
-                "Total Tokens Processed": f"{total_tokens:,}",
+                "Vocab Size": f"{vocab_size:,}" if vocab_size else "N/A",
+                "Avg Efficiency (bytes/token)": f"{tokenizer_df['bytes_per_token'].mean():.3f}",
+                "Avg Coverage (unique tokens)": f"{tokenizer_df['unique_tokens'].mean():.0f}",
+                "Total Tokens Processed": f"{tokenizer_df['total_tokens'].sum():,}",
                 "Languages Tested": len(tokenizer_df),
             }
         )
@@ -183,84 +373,259 @@ def create_summary_table(
 
     # Sort by average efficiency (descending)
     summary_df["_sort_key"] = summary_df["Avg Efficiency (bytes/token)"].astype(float)
-    summary_df = summary_df.sort_values("_sort_key", ascending=False)
-    summary_df = summary_df.drop("_sort_key", axis=1)
+    summary_df = summary_df.sort_values("_sort_key", ascending=False).drop(
+        "_sort_key", axis=1
+    )
 
     return summary_df
 
 
-def create_script_grouping(df: pd.DataFrame) -> pd.DataFrame:
-    """Add script grouping for better visualization of 30+ languages."""
+def render_global_sidebar_controls(
+    df: pd.DataFrame, language_categories: Dict[str, List[str]]
+) -> tuple[List[str], List[str]]:
+    """Render global sidebar controls with category presets."""
+    st.sidebar.header("🎛️ Global Controls")
 
-    def get_script_group(script):
-        if script == "Latn":
-            return "Latin"
-        elif script == "Cyrl":
-            return "Cyrillic"
-        elif script in ["Arab"]:
-            return "Arabic"
-        elif script in ["Hani", "Jpan", "Hang"]:
-            return "CJK"
-        elif script in [
-            "Deva",
-            "Beng",
-            "Guru",
-            "Taml",
-            "Telu",
-            "Knda",
-            "Mlym",
-            "Gujr",
-            "Orya",
-        ]:
-            return "Indic"
-        elif script in ["Thai", "Laoo", "Khmr", "Mymr"]:
-            return "Southeast Asian"
-        elif script in ["Grek", "Armn", "Geor", "Hebr"]:
-            return "Other European/Middle Eastern"
-        else:
-            return "Other"
+    # Initialize session state for global selections
+    if "selected_tokenizers" not in st.session_state:
+        st.session_state.selected_tokenizers = sorted(df["tokenizer_key"].unique())
+    if "selected_languages" not in st.session_state:
+        st.session_state.selected_languages = list(df["language"].unique())
 
-    df = df.copy()
-    df["script_group"] = df["script"].apply(get_script_group)
-    return df
+    # Category preset buttons
+    st.sidebar.subheader("📂 Language Presets")
 
+    # Create preset buttons
+    preset_descriptions = {
+        "All Languages": "All available languages in proper order",
+        "English": "English from FineWeb sample-10BT",
+        "Natural Languages": "Human languages only",
+        "Programming Languages": "Code languages only",
+        "Top Natural": "Top 10 natural languages by size",
+        "Non-Latin": "Non-Latin script languages",
+        "Very Rare": "Languages with poor efficiency",
+        "European": "European languages",
+        "Asian": "Asian languages",
+    }
 
-def create_script_comparison_chart(
-    df: pd.DataFrame, selected_tokenizers: List[str]
-) -> go.Figure:
-    """Create a chart comparing tokenizer performance by script group."""
-    filtered_df = df[df["tokenizer_key"].isin(selected_tokenizers)]
+    # Create buttons in a nice layout
+    for category, languages in language_categories.items():
+        if category in preset_descriptions:
+            if st.sidebar.button(
+                f"{category} ({len(languages)})",
+                help=preset_descriptions[category],
+                use_container_width=True,
+            ):
+                st.session_state.selected_languages = languages
+                st.rerun()
 
-    # Add script grouping
-    filtered_df = create_script_grouping(filtered_df)
+    st.sidebar.divider()
 
-    # Calculate averages by script group and tokenizer
-    script_summary = (
-        filtered_df.groupby(["tokenizer_name", "script_group"])
-        .agg({"bytes_per_token": "mean", "unique_tokens": "mean"})
-        .reset_index()
+    # Global tokenizer selection
+    available_tokenizers = sorted(df["tokenizer_key"].unique())
+    selected_tokenizers = st.sidebar.multiselect(
+        "Select Tokenizers to Compare",
+        available_tokenizers,
+        default=st.session_state.selected_tokenizers,
+        key="global_tokenizers",
     )
 
-    fig = px.bar(
-        script_summary,
-        x="script_group",
-        y="bytes_per_token",
-        color="tokenizer_name",
-        title="Average Efficiency by Script Family",
-        labels={
-            "bytes_per_token": "Average Bytes per Token",
-            "script_group": "Script Family",
-        },
-        barmode="group",
-        height=500,
+    # Update session state
+    if selected_tokenizers != st.session_state.selected_tokenizers:
+        st.session_state.selected_tokenizers = selected_tokenizers
+
+    # Global language selection
+    all_languages = sorted(df["language"].unique())
+    selected_languages = st.sidebar.multiselect(
+        "Filter Languages",
+        all_languages,
+        default=st.session_state.selected_languages,
+        key="global_languages",
     )
 
-    fig.update_layout(
-        xaxis_tickangle=-45,
-        legend=dict(orientation="h", yanchor="bottom", y=1.02, xanchor="right", x=1),
+    # Update session state
+    if selected_languages != st.session_state.selected_languages:
+        st.session_state.selected_languages = selected_languages
+
+    st.sidebar.divider()
+
+    # Quick stats
+    st.sidebar.metric(
+        "Tokenizers Selected",
+        len(selected_tokenizers),
+        f"{len(available_tokenizers)} available",
+    )
+    st.sidebar.metric(
+        "Languages Selected", len(selected_languages), f"{len(all_languages)} available"
     )
 
-    return fig
+    return selected_tokenizers, selected_languages
+
+
+def render_main_content(
+    df: pd.DataFrame, selected_tokenizers: List[str], selected_languages: List[str]
+):
+    """Render the main dashboard content."""
+    if not selected_tokenizers:
+        st.warning("Please select at least one tokenizer to compare.")
+        return
+
+    if not selected_languages:
+        st.warning("Please select at least one language to view.")
+        return
+
+    # Filter dataframe based on global selections
+    display_df = df[
+        (df["tokenizer_key"].isin(selected_tokenizers))
+        & (df["language"].isin(selected_languages))
+    ]
+
+    if display_df.empty:
+        st.warning(
+            "No data available for the selected combination of tokenizers and languages."
+        )
+        return
+
+    # Analyze current selection
+    programming_langs = [
+        lang for lang in selected_languages if "(code)" in str(lang).lower()
+    ]
+    natural_langs = [
+        lang for lang in selected_languages if "(code)" not in str(lang).lower()
+    ]
+
+    # Selection summary
+    col1, col2, col3 = st.columns(3)
+    with col1:
+        st.metric(
+            "Total Languages",
+            len(selected_languages),
+            f"{len(programming_langs)} code + {len(natural_langs)} natural",
+        )
+    with col2:
+        st.metric("Programming Languages", len(programming_langs))
+    with col3:
+        st.metric("Natural Languages", len(natural_langs))
+
+    # Show current selection description
+    if len(programming_langs) > 0 and len(natural_langs) > 0:
+        st.info(
+            "🌐 **Mixed Selection**: Comparing both natural and programming languages"
+        )
+    elif len(programming_langs) > 0:
+        st.info("💻 **Programming Languages**: Analyzing code tokenization efficiency")
+    elif len(natural_langs) > 0:
+        st.info("🌍 **Natural Languages**: Analyzing human language tokenization")
+
+    # Summary table
+    st.subheader("📈 Summary Rankings")
+    summary_df = create_summary_table(display_df, selected_tokenizers)
+    st.dataframe(summary_df, use_container_width=True, hide_index=True)
+
+    # Charts section
+    st.subheader("📊 Detailed Analysis")
+
+    # Create tabs for different views
+    chart_tab1, chart_tab2, chart_tab3, raw_tab = st.tabs(
+        ["🚀 Efficiency", "🎯 Coverage", "📏 Vocab Analysis", "🔍 Raw Data"]
+    )
+
+    with chart_tab1:
+        st.write("#### Tokenization Efficiency (Bytes per Token)")
+        st.caption("Higher values = more efficient tokenization")
+        efficiency_chart = create_efficiency_chart(display_df, selected_tokenizers)
+        st.plotly_chart(efficiency_chart, use_container_width=True)
+
+        # Add programming language specific insights
+        if len(programming_langs) > 0:
+            st.info(
+                f"💻 **Programming Language Insights**: {len(programming_langs)} coding languages selected. Look for patterns in syntax-heavy vs. declarative languages."
+            )
+
+    with chart_tab2:
+        st.write("#### Vocabulary Coverage (Unique Tokens Used)")
+        st.caption("Higher values = better language coverage")
+        coverage_chart = create_coverage_chart(display_df, selected_tokenizers)
+        st.plotly_chart(coverage_chart, use_container_width=True)
+
+        # Add natural language specific insights
+        if len(natural_langs) > 0:
+            st.info(
+                f"🌍 **Natural Language Insights**: {len(natural_langs)} human languages selected. Higher unique tokens indicate better script/vocabulary support."
+            )
+
+    with chart_tab3:
+        st.write("#### Vocabulary Size Analysis")
+        st.caption("Relationship between tokenizer size and language coverage")
+
+        # Show overall scatter plot
+        st.write("##### Overall Analysis")
+        vocab_scatter = create_vocab_coverage_scatter(display_df, selected_tokenizers)
+        st.plotly_chart(vocab_scatter, use_container_width=True)
+
+        # Category-specific scatter plots
+        if len(programming_langs) > 0 and len(natural_langs) > 0:
+            st.write("##### By Language Type")
+
+            col1, col2 = st.columns(2)
+
+            with col1:
+                st.write("**🌍 Natural Languages Only**")
+                natural_df = display_df[display_df["language"].isin(natural_langs)]
+                if not natural_df.empty:
+                    natural_scatter = create_vocab_coverage_scatter(
+                        natural_df, selected_tokenizers
+                    )
+                    natural_scatter.update_layout(
+                        title="Natural Languages Coverage", height=400
+                    )
+                    st.plotly_chart(natural_scatter, use_container_width=True)
+                    st.caption(f"Analysis of {len(natural_langs)} natural languages")
+                else:
+                    st.info("No natural language data available")
+
+            with col2:
+                st.write("**💻 Programming Languages Only**")
+                prog_df = display_df[display_df["language"].isin(programming_langs)]
+                if not prog_df.empty:
+                    prog_scatter = create_vocab_coverage_scatter(
+                        prog_df, selected_tokenizers
+                    )
+                    prog_scatter.update_layout(
+                        title="Programming Languages Coverage", height=400
+                    )
+                    st.plotly_chart(prog_scatter, use_container_width=True)
+                    st.caption(
+                        f"Analysis of {len(programming_langs)} programming languages"
+                    )
+                else:
+                    st.info("No programming language data available")
+
+            st.info(
+                "🔬 **Mixed Analysis**: Compare how tokenizers handle structured code vs. natural language. Programming languages often show different coverage patterns."
+            )
+
+        elif len(programming_langs) > 0:
+            st.info(
+                "⚙️ **Code Analysis**: Examine how tokenizer vocabulary size affects code tokenization efficiency. Larger vocabularies may better handle diverse syntax patterns."
+            )
+        elif len(natural_langs) > 0:
+            st.info(
+                "🌐 **Language Analysis**: Observe how vocabulary size correlates with multilingual support. Larger tokenizers typically handle more languages effectively."
+            )
+
+    with raw_tab:
+        st.write("#### Complete Dataset")
+        st.dataframe(display_df, use_container_width=True)
+
+        # Add download option
+        csv = display_df.to_csv(index=False)
+        st.download_button(
+            label="📥 Download Data as CSV",
+            data=csv,
+            file_name=f"tokka_bench_data_{len(selected_tokenizers)}tokenizers_{len(selected_languages)}languages.csv",
+            mime="text/csv",
+        )
 
 
 def main():
@@ -274,7 +639,7 @@ def main():
 
     st.title("📊 Tokka-Bench: Tokenizer Comparison Dashboard")
     st.markdown(
-        "Compare tokenizer efficiency and language coverage across multiple models"
+        "Compare tokenizer efficiency and language coverage across natural and programming languages"
     )
 
     # Load data
@@ -290,87 +655,16 @@ def main():
 
     df = results_to_dataframe(results)
 
-    # Sidebar controls
-    st.sidebar.header("🎛️ Controls")
+    # Detect language types and categories
+    language_categories = detect_language_types(df)
 
-    # Tokenizer selection
-    available_tokenizers = sorted(df["tokenizer_key"].unique())
-    selected_tokenizers = st.sidebar.multiselect(
-        "Select Tokenizers to Compare",
-        available_tokenizers,
-        default=available_tokenizers,  # Select all by default
+    # Render global sidebar controls
+    selected_tokenizers, selected_languages = render_global_sidebar_controls(
+        df, language_categories
     )
 
-    if not selected_tokenizers:
-        st.warning("Please select at least one tokenizer to compare.")
-        return
-
-    # Language filtering
-    available_languages = sorted(df["language"].unique())
-    selected_languages = st.sidebar.multiselect(
-        "Filter Languages", available_languages, default=available_languages
-    )
-
-    # Filter dataframe
-    display_df = df[
-        (df["tokenizer_key"].isin(selected_tokenizers))
-        & (df["language"].isin(selected_languages))
-    ]
-
-    # Main content
-    col1, col2 = st.columns(2)
-
-    with col1:
-        st.metric(
-            "Tokenizers Loaded",
-            len(selected_tokenizers),
-            delta=f"{len(available_tokenizers)} total",
-        )
-
-    with col2:
-        st.metric(
-            "Languages Tested",
-            len(selected_languages),
-            delta=f"{len(available_languages)} total",
-        )
-
-    # Summary table
-    st.header("📈 Summary Rankings")
-    summary_df = create_summary_table(df, selected_tokenizers)
-    st.dataframe(summary_df, use_container_width=True, hide_index=True)
-
-    # Charts
-    st.header("📊 Detailed Comparisons")
-
-    # Efficiency chart
-    st.subheader("🚀 Tokenization Efficiency")
-    efficiency_chart = create_efficiency_chart(display_df, selected_tokenizers)
-    st.plotly_chart(efficiency_chart, use_container_width=True)
-
-    # Coverage chart
-    st.subheader("🎯 Vocabulary Coverage")
-    coverage_chart = create_coverage_chart(display_df, selected_tokenizers)
-    st.plotly_chart(coverage_chart, use_container_width=True)
-
-    # Scatter plot
-    st.subheader("⚡ Efficiency vs Coverage")
-    scatter_chart = create_scatter_plot(display_df, selected_tokenizers)
-    st.plotly_chart(scatter_chart, use_container_width=True)
-
-    # Script family comparison
-    st.subheader("🌍 Performance by Script Family")
-    if len(selected_tokenizers) > 1:
-        script_chart = create_script_comparison_chart(display_df, selected_tokenizers)
-        st.plotly_chart(script_chart, use_container_width=True)
-        st.markdown(
-            "*This chart groups languages by script family to reveal broader patterns in tokenizer bias.*"
-        )
-    else:
-        st.info("Select multiple tokenizers to see script family comparisons.")
-
-    # Raw data
-    with st.expander("🔍 Raw Data"):
-        st.dataframe(display_df, use_container_width=True)
+    # Render main content
+    render_main_content(df, selected_tokenizers, selected_languages)
 
     # Footer
     st.markdown("---")
