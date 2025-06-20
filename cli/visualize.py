@@ -262,27 +262,27 @@ def create_coverage_chart(
     )
 
 
-def create_vocab_coverage_scatter(
+def create_vocab_efficiency_scatter(
     df: pd.DataFrame, selected_tokenizers: List[str]
 ) -> go.Figure:
-    """Create a scatter plot showing average coverage vs vocabulary size."""
+    """Create a scatter plot showing average efficiency vs vocabulary size."""
     filtered_df = df[df["tokenizer_key"].isin(selected_tokenizers)]
 
-    # Calculate average coverage per tokenizer
+    # Calculate average efficiency per tokenizer
     summary_data = []
     for tokenizer in selected_tokenizers:
         tokenizer_df = filtered_df[filtered_df["tokenizer_key"] == tokenizer]
         if not tokenizer_df.empty:
             vocab_size = tokenizer_df["vocab_size"].iloc[0]
             if pd.notna(vocab_size):  # Only include if vocab_size is available
-                avg_coverage = tokenizer_df["unique_tokens"].mean()
+                avg_efficiency = tokenizer_df["bytes_per_token"].mean()
                 tokenizer_name = tokenizer_df["tokenizer_name"].iloc[0]
 
                 summary_data.append(
                     {
                         "tokenizer_name": tokenizer_name,
                         "vocab_size": vocab_size,
-                        "avg_coverage": avg_coverage,
+                        "avg_efficiency": avg_efficiency,
                         "languages_count": len(tokenizer_df),
                     }
                 )
@@ -302,7 +302,7 @@ def create_vocab_coverage_scatter(
             font=dict(size=16, color="gray"),
         )
         fig.update_layout(
-            title="Average Coverage vs Vocabulary Size",
+            title="Average Efficiency vs Vocabulary Size",
             xaxis=dict(visible=False),
             yaxis=dict(visible=False),
             height=CHART_HEIGHT,
@@ -321,21 +321,23 @@ def create_vocab_coverage_scatter(
     fig = px.scatter(
         summary_df,
         x="vocab_size",
-        y="avg_coverage",
+        y="avg_efficiency",
         color="tokenizer_name",
         size="languages_count",
         hover_data=["languages_count"],
-        title="Average Coverage vs Vocabulary Size",
+        title="Average Efficiency vs Vocabulary Size",
         labels={
             "vocab_size": "Vocabulary Size (tokens)",
-            "avg_coverage": "Average Unique Tokens Used",
+            "avg_efficiency": "Average Efficiency (bytes/token)",
             "languages_count": "Languages Tested",
         },
         height=CHART_HEIGHT,
     )
 
     fig.update_layout(
-        xaxis=dict(type="log", title="Vocabulary Size (log scale)"), showlegend=True
+        xaxis=dict(type="log", title="Vocabulary Size (log scale)"),
+        yaxis=dict(title="Average Efficiency (bytes/token)"),
+        showlegend=True,
     )
 
     return fig
@@ -364,7 +366,6 @@ def create_summary_table(
                 "Vocab Size": f"{vocab_size:,}" if vocab_size else "N/A",
                 "Avg Efficiency (bytes/token)": f"{tokenizer_df['bytes_per_token'].mean():.3f}",
                 "Avg Coverage (unique tokens)": f"{tokenizer_df['unique_tokens'].mean():.0f}",
-                "Total Tokens Processed": f"{tokenizer_df['total_tokens'].sum():,}",
                 "Languages Tested": len(tokenizer_df),
             }
         )
@@ -494,28 +495,28 @@ def render_main_content(
         lang for lang in selected_languages if "(code)" not in str(lang).lower()
     ]
 
-    # Selection summary
+    # Selection summary with cleaner layout
     col1, col2, col3 = st.columns(3)
     with col1:
         st.metric(
             "Total Languages",
             len(selected_languages),
-            f"{len(programming_langs)} code + {len(natural_langs)} natural",
+            f"{len(programming_langs)}🔧 + {len(natural_langs)}🌍",
         )
     with col2:
-        st.metric("Programming Languages", len(programming_langs))
+        st.metric("Programming", len(programming_langs), "🔧 Code Languages")
     with col3:
-        st.metric("Natural Languages", len(natural_langs))
+        st.metric("Natural", len(natural_langs), "🌍 Human Languages")
 
-    # Show current selection description
+    # Cleaner selection description
     if len(programming_langs) > 0 and len(natural_langs) > 0:
         st.info(
-            "🌐 **Mixed Selection**: Comparing both natural and programming languages"
+            "🌐 **Mixed Analysis** • Comparing code and natural language tokenization"
         )
     elif len(programming_langs) > 0:
-        st.info("💻 **Programming Languages**: Analyzing code tokenization efficiency")
+        st.info("💻 **Code Focus** • Analyzing programming language efficiency")
     elif len(natural_langs) > 0:
-        st.info("🌍 **Natural Languages**: Analyzing human language tokenization")
+        st.info("🌍 **Language Focus** • Analyzing human language tokenization")
 
     # Summary table
     st.subheader("📈 Summary Rankings")
@@ -527,40 +528,39 @@ def render_main_content(
 
     # Create tabs for different views
     chart_tab1, chart_tab2, chart_tab3, raw_tab = st.tabs(
-        ["🚀 Efficiency", "🎯 Coverage", "📏 Vocab Analysis", "🔍 Raw Data"]
+        ["🚀 Efficiency", "🎯 Coverage", "📏 Efficiency Analysis", "🔍 Raw Data"]
     )
 
     with chart_tab1:
-        st.write("#### Tokenization Efficiency (Bytes per Token)")
+        st.write("#### Tokenization Efficiency")
         st.caption("Higher values = more efficient tokenization")
         efficiency_chart = create_efficiency_chart(display_df, selected_tokenizers)
         st.plotly_chart(efficiency_chart, use_container_width=True)
 
-        # Add programming language specific insights
+        # Add concise insights
         if len(programming_langs) > 0:
             st.info(
-                f"💻 **Programming Language Insights**: {len(programming_langs)} coding languages selected. Look for patterns in syntax-heavy vs. declarative languages."
+                f"💻 **{len(programming_langs)} coding languages** • Look for patterns in syntax complexity"
             )
 
     with chart_tab2:
-        st.write("#### Vocabulary Coverage (Unique Tokens Used)")
-        st.caption("Higher values = better language coverage")
+        st.write("#### Vocabulary Coverage")
+        st.caption("Higher values = better language support")
         coverage_chart = create_coverage_chart(display_df, selected_tokenizers)
         st.plotly_chart(coverage_chart, use_container_width=True)
 
-        # Add natural language specific insights
+        # Add concise insights
         if len(natural_langs) > 0:
             st.info(
-                f"🌍 **Natural Language Insights**: {len(natural_langs)} human languages selected. Higher unique tokens indicate better script/vocabulary support."
+                f"🌍 **{len(natural_langs)} human languages** • Higher coverage indicates better script support"
             )
 
     with chart_tab3:
-        st.write("#### Vocabulary Size Analysis")
-        st.caption("Relationship between tokenizer size and language coverage")
+        st.write("#### Efficiency vs Vocabulary Size")
+        st.caption("How tokenizer size affects average efficiency across languages")
 
         # Show overall scatter plot
-        st.write("##### Overall Analysis")
-        vocab_scatter = create_vocab_coverage_scatter(display_df, selected_tokenizers)
+        vocab_scatter = create_vocab_efficiency_scatter(display_df, selected_tokenizers)
         st.plotly_chart(vocab_scatter, use_container_width=True)
 
         # Category-specific scatter plots
@@ -573,11 +573,11 @@ def render_main_content(
                 st.write("**🌍 Natural Languages Only**")
                 natural_df = display_df[display_df["language"].isin(natural_langs)]
                 if not natural_df.empty:
-                    natural_scatter = create_vocab_coverage_scatter(
+                    natural_scatter = create_vocab_efficiency_scatter(
                         natural_df, selected_tokenizers
                     )
                     natural_scatter.update_layout(
-                        title="Natural Languages Coverage", height=400
+                        title="Natural Languages Efficiency", height=400
                     )
                     st.plotly_chart(natural_scatter, use_container_width=True)
                     st.caption(f"Analysis of {len(natural_langs)} natural languages")
@@ -588,11 +588,11 @@ def render_main_content(
                 st.write("**💻 Programming Languages Only**")
                 prog_df = display_df[display_df["language"].isin(programming_langs)]
                 if not prog_df.empty:
-                    prog_scatter = create_vocab_coverage_scatter(
+                    prog_scatter = create_vocab_efficiency_scatter(
                         prog_df, selected_tokenizers
                     )
                     prog_scatter.update_layout(
-                        title="Programming Languages Coverage", height=400
+                        title="Programming Languages Efficiency", height=400
                     )
                     st.plotly_chart(prog_scatter, use_container_width=True)
                     st.caption(
@@ -602,7 +602,7 @@ def render_main_content(
                     st.info("No programming language data available")
 
             st.info(
-                "🔬 **Mixed Analysis**: Compare how tokenizers handle structured code vs. natural language. Programming languages often show different coverage patterns."
+                "🔬 **Mixed Analysis**: Compare how tokenizer efficiency scales with vocabulary size for code vs. natural language."
             )
 
         elif len(programming_langs) > 0:
@@ -611,7 +611,7 @@ def render_main_content(
             )
         elif len(natural_langs) > 0:
             st.info(
-                "🌐 **Language Analysis**: Observe how vocabulary size correlates with multilingual support. Larger tokenizers typically handle more languages effectively."
+                "🌐 **Language Analysis**: Observe how vocabulary size correlates with multilingual efficiency. Larger tokenizers typically handle more languages effectively."
             )
 
     with raw_tab:
@@ -637,9 +637,9 @@ def main():
         initial_sidebar_state="expanded",
     )
 
-    st.title("📊 Tokka-Bench: Tokenizer Comparison Dashboard")
+    st.title("📊 Tokka-Bench Dashboard")
     st.markdown(
-        "Compare tokenizer efficiency and language coverage across natural and programming languages"
+        "**Compare tokenizer efficiency across natural and programming languages**"
     )
 
     # Load data
@@ -669,7 +669,7 @@ def main():
     # Footer
     st.markdown("---")
     st.markdown(
-        "*Generated by Tokka-Bench • Higher bytes/token = more efficient • Higher unique tokens = better coverage*"
+        "*Higher bytes/token = more efficient • Higher unique tokens = better coverage*"
     )
 
 
