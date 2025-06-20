@@ -6,29 +6,26 @@ alwaysApply: true
 # Tokka-Bench Project Guide
 
 ## Overview
-Tokka-bench is a **tokenizer benchmarking tool** that compares different tokenizers across multiple languages. It evaluates how efficiently different tokenizers (GPT-2, GPT-4, Llama, etc.) handle text from various language families using real-world data.
+Tokka-bench is a **tokenizer benchmarking tool** that compares different tokenizers across multiple languages. It evaluates how efficiently different tokenizers (GPT-2, GPT-4, Llama, etc.) handle text from various language families using real-world data from FineWeb-2.
 
 ## Core Metrics
 - **Bytes per token**: How many UTF-8 bytes each token represents (higher = more efficient)  
-- **Words per token**: How many words each token captures (language-aware counting)
-
-## Project Structure
-
-### Main Package: [src/tokka_bench/](mdc:src/tokka_bench)
+- **Unique tokens**: How many different token IDs were used (reveals vocabulary coverage and language support ect## Main Package: [src/tokka_bench/](mdc:src/tokka_bench)
 - [benchmark.py](mdc:src/tokka_bench/benchmark.py) - **All core logic in one file**:
   - `UniversalTokenizer` class - works with any HuggingFace model
-  - Language-aware word counting (handles Chinese, Arabic, European languages differently)
-  - Benchmark execution and JSON result generation
+  - Real FineWeb-2 data loading with tasets
+  - Benchmark execution and JSON resultrate cleanup handling (no complex library management)
 - [__init__.py](mdc:src/tokka_bench/__init__.py) - Package initialization
 
 ### CLI Interface: [cli/](mdc:cli)
-- [benchmark.py](mdc:cli/benchmark.py) - **Simple CLI script** using OmegaConf and argparse
-  - Requires full HuggingFace model paths (e.g., "openai-community/gpt2")
+- [benchmark.py](mdc:cli/benchmark.py) - **Simplef
+  - Requires full HuggingFace model paths (e.g.nity/gpt2")
   - No hardcoded tokenizer lists - supports any model
+  - Clean exit handling with standard sys.exit()
 
 ### Data & Configuration
 - [src/fineweb-2-languages.csv](mdc:src/fineweb-2-languages.csv) - Language metadata (internal, never changes)
-- [pyproject.toml](mdc:pyproject.toml) - Dependencies: transformers, pandas, omegaconf
+- [pyproject.toml](mdc:pyproject.toml) - Dependencies: transformers, datasets, pandas, omegaconf
 - `data/results/` - Output JSON files with benchmark results
 
 ## Key Design Principles
@@ -37,26 +34,31 @@ Tokka-bench is a **tokenizer benchmarking tool** that compares different tokeniz
 - **No tokenizer registry** - use any HuggingFace model directly
 - **Minimal configuration** - only tokenizer name and sample size required
 - **Single source of truth** - all logic consolidated in benchmark.py
+- **Real data only** - uses actual FineWeb-2 text, no dummy data
 
-### Language-Aware Processing
-- **Chinese/Japanese**: Character counting (no word boundaries)
-- **Arabic/Hebrew**: Unicode-aware word boundaries  
-- **European languages**: Standard regex word boundaries
+### Real-World Data Loading
+- **Streaming datasets** - loads exact sample sizes from FineWeb-2
+- **Graceful fallback** - uses simple text if dataset loading fails
+- **Efficient processing** - accumulates text until target size reached
 
 ### Efficiency Interpretation
 - **Higher bytes/token = MORE efficient** (each token captures more content)
+- **Higher unique tokens = BETTER language coverage** (less byte-fallback)
 - Results ranked by efficiency (highest bytes/token first)
 
 ## Usage Examples
 ```bash
-# Benchmark GPT-2 with 1MB samples
-uv run cli/benchmark.py --tokenizer openai-community/gpt2
+# Benchmark GPT-2 with 1MB samples (OmegaConf syntax)
+uv run cli/benchmark.py tokenizer=openai-community/gpt2
 
 # Quick test with smaller samples  
-uv run cli/benchmark.py --tokenizer Xenova/gpt-4 --sample-size 0.1
+uv run cli/benchmark.py tokenizer=Xenova/gpt-4 sample_size=0.1
+
+# Custom output filename
+uv run cli/benchmark.py tokenizer=meta-llama/Meta-Llama-3-8B output_name=llama-results
 
 # Any HuggingFace model works
-uv run cli/benchmark.py --tokenizer meta-llama/Meta-Llama-3-8B
+uv run cli/benchmark.py tokenizer=microsoft/DialoGPT-medium
 ```
 
 ## Test Data
@@ -67,14 +69,51 @@ Benchmarks run on **top 5 languages by FineWeb-2 size**:
 4. Japanese (jpn-Jpan) - 636.71GB
 5. Spanish (spa-Latn) - 554.08GB
 
+## Metric Interpretation
+
+### Bytes per Token
+- **Spanish (~3.01)**: Most efficient for GPT-2, excellent Latin script support
+- **German (~2.71)**: Strong European language coverage
+- **Japanese (~2.25)**: Moderate mixed-script handling  
+- **Russian (~1.71)**: Poor Cyrillic support, heavy byte-fallback
+- **Chinese (~1.40)**: Limited character vocabulary coverage
+
+### Unique Tokens (Language Coverage Quality)
+- **Well-supported languages**: 800-1000+ unique tokens (German, Spanish)
+- **Moderately supported**: 300-600 unique tokens (Japanese, Chinese)
+- **Poorly supported**: 100-300 unique tokens (Russian Cyrillic)
+- **Reveals tokenizer bias**: Which languages got priority during training
+
 ## Output Format
 Results saved as JSON in `data/results/{model_name}.json` with:
 - Tokenizer metadata and timestamp
-- Per-language metrics and processing times
-- Sample text information
+- Per-language metrics: bytes_per_token, total_bytes, total_tokens, unique_tokens
+- Language information (ISO codes, scripts, names)
+- Sample size configuration
+
+## Technical Implementation
+
+### Clean Exit Handling
+- **Simple approach**: Basic cleanup with gc.collect() 
+- **Standard exit**: Uses sys.exit() instead of os._exit()
+- **No complex library management**: Removed urllib3/requests cleanup
+- **Reliable termination**: No hanging processes
+
+### Error Handling
+- **Graceful dataset fallback**: Falls back to simple text if FineWeb-2 fails
+- **Exception safety**: Non-fatal cleanup warnings
+- **Streaming resilience**: Handles dataset exhaustion properly
 
 ## Dependencies
-- **transformers**: AutoTokenizer for any model
-- **pandas**: CSV processing for language data
-- **omegaconf**: Configuration management
-- **Python 3.13+**: Modern Python features
+- **transformers**: AutoTokenizer for any HuggingFace model
+- **datasets**: Real FineWeb-2 data streaming
+- **pandas**: CSV processing for language metadata
+- **omegaconf**: CLI configuration management
+- **Python 3.9+**: Modern Python features
+
+## Recent Changes
+- ✅ **Added unique_tokens metric** - reveals language coverage quality
+- ✅ **Simplified cleanup** - removed complex urllib3/requests handling  
+- ✅ **Real data integration** - streams actual FineWeb-2 text
+- ✅ **Clean repository** - removed temporary files and improved documentation
+- ✅ **Reliable exit** - standard process termination without hanging

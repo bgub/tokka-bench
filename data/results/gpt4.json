@@ -1,7 +1,7 @@
 {
   "tokenizer": "Xenova/gpt-4",
   "benchmark_size_mb": 1.0,
-  "timestamp": 1750388698.1146529,
+  "timestamp": 1750389020.194602,
   "languages": {
     "rus-Cyrl": {
       "language_info": {
