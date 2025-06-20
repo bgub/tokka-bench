@@ -50,15 +50,80 @@ uv run cli/benchmark.py tokenizer=meta-llama/Meta-Llama-3-8B output_name=llama-r
 - `sample_size`: Size in MB to test per language (default: 1.0)
 - `output_name`: Custom filename for results (optional)
 
+## Visualization Dashboard
+
+After running benchmarks, launch the interactive web dashboard to compare results:
+
+```bash
+# Launch interactive comparison dashboard
+uv run streamlit run cli/visualize.py
+```
+
+The dashboard provides:
+
+- **Summary rankings** - Compare tokenizers across all metrics
+- **Interactive charts** - Filter by tokenizer and language
+- **Efficiency comparison** - Bytes per token across languages
+- **Coverage analysis** - Unique tokens used (vocabulary coverage)
+- **Scatter plots** - Efficiency vs coverage relationships
+- **Raw data access** - Detailed metrics for analysis
+
+### Dashboard Features
+
+- 🎛️ **Interactive filters** - Select tokenizers and languages to compare
+- 📊 **Multiple visualizations** - Bar charts, scatter plots, summary tables
+- 🚀 **Real-time updates** - Change selections and see instant updates
+- 📈 **Rankings** - Automatic sorting by efficiency and coverage
+- 🔍 **Raw data** - Access to underlying benchmark data
+
 ## Test Languages
 
-Benchmarks run on the top 5 languages by FineWeb-2 size:
+Benchmarks run on the **top 30 languages by FineWeb-2 dataset size**, providing comprehensive coverage across scripts and language families:
 
-1. **Russian (rus-Cyrl)** - 1.65TB
-2. **Mandarin Chinese (cmn-Hani)** - 1.34TB
-3. **German (deu-Latn)** - 640.76GB
-4. **Japanese (jpn-Jpan)** - 636.71GB
-5. **Spanish (spa-Latn)** - 554.08GB
+### Latin Script (17 languages)
+
+1. **German** - 640.76GB
+2. **Spanish** - 554.08GB
+3. **French** - 476.55GB
+4. **Italian** - 305.96GB
+5. **Portuguese** - 246.33GB
+6. **Polish** - 193.34GB
+7. **Dutch** - 162.98GB
+8. **Indonesian** - 134.84GB
+9. **Turkish** - 116.64GB
+10. **Czech** - 98.30GB
+11. **Hungarian** - 85.72GB
+12. **Romanian** - 81.30GB
+13. **Vietnamese** - 78.95GB
+14. **Norwegian Bokmål** - 74.48GB
+15. **Swedish** - 63.27GB
+16. **Danish** - 63.04GB
+17. **Finnish** - 56.79GB
+18. **Slovak** - 40.43GB
+19. **Croatian** - 32.91GB
+
+### Cyrillic Script (4 languages)
+
+1. **Russian** - 1.65TB _(largest dataset)_
+2. **Ukrainian** - 77.40GB
+3. **Bulgarian** - 43.04GB
+
+### Other Scripts (9 languages)
+
+- **Mandarin Chinese** (Hani) - 1.34TB _(2nd largest)_
+- **Japanese** (Jpan) - 636.71GB
+- **Korean** (Hang) - 94.73GB
+- **Standard Arabic** (Arab) - 94.52GB
+- **Persian** (Arab) - 85.16GB
+- **Thai** (Thai) - 70.86GB
+- **Modern Greek** (Grek) - 68.91GB
+- **Hindi** (Deva) - 30.59GB
+
+This expanded coverage reveals tokenizer performance across:
+
+- **Multiple scripts**: Latin, Cyrillic, Arabic, CJK, Thai, Greek, Devanagari
+- **Language families**: Indo-European, Sino-Tibetan, Turkic, Austronesian, etc.
+- **Writing systems**: Alphabetic, logographic, syllabic, abjad
 
 ## Output
 

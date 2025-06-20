@@ -223,15 +223,17 @@ def run_benchmark(
     """Run the complete benchmark process."""
     # Load language data
     df = load_language_data()
-    languages = get_top_languages(df, n=5)
+    languages = get_top_languages(df, n=30)  # Expand to top 30 languages
 
-    print("Top 5 languages by size:")
-    for lang in languages:
+    print("Top 30 languages by size:")
+    for i, lang in enumerate(languages, 1):
         # Get size from CSV for display
         lang_size = df.loc[df["ISO 639-3 code"] == lang["iso_code"], "Disk size"].iloc[
             0
         ]
-        print(f"  {lang['name']} ({lang['iso_code']}-{lang['script']}): {lang_size}")
+        print(
+            f"  {i:2d}. {lang['name']:<25} ({lang['iso_code']}-{lang['script']}): {lang_size}"
+        )
     print()
 
     # Initialize tokenizer
