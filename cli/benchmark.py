@@ -10,23 +10,57 @@ from tokka_bench.benchmark import run_benchmark
 
 def print_summary(results):
     """Print a summary of benchmark results."""
-    print("📊 Summary (ranked by efficiency):")
+    print("📊 Language Summary (ranked by efficiency):")
 
     # Sort languages by bytes_per_token (descending - higher is better)
     lang_results = []
     for lang_key, lang_data in results["languages"].items():
         lang_name = lang_data["language_info"]["name"]
-        bytes_per_token = lang_data["metrics"]["bytes_per_token"]
-        unique_tokens = lang_data["metrics"]["unique_tokens"]
-        lang_results.append((lang_name, bytes_per_token, unique_tokens))
+        metrics = lang_data["metrics"]
+        lang_results.append((
+            lang_name, 
+            metrics["bytes_per_token"], 
+            metrics["unique_tokens"],
+            metrics["subword_fertility"],
+            metrics["continued_word_rate"]
+        ))
 
     # Sort by efficiency (higher bytes/token = more efficient)
     lang_results.sort(key=lambda x: x[1], reverse=True)
 
-    for i, (name, efficiency, unique_tokens) in enumerate(lang_results, 1):
+    print(f"{'Rank':>4} {'Language':<25} {'Bytes/Token':>11} {'Unique Tokens':>13} {'Fertility':>9} {'Split Rate':>10}")
+    print("─" * 80)
+    
+    for i, (name, efficiency, unique_tokens, fertility, split_rate) in enumerate(lang_results, 1):
         print(
-            f"  {i:2d}. {name:<20} | Bytes/token: {efficiency:6.2f} | Unique tokens: {unique_tokens:>5,d}"
+            f"  {i:2d}. {name:<25} {efficiency:>10.2f} {unique_tokens:>12,d} {fertility:>8.2f} {split_rate:>9.1f}%"
         )
+
+
+def print_global_metrics(results):
+    """Print global metrics summary."""
+    global_metrics = results.get("global_metrics", {})
+    
+    if not global_metrics:
+        print("⚠️  No global metrics available")
+        return
+        
+    print(f"\n🌍 Global Metrics (across {global_metrics.get('total_tokens_analyzed', 0):,} tokens):")
+    print("─" * 60)
+    
+    # Space and whitespace metrics
+    print(f"Tokens starting with space:        {global_metrics.get('tokens_starting_with_space_pct', 0):.1f}%")
+    print(f"Tokens with whitespace in middle:  {global_metrics.get('tokens_with_whitespace_in_middle_pct', 0):.1f}%")
+    print(f"Tokens with script overlap:        {global_metrics.get('tokens_with_script_overlap_pct', 0):.1f}%")
+    
+    # Unicode script metrics
+    print(f"\nUnicode Script Coverage:")
+    for script in ['latin', 'chinese', 'cyrillic', 'korean', 'japanese', 'arabic', 'devanagari', 'thai', 'hebrew', 'greek']:
+        key = f"tokens_with_{script}_unicode_pct"
+        if key in global_metrics and global_metrics[key] > 0:
+            print(f"  {script.title():<12}: {global_metrics[key]:>6.1f}%")
+            
+    print("─" * 60)
 
 
 def main():
@@ -63,8 +97,9 @@ def main():
 
         print("🔄 Printing summary...")
         print_summary(results)
+        print_global_metrics(results)
 
-        print("✅ Benchmark completed successfully!")
+        print("\n✅ Benchmark completed successfully!")
 
     except KeyboardInterrupt:
         print("\n❌ Interrupted by user")

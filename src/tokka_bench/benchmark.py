@@ -12,6 +12,8 @@ Key Features:
   - Programming languages: StarCoder dataset
   - English: FineWeb sample-10BT
 - Efficiency metrics (bytes per token, unique tokens)
+- Sub-word fertility and continued-word rates
+- Global Unicode analysis metrics
 - JSON output with detailed results
 - Parallel processing for faster benchmarks
 """
@@ -19,12 +21,55 @@ Key Features:
 import gc
 import json
 import os
+import re
 import time
+import unicodedata
+from collections import defaultdict
 from concurrent.futures import ThreadPoolExecutor, as_completed
-from typing import Any, Dict, List
+from typing import Any, Dict, List, Set, Tuple
 
 import pandas as pd
 from transformers import AutoTokenizer
+
+
+# Unicode script mappings for major writing systems
+UNICODE_SCRIPTS = {
+    'Latin': ['LATIN'],
+    'Chinese': ['HAN'],
+    'Cyrillic': ['CYRILLIC'],
+    'Korean': ['HANGUL'],
+    'Japanese': ['HIRAGANA', 'KATAKANA'],
+    'Arabic': ['ARABIC'],
+    'Devanagari': ['DEVANAGARI'],
+    'Thai': ['THAI'],
+    'Hebrew': ['HEBREW'],
+    'Greek': ['GREEK'],
+}
+
+
+def get_unicode_scripts(text: str) -> Set[str]:
+    """Get the set of Unicode scripts present in the text."""
+    scripts = set()
+    for char in text:
+        if char.isspace():
+            continue
+        script = unicodedata.name(char, '').split()[0] if unicodedata.name(char, '') else ''
+        for script_name, script_codes in UNICODE_SCRIPTS.items():
+            if any(script_code in script for script_code in script_codes):
+                scripts.add(script_name)
+                break
+    return scripts
+
+
+def has_whitespace_in_middle(text: str) -> bool:
+    """Check if text has whitespace characters in the middle (not at start/end)."""
+    stripped = text.strip()
+    return len(stripped) > 0 and any(char.isspace() for char in stripped)
+
+
+def starts_with_space(text: str) -> bool:
+    """Check if text starts with a whitespace character."""
+    return len(text) > 0 and text[0].isspace()
 
 
 class UniversalTokenizer:
@@ -56,12 +101,125 @@ class UniversalTokenizer:
         num_tokens = len(token_ids)
         unique_tokens = len(set(token_ids))  # Count unique token IDs
 
+        # Calculate word-level metrics
+        word_metrics = self._calculate_word_metrics(text)
+
         return {
             "bytes_per_token": text_bytes / num_tokens if num_tokens > 0 else 0,
             "total_bytes": text_bytes,
             "total_tokens": num_tokens,
             "unique_tokens": unique_tokens,
+            "subword_fertility": word_metrics["subword_fertility"],
+            "continued_word_rate": word_metrics["continued_word_rate"],
         }
+
+    def _calculate_word_metrics(self, text: str) -> Dict[str, float]:
+        """Calculate sub-word fertility and continued-word rates."""
+        # Split text into words (simple whitespace split for now)
+        words = re.findall(r'\S+', text)
+        
+        if not words:
+            return {"subword_fertility": 0.0, "continued_word_rate": 0.0}
+        
+        total_tokens_for_words = 0
+        words_split = 0
+        
+        for word in words:
+            # Tokenize each word individually
+            word_tokens = self.encode(word)
+            total_tokens_for_words += len(word_tokens)
+            
+            # Check if word was split (more than 1 token)
+            if len(word_tokens) > 1:
+                words_split += 1
+        
+        subword_fertility = total_tokens_for_words / len(words) if words else 0.0
+        continued_word_rate = (words_split / len(words)) * 100 if words else 0.0
+        
+        return {
+            "subword_fertility": subword_fertility,
+            "continued_word_rate": continued_word_rate,
+        }
+
+    def get_token_analysis(self, text: str) -> Dict[str, Any]:
+        """Get detailed token analysis for global metrics."""
+        token_ids = self.encode(text)
+        tokens_info = []
+        
+        for token_id in token_ids:
+            # Decode individual token
+            try:
+                token_text = self.tokenizer.decode([token_id], skip_special_tokens=True)
+                
+                # Analyze token properties
+                scripts = get_unicode_scripts(token_text)
+                tokens_info.append({
+                    "id": token_id,
+                    "text": token_text,
+                    "starts_with_space": starts_with_space(token_text),
+                    "has_whitespace_in_middle": has_whitespace_in_middle(token_text),
+                    "scripts": list(scripts),
+                    "script_overlap": len(scripts) > 1,
+                })
+            except Exception:
+                # Skip problematic tokens
+                continue
+                
+        return {"tokens": tokens_info}
+
+
+class GlobalMetricsTracker:
+    """Tracks global metrics across all languages."""
+    
+    def __init__(self):
+        self.all_tokens = []
+        self.script_counts = defaultdict(int)
+        self.space_start_count = 0
+        self.whitespace_middle_count = 0
+        self.script_overlap_count = 0
+        self.total_token_count = 0
+        
+    def add_tokens(self, tokens_info: List[Dict[str, Any]]):
+        """Add token information from a language sample."""
+        for token_info in tokens_info:
+            self.total_token_count += 1
+            
+            # Track space-starting tokens
+            if token_info["starts_with_space"]:
+                self.space_start_count += 1
+                
+            # Track tokens with whitespace in middle
+            if token_info["has_whitespace_in_middle"]:
+                self.whitespace_middle_count += 1
+                
+            # Track script usage
+            for script in token_info["scripts"]:
+                self.script_counts[script] += 1
+                
+            # Track script overlap
+            if token_info["script_overlap"]:
+                self.script_overlap_count += 1
+                
+            # Store token for detailed analysis if needed
+            self.all_tokens.append(token_info)
+    
+    def get_global_metrics(self) -> Dict[str, float]:
+        """Calculate and return global metrics."""
+        if self.total_token_count == 0:
+            return {}
+            
+        metrics = {
+            "total_tokens_analyzed": self.total_token_count,
+            "tokens_starting_with_space_pct": (self.space_start_count / self.total_token_count) * 100,
+            "tokens_with_whitespace_in_middle_pct": (self.whitespace_middle_count / self.total_token_count) * 100,
+            "tokens_with_script_overlap_pct": (self.script_overlap_count / self.total_token_count) * 100,
+        }
+        
+        # Add script-specific percentages
+        for script, count in self.script_counts.items():
+            metrics[f"tokens_with_{script.lower()}_unicode_pct"] = (count / self.total_token_count) * 100
+            
+        return metrics
 
 
 def load_language_data() -> pd.DataFrame:
@@ -256,6 +414,9 @@ def benchmark_language(
 
     # Calculate metrics
     metrics = tokenizer.get_metrics(text)
+    
+    # Get token analysis for global metrics
+    token_analysis = tokenizer.get_token_analysis(text)
 
     # Return results for this language
     if lang_info.get("source") == "starcoder":
@@ -269,6 +430,7 @@ def benchmark_language(
         "lang_key": lang_key,
         "language_info": lang_info,
         "metrics": metrics,
+        "token_analysis": token_analysis,
     }
 
 
@@ -281,12 +443,16 @@ def benchmark_tokenizer(
 
     print(f"Benchmarking {tokenizer.name} on {len(languages)} languages in parallel...")
 
+    # Initialize global metrics tracker
+    global_tracker = GlobalMetricsTracker()
+
     results = {
         "tokenizer": tokenizer.name,
         "vocab_size": tokenizer.vocab_size,
         "benchmark_size_mb": sample_size_mb,
         "timestamp": time.time(),
         "languages": {},
+        "global_metrics": {},
     }
 
     # Determine optimal number of workers (don't exceed number of languages or CPU cores)
@@ -313,25 +479,37 @@ def benchmark_tokenizer(
             try:
                 result = future.result()
 
-                # Store results
+                # Store language results
                 results["languages"][result["lang_key"]] = {
                     "language_info": result["language_info"],
                     "metrics": result["metrics"],
                 }
 
-                # Print progress
+                # Add to global metrics tracker
+                global_tracker.add_tokens(result["token_analysis"]["tokens"])
+
+                # Print progress with new metrics
+                metrics = result["metrics"]
                 print(
                     f"  ✓ {lang_info['name']:<25} | "
-                    f"Bytes/token: {result['metrics']['bytes_per_token']:.2f} | "
-                    f"Unique tokens: {result['metrics']['unique_tokens']:,d}"
+                    f"Bytes/token: {metrics['bytes_per_token']:.2f} | "
+                    f"Unique tokens: {metrics['unique_tokens']:,d} | "
+                    f"Fertility: {metrics['subword_fertility']:.2f} | "
+                    f"Split rate: {metrics['continued_word_rate']:.1f}%"
                 )
 
             except Exception as e:
                 print(f"  ✗ Error processing {lang_info['name']}: {e}")
 
+    # Calculate and store global metrics
+    print("\n🔄 Calculating global metrics...")
+    results["global_metrics"] = global_tracker.get_global_metrics()
+    
     print(
         f"Completed benchmarking {len(results['languages'])}/{len(languages)} languages"
     )
+    print(f"Analyzed {results['global_metrics'].get('total_tokens_analyzed', 0):,} tokens globally")
+    
     return results
 
 
