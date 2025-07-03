@@ -422,7 +422,7 @@ def render_global_sidebar_controls(
 
     st.sidebar.divider()
 
-    # Global tokenizer selection
+    # Global tokenizer selection - simplified approach to fix multiselect bugs
     available_tokenizers = sorted(df["tokenizer_key"].unique())
     selected_tokenizers = st.sidebar.multiselect(
         "Select Tokenizers to Compare",
@@ -431,11 +431,7 @@ def render_global_sidebar_controls(
         key="global_tokenizers",
     )
 
-    # Update session state
-    if selected_tokenizers != st.session_state.selected_tokenizers:
-        st.session_state.selected_tokenizers = selected_tokenizers
-
-    # Global language selection
+    # Global language selection - simplified approach to fix multiselect bugs
     all_languages = sorted(df["language"].unique())
     selected_languages = st.sidebar.multiselect(
         "Filter Languages",
@@ -444,21 +440,20 @@ def render_global_sidebar_controls(
         key="global_languages",
     )
 
-    # Update session state
-    if selected_languages != st.session_state.selected_languages:
-        st.session_state.selected_languages = selected_languages
-
     st.sidebar.divider()
 
-    # Quick stats
+    # Quick stats - removed delta parameters to eliminate SVG arrows
     st.sidebar.metric(
         "Tokenizers Selected",
         len(selected_tokenizers),
-        f"{len(available_tokenizers)} available",
     )
+    st.sidebar.write(f"📊 {len(available_tokenizers)} available")
+    
     st.sidebar.metric(
-        "Languages Selected", len(selected_languages), f"{len(all_languages)} available"
+        "Languages Selected", 
+        len(selected_languages),
     )
+    st.sidebar.write(f"🌐 {len(all_languages)} available")
 
     return selected_tokenizers, selected_languages
 
@@ -495,18 +490,16 @@ def render_main_content(
         lang for lang in selected_languages if "(code)" not in str(lang).lower()
     ]
 
-    # Selection summary with cleaner layout
-    col1, col2, col3 = st.columns(3)
+    # Selection summary with cleaner layout - removed redundant "Total Languages"
+    col1, col2 = st.columns(2)
     with col1:
-        st.metric(
-            "Total Languages",
-            len(selected_languages),
-            f"{len(programming_langs)}🔧 + {len(natural_langs)}🌍",
-        )
+        st.metric("Programming Languages", len(programming_langs))
+        if len(programming_langs) > 0:
+            st.write("🔧 Code Languages")
     with col2:
-        st.metric("Programming", len(programming_langs), "🔧 Code Languages")
-    with col3:
-        st.metric("Natural", len(natural_langs), "🌍 Human Languages")
+        st.metric("Natural Languages", len(natural_langs))
+        if len(natural_langs) > 0:
+            st.write("🌍 Human Languages")
 
     # Cleaner selection description
     if len(programming_langs) > 0 and len(natural_langs) > 0:
