@@ -8,7 +8,7 @@ Tokka-bench evaluates how efficiently different tokenizers handle text from vari
 
 - **Bytes per token**: How many UTF-8 bytes each token represents (higher = more efficient)
 - **Unique tokens**: How many different tokens were used (reveals vocabulary coverage)
-- Real data from the top 5 languages by FineWeb-2 dataset size
+- Real data from **141 languages total**: 100 natural languages (FineWeb-2) + 40 programming languages (StarCoder) + 1 English (FineWeb)
 
 ### What the Metrics Reveal
 
@@ -78,7 +78,15 @@ The dashboard provides:
 
 ## Test Languages
 
-Benchmarks run on the **top 30 languages by FineWeb-2 dataset size**, providing comprehensive coverage across scripts and language families:
+Benchmarks run on **141 languages total** from multiple sources, providing comprehensive coverage across natural and programming languages:
+
+- **1 English** from FineWeb sample-10BT
+- **Top 100 natural languages** by FineWeb-2 dataset size
+- **Top 40 programming languages** from StarCoder dataset
+
+## Natural Language Coverage (Top 100 FineWeb-2)
+
+> **Note**: We benchmark 100 natural languages from FineWeb-2 plus English separately from FineWeb sample-10BT (which provides higher quality English data). This gives us comprehensive coverage while ensuring the highest quality English benchmark.
 
 ### Latin Script (17 languages)
 
@@ -119,11 +127,38 @@ Benchmarks run on the **top 30 languages by FineWeb-2 dataset size**, providing 
 - **Modern Greek** (Grek) - 68.91GB
 - **Hindi** (Deva) - 30.59GB
 
+## Programming Language Coverage (Top 40 StarCoder)
+
+The benchmark also includes the **40 most popular programming languages** from the StarCoder dataset:
+
+1. **Python** - Most popular language
+2. **JavaScript** - Web development
+3. **Java** - Enterprise applications
+4. **C** - Systems programming
+5. **C++** - Performance-critical applications
+6. **C#** - .NET ecosystem
+7. **PHP** - Web backends
+8. **TypeScript** - Type-safe JavaScript
+9. **Go** - Modern systems language
+10. **Rust** - Memory-safe systems language
+    ... and 30 more including **HTML, CSS, SQL, Shell, Ruby, YAML, JSON, Markdown, Docker**, and specialized languages like **CUDA, Verilog, Solidity, Fortran**, and more.
+
+## Comprehensive Language Analysis
+
 This expanded coverage reveals tokenizer performance across:
+
+**Natural Languages:**
 
 - **Multiple scripts**: Latin, Cyrillic, Arabic, CJK, Thai, Greek, Devanagari
 - **Language families**: Indo-European, Sino-Tibetan, Turkic, Austronesian, etc.
 - **Writing systems**: Alphabetic, logographic, syllabic, abjad
+
+**Programming Languages:**
+
+- **Popular languages**: Python, JavaScript, Java, C/C++
+- **Modern languages**: Rust, Go, TypeScript, Kotlin
+- **Specialized domains**: CUDA (GPU), Solidity (blockchain), Verilog (hardware)
+- **Markup/Config**: HTML, CSS, YAML, JSON, Dockerfile
 
 ## Output
 

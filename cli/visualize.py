@@ -49,7 +49,7 @@ SCRIPT_GROUPS = {
 
 
 def detect_language_types(df: pd.DataFrame) -> Dict[str, List[str]]:
-    """Detect and categorize languages from the data."""
+    """Detect and categorize languages from the data with comprehensive 15-category system."""
     # Get languages in their original order from the data (preserves CSV order)
     all_languages = list(df["language"].unique())
 
@@ -63,7 +63,7 @@ def detect_language_types(df: pd.DataFrame) -> Dict[str, List[str]]:
         # Check if language name contains "(code)" or script is "code"
         if "(code)" in str(lang).lower() or str(lang_data["script"]).lower() == "code":
             programming_languages.append(lang)
-        elif "english" in str(lang).lower() and "fineweb" in str(lang).lower():
+        elif "english" in str(lang).lower() or "eng-fineweb" in str(lang).lower():
             english_languages.append(lang)
         else:
             natural_languages.append(lang)
@@ -73,29 +73,64 @@ def detect_language_types(df: pd.DataFrame) -> Dict[str, List[str]]:
         english_languages + natural_languages + programming_languages
     )
 
-    # For natural languages, get top by order (FineWeb-2 size order)
-    top_natural = (
-        natural_languages[:10] if len(natural_languages) >= 10 else natural_languages
-    )
+    # === SIZE-BASED TIERS ===
+    # Top 10 (English + top 9 natural languages by size)
+    top_10 = english_languages + natural_languages[:9]
 
-    # Categories for natural languages
-    non_latin = (
-        df[(df["script"] != "Latn") & (~df["script"].isin(["code"]))]["language"]
-        .unique()
-        .tolist()
-    )
+    # 11-40: Next 30 natural languages (if we have enough)
+    tier_11_40 = natural_languages[9:39] if len(natural_languages) > 9 else []
 
-    # Very rare languages (low efficiency)
-    lang_efficiency = (
-        df[~df["script"].isin(["code"])].groupby("language")["bytes_per_token"].mean()
-    )
-    very_rare = lang_efficiency[lang_efficiency < 1.8].index.tolist()
+    # 41-100: Remaining natural languages (60 languages: positions 40-99 in natural_languages)
+    tier_41_100 = natural_languages[39:] if len(natural_languages) > 39 else []
 
-    # European languages (Latin + some others)
-    european_scripts = ["Latn", "Cyrl", "Grek"]
-    european = df[df["script"].isin(european_scripts)]["language"].unique().tolist()
+    # === PROGRAMMING LANGUAGE CATEGORIES ===
+    # Core programming languages (most popular)
+    core_programming = [
+        lang
+        for lang in programming_languages
+        if any(
+            tech in lang.lower()
+            for tech in [
+                "python",
+                "javascript",
+                "java",
+                "c ",
+                "cpp",
+                "c-sharp",
+                "php",
+                "typescript",
+            ]
+        )
+    ]
 
-    # Asian languages
+    # Systems & compiled languages
+    systems_programming = [
+        lang
+        for lang in programming_languages
+        if any(
+            tech in lang.lower()
+            for tech in [
+                "rust",
+                "go",
+                "kotlin",
+                "scala",
+                "swift",
+                "dart",
+                "c ",
+                "cpp",
+                "assembly",
+            ]
+        )
+    ]
+
+    # === SCRIPT-BASED CATEGORIES ===
+    # Latin script languages (most common)
+    latin_script = df[df["script"] == "Latn"]["language"].tolist()
+
+    # Cyrillic script languages
+    cyrillic_script = df[df["script"] == "Cyrl"]["language"].tolist()
+
+    # Asian scripts (CJK + Indic + SE Asian)
     asian_scripts = [
         "Hani",
         "Jpan",
@@ -113,19 +148,176 @@ def detect_language_types(df: pd.DataFrame) -> Dict[str, List[str]]:
         "Mlym",
         "Gujr",
         "Orya",
+        "Sinh",
     ]
-    asian = df[df["script"].isin(asian_scripts)]["language"].unique().tolist()
+    asian_scripts_langs = df[df["script"].isin(asian_scripts)]["language"].tolist()
+
+    # Arabic script languages
+    arabic_script = df[df["script"] == "Arab"]["language"].tolist()
+
+    # === LANGUAGE FAMILY CATEGORIES (based on language names and knowledge) ===
+    # Indo-European languages (pattern matching)
+    indo_european_patterns = [
+        "russian",
+        "german",
+        "spanish",
+        "french",
+        "italian",
+        "portuguese",
+        "polish",
+        "dutch",
+        "czech",
+        "persian",
+        "romanian",
+        "ukrainian",
+        "norwegian",
+        "greek",
+        "swedish",
+        "danish",
+        "hindi",
+        "bengali",
+        "lithuanian",
+        "bosnian",
+        "hebrew",
+        "slovenian",
+        "estonian",
+        "catalan",
+        "latvian",
+        "albanian",
+        "urdu",
+        "marathi",
+        "nepali",
+        "belarusian",
+        "icelandic",
+        "armenian",
+        "panjabi",
+        "gaelic",
+        "welsh",
+        "irish",
+        "pashto",
+        "kurdish",
+        "english",
+    ]
+    indo_european = [
+        lang
+        for lang in all_languages
+        if any(pattern in lang.lower() for pattern in indo_european_patterns)
+    ]
+
+    # Sino-Tibetan languages
+    sino_tibetan_patterns = [
+        "chinese",
+        "mandarin",
+        "japanese",
+        "tibetan",
+        "burmese",
+        "karen",
+    ]
+    sino_tibetan = [
+        lang
+        for lang in all_languages
+        if any(pattern in lang.lower() for pattern in sino_tibetan_patterns)
+    ]
+
+    # Niger-Congo languages (African)
+    niger_congo_patterns = [
+        "swahili",
+        "yoruba",
+        "igbo",
+        "zulu",
+        "xhosa",
+        "shona",
+        "kikuyu",
+        "lingala",
+        "wolof",
+        "bambara",
+        "fula",
+        "akan",
+        "ewe",
+        "kinyarwanda",
+    ]
+    niger_congo = [
+        lang
+        for lang in all_languages
+        if any(pattern in lang.lower() for pattern in niger_congo_patterns)
+    ]
+
+    # === GEOGRAPHIC/REGIONAL CATEGORIES ===
+    # European languages (combining script + linguistic knowledge)
+    european_patterns = [
+        "russian",
+        "german",
+        "spanish",
+        "french",
+        "italian",
+        "portuguese",
+        "polish",
+        "dutch",
+        "czech",
+        "romanian",
+        "ukrainian",
+        "norwegian",
+        "greek",
+        "swedish",
+        "danish",
+        "finnish",
+        "bulgarian",
+        "slovak",
+        "croatian",
+        "lithuanian",
+        "bosnian",
+        "slovenian",
+        "estonian",
+        "catalan",
+        "latvian",
+        "albanian",
+        "belarusian",
+        "icelandic",
+        "hungarian",
+        "basque",
+        "galician",
+        "welsh",
+        "irish",
+        "gaelic",
+        "breton",
+        "corsican",
+        "sardinian",
+        "maltese",
+    ]
+    european_langs = [
+        lang
+        for lang in natural_languages
+        if any(pattern in lang.lower() for pattern in european_patterns)
+    ]
+
+    # Major world languages (most speakers/important) - top 20 by size
+    major_world = (
+        english_languages + natural_languages[:19]
+        if len(natural_languages) >= 19
+        else english_languages + natural_languages
+    )
 
     return {
-        "All Languages": ordered_all_languages,  # Properly ordered
+        # Core categories (always include)
+        "All Languages": ordered_all_languages,
+        "Top 10": top_10,
+        "11-40": tier_11_40,
+        "41-100": tier_41_100,
+        # Language type categories
         "Natural Languages": natural_languages,
         "Programming Languages": programming_languages,
+        "Core Programming": core_programming,
+        "Systems Programming": systems_programming,
+        # Script-based categories
+        "Latin Script": latin_script,
+        "Cyrillic Script": cyrillic_script,
+        "Asian Scripts": asian_scripts_langs,
+        "Arabic Script": arabic_script,
+        # Regional/family categories
+        "European Languages": european_langs,
+        "Major World Languages": major_world,
+        # Special categories
         "English": english_languages,
-        "Top Natural": top_natural,
-        "Non-Latin": non_latin,
-        "Very Rare": very_rare,
-        "European": european,
-        "Asian": asian,
     }
 
 
@@ -352,6 +544,11 @@ def create_summary_table(
 
     for tokenizer in selected_tokenizers:
         tokenizer_df = filtered_df[filtered_df["tokenizer_key"] == tokenizer]
+
+        # Safety check: skip if no data for this tokenizer
+        if tokenizer_df.empty:
+            continue
+
         tokenizer_name = tokenizer_df["tokenizer_name"].iloc[0]
 
         vocab_size = (
@@ -373,10 +570,13 @@ def create_summary_table(
     summary_df = pd.DataFrame(summary_rows)
 
     # Sort by average efficiency (descending)
-    summary_df["_sort_key"] = summary_df["Avg Efficiency (bytes/token)"].astype(float)
-    summary_df = summary_df.sort_values("_sort_key", ascending=False).drop(
-        "_sort_key", axis=1
-    )
+    if not summary_df.empty:
+        summary_df["_sort_key"] = summary_df["Avg Efficiency (bytes/token)"].astype(
+            float
+        )
+        summary_df = summary_df.sort_values("_sort_key", ascending=False).drop(
+            "_sort_key", axis=1
+        )
 
     return summary_df
 
@@ -402,11 +602,17 @@ def render_global_sidebar_controls(
         "English": "English from FineWeb sample-10BT",
         "Natural Languages": "Human languages only",
         "Programming Languages": "Code languages only",
-        "Top Natural": "Top 10 natural languages by size",
-        "Non-Latin": "Non-Latin script languages",
-        "Very Rare": "Languages with poor efficiency",
-        "European": "European languages",
-        "Asian": "Asian languages",
+        "Top 10": "Top 10 languages by size",
+        "11-40": "Next 30 natural languages",
+        "41-100": "Remaining 60 natural languages (41st-100th largest)",
+        "Core Programming": "Core programming languages",
+        "Systems Programming": "Systems and compiled languages",
+        "Latin Script": "Latin script languages",
+        "Cyrillic Script": "Cyrillic script languages",
+        "Asian Scripts": "Asian script languages",
+        "Arabic Script": "Arabic script languages",
+        "European Languages": "European languages",
+        "Major World Languages": "Major world languages",
     }
 
     # Create buttons in a nice layout
@@ -448,9 +654,9 @@ def render_global_sidebar_controls(
         len(selected_tokenizers),
     )
     st.sidebar.write(f"📊 {len(available_tokenizers)} available")
-    
+
     st.sidebar.metric(
-        "Languages Selected", 
+        "Languages Selected",
         len(selected_languages),
     )
     st.sidebar.write(f"🌐 {len(all_languages)} available")

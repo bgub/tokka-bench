@@ -354,18 +354,18 @@ def run_benchmark(
 
     # 2. Top natural languages from FineWeb-2 (in CSV order)
     df = load_language_data()
-    natural_languages = get_top_languages(df, n=30)  # Top 30 natural languages
+    natural_languages = get_top_languages(df, n=100)  # Top 100 natural languages
 
     # 3. Programming languages from StarCoder (in CSV order, last)
-    coding_languages = load_coding_languages()
+    coding_languages = load_coding_languages(n=40)  # Top 40 programming languages
 
     # Combine all languages in proper order: English → Natural → Programming
     all_languages = [english_fineweb] + natural_languages + coding_languages
 
     print(f"\n📊 Benchmarking {len(all_languages)} languages total:")
     print("  • 1 English (FineWeb sample-10BT)")
-    print(f"  • {len(natural_languages)} natural languages (FineWeb-2)")
-    print(f"  • {len(coding_languages)} programming languages (StarCoder - top 10)")
+    print(f"  • {len(natural_languages)} natural languages (FineWeb-2 - top 100)")
+    print(f"  • {len(coding_languages)} programming languages (StarCoder - top 40)")
     print()
 
     print("🇺🇸 English (FineWeb) - First:")
@@ -374,9 +374,9 @@ def run_benchmark(
     )
 
     print(
-        f"\n🌍 Natural Languages (FineWeb-2) - In CSV order - showing first 10 of {len(natural_languages)}:"
+        f"\n🌍 Natural Languages (FineWeb-2) - In CSV order - showing first 20 of {len(natural_languages)}:"
     )
-    for i, lang in enumerate(natural_languages[:10], 1):
+    for i, lang in enumerate(natural_languages[:20], 1):
         # Get size from CSV for display
         lang_size = df.loc[df["ISO 639-3 code"] == lang["iso_code"], "Disk size"].iloc[
             0
@@ -384,14 +384,16 @@ def run_benchmark(
         print(
             f"  {i:2d}. {lang['name']:<25} ({lang['iso_code']}-{lang['script']}): {lang_size}"
         )
-    if len(natural_languages) > 10:
-        print(f"      ... and {len(natural_languages) - 10} more natural languages")
+    if len(natural_languages) > 20:
+        print(f"      ... and {len(natural_languages) - 20} more natural languages")
 
     print(
-        f"\n💻 Programming Languages (StarCoder) - In CSV order, last - {len(coding_languages)} selected:"
+        f"\n💻 Programming Languages (StarCoder) - In CSV order, last - showing first 20 of {len(coding_languages)} selected:"
     )
-    for i, lang in enumerate(coding_languages, 1):
+    for i, lang in enumerate(coding_languages[:20], 1):
         print(f"  {i:2d}. {lang['name']:<25} ({lang['iso_code']}-{lang['script']})")
+    if len(coding_languages) > 20:
+        print(f"      ... and {len(coding_languages) - 20} more programming languages")
     print()
 
     # Initialize tokenizer
