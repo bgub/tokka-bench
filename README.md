@@ -154,3 +154,26 @@ tokka-bench/
 - **datasets**: FineWeb-2 data loading
 - **pandas**: Language metadata processing
 - **omegaconf**: CLI configuration
+
+## Contributing
+
+We welcome contributions to tokka-bench! Whether you're fixing bugs, adding new features, improving documentation, or adding support for new tokenizers, your help is appreciated.
+
+### Quick Start for Contributors
+
+1. **Fork the repository** and clone your fork
+2. **Set up the development environment**: `uv sync`
+3. **Make your changes** following our coding standards
+4. **Test your changes** with existing benchmark data
+5. **Submit a pull request** with a clear description
+
+For detailed contribution guidelines, please see [CONTRIBUTING.md](CONTRIBUTING.md).
+
+### Ways to Contribute
+
+- 🐛 **Bug reports**: Found an issue? [Open an issue](../../issues/new)
+- 🚀 **Feature requests**: Have an idea? [Start a discussion](../../discussions)
+- 📖 **Documentation**: Improve our docs and examples
+- 🔧 **Code contributions**: Fix bugs or add features
+- 🧪 **Testing**: Add test coverage for better reliability
+- 🌍 **Language support**: Help improve tokenizer coverage for different languages
