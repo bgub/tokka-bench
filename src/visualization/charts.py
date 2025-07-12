@@ -8,7 +8,7 @@ import pandas as pd
 import plotly.express as px
 import plotly.graph_objects as go
 
-from tokka_bench.visualization.constants import CHART_HEIGHT, LEGEND_CONFIG
+from .constants import CHART_HEIGHT, LEGEND_CONFIG
 
 
 def get_global_tokenizer_order(

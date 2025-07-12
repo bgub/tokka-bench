@@ -10,7 +10,7 @@ from typing import Any, Dict
 import pandas as pd
 import streamlit as st
 
-from tokka_bench.visualization.constants import RESULTS_DIR
+from .constants import RESULTS_DIR
 
 
 def load_all_results(results_dir: str = RESULTS_DIR) -> Dict[str, Any]:

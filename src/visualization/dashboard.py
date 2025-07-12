@@ -6,7 +6,7 @@ import subprocess
 import sys
 from pathlib import Path
 
-from tokka_bench.visualization.constants import RESULTS_DIR
+from .constants import RESULTS_DIR
 
 
 def launch_dashboard():

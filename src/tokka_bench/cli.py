@@ -52,7 +52,7 @@ def print_global_metrics(results):
         print("⚠️  No global metrics available")
         return
 
-    print(f"\n📊 Vocabulary Analysis:")
+    print("\n📊 Vocabulary Analysis:")
     print("─" * 60)
     if vocab_metrics:
         print(f"Vocabulary size: {results.get('vocab_size', 0):,}")
@@ -86,7 +86,7 @@ def print_global_metrics(results):
     )
 
     # Unicode script metrics
-    print(f"\nUnicode Script Coverage:")
+    print("\nUnicode Script Coverage:")
 
     # Show script families
     for script in [

@@ -6,7 +6,7 @@ from typing import Dict, List
 
 import pandas as pd
 
-from tokka_bench.visualization.constants import SCRIPT_GROUPS
+from .constants import SCRIPT_GROUPS
 
 
 def detect_language_types(df: pd.DataFrame) -> Dict[str, List[str]]:

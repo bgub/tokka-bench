@@ -1,8 +1,8 @@
 """
-Streamlit entry point for tokka-bench visualization dashboard.
+Streamlit app entry point for tokka-bench dashboard.
 """
 
-from src.tokka_bench.visualization.app import main
+from src.visualization.app import main
 
 if __name__ == "__main__":
     main()

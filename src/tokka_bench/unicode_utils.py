@@ -10,12 +10,13 @@ from typing import Dict, List, Set
 
 
 # Unicode script mappings for major writing systems
+# Order matters: more specific scripts should come first
 UNICODE_SCRIPTS: Dict[str, List[str]] = {
-    "Latin": ["LATIN"],
-    "Chinese": ["CJK", "HAN"],  # CJK covers Chinese ideographs
-    "Cyrillic": ["CYRILLIC"],
-    "Korean": ["HANGUL"],
+    "Korean": ["HANGUL"],  # Must come before Chinese to avoid HAN matching in HANGUL
     "Japanese": ["HIRAGANA", "KATAKANA"],
+    "Chinese": ["CJK", "HAN"],  # CJK covers Chinese ideographs
+    "Latin": ["LATIN"],
+    "Cyrillic": ["CYRILLIC"],
     "Arabic": ["ARABIC"],
     "Devanagari": ["DEVANAGARI"],
     "Thai": ["THAI"],
@@ -31,8 +32,16 @@ def get_unicode_scripts(text: str) -> Set[str]:
         if char.isspace():
             continue
 
-        # Check for punctuation, symbols, numbers first
+        # Get character name and category
+        char_name: str = unicodedata.name(char, "")
         category: str = unicodedata.category(char)
+
+        # Check for mathematical symbols first (they're classified as Lu but should be Symbols)
+        if "MATHEMATICAL" in char_name or "DOUBLE-STRUCK" in char_name:
+            scripts.add("Symbols")
+            continue
+
+        # Check for punctuation, symbols, numbers
         if category.startswith("P"):  # Punctuation (Po, Pc, Pd, Ps, Pe, Pi, Pf)
             scripts.add("Punctuation")
             continue
@@ -43,12 +52,9 @@ def get_unicode_scripts(text: str) -> Set[str]:
             scripts.add("Numbers")
             continue
 
-        # Check for script families
-        script: str = (
-            unicodedata.name(char, "").split()[0] if unicodedata.name(char, "") else ""
-        )
+        # Check for script families using the full character name
         for script_name, script_codes in UNICODE_SCRIPTS.items():
-            if any(script_code in script for script_code in script_codes):
+            if any(script_code in char_name for script_code in script_codes):
                 scripts.add(script_name)
                 break
     return scripts

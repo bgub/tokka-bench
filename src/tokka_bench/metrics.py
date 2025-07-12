@@ -7,13 +7,67 @@ and tracking global statistics across multiple languages.
 
 import re
 from collections import defaultdict
-from typing import Any, Dict, List, Protocol
+from typing import Any, Dict, List, Optional, Protocol
 
 from .unicode_utils import (
     get_unicode_scripts,
     has_whitespace_in_middle,
     starts_with_space,
 )
+
+
+# Languages that don't typically use spaces between words
+# Format: (iso_code, script) tuples
+CHARACTER_BASED_LANGUAGES = {
+    ("cmn", "Hani"),  # Chinese (Mandarin)
+    ("yue", "Hani"),  # Chinese (Cantonese)
+    ("zho", "Hani"),  # Chinese (generic)
+    ("jpn", "Jpan"),  # Japanese (mixed scripts but often no spaces)
+    ("tha", "Thai"),  # Thai
+    ("khm", "Khmr"),  # Khmer
+    ("lao", "Laoo"),  # Lao
+    ("mya", "Mymr"),  # Myanmar
+    ("sat", "Olck"),  # Santali
+    ("nod", "Lana"),  # Northern Thai
+}
+
+
+def is_character_based_language(language_info: Optional[Dict[str, str]]) -> bool:
+    """
+    Determine if a language uses character-based segmentation instead of spaces.
+
+    Args:
+        language_info: Dictionary containing 'iso_code' and 'script' keys
+
+    Returns:
+        True if the language should use character-based segmentation
+    """
+    if not language_info:
+        return False
+
+    iso_code = language_info.get("iso_code", "").lower()
+    script = language_info.get("script", "")
+
+    # Check exact matches first
+    if (iso_code, script) in CHARACTER_BASED_LANGUAGES:
+        return True
+
+    # Check for Chinese variants (any script with Han/Hani)
+    if script in ("Hani", "Hans", "Hant") or "Han" in script:
+        return True
+
+    # Check for other character-based scripts
+    character_based_scripts = {
+        "Thai",
+        "Khmr",
+        "Laoo",
+        "Mymr",
+        "Olck",
+        "Lana",
+        "Jpan",  # Japanese can be mixed but often has no spaces
+    }
+
+    return script in character_based_scripts
 
 
 class TokenizerProtocol(Protocol):
@@ -38,10 +92,37 @@ class TokenizerProtocol(Protocol):
         ...
 
 
-def calculate_word_metrics(tokenizer: TokenizerProtocol, text: str) -> Dict[str, Any]:
-    """Calculate sub-word fertility and split rates using efficient sampling."""
-    # Split text into words (simple whitespace split for now)
-    words: List[str] = re.findall(r"\S+", text)
+def calculate_word_metrics(
+    tokenizer: TokenizerProtocol,
+    text: str,
+    language_info: Optional[Dict[str, str]] = None,
+) -> Dict[str, Any]:
+    """
+    Calculate sub-word fertility and split rates using efficient sampling.
+
+    Args:
+        tokenizer: Tokenizer to analyze
+        text: Text to analyze
+        language_info: Optional language information dict with 'iso_code' and 'script'
+
+    Returns:
+        Dictionary containing metrics and debug information
+    """
+    # Determine segmentation method based on language
+    is_char_based = is_character_based_language(language_info)
+
+    if is_char_based:
+        # For character-based languages, split by character
+        # Filter out whitespace and punctuation to get meaningful units
+        words = []
+        for char in text:
+            if not char.isspace() and char.isprintable():
+                words.append(char)
+        segmentation_method = "character"
+    else:
+        # For space-based languages, split by whitespace
+        words = re.findall(r"\S+", text)
+        segmentation_method = "whitespace"
 
     if not words:
         return {
@@ -53,6 +134,8 @@ def calculate_word_metrics(tokenizer: TokenizerProtocol, text: str) -> Dict[str,
                 "sampled_words": 0,
                 "sample_words": [],
                 "sample_word_tokenizations": [],
+                "segmentation_method": segmentation_method,
+                "language_info": language_info,
             },
         }
 
@@ -61,7 +144,7 @@ def calculate_word_metrics(tokenizer: TokenizerProtocol, text: str) -> Dict[str,
     total_tokens_for_words: int = len(token_ids)
 
     # Sample words for accurate splitting analysis (much more efficient than tokenizing all words)
-    sample_size: int = min(len(words), 1000)  # Sample up to 1000 words
+    sample_size: int = min(len(words), 1000)  # Sample up to 1000 words/characters
     step: int = max(1, len(words) // sample_size)
     sample_words: List[str] = words[::step][:sample_size]
 
@@ -114,6 +197,8 @@ def calculate_word_metrics(tokenizer: TokenizerProtocol, text: str) -> Dict[str,
             "sample_split_rate": sample_split_rate,
             "sample_words": sample_words[:10],
             "sample_word_tokenizations": sample_word_tokenizations,
+            "segmentation_method": segmentation_method,
+            "language_info": language_info,
         },
     }
 

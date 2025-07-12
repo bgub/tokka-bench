@@ -7,7 +7,7 @@ from typing import Dict, List, Tuple
 import pandas as pd
 import streamlit as st
 
-from tokka_bench.visualization.charts import (
+from .charts import (
     create_efficiency_chart,
     create_coverage_chart,
     create_vocab_efficiency_scatter,

@@ -7,7 +7,7 @@ from various datasets (FineWeb-2, StarCoder, FineWeb).
 
 import gc
 import os
-from typing import Dict, List, Optional
+from typing import Dict, List
 
 import pandas as pd
 

@@ -4,12 +4,12 @@ Main Streamlit app for the tokka-bench visualization dashboard.
 
 import streamlit as st
 
-from tokka_bench.visualization.categories import detect_language_types
-from tokka_bench.visualization.controls import (
+from .categories import detect_language_types
+from .controls import (
     render_sidebar_controls,
     render_main_content,
 )
-from tokka_bench.visualization.data import load_all_results, results_to_dataframe
+from .data import load_all_results, results_to_dataframe
 
 
 def main():

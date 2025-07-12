@@ -6,7 +6,7 @@ tokenizer and calculate various metrics including vocabulary analysis and
 word-level statistics.
 """
 
-from typing import Any, Dict, List
+from typing import Any, Dict, List, Optional
 
 from transformers import AutoTokenizer
 
@@ -35,7 +35,9 @@ class UniversalTokenizer:
         """Decode token IDs back to text."""
         return self.tokenizer.decode(token_ids, skip_special_tokens=skip_special_tokens)
 
-    def get_metrics(self, text: str) -> Dict[str, Any]:
+    def get_metrics(
+        self, text: str, language_info: Optional[Dict[str, str]] = None
+    ) -> Dict[str, Any]:
         """Calculate metrics for given text."""
         # Encode the text
         token_ids: List[int] = self.encode(text)
@@ -45,20 +47,22 @@ class UniversalTokenizer:
         num_tokens: int = len(token_ids)
         unique_tokens: int = len(set(token_ids))  # Count unique token IDs
 
-        # Calculate word-level metrics
-        word_metrics: Dict[str, Any] = calculate_word_metrics(self, text)
+        # Calculate word-level metrics with language information
+        word_metrics: Dict[str, Any] = calculate_word_metrics(self, text, language_info)
 
         # Debug logging
         debug_info: Dict[str, Any] = word_metrics.get("debug_info", {})
-        print(f"    🔍 Debug Info:")
+        segmentation_method = debug_info.get("segmentation_method", "whitespace")
+
+        print("    🔍 Debug Info:")
         print(
             f"      Text bytes: {text_bytes:,}, Tokens: {num_tokens:,}, Unique tokens: {unique_tokens:,}"
         )
         print(
-            f"      Words: {debug_info.get('total_words', 0):,}, Words split: {debug_info.get('words_split', 0):,}"
+            f"      {segmentation_method.title()} units: {debug_info.get('total_words', 0):,}, Units split: {debug_info.get('words_split', 0):,}"
         )
         print(
-            f"      Sample analysis: {debug_info.get('sampled_words', 0):,} words, {debug_info.get('words_split_in_sample', 0):,} split"
+            f"      Sample analysis: {debug_info.get('sampled_words', 0):,} units, {debug_info.get('words_split_in_sample', 0):,} split"
         )
         print(f"      Split rate: {debug_info.get('sample_split_rate', 0) * 100:.1f}%")
 
@@ -68,7 +72,7 @@ class UniversalTokenizer:
             "sample_word_tokenizations", []
         )
         if sample_words:
-            print(f"      Sample words: {sample_words}")
+            print(f"      Sample {segmentation_method} units: {sample_words}")
         if sample_tokenizations:
             for tok in sample_tokenizations[:5]:  # Show first 5 tokenizations
                 split_indicator = "🔀" if tok["is_split"] else "✓"

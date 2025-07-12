@@ -36,8 +36,8 @@ def benchmark_language(
     # Load real sample text
     sample_text: str = load_real_sample_text(lang_info, sample_size_mb)
 
-    # Calculate metrics
-    metrics: Dict[str, Any] = tokenizer.get_metrics(sample_text)
+    # Calculate metrics with language information
+    metrics: Dict[str, Any] = tokenizer.get_metrics(sample_text, lang_info)
 
     # Print summary
     print(
@@ -98,7 +98,7 @@ def benchmark_tokenizer(
             continue
 
     # Calculate global metrics
-    print(f"\n🔄 Calculating global metrics...")
+    print("\n🔄 Calculating global metrics...")
     global_metrics: Dict[str, float] = global_tracker.get_global_metrics()
 
     return {
@@ -126,7 +126,7 @@ def run_benchmark(
     print(f"📏 Sample size: {sample_size_mb}MB per language")
 
     # Load tokenizer
-    print(f"\n🔧 Loading tokenizer...")
+    print("\n🔧 Loading tokenizer...")
     tokenizer: UniversalTokenizer = UniversalTokenizer(tokenizer_name)
 
     # 1. English from FineWeb sample-10BT
@@ -155,7 +155,7 @@ def run_benchmark(
     print()
 
     # Print language lists
-    print(f"\n🌍 Natural Languages (FineWeb-2) - In CSV order:")
+    print("\n🌍 Natural Languages (FineWeb-2) - In CSV order:")
     for i, lang in enumerate(natural_languages, 1):
         # Get size from CSV for display
         lang_size = df.loc[df["ISO 639-3 code"] == lang["iso_code"], "Disk size"].iloc[
@@ -165,12 +165,12 @@ def run_benchmark(
             f"  {i:2d}. {lang['name']:<25} ({lang['iso_code']}-{lang['script']}): {lang_size}"
         )
 
-    print(f"\n💻 Programming Languages (StarCoder) - In CSV order:")
+    print("\n💻 Programming Languages (StarCoder) - In CSV order:")
     for i, lang in enumerate(coding_languages, 1):
         print(f"  {i:2d}. {lang['name']:<25} ({lang['iso_code']}-{lang['script']})")
 
     # Run benchmark
-    print(f"\n🏃 Running benchmark...")
+    print("\n🏃 Running benchmark...")
     results: Dict[str, Any] = benchmark_tokenizer(
         tokenizer, all_languages, sample_size_mb
     )
