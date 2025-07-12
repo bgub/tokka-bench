@@ -1,26 +1,25 @@
-#!/usr/bin/env python3
 """
-Simple launcher for the Tokka-Bench visualization dashboard.
-
-This script launches the Streamlit app with proper error handling.
+Dashboard launcher with pre-flight checks.
 """
 
 import subprocess
 import sys
 from pathlib import Path
 
+from tokka_bench.visualization.constants import RESULTS_DIR
 
-def main():
-    """Launch the Streamlit dashboard."""
+
+def launch_dashboard():
+    """Launch the Streamlit dashboard with checks - entry point for dashboard command."""
     print("🚀 Launching Tokka-Bench Dashboard...")
 
     # Check if results exist
-    results_dir = Path("data/results")
+    results_dir = Path(RESULTS_DIR)
     if not results_dir.exists() or not list(results_dir.glob("*.json")):
         print("❌ No benchmark results found!")
         print("Run some benchmarks first:")
-        print("  uv run cli/benchmark.py tokenizer=openai-community/gpt2")
-        print("  uv run cli/benchmark.py tokenizer=Xenova/gpt-4")
+        print("  uv run benchmark tokenizer=openai-community/gpt2")
+        print("  uv run benchmark tokenizer=Xenova/gpt-4")
         sys.exit(1)
 
     # Count available results
@@ -34,14 +33,14 @@ def main():
     print("👉 Press Ctrl+C to stop the server")
 
     try:
-        # Launch streamlit
+        # Launch streamlit pointing to the new app module
         subprocess.run(
             [
                 sys.executable,
                 "-m",
                 "streamlit",
                 "run",
-                "cli/visualize.py",
+                "streamlit_app.py",
                 "--browser.gatherUsageStats",
                 "false",
             ],
@@ -52,7 +51,3 @@ def main():
     except subprocess.CalledProcessError as e:
         print(f"❌ Error launching dashboard: {e}")
         sys.exit(1)
-
-
-if __name__ == "__main__":
-    main()
