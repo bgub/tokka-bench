@@ -42,29 +42,191 @@ def results_to_dataframe(results: Dict[str, Any]) -> pd.DataFrame:
         timestamp = result.get("timestamp", 0)
         vocab_size = result.get("vocab_size", None)
 
+        # Extract vocab metrics if available
+        vocab_metrics = result.get("vocab_metrics", {})
+        global_metrics = result.get("global_metrics", {})
+
         for lang_key, lang_data in result.get("languages", {}).items():
             lang_info = lang_data["language_info"]
             metrics = lang_data["metrics"]
 
-            rows.append(
+            row = {
+                "tokenizer_key": tokenizer_key,
+                "tokenizer_name": tokenizer_name,
+                "language": lang_info["name"],
+                "iso_code": lang_info["iso_code"],
+                "script": lang_info["script"],
+                "lang_key": lang_key,
+                "bytes_per_token": metrics["bytes_per_token"],
+                "total_bytes": metrics["total_bytes"],
+                "total_tokens": metrics["total_tokens"],
+                "unique_tokens": metrics["unique_tokens"],
+                "vocab_size": vocab_size,
+                "benchmark_size_mb": benchmark_size,
+                "timestamp": timestamp,
+                "datetime": datetime.fromtimestamp(timestamp) if timestamp else None,
+            }
+
+            # Add new per-language metrics if available
+            if "subword_fertility" in metrics:
+                row["subword_fertility"] = metrics["subword_fertility"]
+            if "continued_word_rate" in metrics:
+                row["continued_word_rate"] = metrics["continued_word_rate"]
+
+            # Add vocab metrics (same for all languages of a tokenizer)
+            if vocab_metrics:
+                row["tokens_without_leading_space_pct"] = vocab_metrics.get(
+                    "tokens_without_leading_space_pct"
+                )
+                row["tokens_without_leading_space_count"] = vocab_metrics.get(
+                    "tokens_without_leading_space_count"
+                )
+                row["analyzed_sample_size"] = vocab_metrics.get("analyzed_sample_size")
+
+            # Add global metrics (same for all languages of a tokenizer)
+            if global_metrics:
+                row["total_tokens_analyzed"] = global_metrics.get(
+                    "total_tokens_analyzed"
+                )
+                row["tokens_starting_with_space_pct"] = global_metrics.get(
+                    "tokens_starting_with_space_pct"
+                )
+                row["tokens_with_whitespace_in_middle_pct"] = global_metrics.get(
+                    "tokens_with_whitespace_in_middle_pct"
+                )
+                row["tokens_with_script_overlap_pct"] = global_metrics.get(
+                    "tokens_with_script_overlap_pct"
+                )
+                row["tokens_with_symbols_unicode_pct"] = global_metrics.get(
+                    "tokens_with_symbols_unicode_pct"
+                )
+                row["tokens_with_latin_unicode_pct"] = global_metrics.get(
+                    "tokens_with_latin_unicode_pct"
+                )
+                row["tokens_with_punctuation_unicode_pct"] = global_metrics.get(
+                    "tokens_with_punctuation_unicode_pct"
+                )
+                row["tokens_with_numbers_unicode_pct"] = global_metrics.get(
+                    "tokens_with_numbers_unicode_pct"
+                )
+                row["tokens_with_japanese_unicode_pct"] = global_metrics.get(
+                    "tokens_with_japanese_unicode_pct"
+                )
+                row["tokens_with_chinese_unicode_pct"] = global_metrics.get(
+                    "tokens_with_chinese_unicode_pct"
+                )
+                row["tokens_with_cyrillic_unicode_pct"] = global_metrics.get(
+                    "tokens_with_cyrillic_unicode_pct"
+                )
+                row["tokens_with_greek_unicode_pct"] = global_metrics.get(
+                    "tokens_with_greek_unicode_pct"
+                )
+                row["tokens_with_korean_unicode_pct"] = global_metrics.get(
+                    "tokens_with_korean_unicode_pct"
+                )
+                row["tokens_with_arabic_unicode_pct"] = global_metrics.get(
+                    "tokens_with_arabic_unicode_pct"
+                )
+                row["tokens_with_hebrew_unicode_pct"] = global_metrics.get(
+                    "tokens_with_hebrew_unicode_pct"
+                )
+
+            rows.append(row)
+
+    return pd.DataFrame(rows)
+
+
+def get_tokenizer_summary(results: Dict[str, Any]) -> pd.DataFrame:
+    """Extract tokenizer-level summary information including vocab metrics."""
+    summary_rows = []
+
+    for tokenizer_key, result in results.items():
+        tokenizer_name = result.get("tokenizer", tokenizer_key)
+        vocab_size = result.get("vocab_size", None)
+        timestamp = result.get("timestamp", 0)
+
+        # Extract vocab metrics
+        vocab_metrics = result.get("vocab_metrics", {})
+        global_metrics = result.get("global_metrics", {})
+
+        row = {
+            "tokenizer_key": tokenizer_key,
+            "tokenizer_name": tokenizer_name,
+            "vocab_size": vocab_size,
+            "timestamp": timestamp,
+            "datetime": datetime.fromtimestamp(timestamp) if timestamp else None,
+        }
+
+        # Add vocab metrics
+        if vocab_metrics:
+            row.update(
                 {
-                    "tokenizer_key": tokenizer_key,
-                    "tokenizer_name": tokenizer_name,
-                    "language": lang_info["name"],
-                    "iso_code": lang_info["iso_code"],
-                    "script": lang_info["script"],
-                    "lang_key": lang_key,
-                    "bytes_per_token": metrics["bytes_per_token"],
-                    "total_bytes": metrics["total_bytes"],
-                    "total_tokens": metrics["total_tokens"],
-                    "unique_tokens": metrics["unique_tokens"],
-                    "vocab_size": vocab_size,
-                    "benchmark_size_mb": benchmark_size,
-                    "timestamp": timestamp,
-                    "datetime": datetime.fromtimestamp(timestamp)
-                    if timestamp
-                    else None,
+                    "tokens_without_leading_space_pct": vocab_metrics.get(
+                        "tokens_without_leading_space_pct"
+                    ),
+                    "tokens_without_leading_space_count": vocab_metrics.get(
+                        "tokens_without_leading_space_count"
+                    ),
+                    "analyzed_sample_size": vocab_metrics.get("analyzed_sample_size"),
+                    "sample_non_space_tokens": vocab_metrics.get(
+                        "sample_non_space_tokens", []
+                    ),
+                    "sample_space_tokens": vocab_metrics.get("sample_space_tokens", []),
                 }
             )
 
-    return pd.DataFrame(rows)
+        # Add global metrics
+        if global_metrics:
+            row.update(
+                {
+                    "total_tokens_analyzed": global_metrics.get(
+                        "total_tokens_analyzed"
+                    ),
+                    "tokens_starting_with_space_pct": global_metrics.get(
+                        "tokens_starting_with_space_pct"
+                    ),
+                    "tokens_with_whitespace_in_middle_pct": global_metrics.get(
+                        "tokens_with_whitespace_in_middle_pct"
+                    ),
+                    "tokens_with_script_overlap_pct": global_metrics.get(
+                        "tokens_with_script_overlap_pct"
+                    ),
+                    "tokens_with_symbols_unicode_pct": global_metrics.get(
+                        "tokens_with_symbols_unicode_pct"
+                    ),
+                    "tokens_with_latin_unicode_pct": global_metrics.get(
+                        "tokens_with_latin_unicode_pct"
+                    ),
+                    "tokens_with_punctuation_unicode_pct": global_metrics.get(
+                        "tokens_with_punctuation_unicode_pct"
+                    ),
+                    "tokens_with_numbers_unicode_pct": global_metrics.get(
+                        "tokens_with_numbers_unicode_pct"
+                    ),
+                    "tokens_with_japanese_unicode_pct": global_metrics.get(
+                        "tokens_with_japanese_unicode_pct"
+                    ),
+                    "tokens_with_chinese_unicode_pct": global_metrics.get(
+                        "tokens_with_chinese_unicode_pct"
+                    ),
+                    "tokens_with_cyrillic_unicode_pct": global_metrics.get(
+                        "tokens_with_cyrillic_unicode_pct"
+                    ),
+                    "tokens_with_greek_unicode_pct": global_metrics.get(
+                        "tokens_with_greek_unicode_pct"
+                    ),
+                    "tokens_with_korean_unicode_pct": global_metrics.get(
+                        "tokens_with_korean_unicode_pct"
+                    ),
+                    "tokens_with_arabic_unicode_pct": global_metrics.get(
+                        "tokens_with_arabic_unicode_pct"
+                    ),
+                    "tokens_with_hebrew_unicode_pct": global_metrics.get(
+                        "tokens_with_hebrew_unicode_pct"
+                    ),
+                }
+            )
+
+        summary_rows.append(row)
+
+    return pd.DataFrame(summary_rows)

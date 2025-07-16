@@ -27,9 +27,9 @@ class UniversalTokenizer:
         # Calculate vocabulary-level metrics once
         self.vocab_metrics: Dict[str, Any] = analyze_vocabulary(self)
 
-    def encode(self, text: str) -> List[int]:
+    def encode(self, text: str, add_special_tokens: bool = True) -> List[int]:
         """Encode text to token IDs."""
-        return self.tokenizer.encode(text)
+        return self.tokenizer.encode(text, add_special_tokens=add_special_tokens)
 
     def decode(self, token_ids: List[int], skip_special_tokens: bool = True) -> str:
         """Decode token IDs back to text."""
@@ -65,6 +65,10 @@ class UniversalTokenizer:
             f"      Sample analysis: {debug_info.get('sampled_words', 0):,} units, {debug_info.get('words_split_in_sample', 0):,} split"
         )
         print(f"      Split rate: {debug_info.get('sample_split_rate', 0) * 100:.1f}%")
+        print(
+            f"      Continuation tokens: {debug_info.get('continuation_tokens_in_sample', 0):,}/{debug_info.get('total_tokens_in_sample', 0):,}"
+        )
+        print(f"      Continued word rate: {word_metrics['continued_word_rate']:.1f}%")
 
         # Show sample words and tokenizations
         sample_words: List[str] = debug_info.get("sample_words", [])

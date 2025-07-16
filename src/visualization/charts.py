@@ -87,6 +87,222 @@ def create_coverage_chart(
     )
 
 
+def create_subword_fertility_chart(
+    df: pd.DataFrame, selected_tokenizers: List[str]
+) -> go.Figure:
+    """Create a bar chart comparing subword fertility across languages."""
+    chart_data = prepare_chart_data(df, selected_tokenizers)
+
+    # Check if subword_fertility data is available
+    if (
+        "subword_fertility" not in chart_data.columns
+        or chart_data["subword_fertility"].isna().all()
+    ):
+        fig = go.Figure()
+        fig.add_annotation(
+            text="Subword fertility data not available<br>Run benchmarks with updated script",
+            xref="paper",
+            yref="paper",
+            x=0.5,
+            y=0.5,
+            xanchor="center",
+            yanchor="middle",
+            showarrow=False,
+            font=dict(size=16, color="gray"),
+        )
+        fig.update_layout(
+            title="Subword Fertility (Subwords per Word)",
+            xaxis=dict(visible=False),
+            yaxis=dict(visible=False),
+            height=CHART_HEIGHT,
+        )
+        return fig
+
+    return create_bar_chart(
+        chart_data,
+        x="language",
+        y="subword_fertility",
+        title="Subword Fertility (Subwords per Word)",
+        y_label="Subwords per Word (Higher = More Fragmented)",
+    )
+
+
+def create_continued_word_rate_chart(
+    df: pd.DataFrame, selected_tokenizers: List[str]
+) -> go.Figure:
+    """Create a bar chart comparing continued word rate across languages."""
+    chart_data = prepare_chart_data(df, selected_tokenizers)
+
+    # Check if continued_word_rate data is available
+    if (
+        "continued_word_rate" not in chart_data.columns
+        or chart_data["continued_word_rate"].isna().all()
+    ):
+        fig = go.Figure()
+        fig.add_annotation(
+            text="Continued word rate data not available<br>Run benchmarks with updated script",
+            xref="paper",
+            yref="paper",
+            x=0.5,
+            y=0.5,
+            xanchor="center",
+            yanchor="middle",
+            showarrow=False,
+            font=dict(size=16, color="gray"),
+        )
+        fig.update_layout(
+            title="Continued Word Rate (% of Tokens Continuing Words)",
+            xaxis=dict(visible=False),
+            yaxis=dict(visible=False),
+            height=CHART_HEIGHT,
+        )
+        return fig
+
+    return create_bar_chart(
+        chart_data,
+        x="language",
+        y="continued_word_rate",
+        title="Continued Word Rate (% of Tokens Continuing Words)",
+        y_label="Continued Word Rate (% - Higher = More Subword Splitting)",
+    )
+
+
+def create_script_distribution_chart(
+    df: pd.DataFrame, selected_tokenizers: List[str]
+) -> go.Figure:
+    """Create a stacked bar chart showing script distribution across tokenizers."""
+    chart_data = prepare_chart_data(df, selected_tokenizers)
+
+    # Script columns to visualize
+    script_columns = [
+        "tokens_with_latin_unicode_pct",
+        "tokens_with_japanese_unicode_pct",
+        "tokens_with_chinese_unicode_pct",
+        "tokens_with_cyrillic_unicode_pct",
+        "tokens_with_arabic_unicode_pct",
+        "tokens_with_korean_unicode_pct",
+    ]
+
+    # Check if script data is available
+    available_cols = [
+        col
+        for col in script_columns
+        if col in chart_data.columns and not chart_data[col].isna().all()
+    ]
+
+    if not available_cols:
+        fig = go.Figure()
+        fig.add_annotation(
+            text="Script distribution data not available<br>Run benchmarks with updated script",
+            xref="paper",
+            yref="paper",
+            x=0.5,
+            y=0.5,
+            xanchor="center",
+            yanchor="middle",
+            showarrow=False,
+            font=dict(size=16, color="gray"),
+        )
+        fig.update_layout(
+            title="Script Distribution in Tokenizer Vocabulary",
+            xaxis=dict(visible=False),
+            yaxis=dict(visible=False),
+            height=CHART_HEIGHT,
+        )
+        return fig
+
+    # Get unique tokenizers and their script percentages
+    tokenizer_data = (
+        chart_data.groupby("tokenizer_name")[available_cols].first().reset_index()
+    )
+
+    # Create stacked bar chart
+    fig = go.Figure()
+
+    script_names = {
+        "tokens_with_latin_unicode_pct": "Latin",
+        "tokens_with_japanese_unicode_pct": "Japanese",
+        "tokens_with_chinese_unicode_pct": "Chinese",
+        "tokens_with_cyrillic_unicode_pct": "Cyrillic",
+        "tokens_with_arabic_unicode_pct": "Arabic",
+        "tokens_with_korean_unicode_pct": "Korean",
+    }
+
+    for col in available_cols:
+        fig.add_trace(
+            go.Bar(
+                x=tokenizer_data["tokenizer_name"],
+                y=tokenizer_data[col],
+                name=script_names.get(col, col),
+            )
+        )
+
+    fig.update_layout(
+        title="Script Distribution in Tokenizer Vocabulary",
+        xaxis_title="Tokenizer",
+        yaxis_title="Percentage of Tokens",
+        barmode="stack",
+        height=CHART_HEIGHT,
+        legend=LEGEND_CONFIG,
+    )
+
+    return fig
+
+
+def create_vocab_metrics_chart(
+    df: pd.DataFrame, selected_tokenizers: List[str]
+) -> go.Figure:
+    """Create a bar chart comparing tokenizer vocabulary metrics."""
+    chart_data = prepare_chart_data(df, selected_tokenizers)
+
+    # Check if vocab metrics data is available
+    if (
+        "tokens_without_leading_space_pct" not in chart_data.columns
+        or chart_data["tokens_without_leading_space_pct"].isna().all()
+    ):
+        fig = go.Figure()
+        fig.add_annotation(
+            text="Vocabulary metrics data not available<br>Run benchmarks with updated script",
+            xref="paper",
+            yref="paper",
+            x=0.5,
+            y=0.5,
+            xanchor="center",
+            yanchor="middle",
+            showarrow=False,
+            font=dict(size=16, color="gray"),
+        )
+        fig.update_layout(
+            title="Vocabulary Metrics (Tokens Without Leading Space)",
+            xaxis=dict(visible=False),
+            yaxis=dict(visible=False),
+            height=CHART_HEIGHT,
+        )
+        return fig
+
+    # Get unique tokenizers and their vocab metrics
+    tokenizer_data = (
+        chart_data.groupby("tokenizer_name")["tokens_without_leading_space_pct"]
+        .first()
+        .reset_index()
+    )
+
+    fig = px.bar(
+        tokenizer_data,
+        x="tokenizer_name",
+        y="tokens_without_leading_space_pct",
+        title="Vocabulary Metrics (Tokens Without Leading Space)",
+        labels={
+            "tokens_without_leading_space_pct": "% Tokens Without Leading Space",
+            "tokenizer_name": "Tokenizer",
+        },
+        height=CHART_HEIGHT,
+    )
+
+    fig.update_layout(legend=LEGEND_CONFIG)
+    return fig
+
+
 def create_vocab_efficiency_scatter(
     df: pd.DataFrame, selected_tokenizers: List[str]
 ) -> go.Figure:
@@ -190,15 +406,41 @@ def create_summary_table(
             else None
         )
 
-        summary_rows.append(
-            {
-                "Tokenizer": tokenizer_name,
-                "Vocab Size": f"{vocab_size:,}" if vocab_size else "N/A",
-                "Avg Efficiency (bytes/token)": f"{tokenizer_df['bytes_per_token'].mean():.3f}",
-                "Avg Coverage (unique tokens)": f"{tokenizer_df['unique_tokens'].mean():.0f}",
-                "Languages Tested": len(tokenizer_df),
-            }
-        )
+        # Build summary row
+        row = {
+            "Tokenizer": tokenizer_name,
+            "Vocab Size": f"{vocab_size:,}" if vocab_size else "N/A",
+            "Avg Efficiency (bytes/token)": f"{tokenizer_df['bytes_per_token'].mean():.3f}",
+            "Avg Coverage (unique tokens)": f"{tokenizer_df['unique_tokens'].mean():.0f}",
+            "Languages Tested": len(tokenizer_df),
+        }
+
+        # Add new metrics if available
+        if (
+            "subword_fertility" in tokenizer_df.columns
+            and not tokenizer_df["subword_fertility"].isna().all()
+        ):
+            row["Avg Subword Fertility"] = (
+                f"{tokenizer_df['subword_fertility'].mean():.2f}"
+            )
+
+        if (
+            "continued_word_rate" in tokenizer_df.columns
+            and not tokenizer_df["continued_word_rate"].isna().all()
+        ):
+            row["Avg Continued Word Rate (%)"] = (
+                f"{tokenizer_df['continued_word_rate'].mean():.1f}"
+            )
+
+        if (
+            "tokens_without_leading_space_pct" in tokenizer_df.columns
+            and not tokenizer_df["tokens_without_leading_space_pct"].isna().all()
+        ):
+            row["Tokens Without Leading Space (%)"] = (
+                f"{tokenizer_df['tokens_without_leading_space_pct'].iloc[0]:.1f}"
+            )
+
+        summary_rows.append(row)
 
     summary_df = pd.DataFrame(summary_rows)
 

@@ -31,6 +31,14 @@ CHARACTER_BASED_LANGUAGES = {
     ("nod", "Lana"),  # Northern Thai
 }
 
+# Languages that use syllable-based segmentation (e.g., tsheg marks in Tibetan)
+# Format: (iso_code, script) tuples
+SYLLABLE_BASED_LANGUAGES = {
+    ("bod", "Tibt"),  # Tibetan
+    ("dzo", "Tibt"),  # Dzongkha (Bhutanese)
+    ("lad", "Tibt"),  # Ladakhi
+}
+
 
 def is_character_based_language(language_info: Optional[Dict[str, str]]) -> bool:
     """
@@ -68,6 +76,33 @@ def is_character_based_language(language_info: Optional[Dict[str, str]]) -> bool
     }
 
     return script in character_based_scripts
+
+
+def is_syllable_based_language(language_info: Optional[Dict[str, str]]) -> bool:
+    """
+    Determine if a language uses syllable-based segmentation (e.g., tsheg marks).
+
+    Args:
+        language_info: Dictionary containing 'iso_code' and 'script' keys
+
+    Returns:
+        True if the language should use syllable-based segmentation
+    """
+    if not language_info:
+        return False
+
+    iso_code = language_info.get("iso_code", "").lower()
+    script = language_info.get("script", "")
+
+    # Check for syllable-based languages
+    if (iso_code, script) in SYLLABLE_BASED_LANGUAGES:
+        return True
+
+    # Check for Tibetan script variants
+    if script in ("Tibt", "Tibetan"):
+        return True
+
+    return False
 
 
 class TokenizerProtocol(Protocol):
@@ -110,8 +145,36 @@ def calculate_word_metrics(
     """
     # Determine segmentation method based on language
     is_char_based = is_character_based_language(language_info)
+    is_syllable_based = is_syllable_based_language(language_info)
 
-    if is_char_based:
+    if is_syllable_based:
+        # For syllable-based languages (e.g., Tibetan), split by tsheg marks
+        # The tsheg mark (་) separates syllables in Tibetan
+
+        # First, split by tsheg marks (་)
+        tsheg_separated = re.split(r"[་]", text)
+
+        # Filter out empty strings and whitespace-only strings
+        syllables = []
+        for segment in tsheg_separated:
+            # Remove leading/trailing whitespace
+            segment = segment.strip()
+            # Skip empty segments
+            if segment and not segment.isspace():
+                syllables.append(segment)
+
+        # If we don't have many syllables, fall back to character-based
+        # This handles texts that might not have tsheg marks
+        if len(syllables) < 3:
+            syllables = []
+            for char in text:
+                if not char.isspace() and char.isprintable() and char != "་":
+                    syllables.append(char)
+
+        words = syllables
+        segmentation_method = "syllable"
+
+    elif is_char_based:
         # For character-based languages, split by character
         # Filter out whitespace and punctuation to get meaningful units
         words = []
@@ -150,14 +213,23 @@ def calculate_word_metrics(
 
     # Tokenize sample words individually to check for splitting
     words_split_in_sample: int = 0
+    continuation_tokens_in_sample: int = 0
+    total_tokens_in_sample: int = 0
     sample_word_tokenizations: List[Dict[str, Any]] = []
 
     for word in sample_words:
-        word_token_ids: List[int] = tokenizer.encode(word)
+        # Use add_special_tokens=False to avoid BOS/EOS tokens affecting split detection
+        word_token_ids: List[int] = tokenizer.encode(word, add_special_tokens=False)
         is_split: bool = len(word_token_ids) > 1
+
+        # Count tokens for correct continued_word_rate calculation
+        num_tokens = len(word_token_ids)
+        total_tokens_in_sample += num_tokens
 
         if is_split:
             words_split_in_sample += 1
+            # All tokens except the first are continuations
+            continuation_tokens_in_sample += num_tokens - 1
 
         # Store sample tokenization for debugging (first 10 only)
         if len(sample_word_tokenizations) < 10:
@@ -179,7 +251,13 @@ def calculate_word_metrics(
     sample_split_rate: float = (
         words_split_in_sample / len(sample_words) if sample_words else 0.0
     )
-    continued_word_rate: float = sample_split_rate * 100
+
+    # FIXED: Calculate percentage of tokens that are continuations (not percentage of words that are split)
+    continued_word_rate: float = (
+        continuation_tokens_in_sample / total_tokens_in_sample * 100
+        if total_tokens_in_sample > 0
+        else 0.0
+    )
 
     # Estimate total words split based on sample
     estimated_total_words_split: int = int(sample_split_rate * len(words))
@@ -195,6 +273,8 @@ def calculate_word_metrics(
             "sampled_words": len(sample_words),
             "words_split_in_sample": words_split_in_sample,
             "sample_split_rate": sample_split_rate,
+            "continuation_tokens_in_sample": continuation_tokens_in_sample,
+            "total_tokens_in_sample": total_tokens_in_sample,
             "sample_words": sample_words[:10],
             "sample_word_tokenizations": sample_word_tokenizations,
             "segmentation_method": segmentation_method,

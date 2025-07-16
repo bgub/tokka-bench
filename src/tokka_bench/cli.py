@@ -123,34 +123,90 @@ def main():
 
     # Get required and optional parameters
     tokenizer = config.get("tokenizer")
+    tokenizers = config.get("tokenizers")  # Support both single and multiple
     sample_size = config.get("sample_size", 1.0)
     output_name = config.get("output_name", None)
+    output_names = config.get("output_names", None)
 
-    if not tokenizer:
-        print("❌ Error: tokenizer is required")
-        print("Example: uv run benchmark tokenizer=Xenova/gpt-4 sample_size=1.0")
+    # Handle tokenizer input (support both single and multiple)
+    if tokenizers:
+        # Multiple tokenizers specified
+        if isinstance(tokenizers, str):
+            tokenizer_list = [t.strip() for t in tokenizers.split(",")]
+        else:
+            tokenizer_list = (
+                tokenizers if isinstance(tokenizers, list) else [tokenizers]
+            )
+    elif tokenizer:
+        # Single tokenizer specified
+        if isinstance(tokenizer, str) and "," in tokenizer:
+            tokenizer_list = [t.strip() for t in tokenizer.split(",")]
+        else:
+            tokenizer_list = [tokenizer]
+    else:
+        print("❌ Error: tokenizer or tokenizers is required")
+        print("Examples:")
+        print("  Single:   uv run benchmark tokenizer=openai-community/gpt2")
+        print(
+            "  Multiple: uv run benchmark tokenizers=openai-community/gpt2,google/gemma-2-27b-it"
+        )
+        print(
+            "  Multiple: uv run benchmark tokenizer=openai-community/gpt2,google/gemma-2-27b-it"
+        )
         sys.exit(1)
 
-    print(f"Tokenizer: {tokenizer}")
-    print(f"Sample size: {sample_size}MB per language")
+    # Handle output names
+    output_name_list = None
+    if output_names:
+        if isinstance(output_names, str):
+            output_name_list = [n.strip() for n in output_names.split(",")]
+        else:
+            output_name_list = (
+                output_names if isinstance(output_names, list) else [output_names]
+            )
+    elif output_name:
+        output_name_list = [output_name]
 
-    if output_name:
-        print(f"Output filename: data/results/{output_name}.json")
+    # Validate output names count
+    if output_name_list and len(output_name_list) != len(tokenizer_list):
+        print(
+            f"❌ Error: Number of output names ({len(output_name_list)}) must match number of tokenizers ({len(tokenizer_list)})"
+        )
+        sys.exit(1)
+
+    # Display configuration
+    if len(tokenizer_list) == 1:
+        print(f"Tokenizer: {tokenizer_list[0]}")
+        if output_name_list:
+            print(f"Output filename: data/results/{output_name_list[0]}.json")
+        else:
+            safe_name = tokenizer_list[0].replace("/", "_").replace("-", "_")
+            print(f"Output filename: data/results/{safe_name}.json")
     else:
-        safe_name = tokenizer.replace("/", "_").replace("-", "_")
-        print(f"Output filename: data/results/{safe_name}.json")
+        print(f"Tokenizers ({len(tokenizer_list)}):")
+        for i, tok in enumerate(tokenizer_list):
+            if output_name_list:
+                output_file = f"data/results/{output_name_list[i]}.json"
+            else:
+                safe_name = tok.replace("/", "_").replace("-", "_")
+                output_file = f"data/results/{safe_name}.json"
+            print(f"  {i + 1}. {tok} → {output_file}")
 
+    print(f"Sample size: {sample_size}MB per language")
     print("--------------------------------------------------")
 
     try:
         print("🔄 Loading language data...")
-        results = run_benchmark(tokenizer, output_name, sample_size)
+        all_results = run_benchmark(tokenizer_list, output_name_list, sample_size)
 
         print("🔄 Printing summary...")
-        print_summary(results)
-        print_global_metrics(results)
+        for tokenizer_name in tokenizer_list:
+            results = all_results[tokenizer_name]
+            print(f"\n📊 Results for {tokenizer_name}:")
+            print_summary(results)
+            print_global_metrics(results)
 
-        print("\n✅ Benchmark completed successfully!")
+        print("\n✅ All benchmarks completed successfully!")
 
     except KeyboardInterrupt:
         print("\n❌ Interrupted by user")

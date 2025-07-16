@@ -10,6 +10,10 @@ import streamlit as st
 from .charts import (
     create_efficiency_chart,
     create_coverage_chart,
+    create_subword_fertility_chart,
+    create_continued_word_rate_chart,
+    create_script_distribution_chart,
+    create_vocab_metrics_chart,
     create_vocab_efficiency_scatter,
     create_summary_table,
 )
@@ -154,8 +158,17 @@ def render_main_content(
     st.subheader("📊 Detailed Analysis")
 
     # Create tabs for different views
-    efficiency_tab, coverage_tab, analysis_tab, raw_tab = st.tabs(
-        ["🚀 Efficiency", "🎯 Coverage", "📏 Analysis", "🔍 Raw Data"]
+    efficiency_tab, coverage_tab, subword_tab, vocab_tab, analysis_tab, raw_tab = (
+        st.tabs(
+            [
+                "🚀 Efficiency",
+                "🎯 Coverage",
+                "🔤 Subword Analysis",
+                "📚 Vocab Analysis",
+                "📏 Analysis",
+                "🔍 Raw Data",
+            ]
+        )
     )
 
     with efficiency_tab:
@@ -179,6 +192,60 @@ def render_main_content(
             st.info(
                 f"🌍 **{len(natural_langs)} human languages** • Higher coverage indicates better script support"
             )
+
+    with subword_tab:
+        st.write("#### Subword Analysis")
+
+        # Two columns for subword metrics
+        col1, col2 = st.columns(2)
+
+        with col1:
+            st.write("##### Subword Fertility")
+            st.caption("Subwords per word - Higher = more fragmented")
+            subword_fertility_chart = create_subword_fertility_chart(
+                display_df, selected_tokenizers
+            )
+            st.plotly_chart(subword_fertility_chart, use_container_width=True)
+
+        with col2:
+            st.write("##### Continued Word Rate")
+            st.caption("% of tokens continuing words - Higher = more subword splitting")
+            continued_word_rate_chart = create_continued_word_rate_chart(
+                display_df, selected_tokenizers
+            )
+            st.plotly_chart(continued_word_rate_chart, use_container_width=True)
+
+        st.info(
+            "🔤 **Subword Metrics** • Subword fertility shows how many pieces each word breaks into. "
+            "Continued word rate shows what percentage of tokens are continuations of words (not word-initial)."
+        )
+
+    with vocab_tab:
+        st.write("#### Vocabulary Analysis")
+
+        # Two columns for vocab metrics
+        col1, col2 = st.columns(2)
+
+        with col1:
+            st.write("##### Vocabulary Composition")
+            st.caption("% of tokens without leading space")
+            vocab_metrics_chart = create_vocab_metrics_chart(
+                display_df, selected_tokenizers
+            )
+            st.plotly_chart(vocab_metrics_chart, use_container_width=True)
+
+        with col2:
+            st.write("##### Script Distribution")
+            st.caption("Script composition of tokenizer vocabulary")
+            script_distribution_chart = create_script_distribution_chart(
+                display_df, selected_tokenizers
+            )
+            st.plotly_chart(script_distribution_chart, use_container_width=True)
+
+        st.info(
+            "📚 **Vocabulary Metrics** • These show the composition of the tokenizer's vocabulary. "
+            "Script distribution reveals which writing systems are better represented."
+        )
 
     with analysis_tab:
         st.write("#### Efficiency vs Vocabulary Size")
