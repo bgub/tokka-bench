@@ -189,7 +189,7 @@ def _process_single_language(
 def run_benchmark(
     tokenizer_names: List[str],
     output_names: Optional[List[str]] = None,
-    sample_size_mb: float = 1.0,
+    sample_size_mb: float = 2.0,
     max_workers: int = 8,
     natural_n: int = 99,
     code_n: int = 20,
@@ -314,7 +314,7 @@ def run_benchmark(
         output_path = os.path.join("data", "results", output_filename)
         os.makedirs(os.path.dirname(output_path), exist_ok=True)
         with open(output_path, "w", encoding="utf-8") as f:
-            json.dump(results, f, indent=2, ensure_ascii=False)
+            json.dump(results, f, indent=2, ensure_ascii=False, sort_keys=True)
         saved_files.append(output_path)
         print(f"💾 {output_path}")
 

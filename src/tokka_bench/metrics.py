@@ -219,7 +219,11 @@ def calculate_word_metrics(
 
     for word in sample_words:
         # Use add_special_tokens=False to avoid BOS/EOS tokens affecting split detection
-        word_token_ids: List[int] = tokenizer.encode(word, add_special_tokens=False)
+        try:
+            word_token_ids: List[int] = tokenizer.encode(word, add_special_tokens=False)
+        except TypeError:
+            # Backwards-compat: some simple tokenizers don't accept this kwarg
+            word_token_ids = tokenizer.encode(word)
         is_split: bool = len(word_token_ids) > 1
 
         # Count tokens for correct continued_word_rate calculation
@@ -252,7 +256,7 @@ def calculate_word_metrics(
         words_split_in_sample / len(sample_words) if sample_words else 0.0
     )
 
-    # FIXED: Calculate percentage of tokens that are continuations (not percentage of words that are split)
+    # Continuation rate: percentage of tokens that are continuation tokens
     continued_word_rate: float = (
         continuation_tokens_in_sample / total_tokens_in_sample * 100
         if total_tokens_in_sample > 0

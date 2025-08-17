@@ -6,11 +6,11 @@ from typing import Dict, List
 
 import pandas as pd
 
-from .constants import SCRIPT_GROUPS
+# SCRIPT_GROUPS is not needed in the streamlined categories
 
 
 def detect_language_types(df: pd.DataFrame) -> Dict[str, List[str]]:
-    """Detect and categorize languages from the data with comprehensive category system."""
+    """Detect and categorize languages with a streamlined category set."""
     # Get languages in their original order from the data (preserves CSV order)
     all_languages = list(df["language"].unique())
 
@@ -34,45 +34,12 @@ def detect_language_types(df: pd.DataFrame) -> Dict[str, List[str]]:
         english_languages + natural_languages + programming_languages
     )
 
-    # === SIZE-BASED TIERS ===
-    # Top 10 (English + top 9 natural languages by size)
+    # === SIZE-BASED TIERS (streamlined) ===
+    # Top 10: English + top 9 natural languages
     top_10 = english_languages + natural_languages[:9]
 
-    # 11-40: Next 30 natural languages (if we have enough)
-    tier_11_40 = natural_languages[9:39] if len(natural_languages) > 9 else []
-
-    # 41-100: Remaining natural languages (60 languages: positions 40-99 in natural_languages)
-    tier_41_100 = natural_languages[39:] if len(natural_languages) > 39 else []
-
-    # === PROGRAMMING LANGUAGE CATEGORIES ===
-    # Core programming languages (most popular)
-    core_programming = [
-        lang
-        for lang in programming_languages
-        if any(
-            tech in lang.lower()
-            for tech in [
-                "python",
-                "javascript",
-                "java",
-                "c ",
-                "cpp",
-                "c-sharp",
-                "php",
-                "typescript",
-            ]
-        )
-    ]
-
-    # Systems programming languages
-    systems_programming = [
-        lang
-        for lang in programming_languages
-        if any(
-            tech in lang.lower()
-            for tech in ["rust", "go", "c", "cpp", "zig", "assembly", "fortran"]
-        )
-    ]
+    # === PROGRAMMING LANGUAGE CATEGORIES (streamlined) ===
+    # Keep only broad programming categories
 
     # === SCRIPT-BASED CATEGORIES ===
     # Get script information for each language
@@ -88,19 +55,17 @@ def detect_language_types(df: pd.DataFrame) -> Dict[str, List[str]]:
     cyrillic_script = [
         lang for lang, script in script_info.items() if "cyrl" in script.lower()
     ]
-    asian_scripts_langs = [
+    cjk_scripts = [
         lang
         for lang, script in script_info.items()
-        if any(
-            s in script.lower()
-            for s in ["hani", "jpan", "hang", "thai", "laoo", "khmr"]
-        )
+        if any(s in script.lower() for s in ["hani", "jpan", "hang"])
     ]
+    # Optional: Arabic already separate; omit SE Asian to reduce noise
     arabic_script = [
         lang for lang, script in script_info.items() if "arab" in script.lower()
     ]
 
-    # === REGIONAL/FAMILY CATEGORIES ===
+    # === REGIONAL/FAMILY CATEGORIES (streamlined) ===
     # European languages (Latin + Cyrillic + Greek)
     european_langs = [
         lang
@@ -109,32 +74,20 @@ def detect_language_types(df: pd.DataFrame) -> Dict[str, List[str]]:
         and lang not in programming_languages
     ]
 
-    # Major world languages (most speakers/important) - top 20 by size
-    major_world = (
-        english_languages + natural_languages[:19]
-        if len(natural_languages) >= 19
-        else english_languages + natural_languages
-    )
-
     return {
         # Core categories (always include)
         "All Languages": ordered_all_languages,
         "Top 10": top_10,
-        "11-40": tier_11_40,
-        "41-100": tier_41_100,
         # Language type categories
         "Natural Languages": natural_languages,
         "Programming Languages": programming_languages,
-        "Core Programming": core_programming,
-        "Systems Programming": systems_programming,
         # Script-based categories
         "Latin Script": latin_script,
         "Cyrillic Script": cyrillic_script,
-        "Asian Scripts": asian_scripts_langs,
+        "CJK Scripts": cjk_scripts,
         "Arabic Script": arabic_script,
         # Regional/family categories
         "European Languages": european_langs,
-        "Major World Languages": major_world,
         # Special categories
         "English": english_languages,
     }

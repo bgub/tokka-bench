@@ -102,7 +102,7 @@ def get_english_fineweb() -> Dict[str, str]:
 
 
 def load_real_sample_text(
-    language_info: Dict[str, str], sample_size_mb: float = 1.0, verbose: bool = False
+    language_info: Dict[str, str], sample_size_mb: float = 2.0, verbose: bool = False
 ) -> str:
     """Load real sample text from appropriate dataset based on source."""
     from datasets import load_dataset

@@ -1,5 +1,6 @@
 """
-UI controls and sidebar components for the dashboard.
+Legacy sidebar-based controls (no longer used by the single-page app).
+Keeping helpers around if needed in the future.
 """
 
 from typing import Dict, List, Tuple
@@ -12,8 +13,6 @@ from .charts import (
     create_coverage_chart,
     create_subword_fertility_chart,
     create_continued_word_rate_chart,
-    create_script_distribution_chart,
-    create_vocab_metrics_chart,
     create_vocab_efficiency_scatter,
     create_summary_table,
 )
@@ -41,16 +40,11 @@ def render_sidebar_controls(
         "Natural Languages": "Human languages only",
         "Programming Languages": "Code languages only",
         "Top 10": "Top 10 languages by size",
-        "11-40": "Next 30 natural languages",
-        "41-100": "Remaining 60 natural languages (41st-100th largest)",
-        "Core Programming": "Core programming languages",
-        "Systems Programming": "Systems and compiled languages",
         "Latin Script": "Latin script languages",
         "Cyrillic Script": "Cyrillic script languages",
-        "Asian Scripts": "Asian script languages",
+        "CJK Scripts": "Chinese/Japanese/Korean scripts",
         "Arabic Script": "Arabic script languages",
         "European Languages": "European languages",
-        "Major World Languages": "Major world languages",
     }
 
     # Create buttons in a nice layout
@@ -158,17 +152,14 @@ def render_main_content(
     st.subheader("📊 Detailed Analysis")
 
     # Create tabs for different views
-    efficiency_tab, coverage_tab, subword_tab, vocab_tab, analysis_tab, raw_tab = (
-        st.tabs(
-            [
-                "🚀 Efficiency",
-                "🎯 Coverage",
-                "🔤 Subword Analysis",
-                "📚 Vocab Analysis",
-                "📏 Analysis",
-                "🔍 Raw Data",
-            ]
-        )
+    efficiency_tab, coverage_tab, subword_tab, analysis_tab, raw_tab = st.tabs(
+        [
+            "🚀 Efficiency",
+            "🎯 Coverage",
+            "🔤 Subword Analysis",
+            "📏 Analysis",
+            "🔍 Raw Data",
+        ]
     )
 
     with efficiency_tab:
@@ -218,33 +209,6 @@ def render_main_content(
         st.info(
             "🔤 **Subword Metrics** • Subword fertility shows how many pieces each word breaks into. "
             "Continued word rate shows what percentage of tokens are continuations of words (not word-initial)."
-        )
-
-    with vocab_tab:
-        st.write("#### Vocabulary Analysis")
-
-        # Two columns for vocab metrics
-        col1, col2 = st.columns(2)
-
-        with col1:
-            st.write("##### Vocabulary Composition")
-            st.caption("% of tokens without leading space")
-            vocab_metrics_chart = create_vocab_metrics_chart(
-                display_df, selected_tokenizers
-            )
-            st.plotly_chart(vocab_metrics_chart, use_container_width=True)
-
-        with col2:
-            st.write("##### Script Distribution")
-            st.caption("Script composition of tokenizer vocabulary")
-            script_distribution_chart = create_script_distribution_chart(
-                display_df, selected_tokenizers
-            )
-            st.plotly_chart(script_distribution_chart, use_container_width=True)
-
-        st.info(
-            "📚 **Vocabulary Metrics** • These show the composition of the tokenizer's vocabulary. "
-            "Script distribution reveals which writing systems are better represented."
         )
 
     with analysis_tab:

@@ -34,7 +34,7 @@ uv sync
 ### Basic Usage (Fast Engine)
 
 ```bash
-# Benchmark GPT-2 tokenizer with 1MB samples per language
+# Benchmark GPT-2 tokenizer with 2MB samples per language
 uv run benchmark tokenizer=openai-community/gpt2
 
 # Quick test with smaller samples
@@ -47,7 +47,7 @@ uv run benchmark tokenizer=meta-llama/Meta-Llama-3-8B output_name=llama-results
 ### Parameters
 
 - `tokenizer`: HuggingFace model name (required)
-- `sample_size`: Size in MB to test per language (default: 1.0)
+- `sample_size`: Size in MB to test per language (default: 2.0)
 - `output_name`: Custom filename for results (optional)
 
 ## Visualization Dashboard

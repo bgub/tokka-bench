@@ -124,7 +124,7 @@ def main():
     # Get required and optional parameters
     tokenizer = config.get("tokenizer")
     tokenizers = config.get("tokenizers")  # Support both single and multiple
-    sample_size = config.get("sample_size", 1.0)
+    sample_size = config.get("sample_size", 2.0)
     output_name = config.get("output_name", None)
     output_names = config.get("output_names", None)
     max_workers = config.get("max_workers", 4)  # Default to 4 parallel workers

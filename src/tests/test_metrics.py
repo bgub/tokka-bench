@@ -239,8 +239,8 @@ def test_word_metrics_no_splits(
 @pytest.mark.parametrize(
     "text,expected_fertility,expected_split_rate",
     [
-        ("hello world", 1.5, 50.0),  # 1 word split out of 2
-        ("testing", 3.0, 100.0),  # 1 word split out of 1
+        ("hello world", 1.5, 33.33),  # 1 continuation out of 3 tokens
+        ("testing", 3.0, 66.67),  # 2 continuations out of 3 tokens
     ],
 )
 def test_word_metrics_with_splits(
@@ -250,7 +250,7 @@ def test_word_metrics_with_splits(
     result = calculate_word_metrics(splitting_tokenizer, text)
 
     assert result["subword_fertility"] == expected_fertility
-    assert result["continued_word_rate"] == expected_split_rate
+    assert result["continued_word_rate"] == pytest.approx(expected_split_rate, rel=1e-2)
     assert result["debug_info"]["segmentation_method"] == "whitespace"
 
 
@@ -298,7 +298,9 @@ def test_chinese_character_segmentation(chinese_tokenizer):
     # "世" -> [1004, 1005] (split), "界" -> [1006] (not split)
     # Total tokens: 6, Total characters: 4
     assert result["subword_fertility"] == 1.5  # 6 tokens / 4 characters
-    assert result["continued_word_rate"] == 50.0  # 2 out of 4 characters are split
+    assert result["continued_word_rate"] == pytest.approx(
+        33.33, rel=1e-2
+    )  # 2 continuations / 6 tokens
 
 
 def test_japanese_character_segmentation(chinese_tokenizer):
@@ -313,7 +315,9 @@ def test_japanese_character_segmentation(chinese_tokenizer):
     assert result["debug_info"]["segmentation_method"] == "character"
     assert result["debug_info"]["total_words"] == 2  # 2 characters
     assert result["subword_fertility"] == 1.5  # 3 tokens / 2 characters
-    assert result["continued_word_rate"] == 50.0  # 1 out of 2 characters is split
+    assert result["continued_word_rate"] == pytest.approx(
+        33.33, rel=1e-2
+    )  # 1 continuation / 3 tokens
 
 
 def test_thai_character_segmentation(chinese_tokenizer):
