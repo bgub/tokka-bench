@@ -65,7 +65,7 @@ def main():
     tokenizer_summary = get_tokenizer_summary(results)
 
     # Collapsed top table
-    with st.expander("📋 Detailed Tokenizer Information", expanded=False):
+    with st.expander("📋 Benchmark Details", expanded=False):
         display_cols = ["tokenizer_name", "vocab_size", "datetime"]
         optional_cols = ["tokens_without_leading_space_pct", "total_tokens_analyzed"]
         for col in optional_cols:
@@ -125,7 +125,7 @@ def main():
             "🎯 Coverage",
             "🔁 Continued Word Rate",
             "🔤 Subword Fertility",
-            "📏 Efficiency vs Vocab Size",
+            "📊 Comparisons",
             "🔍 Raw Data",
         ]
     )
@@ -240,19 +240,23 @@ def main():
     # Row 2: tokenizers and languages side by side
     tok_col, lang_col = st.columns(2)
     with tok_col:
-        st.session_state.selected_tokenizers = st.multiselect(
+        st.multiselect(
             "Tokenizers",
             options=sorted(df["tokenizer_key"].unique()),
             default=st.session_state.selected_tokenizers,
-            key="tokenizer_multiselect",
+            key="selected_tokenizers",
         )
     with lang_col:
-        st.session_state.selected_languages = st.multiselect(
+        st.multiselect(
             "Languages",
             options=list(df["language"].unique()),
             default=st.session_state.selected_languages,
-            key="language_multiselect",
+            key="selected_languages",
         )
+
+    # Refresh current selections after widgets update
+    selected_tokenizers = st.session_state.selected_tokenizers
+    selected_languages = st.session_state.selected_languages
 
     # Footer
     st.markdown("---")
