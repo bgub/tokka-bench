@@ -64,6 +64,10 @@ def main():
     df = results_to_dataframe(results)
     tokenizer_summary = get_tokenizer_summary(results)
 
+    # Build language categories early so we can set a friendly default selection
+    language_categories = detect_language_types(df)
+    st.session_state["language_categories"] = language_categories
+
     # Collapsed top table
     with st.expander("📋 Benchmark Details", expanded=False):
         display_cols = ["tokenizer_name", "vocab_size", "datetime"]
@@ -96,9 +100,19 @@ def main():
 
     # Initialize selection state
     if "selected_tokenizers" not in st.session_state:
-        st.session_state.selected_tokenizers = sorted(df["tokenizer_key"].unique())
+        desired_tokenizers = ["GPT-2", "gpt-oss", "Kimi K2"]
+        available_tokenizers = list(df["tokenizer_key"].unique())
+        defaults = [t for t in desired_tokenizers if t in available_tokenizers]
+        if not defaults:
+            defaults = sorted(available_tokenizers)[:3] if available_tokenizers else []
+        st.session_state.selected_tokenizers = defaults
     if "selected_languages" not in st.session_state:
-        st.session_state.selected_languages = list(df["language"].unique())
+        top_30 = language_categories.get("Top 30 Natural", [])
+        st.session_state.selected_languages = (
+            top_30 if top_30 else list(df["language"].unique())
+        )
+        if top_30:
+            st.session_state["language_preset"] = "Top 30 Natural"
 
     selected_tokenizers = st.session_state.selected_tokenizers
     selected_languages = st.session_state.selected_languages
@@ -208,10 +222,6 @@ def main():
     st.markdown("---")
 
     # Filters below chart (header + preset on same line)
-    language_categories = detect_language_types(df)
-
-    # Store categories for callbacks
-    st.session_state["language_categories"] = language_categories
 
     def _apply_preset():
         preset_val = st.session_state.get("language_preset")
@@ -227,9 +237,11 @@ def main():
         st.selectbox(
             "Language Preset",
             options=list(language_categories.keys()),
-            index=list(language_categories.keys()).index("All Languages")
-            if "All Languages" in language_categories
-            else 0,
+            index=(
+                list(language_categories.keys()).index("Top 30 Natural")
+                if "Top 30 Natural" in language_categories
+                else 0
+            ),
             key="language_preset",
             on_change=_apply_preset,
             label_visibility="collapsed",
