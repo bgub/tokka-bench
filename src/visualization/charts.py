@@ -31,8 +31,11 @@ def prepare_chart_data(
         filtered_df["tokenizer_name"], categories=global_order, ordered=True
     )
 
-    # Sort to ensure consistent color assignment across all charts
-    return filtered_df.sort_values("tokenizer_name")
+    # Sort to ensure consistent color assignment and preserve language presentation order
+    sort_cols = ["tokenizer_name"]
+    if "language_rank" in filtered_df.columns:
+        sort_cols = ["language_rank"] + sort_cols
+    return filtered_df.sort_values(sort_cols)
 
 
 def create_bar_chart(

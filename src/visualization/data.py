@@ -5,7 +5,7 @@ Data loading and processing utilities for visualization.
 import json
 from datetime import datetime
 from pathlib import Path
-from typing import Any, Dict
+from typing import Any, Dict, List
 
 import pandas as pd
 import streamlit as st
@@ -133,7 +133,103 @@ def results_to_dataframe(results: Dict[str, Any]) -> pd.DataFrame:
 
             rows.append(row)
 
-    return pd.DataFrame(rows)
+    df = pd.DataFrame(rows)
+
+    # Attach a stable language presentation order using project CSV metadata
+    try:
+        order_map = build_language_order_map()
+        english_key = "English (FineWeb)"
+        language_ranks: Dict[str, int] = {}
+
+        english_present = english_key in set(df["language"].unique())
+        current_rank = 0
+        if english_present:
+            language_ranks[english_key] = current_rank
+            current_rank += 1
+
+        # Natural languages in CSV order (size desc)
+        natural_items = sorted(
+            [
+                (name, idx)
+                for name, idx in order_map.items()
+                if not name.endswith("(code)")
+            ],
+            key=lambda x: x[1],
+        )
+        for name, _ in natural_items:
+            if name not in language_ranks:
+                language_ranks[name] = current_rank
+                current_rank += 1
+
+        # Programming languages in StarCoder CSV order
+        prog_items = sorted(
+            [(name, idx) for name, idx in order_map.items() if name.endswith("(code)")],
+            key=lambda x: x[1],
+        )
+        for name, _ in prog_items:
+            if name not in language_ranks:
+                language_ranks[name] = current_rank
+                current_rank += 1
+
+        # Any remaining languages not covered by CSVs go last in alpha order
+        for name in sorted(set(df["language"].unique())):
+            if name not in language_ranks:
+                language_ranks[name] = current_rank
+                current_rank += 1
+
+        df["language_rank"] = df["language"].map(language_ranks)
+    except Exception:
+        # Fallback: no ranking
+        df["language_rank"] = None
+
+    return df
+
+
+def build_language_order_map() -> Dict[str, int]:
+    """Build a mapping of language display name -> stable rank.
+
+    - English (FineWeb) handled in results_to_dataframe to be first
+    - Natural languages: ordered by FineWeb-2 disk size (desc)
+    - Programming languages: StarCoder CSV order (top to bottom)
+    """
+    repo_root = Path(__file__).resolve().parents[1]
+    fineweb_csv = repo_root / "fineweb-2-languages.csv"
+    starcoder_csv = repo_root / "starcoderdata-dirs.csv"
+
+    order_map: Dict[str, int] = {}
+
+    # Natural languages by size desc
+    if fineweb_csv.exists():
+        fw = pd.read_csv(fineweb_csv)
+
+        def parse_size(size_str: str) -> float:
+            s = str(size_str).strip()
+            if "TB" in s:
+                return float(s.replace("TB", "")) * 1000.0
+            if "GB" in s:
+                return float(s.replace("GB", ""))
+            if "MB" in s:
+                return float(s.replace("MB", "")) / 1000.0
+            return 0.0
+
+        fw = fw.dropna(subset=["Name", "Disk size"])  # basic hygiene
+        fw["size_gb"] = fw["Disk size"].apply(parse_size)
+        fw = fw[fw["ISO 639-3 code"] != "Total"]
+        fw_sorted = fw.sort_values("size_gb", ascending=False)
+        for idx, (_, row) in enumerate(fw_sorted.iterrows()):
+            order_map[str(row["Name"])] = idx
+
+    # Programming languages by CSV row order
+    if starcoder_csv.exists():
+        sc = pd.read_csv(starcoder_csv)
+        prog_names: List[str] = [
+            f"{str(x).strip().title()} (code)" for x in sc["Language"].tolist()
+        ]
+        for idx, name in enumerate(prog_names):
+            order_map[name] = idx
+
+    # English is not added here; handled in caller
+    return order_map
 
 
 def get_tokenizer_summary(results: Dict[str, Any]) -> pd.DataFrame:
