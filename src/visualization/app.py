@@ -49,7 +49,6 @@ def main():
     )
 
     st.title("📊 Tokka-Bench Dashboard")
-    st.caption("Compare tokenizer efficiency across natural and programming languages")
 
     # Load data
     with st.spinner("Loading benchmark results..."):
@@ -87,11 +86,11 @@ def main():
         "📚 Vocabulary Composition & Script Distribution (Global)", expanded=False
     ):
         all_tokenizers = list(df["tokenizer_key"].unique())
-        st.write("##### Script Distribution")
+        st.subheader("Script Distribution", help=None)
         script_chart = create_script_distribution_chart(df, all_tokenizers)
         st.plotly_chart(script_chart, use_container_width=True)
 
-        st.write("##### Vocabulary Composition")
+        st.subheader("Vocabulary Composition", help=None)
         vocab_chart = create_vocab_metrics_chart(df, all_tokenizers)
         st.plotly_chart(vocab_chart, use_container_width=True)
 
@@ -135,7 +134,9 @@ def main():
         if display_df.empty:
             st.info("No data for current selection. Adjust filters below.")
         else:
-            st.caption("Higher values = more efficient tokenization")
+            st.caption(
+                "Bytes per token. Higher = more efficient. Not comparable across languages—compare tokenizers within the same language."
+            )
             st.plotly_chart(
                 create_efficiency_chart(display_df, selected_tokenizers),
                 use_container_width=True,
@@ -145,7 +146,9 @@ def main():
         if display_df.empty:
             st.info("No data for current selection. Adjust filters below.")
         else:
-            st.caption("Higher values = better language coverage")
+            st.caption(
+                "Unique token IDs used in the sample. Higher generally indicates better script coverage for that language."
+            )
             st.plotly_chart(
                 create_coverage_chart(display_df, selected_tokenizers),
                 use_container_width=True,
@@ -155,7 +158,9 @@ def main():
         if display_df.empty:
             st.info("No data for current selection. Adjust filters below.")
         else:
-            st.caption("% of tokens continuing words - Higher = more subword splitting")
+            st.caption(
+                "% of tokens that continue a word. Higher = more subword splitting. Not comparable across languages—compare tokenizers within the same language."
+            )
             st.plotly_chart(
                 create_continued_word_rate_chart(display_df, selected_tokenizers),
                 use_container_width=True,
@@ -165,7 +170,9 @@ def main():
         if display_df.empty:
             st.info("No data for current selection. Adjust filters below.")
         else:
-            st.caption("Subwords per word - Higher = more fragmented")
+            st.caption(
+                "Average subwords per word. Higher = more fragmentation. Not comparable across languages—compare tokenizers within the same language."
+            )
             st.plotly_chart(
                 create_subword_fertility_chart(display_df, selected_tokenizers),
                 use_container_width=True,
@@ -175,7 +182,9 @@ def main():
         if display_df.empty:
             st.info("No data for current selection. Adjust filters below.")
         else:
-            st.caption("How tokenizer size affects average efficiency across languages")
+            st.caption(
+                "Scatter of average bytes/token vs vocabulary size per tokenizer (log-scale x-axis)."
+            )
             st.plotly_chart(
                 create_vocab_efficiency_scatter(display_df, selected_tokenizers),
                 use_container_width=True,
@@ -185,7 +194,8 @@ def main():
         if display_df.empty:
             st.info("No data for current selection. Adjust filters below.")
         else:
-            st.caption("Complete Dataset")
+            st.caption("Use this table to export data and run your own analyses.")
+            st.subheader("Raw Data")
             st.dataframe(display_df, use_container_width=True)
             csv = display_df.to_csv(index=False)
             st.download_button(

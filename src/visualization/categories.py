@@ -2,7 +2,8 @@
 Language categorization and filtering utilities.
 """
 
-from typing import Dict, List
+from typing import Dict, List, Optional
+from pathlib import Path
 
 import pandas as pd
 
@@ -10,84 +11,131 @@ import pandas as pd
 
 
 def detect_language_types(df: pd.DataFrame) -> Dict[str, List[str]]:
-    """Detect and categorize languages with a streamlined category set."""
-    # Get languages in their original order from the data (preserves CSV order)
+    """Build the exact category sets requested, with careful ordering and labeling.
+
+    Categories returned (in order):
+    - All Languages
+    - Top 30 Natural (English first)
+    - 31–60 Natural
+    - 61–100 Natural
+    - Coding
+    - European
+    - Non-European
+    - Latin Script
+    - Cyrillic Script
+    - Arabic Script
+    - CJK Scripts
+    """
+
+    # Languages present in the dataset
     all_languages = list(df["language"].unique())
 
-    # Detect programming languages (those with "code" in script or name)
-    programming_languages = []
-    natural_languages = []
-    english_languages = []
+    # Popularity order if available (lower rank = more popular)
+    language_rank_map: Dict[str, Optional[float]] = (
+        df.groupby("language")["language_rank"].min().to_dict()
+        if "language_rank" in df.columns
+        else {}
+    )
 
+    def rank_key(lang: str) -> float:
+        rank = language_rank_map.get(lang)
+        return rank if rank is not None else 1e9
+
+    # Identify programming vs natural and English
+    programming_languages: List[str] = []
+    natural_languages: List[str] = []
+    english_languages: List[str] = []
     for lang in all_languages:
-        lang_data = df[df["language"] == lang].iloc[0]
-        # Check if language name contains "(code)" or script is "code"
-        if "(code)" in str(lang).lower() or str(lang_data["script"]).lower() == "code":
+        lang_row = df[df["language"] == lang].iloc[0]
+        script_value = str(lang_row.get("script", "")).lower()
+        if "(code)" in str(lang).lower() or script_value == "code":
             programming_languages.append(lang)
-        elif "english" in str(lang).lower() or "eng-fineweb" in str(lang).lower():
+        elif "english" in str(lang).lower():
             english_languages.append(lang)
         else:
             natural_languages.append(lang)
 
-    # Preserve proper ordering: English → Natural → Programming
-    ordered_all_languages = (
-        english_languages + natural_languages + programming_languages
-    )
+    # Ordering
+    natural_by_rank = sorted(natural_languages, key=rank_key)
+    programming_by_rank = sorted(programming_languages, key=rank_key)
 
-    # === SIZE-BASED TIERS (streamlined) ===
-    # Top 10: English + top 9 natural languages
-    top_10 = english_languages + natural_languages[:9]
+    # All Languages overall order: English (if present) → natural by rank → coding by rank
+    ordered_all_languages = english_languages + natural_by_rank + programming_by_rank
 
-    # === PROGRAMMING LANGUAGE CATEGORIES (streamlined) ===
-    # Keep only broad programming categories
-
-    # === SCRIPT-BASED CATEGORIES ===
-    # Get script information for each language
-    script_info = {}
-    for lang in all_languages:
-        lang_data = df[df["language"] == lang].iloc[0]
-        script_info[lang] = str(lang_data["script"])
-
-    # Group by script families
-    latin_script = [
-        lang for lang, script in script_info.items() if "latn" in script.lower()
+    # Natural ranges with English at the front of Top 30
+    top_natural_with_english: List[str] = english_languages[:1] + [
+        l for l in natural_by_rank if l not in english_languages
     ]
-    cyrillic_script = [
-        lang for lang, script in script_info.items() if "cyrl" in script.lower()
-    ]
+    top_30_natural = top_natural_with_english[:30]
+    natural_31_60 = top_natural_with_english[30:60]
+    natural_61_100 = top_natural_with_english[60:100]
+
+    # Script groupings from df
+    script_map: Dict[str, str] = {
+        lang: str(df[df["language"] == lang].iloc[0].get("script", ""))
+        for lang in all_languages
+    }
+    latin_script = [l for l, s in script_map.items() if "latn" in s.lower()]
+    cyrillic_script = [l for l, s in script_map.items() if "cyrl" in s.lower()]
+    arabic_script = [l for l, s in script_map.items() if "arab" in s.lower()]
     cjk_scripts = [
-        lang
-        for lang, script in script_info.items()
-        if any(s in script.lower() for s in ["hani", "jpan", "hang"])
-    ]
-    # Optional: Arabic already separate; omit SE Asian to reduce noise
-    arabic_script = [
-        lang for lang, script in script_info.items() if "arab" in script.lower()
+        l
+        for l, s in script_map.items()
+        if any(tag in s.lower() for tag in ["hani", "jpan", "hang"])
     ]
 
-    # === REGIONAL/FAMILY CATEGORIES (streamlined) ===
-    # European languages (Latin + Cyrillic + Greek)
-    european_langs = [
-        lang
-        for lang, script in script_info.items()
-        if any(s in script.lower() for s in ["latn", "cyrl", "grek"])
-        and lang not in programming_languages
-    ]
+    # European vs Non-European using CSV families plus script as a guard
+    # Load FineWeb-2 CSV to access the Language Family column
+    try:
+        repo_root = Path(__file__).resolve().parents[1]
+        fineweb_csv = repo_root / "fineweb-2-languages.csv"
+        name_to_family: Dict[str, str] = {}
+        if fineweb_csv.exists():
+            fw = pd.read_csv(fineweb_csv)
+            for _, row in fw.iterrows():
+                name_to_family[str(row.get("Name", ""))] = str(
+                    row.get("Language Family", "")
+                )
+        european_families = {"Indo-European", "Uralic", "Turkic", "Kartvelian"}
+        european_name_exceptions = {"Basque", "Maltese"}
+
+        def is_european(lang: str) -> bool:
+            # Ignore coding
+            if lang in programming_languages:
+                return False
+            fam = name_to_family.get(lang, "")
+            scr = script_map.get(lang, "").lower()
+            if lang in european_name_exceptions:
+                return True
+            # Require European-associated script and qualifying family
+            if any(tag in scr for tag in ["latn", "cyrl", "grek"]) and (
+                fam in european_families
+            ):
+                return True
+            return False
+
+        european = [l for l in natural_by_rank if is_european(l)]
+    except Exception:
+        # Fallback: script-only heuristic
+        european = [
+            l
+            for l, s in script_map.items()
+            if any(tag in s.lower() for tag in ["latn", "cyrl", "grek"])
+            and l in natural_languages
+        ]
+
+    non_european = [l for l in natural_by_rank if l not in set(european)]
 
     return {
-        # Core categories (always include)
         "All Languages": ordered_all_languages,
-        "Top 10": top_10,
-        # Language type categories
-        "Natural Languages": natural_languages,
-        "Programming Languages": programming_languages,
-        # Script-based categories
+        "Top 30 Natural": top_30_natural,
+        "31–60 Natural": natural_31_60,
+        "61–100 Natural": natural_61_100,
+        "Coding": programming_by_rank,
+        "European": european,
+        "Non-European": non_european,
         "Latin Script": latin_script,
         "Cyrillic Script": cyrillic_script,
-        "CJK Scripts": cjk_scripts,
         "Arabic Script": arabic_script,
-        # Regional/family categories
-        "European Languages": european_langs,
-        # Special categories
-        "English": english_languages,
+        "CJK Scripts": cjk_scripts,
     }
