@@ -26,7 +26,7 @@ def main():
     """Main Streamlit app."""
     st.set_page_config(
         page_title="Tokka-Bench Visualizer",
-        page_icon="📊",
+        page_icon=None,
         layout="wide",
         initial_sidebar_state="collapsed",
     )
@@ -48,7 +48,7 @@ def main():
         unsafe_allow_html=True,
     )
 
-    st.title("📊 Tokka-Bench Dashboard")
+    st.title("Tokka-Bench Dashboard")
 
     # Load data
     with st.spinner("Loading benchmark results..."):
@@ -69,7 +69,7 @@ def main():
     st.session_state["language_categories"] = language_categories
 
     # Collapsed top table
-    with st.expander("📋 Benchmark Details", expanded=False):
+    with st.expander("Benchmark Details", expanded=False):
         display_cols = ["tokenizer_name", "vocab_size", "datetime"]
         optional_cols = ["tokens_without_leading_space_pct", "total_tokens_analyzed"]
         for col in optional_cols:
@@ -87,7 +87,7 @@ def main():
 
     # Collapsed global vocab/scripts (stacked)
     with st.expander(
-        "📚 Vocabulary Composition & Script Distribution (Global)", expanded=False
+        "Vocabulary Composition & Script Distribution (Global)", expanded=False
     ):
         all_tokenizers = list(df["tokenizer_key"].unique())
         st.subheader("Script Distribution", help=None)
@@ -111,14 +111,12 @@ def main():
         st.session_state.selected_languages = (
             top_30 if top_30 else list(df["language"].unique())
         )
-        if top_30:
-            st.session_state["language_preset"] = "Top 30 Natural"
 
     selected_tokenizers = st.session_state.selected_tokenizers
     selected_languages = st.session_state.selected_languages
 
     # Main detailed analysis charts (tabs)
-    st.subheader("📈 Detailed Analysis")
+    st.subheader("Detailed Analysis")
 
     # Build subset according to current selection state
     display_df = df[
@@ -135,12 +133,12 @@ def main():
         raw_tab,
     ) = st.tabs(
         [
-            "🚀 Efficiency",
-            "🎯 Coverage",
-            "🔁 Continued Word Rate",
-            "🔤 Subword Fertility",
-            "📊 Comparisons",
-            "🔍 Raw Data",
+            "Efficiency",
+            "Coverage",
+            "Continued Word Rate",
+            "Subword Fertility",
+            "Comparisons",
+            "Raw Data",
         ]
     )
 
@@ -213,7 +211,7 @@ def main():
             st.dataframe(display_df, use_container_width=True)
             csv = display_df.to_csv(index=False)
             st.download_button(
-                label="📥 Download Data as CSV",
+                label="Download Data as CSV",
                 data=csv,
                 file_name=f"tokka_bench_data_{len(selected_tokenizers)}tokenizers_{len(selected_languages)}languages.csv",
                 mime="text/csv",
@@ -255,14 +253,12 @@ def main():
         st.multiselect(
             "Tokenizers",
             options=sorted(df["tokenizer_key"].unique()),
-            default=st.session_state.selected_tokenizers,
             key="selected_tokenizers",
         )
     with lang_col:
         st.multiselect(
             "Languages",
             options=list(df["language"].unique()),
-            default=st.session_state.selected_languages,
             key="selected_languages",
         )
 

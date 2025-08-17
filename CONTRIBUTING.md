@@ -67,27 +67,35 @@ No special environment variables are required for basic development. However, yo
 tokka-bench/
 ├── src/
 │   ├── tokka_bench/
-│   │   ├── __init__.py
-│   │   └── fast_benchmark.py     # Core fast benchmarking logic
-│   ├── fineweb-2-languages.csv   # Language metadata
-│   └── starcoderdata-dirs.csv     # Additional language data
-├── cli/
-│   ├── cli.py                    # CLI interface
-│   ├── dashboard.py              # Streamlit dashboard
-│   └── visualize.py              # Visualization logic
-├── data/
-│   └── results/                  # Benchmark output files
-├── pyproject.toml                # Project configuration
-├── README.md                     # Main documentation
-└── CONTRIBUTING.md               # This file
+│   │   ├── cli.py                 # CLI entry (uv run benchmark)
+│   │   ├── fast_benchmark.py      # Core fast benchmarking logic
+│   │   ├── metrics.py             # Metrics + global analysis
+│   │   ├── tokenizer.py           # Universal tokenizer wrapper
+│   │   └── unicode_utils.py       # Unicode/script helpers
+│   ├── visualization/
+│   │   ├── app.py                 # Streamlit UI
+│   │   ├── dashboard.py           # Launcher (uv run dashboard)
+│   │   ├── charts.py              # Plotly charts
+│   │   └── data.py                # Result loading/dataframe
+│   └── tests/
+│       ├── test_metrics.py
+│       └── test_unicode_utils.py
+├── streamlit_app.py               # Streamlit entry point
+├── src/fineweb-2-languages.csv    # Natural language metadata
+├── src/starcoderdata-dirs.csv     # Programming language list
+├── data/results/                  # Benchmark output files
+├── pyproject.toml                 # Project configuration
+├── README.md                      # Main documentation
+└── CONTRIBUTING.md                # This file
 ```
 
 ### Key Components
 
-- **`src/tokka_bench/fast_benchmark.py`**: Core fast benchmarking logic
-- **`src/tokka_bench/cli.py`**: Command-line interface using OmegaConf for configuration
-- **`cli/visualize.py`**: Streamlit-based interactive dashboard
-- **Language data**: CSV files containing metadata about supported languages
+- `src/tokka_bench/fast_benchmark.py`: Core fast benchmarking logic
+- `src/tokka_bench/cli.py`: Command-line interface (OmegaConf) → `uv run benchmark`
+- `src/visualization/app.py`: Streamlit-based interactive dashboard UI
+- `src/visualization/dashboard.py`: Dashboard launcher → `uv run dashboard`
+- Language data CSVs in `src/`: `fineweb-2-languages.csv`, `starcoderdata-dirs.csv`
 
 ## Making Changes
 
@@ -117,8 +125,13 @@ tokka-bench/
    # Run a quick benchmark test
    uv run benchmark tokenizer=openai-community/gpt2 sample_size=0.01
 
+   # Run unit tests
+   uv run test
+
    # Test the dashboard
-   uv run streamlit run cli/visualize.py
+   uv run dashboard
+   # or
+   uv run streamlit run streamlit_app.py
    ```
 
 4. **Commit your changes**:
@@ -133,50 +146,43 @@ tokka-bench/
 
 ### Manual Testing
 
-Since the project currently doesn't have automated tests, please test your changes manually:
+In addition to automated tests, manually verify:
 
 1. **Basic functionality**:
 
    ```bash
-   # Test with different tokenizers
    uv run benchmark tokenizer=openai-community/gpt2 sample_size=0.1
-   uv run benchmark tokenizer=microsoft/DialoGPT-medium sample_size=0.1
+   uv run benchmark tokenizers=openai-community/gpt2,meta-llama/Llama-3.1-8B max_workers=4
    ```
 
 2. **Dashboard functionality**:
 
    ```bash
-   uv run streamlit run cli/visualize.py
+   uv run dashboard
    ```
 
 3. **Edge cases**:
-   - Test with very small sample sizes
-   - Test with models that might not be available
-   - Test dashboard with no existing results
+   - Very small `sample_size`
+   - Models requiring authentication (`HF_TOKEN`)
+   - Dashboard with no existing results
 
-### Adding Tests (Encouraged!)
+### Adding Tests
 
-We welcome contributions that add test coverage:
+We welcome contributions that add test coverage. Tests live in `src/tests/`:
 
-1. **Create a `tests/` directory**
-2. **Add unit tests** for core functions in `fast_benchmark.py`
-3. **Add integration tests** for the CLI interface
-4. **Use pytest** as the testing framework
+1. Add unit tests for metrics, unicode utils, data shaping, or CLI glue
+2. Prefer small, deterministic inputs (use mocks over remote calls)
+3. Run locally with `uv run test` (pytest)
 
-Example test structure:
+Example test snippet:
 
 ```python
-# tests/test_benchmark.py
 import pytest
-from src.tokka_bench.benchmark import UniversalTokenizer
+from tokka_bench.tokenizer import UniversalTokenizer
 
 def test_tokenizer_initialization():
-    tokenizer = UniversalTokenizer("openai-community/gpt2")
-    assert tokenizer is not None
-
-def test_benchmark_with_small_sample():
-    # Test benchmarking with minimal data
-    pass
+    tok = UniversalTokenizer("openai-community/gpt2")
+    assert tok.vocab_size > 0
 ```
 
 ## Code Style
@@ -195,16 +201,16 @@ If you install development tools, use these for consistent formatting:
 
 ```bash
 # Format code
-uv run black src/ cli/
+uv run black src/ streamlit_app.py
 
 # Sort imports
-uv run isort src/ cli/
+uv run isort src/
 
 # Check style
-uv run flake8 src/ cli/
+uv run flake8 src/
 
 # Type checking
-uv run mypy src/ cli/
+uv run mypy src/
 ```
 
 ### Documentation Style

@@ -11,12 +11,12 @@ from .constants import RESULTS_DIR
 
 def launch_dashboard():
     """Launch the Streamlit dashboard with checks - entry point for dashboard command."""
-    print("🚀 Launching Tokka-Bench Dashboard...")
+    print("Launching Tokka-Bench Dashboard...")
 
     # Check if results exist
     results_dir = Path(RESULTS_DIR)
     if not results_dir.exists() or not list(results_dir.glob("*.json")):
-        print("❌ No benchmark results found!")
+        print("No benchmark results found!")
         print("Run some benchmarks first:")
         print("  uv run benchmark tokenizer=openai-community/gpt2")
         print("  uv run benchmark tokenizer=Xenova/gpt-4")
@@ -24,13 +24,13 @@ def launch_dashboard():
 
     # Count available results
     result_files = list(results_dir.glob("*.json"))
-    print(f"📊 Found {len(result_files)} benchmark result(s)")
+    print(f"Found {len(result_files)} benchmark result(s)")
     for file in result_files:
         print(f"  - {file.stem}")
 
-    print("\n🌐 Starting dashboard server...")
-    print("👉 Dashboard will open in your browser automatically")
-    print("👉 Press Ctrl+C to stop the server")
+    print("\nStarting dashboard server...")
+    print("Dashboard will open in your browser automatically")
+    print("Press Ctrl+C to stop the server")
 
     try:
         # Launch streamlit pointing to the new app module
@@ -47,7 +47,7 @@ def launch_dashboard():
             check=True,
         )
     except KeyboardInterrupt:
-        print("\n✅ Dashboard stopped")
+        print("\nDashboard stopped")
     except subprocess.CalledProcessError as e:
-        print(f"❌ Error launching dashboard: {e}")
+        print(f"Error launching dashboard: {e}")
         sys.exit(1)
