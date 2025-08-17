@@ -4,6 +4,8 @@ Benchmark and compare tokenizers across many languages using real FineWeb-2 and 
 
 ![Tokka-Bench dashboard (interactive tokenizer comparison)](images/screenshot.png)
 
+👉 [Open the live Tokka-Bench dashboard](https://tokka-bench.streamlit.app/)
+
 ### TL;DR
 
 - Any HuggingFace model or local tokenizer directory works
