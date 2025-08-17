@@ -164,7 +164,6 @@ def render_main_content(
 
     with efficiency_tab:
         st.write("#### Tokenization Efficiency")
-        st.caption("Higher values = more efficient tokenization")
         efficiency_chart = create_efficiency_chart(display_df, selected_tokenizers)
         st.plotly_chart(efficiency_chart, use_container_width=True)
 

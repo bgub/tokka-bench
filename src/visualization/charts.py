@@ -58,7 +58,13 @@ def create_bar_chart(
         height=CHART_HEIGHT,
     )
 
-    fig.update_layout(xaxis_tickangle=-45, legend=LEGEND_CONFIG)
+    fig.update_layout(
+        xaxis_tickangle=-45,
+        legend=LEGEND_CONFIG,
+        # Create extra room above the plot so the title never overlaps the legend
+        margin=dict(t=120),
+        title=dict(y=0.995),
+    )
     return fig
 
 
@@ -241,12 +247,13 @@ def create_script_distribution_chart(
         )
 
     fig.update_layout(
-        title="Script Distribution in Tokenizer Vocabulary",
+        title=dict(text="Script Distribution in Tokenizer Vocabulary", y=0.98),
         xaxis_title="Tokenizer",
         yaxis_title="Percentage of Tokens",
         barmode="stack",
         height=CHART_HEIGHT,
         legend=LEGEND_CONFIG,
+        margin=dict(t=110),
     )
 
     return fig
@@ -302,7 +309,11 @@ def create_vocab_metrics_chart(
         height=CHART_HEIGHT,
     )
 
-    fig.update_layout(legend=LEGEND_CONFIG)
+    fig.update_layout(
+        legend=LEGEND_CONFIG,
+        margin=dict(t=120),
+        title=dict(y=0.995),
+    )
     return fig
 
 
@@ -382,6 +393,8 @@ def create_vocab_efficiency_scatter(
         xaxis=dict(type="log", title="Vocabulary Size (log scale)"),
         yaxis=dict(title="Average Efficiency (bytes/token)"),
         showlegend=True,
+        margin=dict(t=120),
+        title=dict(y=0.995),
     )
 
     return fig

@@ -35,7 +35,14 @@ def main():
         """
         <style>
         /* Subtle theming tweaks */
-        .block-container { padding-top: 1rem; }
+        .block-container { padding-top: 0.5rem; }
+        /* Align the Filters header label to the top of its row */
+        .filters-header { margin-top: 0; margin-bottom: 0.25rem; }
+        /* Tighten spacing under the preset select so it aligns visually */
+        .stSelectbox div[data-baseweb="select"] { margin-top: 0; }
+        /* Make preset input non-typable while keeping it clickable */
+        .stSelectbox div[data-baseweb="select"] input { pointer-events: none; }
+        .stSelectbox div[data-baseweb="select"] input { caret-color: transparent; }
         </style>
         """,
         unsafe_allow_html=True,
@@ -106,12 +113,20 @@ def main():
         & (df["language"].isin(selected_languages))
     ]
 
-    efficiency_tab, coverage_tab, subword_tab, analysis_tab, raw_tab = st.tabs(
+    (
+        efficiency_tab,
+        coverage_tab,
+        continued_tab,
+        fertility_tab,
+        analysis_tab,
+        raw_tab,
+    ) = st.tabs(
         [
             "🚀 Efficiency",
             "🎯 Coverage",
-            "🔤 Subword Analysis",
-            "📏 Analysis",
+            "🔁 Continued Word Rate",
+            "🔤 Subword Fertility",
+            "📏 Efficiency vs Vocab Size",
             "🔍 Raw Data",
         ]
     )
@@ -136,20 +151,20 @@ def main():
                 use_container_width=True,
             )
 
-    with subword_tab:
+    with continued_tab:
         if display_df.empty:
             st.info("No data for current selection. Adjust filters below.")
         else:
-            # Continued Word Rate first
-            st.write("##### Continued Word Rate")
             st.caption("% of tokens continuing words - Higher = more subword splitting")
             st.plotly_chart(
                 create_continued_word_rate_chart(display_df, selected_tokenizers),
                 use_container_width=True,
             )
 
-            # Subword Fertility below
-            st.write("##### Subword Fertility")
+    with fertility_tab:
+        if display_df.empty:
+            st.info("No data for current selection. Adjust filters below.")
+        else:
             st.caption("Subwords per word - Higher = more fragmented")
             st.plotly_chart(
                 create_subword_fertility_chart(display_df, selected_tokenizers),
@@ -160,7 +175,6 @@ def main():
         if display_df.empty:
             st.info("No data for current selection. Adjust filters below.")
         else:
-            st.write("#### Efficiency vs Vocabulary Size")
             st.caption("How tokenizer size affects average efficiency across languages")
             st.plotly_chart(
                 create_vocab_efficiency_scatter(display_df, selected_tokenizers),
@@ -171,7 +185,7 @@ def main():
         if display_df.empty:
             st.info("No data for current selection. Adjust filters below.")
         else:
-            st.write("#### Complete Dataset")
+            st.caption("Complete Dataset")
             st.dataframe(display_df, use_container_width=True)
             csv = display_df.to_csv(index=False)
             st.download_button(
@@ -197,7 +211,8 @@ def main():
 
     header_col, preset_col = st.columns([6, 2])
     with header_col:
-        st.markdown("### Filters")
+        # Add a class for CSS targeting to align to top
+        st.markdown('<h3 class="filters-header">Filters</h3>', unsafe_allow_html=True)
     with preset_col:
         st.selectbox(
             "Language Preset",
@@ -209,6 +224,7 @@ def main():
             on_change=_apply_preset,
             label_visibility="collapsed",
             help="Language preset",
+            disabled=False,
         )
 
     # Row 2: tokenizers and languages side by side
@@ -230,9 +246,6 @@ def main():
 
     # Footer
     st.markdown("---")
-    st.caption(
-        "Higher bytes/token = more efficient • Higher unique tokens = better coverage • Subword metrics show splitting behavior"
-    )
 
 
 if __name__ == "__main__":
