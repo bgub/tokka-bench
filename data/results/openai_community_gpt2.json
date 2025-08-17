@@ -1,0 +1,1994 @@
+{
+  "tokenizer": "openai-community/gpt2",
+  "vocab_size": 50257,
+  "vocab_metrics": {
+    "tokens_without_leading_space_count": 17358,
+    "tokens_without_leading_space_pct": 34.540389972144844,
+    "analyzed_sample_size": 10052,
+    "sample_non_space_tokens": [
+      "!",
+      "&",
+      "+",
+      "0",
+      "5",
+      ":",
+      "?",
+      "D",
+      "I",
+      "N"
+    ],
+    "sample_space_tokens": [
+      " ",
+      " b",
+      " m",
+      " and",
+      " l",
+      " it",
+      " you",
+      " P",
+      " as",
+      " D"
+    ]
+  },
+  "benchmark_size_mb": 1.0,
+  "timestamp": 1755414345.7056699,
+  "languages": {
+    "cmn-Hani": {
+      "language_info": {
+        "iso_code": "cmn",
+        "script": "Hani",
+        "name": "Mandarin Chinese",
+        "source": "fineweb2"
+      },
+      "metrics": {
+        "bytes_per_token": 1.413309647297312,
+        "total_bytes": 1048574,
+        "total_tokens": 741928,
+        "unique_tokens": 4760,
+        "subword_fertility": 1.9462295357188764,
+        "continued_word_rate": 49.26433282597666
+      }
+    },
+    "rus-Cyrl": {
+      "language_info": {
+        "iso_code": "rus",
+        "script": "Cyrl",
+        "name": "Russian",
+        "source": "fineweb2"
+      },
+      "metrics": {
+        "bytes_per_token": 1.6951652849807943,
+        "total_bytes": 1048575,
+        "total_tokens": 618568,
+        "unique_tokens": 2188,
+        "subword_fertility": 7.460176564233683,
+        "continued_word_rate": 84.85078018482048
+      }
+    },
+    "deu-Latn": {
+      "language_info": {
+        "iso_code": "deu",
+        "script": "Latn",
+        "name": "German",
+        "source": "fineweb2"
+      },
+      "metrics": {
+        "bytes_per_token": 2.6868858213946196,
+        "total_bytes": 1048576,
+        "total_tokens": 390257,
+        "unique_tokens": 10712,
+        "subword_fertility": 2.695312553957083,
+        "continued_word_rate": 62.36356793375988
+      }
+    },
+    "jpn-Jpan": {
+      "language_info": {
+        "iso_code": "jpn",
+        "script": "Jpan",
+        "name": "Japanese",
+        "source": "fineweb2"
+      },
+      "metrics": {
+        "bytes_per_token": 2.0730733263873375,
+        "total_bytes": 1048575,
+        "total_tokens": 505807,
+        "unique_tokens": 3909,
+        "subword_fertility": 1.3650573893706195,
+        "continued_word_rate": 30.216329378925334
+      }
+    },
+    "eng-Latn": {
+      "language_info": {
+        "iso_code": "eng",
+        "script": "Latn",
+        "name": "English (FineWeb)",
+        "source": "fineweb"
+      },
+      "metrics": {
+        "bytes_per_token": 4.455219473230256,
+        "total_bytes": 1048576,
+        "total_tokens": 235359,
+        "unique_tokens": 22520,
+        "subword_fertility": 1.3479974112108317,
+        "continued_word_rate": 34.21052631578947
+      }
+    },
+    "spa-Latn": {
+      "language_info": {
+        "iso_code": "spa",
+        "script": "Latn",
+        "name": "Spanish",
+        "source": "fineweb2"
+      },
+      "metrics": {
+        "bytes_per_token": 2.9403751405585328,
+        "total_bytes": 1048576,
+        "total_tokens": 356613,
+        "unique_tokens": 9145,
+        "subword_fertility": 2.0977482088024564,
+        "continued_word_rate": 54.317039744175425
+      }
+    },
+    "fra-Latn": {
+      "language_info": {
+        "iso_code": "fra",
+        "script": "Latn",
+        "name": "French",
+        "source": "fineweb2"
+      },
+      "metrics": {
+        "bytes_per_token": 2.9752238704332132,
+        "total_bytes": 1048576,
+        "total_tokens": 352436,
+        "unique_tokens": 11540,
+        "subword_fertility": 2.1455984414951907,
+        "continued_word_rate": 53.40167753960857
+      }
+    },
+    "ita-Latn": {
+      "language_info": {
+        "iso_code": "ita",
+        "script": "Latn",
+        "name": "Italian",
+        "source": "fineweb2"
+      },
+      "metrics": {
+        "bytes_per_token": 2.8539902614811368,
+        "total_bytes": 1048576,
+        "total_tokens": 367407,
+        "unique_tokens": 11226,
+        "subword_fertility": 2.283676437681808,
+        "continued_word_rate": 57.94785534062237
+      }
+    },
+    "por-Latn": {
+      "language_info": {
+        "iso_code": "por",
+        "script": "Latn",
+        "name": "Portuguese",
+        "source": "fineweb2"
+      },
+      "metrics": {
+        "bytes_per_token": 2.7893816986196422,
+        "total_bytes": 1048576,
+        "total_tokens": 375917,
+        "unique_tokens": 11024,
+        "subword_fertility": 2.2496798286035737,
+        "continued_word_rate": 56.12110574813515
+      }
+    },
+    "pol-Latn": {
+      "language_info": {
+        "iso_code": "pol",
+        "script": "Latn",
+        "name": "Polish",
+        "source": "fineweb2"
+      },
+      "metrics": {
+        "bytes_per_token": 2.107993518659987,
+        "total_bytes": 1048575,
+        "total_tokens": 497428,
+        "unique_tokens": 9802,
+        "subword_fertility": 3.550875890524392,
+        "continued_word_rate": 71.65532879818595
+      }
+    },
+    "nld-Latn": {
+      "language_info": {
+        "iso_code": "nld",
+        "script": "Latn",
+        "name": "Dutch",
+        "source": "fineweb2"
+      },
+      "metrics": {
+        "bytes_per_token": 2.730673777796296,
+        "total_bytes": 1048576,
+        "total_tokens": 383999,
+        "unique_tokens": 12300,
+        "subword_fertility": 2.3247587451113345,
+        "continued_word_rate": 56.15957913195967
+      }
+    },
+    "ind-Latn": {
+      "language_info": {
+        "iso_code": "ind",
+        "script": "Latn",
+        "name": "Indonesian",
+        "source": "fineweb2"
+      },
+      "metrics": {
+        "bytes_per_token": 2.6509450180509067,
+        "total_bytes": 1048576,
+        "total_tokens": 395548,
+        "unique_tokens": 10083,
+        "subword_fertility": 2.69983891664619,
+        "continued_word_rate": 61.80290297937356
+      }
+    },
+    "kor-Hang": {
+      "language_info": {
+        "iso_code": "kor",
+        "script": "Hang",
+        "name": "Korean",
+        "source": "fineweb2"
+      },
+      "metrics": {
+        "bytes_per_token": 1.1893783688136332,
+        "total_bytes": 1048575,
+        "total_tokens": 881616,
+        "unique_tokens": 5084,
+        "subword_fertility": 2.4102751972529486,
+        "continued_word_rate": 58.59213250517599
+      }
+    },
+    "tur-Latn": {
+      "language_info": {
+        "iso_code": "tur",
+        "script": "Latn",
+        "name": "Turkish",
+        "source": "fineweb2"
+      },
+      "metrics": {
+        "bytes_per_token": 2.259662400520644,
+        "total_bytes": 1048576,
+        "total_tokens": 464041,
+        "unique_tokens": 8949,
+        "subword_fertility": 3.6140546265936653,
+        "continued_word_rate": 70.90485888856561
+      }
+    },
+    "ces-Latn": {
+      "language_info": {
+        "iso_code": "ces",
+        "script": "Latn",
+        "name": "Czech",
+        "source": "fineweb2"
+      },
+      "metrics": {
+        "bytes_per_token": 2.0388154133920273,
+        "total_bytes": 1048575,
+        "total_tokens": 514306,
+        "unique_tokens": 8605,
+        "subword_fertility": 3.6726961116863643,
+        "continued_word_rate": 73.34754797441366
+      }
+    },
+    "arb-Arab": {
+      "language_info": {
+        "iso_code": "arb",
+        "script": "Arab",
+        "name": "Standard Arabic",
+        "source": "fineweb2"
+      },
+      "metrics": {
+        "bytes_per_token": 1.8307821778202242,
+        "total_bytes": 1048575,
+        "total_tokens": 572747,
+        "unique_tokens": 2135,
+        "subword_fertility": 5.733145814356213,
+        "continued_word_rate": 81.45744483589839
+      }
+    },
+    "fas-Arab": {
+      "language_info": {
+        "iso_code": "fas",
+        "script": "Arab",
+        "name": "Persian",
+        "source": "fineweb2"
+      },
+      "metrics": {
+        "bytes_per_token": 1.6137574198989493,
+        "total_bytes": 1048576,
+        "total_tokens": 649773,
+        "unique_tokens": 2011,
+        "subword_fertility": 5.4166708347921775,
+        "continued_word_rate": 79.35164154449721
+      }
+    },
+    "hun-Latn": {
+      "language_info": {
+        "iso_code": "hun",
+        "script": "Latn",
+        "name": "Hungarian",
+        "source": "fineweb2"
+      },
+      "metrics": {
+        "bytes_per_token": 2.1567383676206227,
+        "total_bytes": 1048576,
+        "total_tokens": 486186,
+        "unique_tokens": 9122,
+        "subword_fertility": 3.695601939828821,
+        "continued_word_rate": 72.83346916598751
+      }
+    },
+    "ron-Latn": {
+      "language_info": {
+        "iso_code": "ron",
+        "script": "Latn",
+        "name": "Romanian",
+        "source": "fineweb2"
+      },
+      "metrics": {
+        "bytes_per_token": 2.483835512601857,
+        "total_bytes": 1048576,
+        "total_tokens": 422160,
+        "unique_tokens": 10284,
+        "subword_fertility": 2.604703966040623,
+        "continued_word_rate": 60.95275283092542
+      }
+    },
+    "vie-Latn": {
+      "language_info": {
+        "iso_code": "vie",
+        "script": "Latn",
+        "name": "Vietnamese",
+        "source": "fineweb2"
+      },
+      "metrics": {
+        "bytes_per_token": 1.5094439574075433,
+        "total_bytes": 1048576,
+        "total_tokens": 694677,
+        "unique_tokens": 4014,
+        "subword_fertility": 3.969469443730179,
+        "continued_word_rate": 74.39180537772087
+      }
+    },
+    "ukr-Cyrl": {
+      "language_info": {
+        "iso_code": "ukr",
+        "script": "Cyrl",
+        "name": "Ukrainian",
+        "source": "fineweb2"
+      },
+      "metrics": {
+        "bytes_per_token": 1.6095117784391706,
+        "total_bytes": 1048576,
+        "total_tokens": 651487,
+        "unique_tokens": 2177,
+        "subword_fertility": 8.183995980152,
+        "continued_word_rate": 86.80912808336632
+      }
+    },
+    "tha-Thai": {
+      "language_info": {
+        "iso_code": "tha",
+        "script": "Thai",
+        "name": "Thai",
+        "source": "fineweb2"
+      },
+      "metrics": {
+        "bytes_per_token": 1.514092967378246,
+        "total_bytes": 1048576,
+        "total_tokens": 692544,
+        "unique_tokens": 3022,
+        "subword_fertility": 1.9124023494130609,
+        "continued_word_rate": 47.862356621480714
+      }
+    },
+    "nob-Latn": {
+      "language_info": {
+        "iso_code": "nob",
+        "script": "Latn",
+        "name": "Norwegian Bokmål",
+        "source": "fineweb2"
+      },
+      "metrics": {
+        "bytes_per_token": 2.617811830614599,
+        "total_bytes": 1048575,
+        "total_tokens": 400554,
+        "unique_tokens": 10474,
+        "subword_fertility": 2.3631783265879243,
+        "continued_word_rate": 58.01847187237615
+      }
+    },
+    "ell-Grek": {
+      "language_info": {
+        "iso_code": "ell",
+        "script": "Grek",
+        "name": "Modern Greek (1453-)",
+        "source": "fineweb2"
+      },
+      "metrics": {
+        "bytes_per_token": 1.6444226981319081,
+        "total_bytes": 1048576,
+        "total_tokens": 637656,
+        "unique_tokens": 3282,
+        "subword_fertility": 7.248726809749,
+        "continued_word_rate": 85.29195469922047
+      }
+    },
+    "swe-Latn": {
+      "language_info": {
+        "iso_code": "swe",
+        "script": "Latn",
+        "name": "Swedish",
+        "source": "fineweb2"
+      },
+      "metrics": {
+        "bytes_per_token": 2.5527953334826514,
+        "total_bytes": 1048576,
+        "total_tokens": 410756,
+        "unique_tokens": 9758,
+        "subword_fertility": 2.5271071736188015,
+        "continued_word_rate": 59.233591520587034
+      }
+    },
+    "dan-Latn": {
+      "language_info": {
+        "iso_code": "dan",
+        "script": "Latn",
+        "name": "Danish",
+        "source": "fineweb2"
+      },
+      "metrics": {
+        "bytes_per_token": 2.684045357974761,
+        "total_bytes": 1048576,
+        "total_tokens": 390670,
+        "unique_tokens": 12010,
+        "subword_fertility": 2.3073697390646966,
+        "continued_word_rate": 55.03597122302158
+      }
+    },
+    "fin-Latn": {
+      "language_info": {
+        "iso_code": "fin",
+        "script": "Latn",
+        "name": "Finnish",
+        "source": "fineweb2"
+      },
+      "metrics": {
+        "bytes_per_token": 2.3503136886603624,
+        "total_bytes": 1048576,
+        "total_tokens": 446143,
+        "unique_tokens": 9111,
+        "subword_fertility": 3.755349236544839,
+        "continued_word_rate": 72.57268239166208
+      }
+    },
+    "bul-Cyrl": {
+      "language_info": {
+        "iso_code": "bul",
+        "script": "Cyrl",
+        "name": "Bulgarian",
+        "source": "fineweb2"
+      },
+      "metrics": {
+        "bytes_per_token": 1.6974610348824408,
+        "total_bytes": 1048576,
+        "total_tokens": 617732,
+        "unique_tokens": 2560,
+        "subword_fertility": 6.76907230051064,
+        "continued_word_rate": 83.61998361998361
+      }
+    },
+    "slk-Latn": {
+      "language_info": {
+        "iso_code": "slk",
+        "script": "Latn",
+        "name": "Slovak",
+        "source": "fineweb2"
+      },
+      "metrics": {
+        "bytes_per_token": 2.1437835804417693,
+        "total_bytes": 1048576,
+        "total_tokens": 489124,
+        "unique_tokens": 10150,
+        "subword_fertility": 3.4456756813875016,
+        "continued_word_rate": 69.12627354121642
+      }
+    },
+    "hrv-Latn": {
+      "language_info": {
+        "iso_code": "hrv",
+        "script": "Latn",
+        "name": "Croatian",
+        "source": "fineweb2"
+      },
+      "metrics": {
+        "bytes_per_token": 2.261221725994725,
+        "total_bytes": 1048576,
+        "total_tokens": 463721,
+        "unique_tokens": 9093,
+        "subword_fertility": 2.9820902625046624,
+        "continued_word_rate": 65.16893068617206
+      }
+    },
+    "hin-Deva": {
+      "language_info": {
+        "iso_code": "hin",
+        "script": "Deva",
+        "name": "Hindi",
+        "source": "fineweb2"
+      },
+      "metrics": {
+        "bytes_per_token": 1.6940654540049662,
+        "total_bytes": 1048574,
+        "total_tokens": 618969,
+        "unique_tokens": 1440,
+        "subword_fertility": 7.578346148195308,
+        "continued_word_rate": 87.06004140786749
+      }
+    },
+    "lit-Latn": {
+      "language_info": {
+        "iso_code": "lit",
+        "script": "Latn",
+        "name": "Lithuanian",
+        "source": "fineweb2"
+      },
+      "metrics": {
+        "bytes_per_token": 2.1503737503204308,
+        "total_bytes": 1048576,
+        "total_tokens": 487625,
+        "unique_tokens": 8729,
+        "subword_fertility": 3.6963409919573076,
+        "continued_word_rate": 72.91440953412784
+      }
+    },
+    "heb-Hebr": {
+      "language_info": {
+        "iso_code": "heb",
+        "script": "Hebr",
+        "name": "Hebrew",
+        "source": "fineweb2"
+      },
+      "metrics": {
+        "bytes_per_token": 1.5706776873369144,
+        "total_bytes": 1048575,
+        "total_tokens": 667594,
+        "unique_tokens": 3115,
+        "subword_fertility": 6.47753315932973,
+        "continued_word_rate": 82.62078554049357
+      }
+    },
+    "ben-Beng": {
+      "language_info": {
+        "iso_code": "ben",
+        "script": "Beng",
+        "name": "Bengali",
+        "source": "fineweb2"
+      },
+      "metrics": {
+        "bytes_per_token": 1.3452422800107766,
+        "total_bytes": 1048576,
+        "total_tokens": 779470,
+        "unique_tokens": 1316,
+        "subword_fertility": 12.439872963181665,
+        "continued_word_rate": 91.3904433921653
+      }
+    },
+    "bos-Latn": {
+      "language_info": {
+        "iso_code": "bos",
+        "script": "Latn",
+        "name": "Bosnian",
+        "source": "fineweb2"
+      },
+      "metrics": {
+        "bytes_per_token": 2.3082253598017073,
+        "total_bytes": 1048576,
+        "total_tokens": 454278,
+        "unique_tokens": 9444,
+        "subword_fertility": 2.9305043962920196,
+        "continued_word_rate": 64.1062455132807
+      }
+    },
+    "slv-Latn": {
+      "language_info": {
+        "iso_code": "slv",
+        "script": "Latn",
+        "name": "Slovenian",
+        "source": "fineweb2"
+      },
+      "metrics": {
+        "bytes_per_token": 2.3460227895623538,
+        "total_bytes": 1048576,
+        "total_tokens": 446959,
+        "unique_tokens": 8566,
+        "subword_fertility": 2.8663896210503363,
+        "continued_word_rate": 64.9245878639074
+      }
+    },
+    "ekk-Latn": {
+      "language_info": {
+        "iso_code": "ekk",
+        "script": "Latn",
+        "name": "Standard Estonian",
+        "source": "fineweb2"
+      },
+      "metrics": {
+        "bytes_per_token": 2.3527025511005406,
+        "total_bytes": 1048576,
+        "total_tokens": 445690,
+        "unique_tokens": 9420,
+        "subword_fertility": 3.3892517927620323,
+        "continued_word_rate": 69.04024767801857
+      }
+    },
+    "lvs-Latn": {
+      "language_info": {
+        "iso_code": "lvs",
+        "script": "Latn",
+        "name": "Standard Latvian",
+        "source": "fineweb2"
+      },
+      "metrics": {
+        "bytes_per_token": 2.175604290723489,
+        "total_bytes": 1048576,
+        "total_tokens": 481970,
+        "unique_tokens": 8252,
+        "subword_fertility": 3.572397435422303,
+        "continued_word_rate": 70.44043748152528
+      }
+    },
+    "cat-Latn": {
+      "language_info": {
+        "iso_code": "cat",
+        "script": "Latn",
+        "name": "Catalan",
+        "source": "fineweb2"
+      },
+      "metrics": {
+        "bytes_per_token": 2.828324895277296,
+        "total_bytes": 1048576,
+        "total_tokens": 370741,
+        "unique_tokens": 10061,
+        "subword_fertility": 2.178164363602181,
+        "continued_word_rate": 55.81087052585064
+      }
+    },
+    "zsm-Latn": {
+      "language_info": {
+        "iso_code": "zsm",
+        "script": "Latn",
+        "name": "Standard Malay",
+        "source": "fineweb2"
+      },
+      "metrics": {
+        "bytes_per_token": 2.6361695976267394,
+        "total_bytes": 1048576,
+        "total_tokens": 397765,
+        "unique_tokens": 9915,
+        "subword_fertility": 2.610965971748149,
+        "continued_word_rate": 60.95275283092542
+      }
+    },
+    "azj-Latn": {
+      "language_info": {
+        "iso_code": "azj",
+        "script": "Latn",
+        "name": "North Azerbaijani",
+        "source": "fineweb2"
+      },
+      "metrics": {
+        "bytes_per_token": 1.766305345697417,
+        "total_bytes": 1048576,
+        "total_tokens": 593655,
+        "unique_tokens": 5527,
+        "subword_fertility": 4.8976586476586474,
+        "continued_word_rate": 78.89850179362735
+      }
+    },
+    "srp-Cyrl": {
+      "language_info": {
+        "iso_code": "srp",
+        "script": "Cyrl",
+        "name": "Serbian",
+        "source": "fineweb2"
+      },
+      "metrics": {
+        "bytes_per_token": 1.6697601834453326,
+        "total_bytes": 1048576,
+        "total_tokens": 627980,
+        "unique_tokens": 3465,
+        "subword_fertility": 6.820679917454111,
+        "continued_word_rate": 83.84752059441124
+      }
+    },
+    "tam-Taml": {
+      "language_info": {
+        "iso_code": "tam",
+        "script": "Taml",
+        "name": "Tamil",
+        "source": "fineweb2"
+      },
+      "metrics": {
+        "bytes_per_token": 1.0079680087668283,
+        "total_bytes": 1048574,
+        "total_tokens": 1040285,
+        "unique_tokens": 1340,
+        "subword_fertility": 24.399216624448822,
+        "continued_word_rate": 95.66517837790975
+      }
+    },
+    "kat-Geor": {
+      "language_info": {
+        "iso_code": "kat",
+        "script": "Geor",
+        "name": "Georgian",
+        "source": "fineweb2"
+      },
+      "metrics": {
+        "bytes_per_token": 1.0557360015625976,
+        "total_bytes": 1048576,
+        "total_tokens": 993218,
+        "unique_tokens": 1678,
+        "subword_fertility": 21.00626031047756,
+        "continued_word_rate": 95.14798641436197
+      }
+    },
+    "als-Latn": {
+      "language_info": {
+        "iso_code": "als",
+        "script": "Latn",
+        "name": "Tosk Albanian",
+        "source": "fineweb2"
+      },
+      "metrics": {
+        "bytes_per_token": 2.1469307360459617,
+        "total_bytes": 1048576,
+        "total_tokens": 488407,
+        "unique_tokens": 7235,
+        "subword_fertility": 2.9746452280894085,
+        "continued_word_rate": 65.82365003417635
+      }
+    },
+    "kaz-Cyrl": {
+      "language_info": {
+        "iso_code": "kaz",
+        "script": "Cyrl",
+        "name": "Kazakh",
+        "source": "fineweb2"
+      },
+      "metrics": {
+        "bytes_per_token": 1.5644153747685623,
+        "total_bytes": 1048576,
+        "total_tokens": 670267,
+        "unique_tokens": 2090,
+        "subword_fertility": 9.082947123072337,
+        "continued_word_rate": 88.11080727618594
+      }
+    },
+    "urd-Arab": {
+      "language_info": {
+        "iso_code": "urd",
+        "script": "Arab",
+        "name": "Urdu",
+        "source": "fineweb2"
+      },
+      "metrics": {
+        "bytes_per_token": 1.436155627719561,
+        "total_bytes": 1048576,
+        "total_tokens": 730127,
+        "unique_tokens": 1635,
+        "subword_fertility": 5.561262263116203,
+        "continued_word_rate": 79.43233237350884
+      }
+    },
+    "ary-Arab": {
+      "language_info": {
+        "iso_code": "ary",
+        "script": "Arab",
+        "name": "Moroccan Arabic",
+        "source": "fineweb2"
+      },
+      "metrics": {
+        "bytes_per_token": 1.826513797584334,
+        "total_bytes": 1048576,
+        "total_tokens": 574086,
+        "unique_tokens": 1631,
+        "subword_fertility": 5.751385034613342,
+        "continued_word_rate": 81.72514619883042
+      }
+    },
+    "mar-Deva": {
+      "language_info": {
+        "iso_code": "mar",
+        "script": "Deva",
+        "name": "Marathi",
+        "source": "fineweb2"
+      },
+      "metrics": {
+        "bytes_per_token": 1.7032812449238166,
+        "total_bytes": 1048574,
+        "total_tokens": 615620,
+        "unique_tokens": 1853,
+        "subword_fertility": 10.002112138296317,
+        "continued_word_rate": 90.04380724810832
+      }
+    },
+    "npi-Deva": {
+      "language_info": {
+        "iso_code": "npi",
+        "script": "Deva",
+        "name": "Nepali (individual language)",
+        "source": "fineweb2"
+      },
+      "metrics": {
+        "bytes_per_token": 1.6673387481475357,
+        "total_bytes": 1048576,
+        "total_tokens": 628892,
+        "unique_tokens": 977,
+        "subword_fertility": 10.275341480948958,
+        "continued_word_rate": 90.06458022851466
+      }
+    },
+    "mal-Mlym": {
+      "language_info": {
+        "iso_code": "mal",
+        "script": "Mlym",
+        "name": "Malayalam",
+        "source": "fineweb2"
+      },
+      "metrics": {
+        "bytes_per_token": 1.0099494820586663,
+        "total_bytes": 1048575,
+        "total_tokens": 1038245,
+        "unique_tokens": 1570,
+        "subword_fertility": 27.162833895821887,
+        "continued_word_rate": 96.21942459642358
+      }
+    },
+    "mkd-Cyrl": {
+      "language_info": {
+        "iso_code": "mkd",
+        "script": "Cyrl",
+        "name": "Macedonian",
+        "source": "fineweb2"
+      },
+      "metrics": {
+        "bytes_per_token": 1.7042157836312721,
+        "total_bytes": 1048575,
+        "total_tokens": 615283,
+        "unique_tokens": 2512,
+        "subword_fertility": 6.693388016187285,
+        "continued_word_rate": 82.78533310380443
+      }
+    },
+    "tel-Telu": {
+      "language_info": {
+        "iso_code": "tel",
+        "script": "Telu",
+        "name": "Telugu",
+        "source": "fineweb2"
+      },
+      "metrics": {
+        "bytes_per_token": 1.0230568919442349,
+        "total_bytes": 1048575,
+        "total_tokens": 1024943,
+        "unique_tokens": 2736,
+        "subword_fertility": 19.847466160608818,
+        "continued_word_rate": 94.66382070437567
+      }
+    },
+    "bel-Cyrl": {
+      "language_info": {
+        "iso_code": "bel",
+        "script": "Cyrl",
+        "name": "Belarusian",
+        "source": "fineweb2"
+      },
+      "metrics": {
+        "bytes_per_token": 1.5751488285246034,
+        "total_bytes": 1048575,
+        "total_tokens": 665699,
+        "unique_tokens": 3117,
+        "subword_fertility": 8.280868267197413,
+        "continued_word_rate": 87.02814891685044
+      }
+    },
+    "isl-Latn": {
+      "language_info": {
+        "iso_code": "isl",
+        "script": "Latn",
+        "name": "Icelandic",
+        "source": "fineweb2"
+      },
+      "metrics": {
+        "bytes_per_token": 2.1769909667132414,
+        "total_bytes": 1048576,
+        "total_tokens": 481663,
+        "unique_tokens": 7623,
+        "subword_fertility": 3.135071629880823,
+        "continued_word_rate": 67.08360763660302
+      }
+    },
+    "kan-Knda": {
+      "language_info": {
+        "iso_code": "kan",
+        "script": "Knda",
+        "name": "Kannada",
+        "source": "fineweb2"
+      },
+      "metrics": {
+        "bytes_per_token": 1.0357851606218027,
+        "total_bytes": 1048574,
+        "total_tokens": 1012347,
+        "unique_tokens": 2236,
+        "subword_fertility": 20.734193548387097,
+        "continued_word_rate": 95.03401698366191
+      }
+    },
+    "afr-Latn": {
+      "language_info": {
+        "iso_code": "afr",
+        "script": "Latn",
+        "name": "Afrikaans",
+        "source": "fineweb2"
+      },
+      "metrics": {
+        "bytes_per_token": 2.7186240118641125,
+        "total_bytes": 1048576,
+        "total_tokens": 385701,
+        "unique_tokens": 12768,
+        "subword_fertility": 2.3040268095553844,
+        "continued_word_rate": 53.53159851301115
+      }
+    },
+    "mya-Mymr": {
+      "language_info": {
+        "iso_code": "mya",
+        "script": "Mymr",
+        "name": "Burmese",
+        "source": "fineweb2"
+      },
+      "metrics": {
+        "bytes_per_token": 1.0335156435577204,
+        "total_bytes": 1048575,
+        "total_tokens": 1014571,
+        "unique_tokens": 1100,
+        "subword_fertility": 2.9399077956436193,
+        "continued_word_rate": 66.03260869565217
+      }
+    },
+    "fil-Latn": {
+      "language_info": {
+        "iso_code": "fil",
+        "script": "Latn",
+        "name": "Filipino",
+        "source": "fineweb2"
+      },
+      "metrics": {
+        "bytes_per_token": 2.72937305756126,
+        "total_bytes": 1048576,
+        "total_tokens": 384182,
+        "unique_tokens": 12761,
+        "subword_fertility": 2.2980278623511325,
+        "continued_word_rate": 58.69475423378769
+      }
+    },
+    "anp-Deva": {
+      "language_info": {
+        "iso_code": "anp",
+        "script": "Deva",
+        "name": "Angika",
+        "source": "fineweb2"
+      },
+      "metrics": {
+        "bytes_per_token": 4.6666636996817905,
+        "total_bytes": 1048576,
+        "total_tokens": 224695,
+        "unique_tokens": 11,
+        "subword_fertility": 1.4999966621494423,
+        "continued_word_rate": 33.37774816788808
+      }
+    },
+    "guj-Gujr": {
+      "language_info": {
+        "iso_code": "guj",
+        "script": "Gujr",
+        "name": "Gujarati",
+        "source": "fineweb2"
+      },
+      "metrics": {
+        "bytes_per_token": 1.0087068613068468,
+        "total_bytes": 1048576,
+        "total_tokens": 1039525,
+        "unique_tokens": 1326,
+        "subword_fertility": 14.85927270648103,
+        "continued_word_rate": 92.7309733226721
+      }
+    },
+    "khk-Cyrl": {
+      "language_info": {
+        "iso_code": "khk",
+        "script": "Cyrl",
+        "name": "Halh Mongolian",
+        "source": "fineweb2"
+      },
+      "metrics": {
+        "bytes_per_token": 1.4491660816062535,
+        "total_bytes": 1048576,
+        "total_tokens": 723572,
+        "unique_tokens": 2486,
+        "subword_fertility": 8.742804668809358,
+        "continued_word_rate": 87.73006134969326
+      }
+    },
+    "glg-Latn": {
+      "language_info": {
+        "iso_code": "glg",
+        "script": "Latn",
+        "name": "Galician",
+        "source": "fineweb2"
+      },
+      "metrics": {
+        "bytes_per_token": 2.8495694024354785,
+        "total_bytes": 1048576,
+        "total_tokens": 367977,
+        "unique_tokens": 9894,
+        "subword_fertility": 2.23432082723613,
+        "continued_word_rate": 56.691208315288
+      }
+    },
+    "khm-Khmr": {
+      "language_info": {
+        "iso_code": "khm",
+        "script": "Khmr",
+        "name": "Khmer",
+        "source": "fineweb2"
+      },
+      "metrics": {
+        "bytes_per_token": 1.0317999956703907,
+        "total_bytes": 1048575,
+        "total_tokens": 1016258,
+        "unique_tokens": 2155,
+        "subword_fertility": 2.8428387602103613,
+        "continued_word_rate": 65.14464970372951
+      }
+    },
+    "ars-Arab": {
+      "language_info": {
+        "iso_code": "ars",
+        "script": "Arab",
+        "name": "Najdi Arabic",
+        "source": "fineweb2"
+      },
+      "metrics": {
+        "bytes_per_token": 1.7694959701915678,
+        "total_bytes": 1048575,
+        "total_tokens": 592584,
+        "unique_tokens": 855,
+        "subword_fertility": 5.450200962042547,
+        "continued_word_rate": 80.30332873744337
+      }
+    },
+    "gmh-Latn": {
+      "language_info": {
+        "iso_code": "gmh",
+        "script": "Latn",
+        "name": "Middle High German (ca. 1050-1500)",
+        "source": "fineweb2"
+      },
+      "metrics": {
+        "bytes_per_token": 2.7105352951516344,
+        "total_bytes": 1048576,
+        "total_tokens": 386852,
+        "unique_tokens": 8223,
+        "subword_fertility": 2.2193079076598283,
+        "continued_word_rate": 53.40167753960857
+      }
+    },
+    "eus-Latn": {
+      "language_info": {
+        "iso_code": "eus",
+        "script": "Latn",
+        "name": "Basque",
+        "source": "fineweb2"
+      },
+      "metrics": {
+        "bytes_per_token": 2.47872727702527,
+        "total_bytes": 1048576,
+        "total_tokens": 423030,
+        "unique_tokens": 8915,
+        "subword_fertility": 3.1396721019467555,
+        "continued_word_rate": 66.996699669967
+      }
+    },
+    "hye-Armn": {
+      "language_info": {
+        "iso_code": "hye",
+        "script": "Armn",
+        "name": "Armenian",
+        "source": "fineweb2"
+      },
+      "metrics": {
+        "bytes_per_token": 1.0249829426266204,
+        "total_bytes": 1048576,
+        "total_tokens": 1023018,
+        "unique_tokens": 1379,
+        "subword_fertility": 12.91836193506838,
+        "continued_word_rate": 91.96464443551628
+      }
+    },
+    "sin-Sinh": {
+      "language_info": {
+        "iso_code": "sin",
+        "script": "Sinh",
+        "name": "Sinhala",
+        "source": "fineweb2"
+      },
+      "metrics": {
+        "bytes_per_token": 1.0174876813830231,
+        "total_bytes": 1048576,
+        "total_tokens": 1030554,
+        "unique_tokens": 1774,
+        "subword_fertility": 15.797562658082319,
+        "continued_word_rate": 93.12383964794058
+      }
+    },
+    "uzn-Cyrl": {
+      "language_info": {
+        "iso_code": "uzn",
+        "script": "Cyrl",
+        "name": "Northern Uzbek",
+        "source": "fineweb2"
+      },
+      "metrics": {
+        "bytes_per_token": 1.6053670642666753,
+        "total_bytes": 1048576,
+        "total_tokens": 653169,
+        "unique_tokens": 1381,
+        "subword_fertility": 8.529794319294808,
+        "continued_word_rate": 87.43560748837794
+      }
+    },
+    "uzn-Latn": {
+      "language_info": {
+        "iso_code": "uzn",
+        "script": "Latn",
+        "name": "Northern Uzbek",
+        "source": "fineweb2"
+      },
+      "metrics": {
+        "bytes_per_token": 2.297604178991976,
+        "total_bytes": 1048576,
+        "total_tokens": 456378,
+        "unique_tokens": 7022,
+        "subword_fertility": 3.572067030360903,
+        "continued_word_rate": 71.53430116709364
+      }
+    },
+    "arz-Arab": {
+      "language_info": {
+        "iso_code": "arz",
+        "script": "Arab",
+        "name": "Egyptian Arabic",
+        "source": "fineweb2"
+      },
+      "metrics": {
+        "bytes_per_token": 1.732673692698677,
+        "total_bytes": 1048576,
+        "total_tokens": 605178,
+        "unique_tokens": 1911,
+        "subword_fertility": 5.672994178688939,
+        "continued_word_rate": 81.58040154724627
+      }
+    },
+    "kir-Cyrl": {
+      "language_info": {
+        "iso_code": "kir",
+        "script": "Cyrl",
+        "name": "Kirghiz",
+        "source": "fineweb2"
+      },
+      "metrics": {
+        "bytes_per_token": 1.6358909234439087,
+        "total_bytes": 1048575,
+        "total_tokens": 640981,
+        "unique_tokens": 2373,
+        "subword_fertility": 8.66178835421143,
+        "continued_word_rate": 87.60996159088094
+      }
+    },
+    "pan-Guru": {
+      "language_info": {
+        "iso_code": "pan",
+        "script": "Guru",
+        "name": "Panjabi",
+        "source": "fineweb2"
+      },
+      "metrics": {
+        "bytes_per_token": 1.6274336035957735,
+        "total_bytes": 1048575,
+        "total_tokens": 644312,
+        "unique_tokens": 1764,
+        "subword_fertility": 7.752707320594888,
+        "continued_word_rate": 86.73388166622446
+      }
+    },
+    "lat-Latn": {
+      "language_info": {
+        "iso_code": "lat",
+        "script": "Latn",
+        "name": "Latin",
+        "source": "fineweb2"
+      },
+      "metrics": {
+        "bytes_per_token": 2.9345490469353885,
+        "total_bytes": 1048576,
+        "total_tokens": 357321,
+        "unique_tokens": 9822,
+        "subword_fertility": 2.371342487208245,
+        "continued_word_rate": 59.366111336854935
+      }
+    },
+    "swh-Latn": {
+      "language_info": {
+        "iso_code": "swh",
+        "script": "Latn",
+        "name": "Swahili (individual language)",
+        "source": "fineweb2"
+      },
+      "metrics": {
+        "bytes_per_token": 2.3870767997960263,
+        "total_bytes": 1048576,
+        "total_tokens": 439272,
+        "unique_tokens": 8486,
+        "subword_fertility": 2.7560954185541653,
+        "continued_word_rate": 62.07811907470611
+      }
+    },
+    "bew-Latn": {
+      "language_info": {
+        "iso_code": "bew",
+        "script": "Latn",
+        "name": "Betawi",
+        "source": "fineweb2"
+      },
+      "metrics": {
+        "bytes_per_token": 2.500008344678122,
+        "total_bytes": 1048576,
+        "total_tokens": 419429,
+        "unique_tokens": 9674,
+        "subword_fertility": 2.579403100727521,
+        "continued_word_rate": 58.89847924373201
+      }
+    },
+    "srp-Latn": {
+      "language_info": {
+        "iso_code": "srp",
+        "script": "Latn",
+        "name": "Serbian",
+        "source": "fineweb2"
+      },
+      "metrics": {
+        "bytes_per_token": 2.2782798007165685,
+        "total_bytes": 1048576,
+        "total_tokens": 460249,
+        "unique_tokens": 5923,
+        "subword_fertility": 2.5851311805972914,
+        "continued_word_rate": 60.079840319361274
+      }
+    },
+    "nno-Latn": {
+      "language_info": {
+        "iso_code": "nno",
+        "script": "Latn",
+        "name": "Norwegian Nynorsk",
+        "source": "fineweb2"
+      },
+      "metrics": {
+        "bytes_per_token": 2.5711168161165587,
+        "total_bytes": 1048576,
+        "total_tokens": 407829,
+        "unique_tokens": 10789,
+        "subword_fertility": 2.45575085355059,
+        "continued_word_rate": 58.98277276456112
+      }
+    },
+    "ory-Orya": {
+      "language_info": {
+        "iso_code": "ory",
+        "script": "Orya",
+        "name": "Odia",
+        "source": "fineweb2"
+      },
+      "metrics": {
+        "bytes_per_token": 1.0119114252406798,
+        "total_bytes": 1048575,
+        "total_tokens": 1036232,
+        "unique_tokens": 917,
+        "subword_fertility": 16.37172559800297,
+        "continued_word_rate": 93.43487394957984
+      }
+    },
+    "tat-Cyrl": {
+      "language_info": {
+        "iso_code": "tat",
+        "script": "Cyrl",
+        "name": "Tatar",
+        "source": "fineweb2"
+      },
+      "metrics": {
+        "bytes_per_token": 1.570340462876158,
+        "total_bytes": 1048576,
+        "total_tokens": 667738,
+        "unique_tokens": 1968,
+        "subword_fertility": 8.430077390195558,
+        "continued_word_rate": 87.0146734190365
+      }
+    },
+    "tgk-Cyrl": {
+      "language_info": {
+        "iso_code": "tgk",
+        "script": "Cyrl",
+        "name": "Tajik",
+        "source": "fineweb2"
+      },
+      "metrics": {
+        "bytes_per_token": 1.626048094085392,
+        "total_bytes": 1048575,
+        "total_tokens": 644861,
+        "unique_tokens": 1790,
+        "subword_fertility": 7.364369325643808,
+        "continued_word_rate": 85.27896363904019
+      }
+    },
+    "cym-Latn": {
+      "language_info": {
+        "iso_code": "cym",
+        "script": "Latn",
+        "name": "Welsh",
+        "source": "fineweb2"
+      },
+      "metrics": {
+        "bytes_per_token": 2.2601153577556103,
+        "total_bytes": 1048576,
+        "total_tokens": 463948,
+        "unique_tokens": 8896,
+        "subword_fertility": 2.6688372574623647,
+        "continued_word_rate": 59.98399359743898
+      }
+    },
+    "pbt-Arab": {
+      "language_info": {
+        "iso_code": "pbt",
+        "script": "Arab",
+        "name": "Southern Pashto",
+        "source": "fineweb2"
+      },
+      "metrics": {
+        "bytes_per_token": 1.5802549325745838,
+        "total_bytes": 1048575,
+        "total_tokens": 663548,
+        "unique_tokens": 1475,
+        "subword_fertility": 5.302402889540598,
+        "continued_word_rate": 78.50386930352536
+      }
+    },
+    "gle-Latn": {
+      "language_info": {
+        "iso_code": "gle",
+        "script": "Latn",
+        "name": "Irish",
+        "source": "fineweb2"
+      },
+      "metrics": {
+        "bytes_per_token": 2.3905488402631807,
+        "total_bytes": 1048576,
+        "total_tokens": 438634,
+        "unique_tokens": 9092,
+        "subword_fertility": 2.676458025700792,
+        "continued_word_rate": 60.42738425009894
+      }
+    },
+    "som-Latn": {
+      "language_info": {
+        "iso_code": "som",
+        "script": "Latn",
+        "name": "Somali",
+        "source": "fineweb2"
+      },
+      "metrics": {
+        "bytes_per_token": 2.3765647133483676,
+        "total_bytes": 1048576,
+        "total_tokens": 441215,
+        "unique_tokens": 7297,
+        "subword_fertility": 2.792747458635575,
+        "continued_word_rate": 62.546816479400746
+      }
+    },
+    "ckb-Arab": {
+      "language_info": {
+        "iso_code": "ckb",
+        "script": "Arab",
+        "name": "Central Kurdish",
+        "source": "fineweb2"
+      },
+      "metrics": {
+        "bytes_per_token": 1.4801182880695614,
+        "total_bytes": 1048575,
+        "total_tokens": 708440,
+        "unique_tokens": 809,
+        "subword_fertility": 7.940995146447267,
+        "continued_word_rate": 86.41857938340351
+      }
+    },
+    "rmy-Latn": {
+      "language_info": {
+        "iso_code": "rmy",
+        "script": "Latn",
+        "name": "Vlax Romani",
+        "source": "fineweb2"
+      },
+      "metrics": {
+        "bytes_per_token": 2.4376191406068384,
+        "total_bytes": 1048576,
+        "total_tokens": 430164,
+        "unique_tokens": 6980,
+        "subword_fertility": 2.395175839105548,
+        "continued_word_rate": 55.927721463199646
+      }
+    },
+    "mlt-Latn": {
+      "language_info": {
+        "iso_code": "mlt",
+        "script": "Latn",
+        "name": "Maltese",
+        "source": "fineweb2"
+      },
+      "metrics": {
+        "bytes_per_token": 2.148439548911618,
+        "total_bytes": 1048576,
+        "total_tokens": 488064,
+        "unique_tokens": 10723,
+        "subword_fertility": 3.9410534475658303,
+        "continued_word_rate": 73.55197037820682
+      }
+    },
+    "lao-Laoo": {
+      "language_info": {
+        "iso_code": "lao",
+        "script": "Laoo",
+        "name": "Lao",
+        "source": "fineweb2"
+      },
+      "metrics": {
+        "bytes_per_token": 1.016205812461477,
+        "total_bytes": 1048574,
+        "total_tokens": 1031852,
+        "unique_tokens": 1963,
+        "subword_fertility": 2.9014762534094425,
+        "continued_word_rate": 65.42185338865836
+      }
+    },
+    "nap-Latn": {
+      "language_info": {
+        "iso_code": "nap",
+        "script": "Latn",
+        "name": "Neapolitan",
+        "source": "fineweb2"
+      },
+      "metrics": {
+        "bytes_per_token": 2.4444040375783853,
+        "total_bytes": 1048576,
+        "total_tokens": 428970,
+        "unique_tokens": 10780,
+        "subword_fertility": 2.51810934876786,
+        "continued_word_rate": 57.69881556683587
+      }
+    },
+    "amh-Ethi": {
+      "language_info": {
+        "iso_code": "amh",
+        "script": "Ethi",
+        "name": "Amharic",
+        "source": "fineweb2"
+      },
+      "metrics": {
+        "bytes_per_token": 1.0943769588591312,
+        "total_bytes": 1048574,
+        "total_tokens": 958147,
+        "unique_tokens": 2225,
+        "subword_fertility": 12.318205777612075,
+        "continued_word_rate": 91.79924553058882
+      }
+    },
+    "hif-Latn": {
+      "language_info": {
+        "iso_code": "hif",
+        "script": "Latn",
+        "name": "Fiji Hindi",
+        "source": "fineweb2"
+      },
+      "metrics": {
+        "bytes_per_token": 2.5498094772600712,
+        "total_bytes": 1048576,
+        "total_tokens": 411237,
+        "unique_tokens": 8531,
+        "subword_fertility": 2.09662897288699,
+        "continued_word_rate": 50.29821073558648
+      }
+    },
+    "kmr-Latn": {
+      "language_info": {
+        "iso_code": "kmr",
+        "script": "Latn",
+        "name": "Northern Kurdish",
+        "source": "fineweb2"
+      },
+      "metrics": {
+        "bytes_per_token": 2.1845424355934817,
+        "total_bytes": 1048576,
+        "total_tokens": 479998,
+        "unique_tokens": 6750,
+        "subword_fertility": 2.7986916062224503,
+        "continued_word_rate": 61.059190031152646
+      }
+    },
+    "epo-Latn": {
+      "language_info": {
+        "iso_code": "epo",
+        "script": "Latn",
+        "name": "Esperanto",
+        "source": "fineweb2"
+      },
+      "metrics": {
+        "bytes_per_token": 2.472432664398371,
+        "total_bytes": 1048576,
+        "total_tokens": 424107,
+        "unique_tokens": 10635,
+        "subword_fertility": 2.626586237435513,
+        "continued_word_rate": 62.03492786636294
+      }
+    },
+    "yue-Hani": {
+      "language_info": {
+        "iso_code": "yue",
+        "script": "Hani",
+        "name": "Yue Chinese",
+        "source": "fineweb2"
+      },
+      "metrics": {
+        "bytes_per_token": 1.3543018772884903,
+        "total_bytes": 1048575,
+        "total_tokens": 774255,
+        "unique_tokens": 5275,
+        "subword_fertility": 2.031941360794873,
+        "continued_word_rate": 50.51954477981197
+      }
+    },
+    "ltz-Latn": {
+      "language_info": {
+        "iso_code": "ltz",
+        "script": "Latn",
+        "name": "Luxembourgish",
+        "source": "fineweb2"
+      },
+      "metrics": {
+        "bytes_per_token": 2.514389852049013,
+        "total_bytes": 1048576,
+        "total_tokens": 417030,
+        "unique_tokens": 11775,
+        "subword_fertility": 2.764900881787443,
+        "continued_word_rate": 63.75498368974266
+      }
+    },
+    "bod-Tibt": {
+      "language_info": {
+        "iso_code": "bod",
+        "script": "Tibt",
+        "name": "Tibetan",
+        "source": "fineweb2"
+      },
+      "metrics": {
+        "bytes_per_token": 1.1009564047831788,
+        "total_bytes": 1048574,
+        "total_tokens": 952421,
+        "unique_tokens": 1054,
+        "subword_fertility": 11.454251352976549,
+        "continued_word_rate": 89.34015563372775
+      }
+    },
+    "gsw-Latn": {
+      "language_info": {
+        "iso_code": "gsw",
+        "script": "Latn",
+        "name": "Swiss German",
+        "source": "fineweb2"
+      },
+      "metrics": {
+        "bytes_per_token": 2.4972754639332395,
+        "total_bytes": 1048576,
+        "total_tokens": 419888,
+        "unique_tokens": 11486,
+        "subword_fertility": 2.667903548622804,
+        "continued_word_rate": 60.81504702194357
+      }
+    },
+    "python-code": {
+      "language_info": {
+        "iso_code": "python",
+        "script": "code",
+        "name": "Python (code)",
+        "source": "starcoder",
+        "data_dir": "python"
+      },
+      "metrics": {
+        "bytes_per_token": 2.149849101167826,
+        "total_bytes": 1048576,
+        "total_tokens": 487744,
+        "unique_tokens": 9251,
+        "subword_fertility": 5.796883728116569,
+        "continued_word_rate": 71.05643994211289
+      }
+    },
+    "javascript-code": {
+      "language_info": {
+        "iso_code": "javascript",
+        "script": "code",
+        "name": "Javascript (code)",
+        "source": "starcoder",
+        "data_dir": "javascript"
+      },
+      "metrics": {
+        "bytes_per_token": 2.263471916418426,
+        "total_bytes": 1048576,
+        "total_tokens": 463260,
+        "unique_tokens": 9551,
+        "subword_fertility": 4.294733329007018,
+        "continued_word_rate": 62.700484893696384
+      }
+    },
+    "div-Thaa": {
+      "language_info": {
+        "iso_code": "div",
+        "script": "Thaa",
+        "name": "Dhivehi",
+        "source": "fineweb2"
+      },
+      "metrics": {
+        "bytes_per_token": 1.011794255233743,
+        "total_bytes": 1048575,
+        "total_tokens": 1036352,
+        "unique_tokens": 1830,
+        "subword_fertility": 16.510570504548422,
+        "continued_word_rate": 93.58233859581568
+      }
+    },
+    "java-code": {
+      "language_info": {
+        "iso_code": "java",
+        "script": "code",
+        "name": "Java (code)",
+        "source": "starcoder",
+        "data_dir": "java"
+      },
+      "metrics": {
+        "bytes_per_token": 2.520373041053745,
+        "total_bytes": 1048576,
+        "total_tokens": 416040,
+        "unique_tokens": 8384,
+        "subword_fertility": 4.473307886672759,
+        "continued_word_rate": 64.9245878639074
+      }
+    },
+    "c-code": {
+      "language_info": {
+        "iso_code": "c",
+        "script": "code",
+        "name": "C (code)",
+        "source": "starcoder",
+        "data_dir": "c"
+      },
+      "metrics": {
+        "bytes_per_token": 2.14625839200917,
+        "total_bytes": 1048576,
+        "total_tokens": 488560,
+        "unique_tokens": 8089,
+        "subword_fertility": 4.8096081905886985,
+        "continued_word_rate": 71.63120567375887
+      }
+    },
+    "c-sharp-code": {
+      "language_info": {
+        "iso_code": "c-sharp",
+        "script": "code",
+        "name": "C-Sharp (code)",
+        "source": "starcoder",
+        "data_dir": "c-sharp"
+      },
+      "metrics": {
+        "bytes_per_token": 2.2163612037023337,
+        "total_bytes": 1048576,
+        "total_tokens": 473107,
+        "unique_tokens": 8195,
+        "subword_fertility": 5.744657341298752,
+        "continued_word_rate": 65.69468267581475
+      }
+    },
+    "cpp-code": {
+      "language_info": {
+        "iso_code": "cpp",
+        "script": "code",
+        "name": "Cpp (code)",
+        "source": "starcoder",
+        "data_dir": "cpp"
+      },
+      "metrics": {
+        "bytes_per_token": 2.3406602482683496,
+        "total_bytes": 1048576,
+        "total_tokens": 447983,
+        "unique_tokens": 8201,
+        "subword_fertility": 4.904028461959497,
+        "continued_word_rate": 69.24969249692496
+      }
+    },
+    "php-code": {
+      "language_info": {
+        "iso_code": "php",
+        "script": "code",
+        "name": "Php (code)",
+        "source": "starcoder",
+        "data_dir": "php"
+      },
+      "metrics": {
+        "bytes_per_token": 2.145305527878767,
+        "total_bytes": 1048576,
+        "total_tokens": 488777,
+        "unique_tokens": 7340,
+        "subword_fertility": 5.412692963610994,
+        "continued_word_rate": 67.43731683490721
+      }
+    },
+    "typescript-code": {
+      "language_info": {
+        "iso_code": "typescript",
+        "script": "code",
+        "name": "Typescript (code)",
+        "source": "starcoder",
+        "data_dir": "typescript"
+      },
+      "metrics": {
+        "bytes_per_token": 2.3805843757804164,
+        "total_bytes": 1048576,
+        "total_tokens": 440470,
+        "unique_tokens": 9633,
+        "subword_fertility": 4.874396883714754,
+        "continued_word_rate": 67.62706377468436
+      }
+    },
+    "rust-code": {
+      "language_info": {
+        "iso_code": "rust",
+        "script": "code",
+        "name": "Rust (code)",
+        "source": "starcoder",
+        "data_dir": "rust"
+      },
+      "metrics": {
+        "bytes_per_token": 2.2319625372498937,
+        "total_bytes": 1048576,
+        "total_tokens": 469800,
+        "unique_tokens": 6137,
+        "subword_fertility": 4.986308348723174,
+        "continued_word_rate": 66.47670130740865
+      }
+    },
+    "html-code": {
+      "language_info": {
+        "iso_code": "html",
+        "script": "code",
+        "name": "Html (code)",
+        "source": "starcoder",
+        "data_dir": "html"
+      },
+      "metrics": {
+        "bytes_per_token": 1.9326024933096437,
+        "total_bytes": 1048576,
+        "total_tokens": 542572,
+        "unique_tokens": 10019,
+        "subword_fertility": 7.792663660126964,
+        "continued_word_rate": 78.86281969985204
+      }
+    },
+    "go-code": {
+      "language_info": {
+        "iso_code": "go",
+        "script": "code",
+        "name": "Go (code)",
+        "source": "starcoder",
+        "data_dir": "go"
+      },
+      "metrics": {
+        "bytes_per_token": 2.4657697888080743,
+        "total_bytes": 1048576,
+        "total_tokens": 425253,
+        "unique_tokens": 7711,
+        "subword_fertility": 3.6669857201986753,
+        "continued_word_rate": 66.95307336417713
+      }
+    },
+    "css-code": {
+      "language_info": {
+        "iso_code": "css",
+        "script": "code",
+        "name": "Css (code)",
+        "source": "starcoder",
+        "data_dir": "css"
+      },
+      "metrics": {
+        "bytes_per_token": 2.3326518672097634,
+        "total_bytes": 1048576,
+        "total_tokens": 449521,
+        "unique_tokens": 5072,
+        "subword_fertility": 4.486282298226529,
+        "continued_word_rate": 70.69167643610785
+      }
+    },
+    "sql-code": {
+      "language_info": {
+        "iso_code": "sql",
+        "script": "code",
+        "name": "Sql (code)",
+        "source": "starcoder",
+        "data_dir": "sql"
+      },
+      "metrics": {
+        "bytes_per_token": 2.255365919234285,
+        "total_bytes": 1048576,
+        "total_tokens": 464925,
+        "unique_tokens": 7973,
+        "subword_fertility": 4.536960234203464,
+        "continued_word_rate": 74.33923530921221
+      }
+    },
+    "ruby-code": {
+      "language_info": {
+        "iso_code": "ruby",
+        "script": "code",
+        "name": "Ruby (code)",
+        "source": "starcoder",
+        "data_dir": "ruby"
+      },
+      "metrics": {
+        "bytes_per_token": 2.328451009477452,
+        "total_bytes": 1048576,
+        "total_tokens": 450332,
+        "unique_tokens": 10287,
+        "subword_fertility": 4.683883717301992,
+        "continued_word_rate": 66.95307336417713
+      }
+    },
+    "shell-code": {
+      "language_info": {
+        "iso_code": "shell",
+        "script": "code",
+        "name": "Shell (code)",
+        "source": "starcoder",
+        "data_dir": "shell"
+      },
+      "metrics": {
+        "bytes_per_token": 2.41944088085723,
+        "total_bytes": 1048576,
+        "total_tokens": 433396,
+        "unique_tokens": 11207,
+        "subword_fertility": 3.80128581828388,
+        "continued_word_rate": 68.5237645577589
+      }
+    },
+    "yaml-code": {
+      "language_info": {
+        "iso_code": "yaml",
+        "script": "code",
+        "name": "Yaml (code)",
+        "source": "starcoder",
+        "data_dir": "yaml"
+      },
+      "metrics": {
+        "bytes_per_token": 2.406768301360179,
+        "total_bytes": 1048576,
+        "total_tokens": 435678,
+        "unique_tokens": 13735,
+        "subword_fertility": 4.4631365438397,
+        "continued_word_rate": 69.35335580753907
+      }
+    },
+    "markdown-code": {
+      "language_info": {
+        "iso_code": "markdown",
+        "script": "code",
+        "name": "Markdown (code)",
+        "source": "starcoder",
+        "data_dir": "markdown"
+      },
+      "metrics": {
+        "bytes_per_token": 2.651608677730883,
+        "total_bytes": 1048576,
+        "total_tokens": 395449,
+        "unique_tokens": 13165,
+        "subword_fertility": 3.8406903450754153,
+        "continued_word_rate": 72.20678154530295
+      }
+    },
+    "json-code": {
+      "language_info": {
+        "iso_code": "json",
+        "script": "code",
+        "name": "Json (code)",
+        "source": "starcoder",
+        "data_dir": "json"
+      },
+      "metrics": {
+        "bytes_per_token": 2.3938834262127786,
+        "total_bytes": 1048576,
+        "total_tokens": 438023,
+        "unique_tokens": 16617,
+        "subword_fertility": 5.618704943687627,
+        "continued_word_rate": 83.12805803948035
+      }
+    },
+    "dockerfile-code": {
+      "language_info": {
+        "iso_code": "dockerfile",
+        "script": "code",
+        "name": "Dockerfile (code)",
+        "source": "starcoder",
+        "data_dir": "dockerfile"
+      },
+      "metrics": {
+        "bytes_per_token": 2.412671532309278,
+        "total_bytes": 1048576,
+        "total_tokens": 434612,
+        "unique_tokens": 9760,
+        "subword_fertility": 3.8774869296789967,
+        "continued_word_rate": 70.10463378176382
+      }
+    },
+    "powershell-code": {
+      "language_info": {
+        "iso_code": "powershell",
+        "script": "code",
+        "name": "Powershell (code)",
+        "source": "starcoder",
+        "data_dir": "powershell"
+      },
+      "metrics": {
+        "bytes_per_token": 2.2935335135655355,
+        "total_bytes": 1048576,
+        "total_tokens": 457188,
+        "unique_tokens": 8474,
+        "subword_fertility": 5.325986416747242,
+        "continued_word_rate": 66.66666666666666
+      }
+    }
+  },
+  "global_metrics": {
+    "total_tokens_analyzed": 240000,
+    "tokens_starting_with_space_pct": 28.970416666666665,
+    "tokens_with_whitespace_in_middle_pct": 0.0,
+    "tokens_with_script_overlap_pct": 0.6370833333333333,
+    "tokens_with_symbols_unicode_pct": 31.835416666666667,
+    "tokens_with_chinese_unicode_pct": 0.08833333333333333,
+    "tokens_with_numbers_unicode_pct": 1.1670833333333333,
+    "tokens_with_latin_unicode_pct": 43.92666666666667,
+    "tokens_with_punctuation_unicode_pct": 7.289583333333334,
+    "tokens_with_cyrillic_unicode_pct": 4.91375,
+    "tokens_with_japanese_unicode_pct": 0.3145833333333333,
+    "tokens_with_greek_unicode_pct": 0.3929166666666667,
+    "tokens_with_arabic_unicode_pct": 2.924583333333333,
+    "tokens_with_devanagari_unicode_pct": 0.14083333333333334,
+    "tokens_with_hebrew_unicode_pct": 0.28625
+  }
+}

@@ -10,6 +10,8 @@ import json
 import os
 import sys
 import time
+from concurrent.futures import ThreadPoolExecutor, as_completed
+from threading import Lock
 from typing import Any, Dict, List, Optional
 
 import pandas as pd
@@ -61,56 +63,84 @@ def benchmark_language(
     }
 
 
-def benchmark_language_multiple_tokenizers(
+def process_language_parallel(
     tokenizers: List[UniversalTokenizer],
     lang_info: Dict[str, str],
-    sample_size_mb: float = 1.0,
-) -> Dict[str, Dict[str, Any]]:
-    """Benchmark multiple tokenizers on a single language (load data once)."""
-    print(f"  ✓ {lang_info['name']:<25} | ", end="", flush=True)
+    sample_size_mb: float,
+    global_trackers: Dict[str, GlobalMetricsTracker],
+    lock: Lock,
+) -> Dict[str, Any]:
+    """Process a single language with all tokenizers (thread-safe)."""
+    try:
+        # Load real sample text ONCE for all tokenizers
+        sample_text: str = load_real_sample_text(lang_info, sample_size_mb)
 
-    # Load real sample text ONCE for all tokenizers
-    sample_text: str = load_real_sample_text(lang_info, sample_size_mb)
+        # Evaluate all tokenizers on the same text
+        results = {}
+        metrics_summary = []
 
-    # Evaluate all tokenizers on the same text
-    results = {}
-    metrics_summary = []
+        for tokenizer in tokenizers:
+            # Calculate metrics with language information
+            metrics: Dict[str, Any] = tokenizer.get_metrics(sample_text, lang_info)
 
-    for tokenizer in tokenizers:
-        # Calculate metrics with language information
-        metrics: Dict[str, Any] = tokenizer.get_metrics(sample_text, lang_info)
+            # Store results for this tokenizer
+            results[tokenizer.name] = {
+                "language_info": lang_info,
+                "metrics": {
+                    "bytes_per_token": metrics["bytes_per_token"],
+                    "total_bytes": metrics["total_bytes"],
+                    "total_tokens": metrics["total_tokens"],
+                    "unique_tokens": metrics["unique_tokens"],
+                    "subword_fertility": metrics["subword_fertility"],
+                    "continued_word_rate": metrics["continued_word_rate"],
+                },
+            }
 
-        # Store results for this tokenizer
-        results[tokenizer.name] = {
-            "language_info": lang_info,
-            "metrics": {
-                "bytes_per_token": metrics["bytes_per_token"],
-                "total_bytes": metrics["total_bytes"],
-                "total_tokens": metrics["total_tokens"],
-                "unique_tokens": metrics["unique_tokens"],
-                "subword_fertility": metrics["subword_fertility"],
-                "continued_word_rate": metrics["continued_word_rate"],
-            },
+            # Collect metrics for summary
+            metrics_summary.append(
+                f"{tokenizer.name.split('/')[-1]}: {metrics['bytes_per_token']:.2f}"
+            )
+
+        # Thread-safe progress reporting
+        with lock:
+            print(
+                f"  ✓ {lang_info['name']:<25} | Bytes/token: {' | '.join(metrics_summary)}"
+            )
+
+        # Get detailed token analysis for global metrics for each tokenizer
+        for tokenizer in tokenizers:
+            token_analysis: Dict[str, Any] = tokenizer.get_token_analysis(sample_text)
+
+            # Thread-safe global metrics update
+            with lock:
+                global_trackers[tokenizer.name].add_tokens(token_analysis["tokens"])
+
+        return {
+            "success": True,
+            "lang_info": lang_info,
+            "results": results,
         }
 
-        # Collect metrics for summary
-        metrics_summary.append(
-            f"{tokenizer.name.split('/')[-1]}: {metrics['bytes_per_token']:.2f}"
-        )
+    except Exception as e:
+        # Thread-safe error reporting
+        with lock:
+            print(f"  ❌ {lang_info['name']:<25} | Error: {e}")
 
-    # Print consolidated summary
-    print(f"Bytes/token: {' | '.join(metrics_summary)}")
-
-    return results
+        return {
+            "success": False,
+            "lang_info": lang_info,
+            "error": str(e),
+        }
 
 
 def benchmark_multiple_tokenizers(
     tokenizers: List[UniversalTokenizer],
     languages: List[Dict[str, str]],
     sample_size_mb: float = 1.0,
+    max_workers: int = 4,
 ) -> Dict[str, Dict[str, Any]]:
-    """Benchmark multiple tokenizers across multiple languages efficiently."""
-    # Initialize global trackers for each tokenizer
+    """Benchmark multiple tokenizers across multiple languages with parallel processing."""
+    # Initialize global trackers for each tokenizer (thread-safe)
     global_trackers = {
         tokenizer.name: GlobalMetricsTracker() for tokenizer in tokenizers
     }
@@ -128,39 +158,49 @@ def benchmark_multiple_tokenizers(
             "global_metrics": {},
         }
 
-    # Benchmark each language with all tokenizers
-    for lang_info in languages:
-        try:
-            # Get results for all tokenizers (data loaded once)
-            lang_results: Dict[str, Dict[str, Any]] = (
-                benchmark_language_multiple_tokenizers(
-                    tokenizers, lang_info, sample_size_mb
-                )
-            )
+    # Thread-safe lock for shared resources
+    lock = Lock()
 
-            # Store results for each tokenizer
-            for tokenizer_name, result in lang_results.items():
-                # Store results using a unique key
-                if lang_info["source"] == "starcoder":
-                    key: str = f"{lang_info['iso_code']}-code"
-                else:
-                    key = f"{lang_info['iso_code']}-{lang_info['script']}"
+    # Process languages in parallel
+    print(
+        f"🚀 Processing {len(languages)} languages with {max_workers} parallel workers..."
+    )
 
-                all_results[tokenizer_name]["languages"][key] = result
+    with ThreadPoolExecutor(max_workers=max_workers) as executor:
+        # Submit all language processing tasks
+        future_to_lang = {
+            executor.submit(
+                process_language_parallel,
+                tokenizers,
+                lang_info,
+                sample_size_mb,
+                global_trackers,
+                lock,
+            ): lang_info
+            for lang_info in languages
+        }
 
-            # Load sample text once more for global analysis (already cached in most cases)
-            sample_text = load_real_sample_text(lang_info, sample_size_mb)
+        # Collect results as they complete
+        completed = 0
+        for future in as_completed(future_to_lang):
+            lang_info = future_to_lang[future]
+            result = future.result()
+            completed += 1
 
-            # Get detailed token analysis for global metrics for each tokenizer
-            for tokenizer in tokenizers:
-                token_analysis: Dict[str, Any] = tokenizer.get_token_analysis(
-                    sample_text
-                )
-                global_trackers[tokenizer.name].add_tokens(token_analysis["tokens"])
+            if result["success"]:
+                # Store results for each tokenizer
+                for tokenizer_name, lang_result in result["results"].items():
+                    # Store results using a unique key
+                    if lang_info["source"] == "starcoder":
+                        key: str = f"{lang_info['iso_code']}-code"
+                    else:
+                        key = f"{lang_info['iso_code']}-{lang_info['script']}"
 
-        except Exception as e:
-            print(f"Error benchmarking {lang_info['name']}: {e}")
-            continue
+                    all_results[tokenizer_name]["languages"][key] = lang_result
+
+            # Progress update
+            if completed % 10 == 0 or completed == len(languages):
+                print(f"📊 Progress: {completed}/{len(languages)} languages completed")
 
     # Calculate global metrics for each tokenizer
     print("\n🔄 Calculating global metrics...")
@@ -231,6 +271,7 @@ def run_benchmark(
     tokenizer_names: List[str],
     output_names: Optional[List[str]] = None,
     sample_size_mb: float = 1.0,
+    max_workers: int = 4,
 ) -> Dict[str, Any]:
     """Run a complete benchmark for one or more tokenizers."""
     if len(tokenizer_names) == 1:
@@ -241,6 +282,8 @@ def run_benchmark(
             print(f"  {i}. {name}")
 
     print(f"📏 Sample size: {sample_size_mb}MB per language")
+    if len(tokenizer_names) > 1:
+        print(f"⚡ Parallel workers: {max_workers}")
 
     # Load tokenizers
     print("\n🔧 Loading tokenizers...")
@@ -300,12 +343,10 @@ def run_benchmark(
         results = benchmark_tokenizer(tokenizers[0], all_languages, sample_size_mb)
         all_results = {tokenizers[0].name: results}
     else:
-        # Multiple tokenizers - use optimized function
-        print(
-            f"🔄 Optimized multi-tokenizer mode: loading each language's data only once"
-        )
+        # Multiple tokenizers - use optimized parallel function
+        print(f"🔄 Optimized multi-tokenizer mode with {max_workers} parallel workers")
         all_results = benchmark_multiple_tokenizers(
-            tokenizers, all_languages, sample_size_mb
+            tokenizers, all_languages, sample_size_mb, max_workers
         )
 
     # Save results for each tokenizer
