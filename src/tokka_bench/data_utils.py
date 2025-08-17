@@ -11,6 +11,15 @@ from typing import Dict, List
 
 import pandas as pd
 
+# Try to disable datasets/tqdm progress bars globally to avoid noisy logs and
+# potential tqdm issues in some environments.
+try:  # pragma: no cover - best-effort safety
+    from datasets.utils.logging import disable_progress_bar
+
+    disable_progress_bar()
+except Exception:
+    pass
+
 
 def load_language_data() -> pd.DataFrame:
     """Load natural language data from CSV file."""
@@ -93,7 +102,7 @@ def get_english_fineweb() -> Dict[str, str]:
 
 
 def load_real_sample_text(
-    language_info: Dict[str, str], sample_size_mb: float = 1.0
+    language_info: Dict[str, str], sample_size_mb: float = 1.0, verbose: bool = False
 ) -> str:
     """Load real sample text from appropriate dataset based on source."""
     from datasets import load_dataset
@@ -101,7 +110,8 @@ def load_real_sample_text(
     target_bytes: int = int(sample_size_mb * 1024 * 1024)
     source: str = language_info.get("source", "fineweb2")
 
-    print(f"    Loading real data from {source}...")
+    if verbose:
+        print(f"    Loading real data from {source}...")
 
     try:
         # Load dataset based on source
@@ -166,7 +176,8 @@ def load_real_sample_text(
         if len(text_bytes) > target_bytes:
             full_text = text_bytes[:target_bytes].decode("utf-8", errors="ignore")
 
-        print(f"    Loaded {len(full_text.encode('utf-8')):,} bytes of real data")
+        if verbose:
+            print(f"    Loaded {len(full_text.encode('utf-8')):,} bytes of real data")
 
         # Simple cleanup
         del fw
@@ -176,7 +187,8 @@ def load_real_sample_text(
         return full_text
 
     except Exception as e:
-        print(f"    Warning: Could not load real data ({e}), using fallback text")
+        if verbose:
+            print(f"    Warning: Could not load real data ({e}), using fallback text")
         # Fallback to a simple sample if dataset loading fails
         fallback_text: str = (
             f"Sample text for {language_info['name']} tokenizer testing. " * 1000

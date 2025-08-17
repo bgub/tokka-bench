@@ -88,13 +88,13 @@ Successfully enhanced the tokka-bench tokenizer benchmarking tool with comprehen
 
 ```bash
 # Basic benchmark with new metrics
-uv run cli/benchmark.py tokenizer=openai-community/gpt2
+uv run benchmark tokenizer=openai-community/gpt2
 
 # Quick test with smaller samples
-uv run cli/benchmark.py tokenizer=meta-llama/Meta-Llama-3-8B sample_size=0.1
+uv run benchmark tokenizer=meta-llama/Meta-Llama-3-8B sample_size=0.1
 
 # Any HuggingFace model works
-uv run cli/benchmark.py tokenizer=microsoft/DialoGPT-medium output_name=custom-results
+uv run benchmark tokenizer=microsoft/DialoGPT-medium output_name=custom-results
 ```
 
 ## 📁 Output Structure

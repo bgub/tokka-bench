@@ -16,7 +16,7 @@ import os
 import time
 from concurrent.futures import ThreadPoolExecutor, as_completed
 from dataclasses import dataclass
-from typing import Any, Dict, Iterable, List, Optional, Tuple
+from typing import Any, Dict, List, Optional, Tuple
 
 from transformers import AutoTokenizer
 
@@ -165,7 +165,7 @@ def _process_single_language(
     sample_size_mb: float,
 ) -> Tuple[Dict[str, Dict[str, Any]], Dict[str, List[Dict[str, Any]]]]:
     """Return per-tokenizer metrics and sampled token infos for global metrics."""
-    text: str = load_real_sample_text(lang_info, sample_size_mb)
+    text: str = load_real_sample_text(lang_info, sample_size_mb, verbose=False)
 
     per_tokenizer_metrics: Dict[str, Dict[str, Any]] = {}
     per_tokenizer_sampled_tokens: Dict[str, List[Dict[str, Any]]] = {}
@@ -201,19 +201,19 @@ def run_benchmark(
     if not tokenizer_names:
         raise ValueError("tokenizer_names must be a non-empty list")
 
+    # Quiet header; a single compact line
     print(
-        f"🚀 Fast benchmark: {len(tokenizer_names)} tokenizer(s), {sample_size_mb}MB per language"
+        f"🚀 Fast benchmark | tokenizers={len(tokenizer_names)} | sample={sample_size_mb}MB | workers={max_workers}"
     )
-    if len(tokenizer_names) > 1:
-        print(f"⚡ Parallel workers: {max_workers}")
 
     # Load tokenizers (quiet)
-    print("\n🔧 Loading tokenizers...")
+    print("🔧 Loading tokenizers...")
     tokenizers: List[FastTokenizer] = []
     for name in tokenizer_names:
-        print(f"  Loading {name}...")
+        # concise per-tokenizer load message
+        print(f"  • {name}")
         tokenizers.append(FastTokenizer(name))
-    print(f"✅ Loaded {len(tokenizers)} tokenizers")
+    print(f"✅ Loaded: {len(tokenizers)}")
 
     # Pre-compute quiet vocab metrics once per tokenizer
     vocab_metrics_by_tok: Dict[str, Dict[str, Any]] = {}
@@ -230,7 +230,7 @@ def run_benchmark(
     )
 
     print(
-        f"\n📊 Languages: {len(all_languages)} total (1 English, {len(natural_languages)} natural, {len(coding_languages)} code)"
+        f"📊 Languages: {len(all_languages)} (1 Eng, {len(natural_languages)} nat, {len(coding_languages)} code)"
     )
 
     # Prepare per-tokenizer result containers
@@ -253,7 +253,7 @@ def run_benchmark(
     }
 
     # Process languages in parallel (one unit of work per language)
-    print("\n🏃 Running fast multi-tokenizer benchmark...")
+    print("🏃 Running...")
     with ThreadPoolExecutor(max_workers=max_workers) as executor:
         futures = {
             executor.submit(
@@ -263,12 +263,13 @@ def run_benchmark(
         }
 
         completed = 0
+        total = len(all_languages)
         for future in as_completed(futures):
             lang_info = futures[future]
             try:
                 per_tok_metrics, per_tok_tokens = future.result()
             except Exception as e:
-                print(f"  ❌ {lang_info.get('name', 'Unknown'):<25} | Error: {e}")
+                print(f"  ❌ {lang_info.get('name', 'Unknown')}: {e}")
                 completed += 1
                 continue
 
@@ -285,11 +286,16 @@ def run_benchmark(
                 global_trackers[tok_name].add_tokens(tokens_info)
 
             completed += 1
-            if completed % 10 == 0 or completed == len(all_languages):
-                print(f"📈 Progress: {completed}/{len(all_languages)} languages")
+            # Simple inline progress bar
+            if completed % 1 == 0:
+                width = 30
+                filled = int(width * completed / total)
+                bar = "#" * filled + "-" * (width - filled)
+                print(f"\r📈 [{bar}] {completed}/{total}", end="", flush=True)
+        print()  # newline after progress bar
 
     # Finalize global metrics
-    print("\n🔄 Finalizing global metrics...")
+    print("🔄 Finalizing global metrics...")
     for tok_name, tracker in global_trackers.items():
         all_results[tok_name]["global_metrics"] = tracker.get_global_metrics()
 
@@ -310,7 +316,7 @@ def run_benchmark(
         with open(output_path, "w", encoding="utf-8") as f:
             json.dump(results, f, indent=2, ensure_ascii=False)
         saved_files.append(output_path)
-        print(f"💾 Saved: {output_path}")
+        print(f"💾 {output_path}")
 
     # Cleanup
     try:
@@ -318,7 +324,7 @@ def run_benchmark(
     except Exception:
         pass
 
-    print("\n✅ Fast benchmark completed!")
+    print("✅ Done")
     if len(saved_files) > 1:
         print(f"📁 Files: {', '.join(saved_files)}")
 

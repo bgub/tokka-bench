@@ -6,7 +6,6 @@ import sys
 from omegaconf import OmegaConf
 
 from tokka_bench.fast_benchmark import run_benchmark as run_benchmark_fast
-from tokka_bench.benchmark import run_benchmark as run_benchmark_classic
 
 
 def print_summary(results):
@@ -131,14 +130,7 @@ def main():
     max_workers = config.get("max_workers", 4)  # Default to 4 parallel workers
     natural_n = config.get("natural_n", None)
     code_n = config.get("code_n", None)
-    # Engine selection: fast (default) or classic
-    engine = str(config.get("engine", "fast")).lower()
-    fast_flag = config.get("fast", None)
-
-    if fast_flag is not None:
-        use_fast = bool(fast_flag)
-    else:
-        use_fast = engine in ("fast", "auto", "default", "f")
+    # Engine selection: fast only (legacy classic removed)
 
     # Handle tokenizer input (support both single and multiple)
     if tokenizers:
@@ -208,26 +200,21 @@ def main():
     print(f"Sample size: {sample_size}MB per language")
     if len(tokenizer_list) > 1:
         print(f"Parallel workers: {max_workers}")
-    print(f"Engine: {'fast' if use_fast else 'classic'}")
+    print("Engine: fast")
     print("--------------------------------------------------")
 
     try:
         print("🔄 Loading language data...")
-        run_benchmark = run_benchmark_fast if use_fast else run_benchmark_classic
-        if use_fast:
-            # Only fast engine supports natural_n/code_n knobs
-            all_results = run_benchmark(
-                tokenizer_list,
-                output_name_list,
-                sample_size,
-                max_workers,
-                natural_n if natural_n is not None else 99,
-                code_n if code_n is not None else 20,
-            )
-        else:
-            all_results = run_benchmark(
-                tokenizer_list, output_name_list, sample_size, max_workers
-            )
+        run_benchmark = run_benchmark_fast
+        # Fast engine supports natural_n/code_n knobs
+        all_results = run_benchmark(
+            tokenizer_list,
+            output_name_list,
+            sample_size,
+            max_workers,
+            natural_n if natural_n is not None else 99,
+            code_n if code_n is not None else 20,
+        )
 
         print("🔄 Printing summary...")
         for tokenizer_name in tokenizer_list:

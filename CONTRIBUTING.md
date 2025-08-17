@@ -36,14 +36,16 @@ Thank you for your interest in contributing to tokka-bench! This guide will help
 ### Setting Up
 
 1. **Install dependencies**:
+
    ```bash
    uv sync
    ```
 
 2. **Verify the installation**:
+
    ```bash
    # Test basic functionality
-   uv run cli/benchmark.py tokenizer=openai-community/gpt2 sample_size=0.01
+   uv run benchmark tokenizer=openai-community/gpt2 sample_size=0.01
    ```
 
 3. **Install development tools** (optional but recommended):
@@ -66,11 +68,11 @@ tokka-bench/
 ├── src/
 │   ├── tokka_bench/
 │   │   ├── __init__.py
-│   │   └── benchmark.py          # Core benchmarking logic
+│   │   └── fast_benchmark.py     # Core fast benchmarking logic
 │   ├── fineweb-2-languages.csv   # Language metadata
 │   └── starcoderdata-dirs.csv     # Additional language data
 ├── cli/
-│   ├── benchmark.py              # CLI interface
+│   ├── cli.py                    # CLI interface
 │   ├── dashboard.py              # Streamlit dashboard
 │   └── visualize.py              # Visualization logic
 ├── data/
@@ -82,8 +84,8 @@ tokka-bench/
 
 ### Key Components
 
-- **`src/tokka_bench/benchmark.py`**: Contains the `UniversalTokenizer` class and core benchmarking logic
-- **`cli/benchmark.py`**: Command-line interface using OmegaConf for configuration
+- **`src/tokka_bench/fast_benchmark.py`**: Core fast benchmarking logic
+- **`src/tokka_bench/cli.py`**: Command-line interface using OmegaConf for configuration
 - **`cli/visualize.py`**: Streamlit-based interactive dashboard
 - **Language data**: CSV files containing metadata about supported languages
 
@@ -100,6 +102,7 @@ tokka-bench/
 ### Development Workflow
 
 1. **Create a feature branch**:
+
    ```bash
    git checkout -b feature/your-feature-name
    # or
@@ -109,10 +112,11 @@ tokka-bench/
 2. **Make your changes** following the guidelines below
 
 3. **Test your changes** thoroughly:
+
    ```bash
    # Run a quick benchmark test
-   uv run cli/benchmark.py tokenizer=openai-community/gpt2 sample_size=0.01
-   
+   uv run benchmark tokenizer=openai-community/gpt2 sample_size=0.01
+
    # Test the dashboard
    uv run streamlit run cli/visualize.py
    ```
@@ -132,13 +136,15 @@ tokka-bench/
 Since the project currently doesn't have automated tests, please test your changes manually:
 
 1. **Basic functionality**:
+
    ```bash
    # Test with different tokenizers
-   uv run cli/benchmark.py tokenizer=openai-community/gpt2 sample_size=0.1
-   uv run cli/benchmark.py tokenizer=microsoft/DialoGPT-medium sample_size=0.1
+   uv run benchmark tokenizer=openai-community/gpt2 sample_size=0.1
+   uv run benchmark tokenizer=microsoft/DialoGPT-medium sample_size=0.1
    ```
 
 2. **Dashboard functionality**:
+
    ```bash
    uv run streamlit run cli/visualize.py
    ```
@@ -153,11 +159,12 @@ Since the project currently doesn't have automated tests, please test your chang
 We welcome contributions that add test coverage:
 
 1. **Create a `tests/` directory**
-2. **Add unit tests** for core functions in `benchmark.py`
+2. **Add unit tests** for core functions in `fast_benchmark.py`
 3. **Add integration tests** for the CLI interface
 4. **Use pytest** as the testing framework
 
 Example test structure:
+
 ```python
 # tests/test_benchmark.py
 import pytest
@@ -212,11 +219,13 @@ uv run mypy src/ cli/
 ### Pull Request Process
 
 1. **Ensure your changes are complete**:
+
    - Code is tested and working
    - Documentation is updated
    - Commit messages are clear
 
 2. **Push to your fork**:
+
    ```bash
    git push origin feature/your-feature-name
    ```
@@ -230,40 +239,48 @@ uv run mypy src/ cli/
 ### Pull Request Guidelines
 
 **Title**: Use a clear, descriptive title
+
 - ✅ "Add support for custom output directory"
 - ✅ "Fix dashboard crash when no results exist"
 - ❌ "Update code"
 - ❌ "Fixes"
 
 **Description**: Include:
+
 - **What** changes you made
 - **Why** you made them
 - **How** to test the changes
 - **Any breaking changes** or migration notes
 
 **Example PR description**:
+
 ```markdown
 ## Summary
+
 Adds support for custom output directories in the benchmark CLI.
 
 ## Changes
-- Added `output_dir` parameter to benchmark.py
+
+- Added `output_dir` parameter to fast_benchmark.py
 - Updated CLI to accept `output_dir` argument
 - Modified result saving logic to use custom directory
 - Updated documentation with new parameter
 
 ## Testing
-- Tested with custom output directory: `uv run cli/benchmark.py tokenizer=gpt2 output_dir=my_results`
+
+- Tested with custom output directory: `uv run benchmark tokenizer=gpt2 output_dir=my_results`
 - Verified backward compatibility with default behavior
 - Confirmed dashboard can read results from custom directories
 
 ## Breaking Changes
+
 None - this is backward compatible.
 ```
 
 ### Commit Message Guidelines
 
 Use conventional commit format:
+
 - `feat:` for new features
 - `fix:` for bug fixes
 - `docs:` for documentation changes
@@ -273,6 +290,7 @@ Use conventional commit format:
 - `chore:` for maintenance tasks
 
 Examples:
+
 - `feat: add support for custom metrics in benchmark`
 - `fix: handle empty dataset gracefully in FineWeb loader`
 - `docs: update README with new visualization features`
@@ -307,25 +325,31 @@ For feature requests, please include:
 
 ```markdown
 ## Description
+
 [Clear description of the issue or feature request]
 
 ## Environment
-- Python version: 
-- Operating system: 
-- tokka-bench version/commit: 
+
+- Python version:
+- Operating system:
+- tokka-bench version/commit:
 
 ## Steps to Reproduce (for bugs)
-1. 
-2. 
-3. 
+
+1.
+2.
+3.
 
 ## Expected Behavior
+
 [What should happen]
 
 ## Actual Behavior (for bugs)
+
 [What actually happens]
 
 ## Additional Context
+
 [Any other relevant information]
 ```
 
@@ -347,6 +371,7 @@ For feature requests, please include:
 ### Recognition
 
 Contributors are recognized in several ways:
+
 - **Git history**: Your commits will be permanently part of the project history
 - **Release notes**: Significant contributions will be mentioned in release notes
 - **Appreciation**: We value all contributions, from typo fixes to major features

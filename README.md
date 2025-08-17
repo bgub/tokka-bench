@@ -31,17 +31,17 @@ uv sync
 
 ## Usage
 
-### Basic Usage
+### Basic Usage (Fast Engine)
 
 ```bash
 # Benchmark GPT-2 tokenizer with 1MB samples per language
-uv run cli/benchmark.py tokenizer=openai-community/gpt2
+uv run benchmark tokenizer=openai-community/gpt2
 
 # Quick test with smaller samples
-uv run cli/benchmark.py tokenizer=Xenova/gpt-4 sample_size=0.1
+uv run benchmark tokenizer=Xenova/gpt-4 sample_size=0.1
 
 # Custom output filename
-uv run cli/benchmark.py tokenizer=meta-llama/Meta-Llama-3-8B output_name=llama-results
+uv run benchmark tokenizer=meta-llama/Meta-Llama-3-8B output_name=llama-results
 ```
 
 ### Parameters
@@ -177,9 +177,11 @@ Unique token counts reveal vocabulary coverage: German (~1000+ tokens) vs Russia
 ```
 tokka-bench/
 ├── src/tokka_bench/          # Core benchmarking logic
-│   ├── benchmark.py          # Main benchmark implementation
+│   ├── fast_benchmark.py     # Fast benchmark implementation (default)
+│   ├── tokenizer.py          # Universal tokenizer wrapper
+│   ├── metrics.py            # Metrics and global analysis
 │   └── fineweb-2-languages.csv # Language metadata
-├── cli/benchmark.py          # Command-line interface
+├── src/tokka_bench/cli.py    # Command-line interface (fast by default)
 └── data/results/             # JSON output files
 ```
 
