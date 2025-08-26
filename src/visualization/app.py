@@ -16,7 +16,7 @@ from .charts import (
     create_efficiency_chart,
     create_coverage_chart,
     create_subword_fertility_chart,
-    create_continued_word_rate_chart,
+    create_word_splitting_rate_chart,
     create_vocab_efficiency_scatter,
 )
 from .data import load_all_results, results_to_dataframe, get_tokenizer_summary
@@ -135,7 +135,7 @@ def main():
         [
             "Efficiency",
             "Coverage",
-            "Continued Word Rate",
+            "Word Splitting Rate",
             "Subword Fertility",
             "Comparisons",
             "Raw Data",
@@ -153,6 +153,9 @@ def main():
                 create_efficiency_chart(display_df, selected_tokenizers),
                 use_container_width=True,
             )
+            # Optional: Show tokenization sample for hovered language via selection
+            if "sample_tokens_preview" in display_df.columns:
+                st.caption("Hover a bar to see sample details; or view samples below.")
 
     with coverage_tab:
         if display_df.empty:
@@ -171,10 +174,10 @@ def main():
             st.info("No data for current selection. Adjust filters below.")
         else:
             st.caption(
-                "% of tokens that continue a word. Higher = more subword splitting. Not comparable across languages—compare tokenizers within the same language."
+                "% of units (words/characters/syllables) that split into multiple tokens. Higher = more splitting. Not comparable across languages—compare tokenizers within the same language."
             )
             st.plotly_chart(
-                create_continued_word_rate_chart(display_df, selected_tokenizers),
+                create_word_splitting_rate_chart(display_df, selected_tokenizers),
                 use_container_width=True,
             )
 
@@ -265,6 +268,98 @@ def main():
     # Refresh current selections after widgets update
     selected_tokenizers = st.session_state.selected_tokenizers
     selected_languages = st.session_state.selected_languages
+
+    # Tokenization Preview section
+    st.markdown("---")
+    st.subheader("Tokenization Preview")
+    st.caption("Preview the exact sample text used for a tokenizer-language pair.")
+
+    # Build dropdowns (names for display, map back to keys)
+    tok_key_to_name = {
+        k: v for k, v in df.groupby("tokenizer_key")["tokenizer_name"].first().items()
+    }
+    tok_name_to_key = {v: k for k, v in tok_key_to_name.items()}
+
+    tok_names = sorted(tok_name_to_key.keys())
+    lang_names = list(df["language"].unique())
+
+    col_tok, col_lang = st.columns(2)
+    with col_tok:
+        selected_tok_name = st.selectbox(
+            "Tokenizer",
+            options=tok_names,
+            index=(
+                tok_names.index(
+                    tok_key_to_name.get(selected_tokenizers[0], tok_names[0])
+                )
+                if selected_tokenizers
+                else 0
+            ),
+            key="preview_tokenizer_name",
+        )
+    with col_lang:
+        default_lang_index = (
+            lang_names.index(selected_languages[0]) if selected_languages else 0
+        )
+        selected_lang_name = st.selectbox(
+            "Language",
+            options=lang_names,
+            index=default_lang_index,
+            key="preview_language_name",
+        )
+
+    # Retrieve matching row and show sample text
+    preview_df = df[
+        (df["tokenizer_key"] == tok_name_to_key.get(selected_tok_name, ""))
+        & (df["language"] == selected_lang_name)
+    ]
+
+    if preview_df.empty or "sample_text" not in preview_df.columns:
+        st.info("No sample available for this selection.")
+    else:
+        sample_text = preview_df["sample_text"].iloc[0]
+        sample_tokens = (
+            preview_df["sample_tokens"].iloc[0]
+            if "sample_tokens" in preview_df.columns
+            else None
+        )
+        if not sample_text and not sample_tokens:
+            st.info("No sample available for this selection.")
+        else:
+            # Flag fallback synthetic samples
+            if "Sample text for" in sample_text and "tokenizer testing" in sample_text:
+                st.warning(
+                    "Showing fallback sample text for this language (real dataset unavailable)."
+                )
+
+            # Render tokenized sample if available; otherwise show raw text
+            if sample_tokens:
+                # Color each token using a small repeating palette; allow natural wrapping
+                palette = [
+                    "#1f77b4",
+                    "#ff7f0e",
+                    "#2ca02c",
+                    "#d62728",
+                    "#9467bd",
+                    "#8c564b",
+                    "#e377c2",
+                    "#7f7f7f",
+                    "#bcbd22",
+                    "#17becf",
+                ]
+                spans = []
+                for i, tok in enumerate(sample_tokens):
+                    color = palette[i % len(palette)]
+                    # Avoid adding spaces around the separator; rely on <wbr> for wrap
+                    spans.append(f'<span style="color:{color}">{tok}</span>')
+                html = (
+                    "<div style=\"font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, 'Liberation Mono', 'Courier New', monospace; white-space: normal; word-break: break-word; border: 1px solid #e9ecef; padding: 0.75rem; background: var(--background-secondary); border-radius: 6px; line-height: 1.6;\">"
+                    + "<wbr>|<wbr>".join(spans)
+                    + "</div>"
+                )
+                st.markdown(html, unsafe_allow_html=True)
+            else:
+                st.code(sample_text)
 
     # Footer
     st.markdown("---")

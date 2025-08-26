@@ -49,6 +49,7 @@ def results_to_dataframe(results: Dict[str, Any]) -> pd.DataFrame:
         for lang_key, lang_data in result.get("languages", {}).items():
             lang_info = lang_data["language_info"]
             metrics = lang_data["metrics"]
+            sample = lang_data.get("sample", {})
 
             row = {
                 "tokenizer_key": tokenizer_key,
@@ -70,8 +71,11 @@ def results_to_dataframe(results: Dict[str, Any]) -> pd.DataFrame:
             # Add new per-language metrics if available
             if "subword_fertility" in metrics:
                 row["subword_fertility"] = metrics["subword_fertility"]
-            if "continued_word_rate" in metrics:
-                row["continued_word_rate"] = metrics["continued_word_rate"]
+            # Prefer new word_split_pct; keep backward-compat if only continued_word_rate exists
+            if "word_split_pct" in metrics:
+                row["word_split_pct"] = metrics["word_split_pct"]
+            elif "continued_word_rate" in metrics:
+                row["word_split_pct"] = metrics["continued_word_rate"]
 
             # Add vocab metrics (same for all languages of a tokenizer)
             if vocab_metrics:
@@ -130,6 +134,18 @@ def results_to_dataframe(results: Dict[str, Any]) -> pd.DataFrame:
                 row["tokens_with_hebrew_unicode_pct"] = global_metrics.get(
                     "tokens_with_hebrew_unicode_pct"
                 )
+
+            # Add sample preview fields if available
+            if sample:
+                row["sample_text"] = sample.get("text")
+                row["sample_byte_offset"] = sample.get("byte_offset")
+                row["sample_text_bytes"] = sample.get("text_bytes")
+                tokens_list = sample.get("tokens") or []
+                if tokens_list:
+                    row["sample_tokens"] = tokens_list
+                    row["sample_token_count"] = len(tokens_list)
+                    # Join a short preview for hover; avoid huge hovers (no spaces around separator)
+                    row["sample_tokens_preview"] = "|".join(tokens_list[:20])
 
             rows.append(row)
 

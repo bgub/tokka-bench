@@ -47,8 +47,24 @@ def create_bar_chart(
     x_label: str = "Language",
 ) -> go.Figure:
     """Create a standardized bar chart with consistent styling."""
+    # Prepare optional wrapped preview for nicer hover tooltips
+    df_plot = df.copy()
+    custom_data = None
+    has_preview = "sample_tokens_preview" in df_plot.columns
+    if has_preview:
+        # Use <wbr> to allow built-in wrapping around the separator without manual chunking
+        def _insert_wbr(val: str) -> str:
+            if not isinstance(val, str) or not val:
+                return ""
+            return "<wbr>|<wbr>".join([p.strip() for p in val.split("|")])
+
+        df_plot["_sample_tokens_preview_wrapped"] = df_plot[
+            "sample_tokens_preview"
+        ].apply(_insert_wbr)
+        custom_data = ["_sample_tokens_preview_wrapped"]
+
     fig = px.bar(
-        df,
+        df_plot,
         x=x,
         y=y,
         color="tokenizer_name",
@@ -56,7 +72,18 @@ def create_bar_chart(
         labels={y: y_label, x: x_label},
         barmode="group",
         height=CHART_HEIGHT,
+        hover_data=None,
+        custom_data=custom_data,
     )
+
+    # Improve hover formatting and wrap preview lines using <br>
+    if has_preview:
+        hovertemplate = (
+            f"{x_label}: %{{x}}<br>"
+            f"{y_label}: %{{y}}<br>"
+            "Sample tokens:<br>%{customdata[0]}<extra>%{fullData.name}</extra>"
+        )
+        fig.update_traces(hovertemplate=hovertemplate)
 
     fig.update_layout(
         xaxis_tickangle=-45,
@@ -136,20 +163,20 @@ def create_subword_fertility_chart(
     )
 
 
-def create_continued_word_rate_chart(
+def create_word_splitting_rate_chart(
     df: pd.DataFrame, selected_tokenizers: List[str]
 ) -> go.Figure:
-    """Create a bar chart comparing continued word rate across languages."""
+    """Create a bar chart comparing word splitting rate across languages."""
     chart_data = prepare_chart_data(df, selected_tokenizers)
 
-    # Check if continued_word_rate data is available
+    # Check if word_split_pct data is available
     if (
-        "continued_word_rate" not in chart_data.columns
-        or chart_data["continued_word_rate"].isna().all()
+        "word_split_pct" not in chart_data.columns
+        or chart_data["word_split_pct"].isna().all()
     ):
         fig = go.Figure()
         fig.add_annotation(
-            text="Continued word rate data not available<br>Run benchmarks with updated script",
+            text="Word splitting rate data not available<br>Run benchmarks with updated script",
             xref="paper",
             yref="paper",
             x=0.5,
@@ -160,7 +187,7 @@ def create_continued_word_rate_chart(
             font=dict(size=16, color="gray"),
         )
         fig.update_layout(
-            title="Continued Word Rate (% of Tokens Continuing Words)",
+            title="Word Splitting Rate (% of Units Split)",
             xaxis=dict(visible=False),
             yaxis=dict(visible=False),
             height=CHART_HEIGHT,
@@ -170,9 +197,9 @@ def create_continued_word_rate_chart(
     return create_bar_chart(
         chart_data,
         x="language",
-        y="continued_word_rate",
-        title="Continued Word Rate (% of Tokens Continuing Words)",
-        y_label="Continued Word Rate (% - Higher = More Subword Splitting)",
+        y="word_split_pct",
+        title="Word Splitting Rate (% of Units Split)",
+        y_label="Word Splitting Rate (%)",
     )
 
 
