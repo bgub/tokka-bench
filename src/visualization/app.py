@@ -353,10 +353,14 @@ def main():
                     color = palette[i % len(palette)]
                     # Avoid adding spaces around the separator; rely on <wbr> for wrap
                     safe_tok = _html.escape(str(tok))
-                    spans.append(f'<span style="color:{color}">{safe_tok}</span>')
+                    spans.append(
+                        f'<span style="color:{color}; margin-right: 0.25rem">{safe_tok}</span>'
+                    )
+                # Join with zero-width space so tokens can wrap without visible separators
+                zws = "\u200b"
                 html = (
                     "<div style=\"font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, 'Liberation Mono', 'Courier New', monospace; white-space: normal; word-break: break-word; border: 1px solid #e9ecef; padding: 0.75rem; background: var(--background-secondary); border-radius: 6px; line-height: 1.6;\">"
-                    + "<wbr>|<wbr>".join(spans)
+                    + zws.join(spans)
                     + "</div>"
                 )
                 st.markdown(html, unsafe_allow_html=True)

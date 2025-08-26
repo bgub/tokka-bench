@@ -52,15 +52,22 @@ def create_bar_chart(
     custom_data = None
     has_preview = "sample_tokens_preview" in df_plot.columns
     if has_preview:
-        # Use <wbr> to allow built-in wrapping around the separator without manual chunking
-        def _insert_wbr(val: str) -> str:
+        # Manually wrap into multiple lines for reliable hover rendering.
+        # Keep no spaces around the '|' separator, per UI preference.
+        def _wrap_lines(val: str, per_line: int = 8) -> str:
             if not isinstance(val, str) or not val:
                 return ""
-            return "<wbr>|<wbr>".join([p.strip() for p in val.split("|")])
+            # Do not strip spaces inside tokens; preserve leading/trailing spaces
+            parts = val.split("|")
+            lines = [
+                "|".join(parts[i : i + per_line])
+                for i in range(0, len(parts), per_line)
+            ]
+            return "<br>".join(lines)
 
         df_plot["_sample_tokens_preview_wrapped"] = df_plot[
             "sample_tokens_preview"
-        ].apply(_insert_wbr)
+        ].apply(_wrap_lines)
         custom_data = ["_sample_tokens_preview_wrapped"]
 
     fig = px.bar(
