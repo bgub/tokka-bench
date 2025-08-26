@@ -275,28 +275,20 @@ def main():
     st.subheader("Tokenization Preview")
     st.caption("Preview the exact sample text used for a tokenizer-language pair.")
 
-    # Build dropdowns (names for display, map back to keys)
-    tok_key_to_name = {
-        k: v for k, v in df.groupby("tokenizer_key")["tokenizer_name"].first().items()
-    }
-    tok_name_to_key = {v: k for k, v in tok_key_to_name.items()}
-
-    tok_names = sorted(tok_name_to_key.keys())
+    # Build dropdowns using short names from result filenames (tokenizer_key)
+    tok_keys = sorted(df["tokenizer_key"].unique())
     lang_names = list(df["language"].unique())
 
     col_tok, col_lang = st.columns(2)
     with col_tok:
-        selected_tok_name = st.selectbox(
+        default_tok_index = (
+            tok_keys.index(selected_tokenizers[0]) if selected_tokenizers else 0
+        )
+        selected_tok_key = st.selectbox(
             "Tokenizer",
-            options=tok_names,
-            index=(
-                tok_names.index(
-                    tok_key_to_name.get(selected_tokenizers[0], tok_names[0])
-                )
-                if selected_tokenizers
-                else 0
-            ),
-            key="preview_tokenizer_name",
+            options=tok_keys,
+            index=default_tok_index,
+            key="preview_tokenizer_key",
         )
     with col_lang:
         default_lang_index = (
@@ -311,7 +303,7 @@ def main():
 
     # Retrieve matching row and show sample text
     preview_df = df[
-        (df["tokenizer_key"] == tok_name_to_key.get(selected_tok_name, ""))
+        (df["tokenizer_key"] == selected_tok_key)
         & (df["language"] == selected_lang_name)
     ]
 
