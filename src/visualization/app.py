@@ -8,6 +8,7 @@ Single-page design with:
 """
 
 import streamlit as st
+import html as _html
 
 from .categories import detect_language_types
 from .charts import (
@@ -351,7 +352,8 @@ def main():
                 for i, tok in enumerate(sample_tokens):
                     color = palette[i % len(palette)]
                     # Avoid adding spaces around the separator; rely on <wbr> for wrap
-                    spans.append(f'<span style="color:{color}">{tok}</span>')
+                    safe_tok = _html.escape(str(tok))
+                    spans.append(f'<span style="color:{color}">{safe_tok}</span>')
                 html = (
                     "<div style=\"font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, 'Liberation Mono', 'Courier New', monospace; white-space: normal; word-break: break-word; border: 1px solid #e9ecef; padding: 0.75rem; background: var(--background-secondary); border-radius: 6px; line-height: 1.6;\">"
                     + "<wbr>|<wbr>".join(spans)
