@@ -16,6 +16,8 @@ dependencies = [
     "omegaconf>=2.3.0",
     "streamlit>=1.28.0",
     "plotly>=5.15.0",
+    "tiktoken>=0.11.0",
+    "blobfile>=3.0.0",
 ]
 
 

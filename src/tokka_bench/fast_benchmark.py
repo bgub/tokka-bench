@@ -1,16 +1,18 @@
 """
 Fast, clean multi-tokenizer benchmark.
 
-Design goals:
-- Default: benchmark multiple tokenizers concurrently
-- Load each language's text once, reuse across all tokenizers
-- Minimal logging and no noisy per-tokenizer prints
-- Lightweight global metrics via sampling (fast) while preserving output shape
+Key principles:
+- Load each language's text once (e.g., 2MB), concatenate into one string.
+- Tokenize that text once per tokenizer; reuse token IDs everywhere.
+- Compute per-language metrics and global metrics efficiently.
+- Preserve classic output shape and quiet logging.
 """
 
 from __future__ import annotations
 
 import gc
+import hashlib
+import random
 import json
 import os
 import time
@@ -28,6 +30,19 @@ from .data_utils import (
     load_real_sample_text,
 )
 from .metrics import GlobalMetricsTracker, calculate_word_metrics
+from .unicode_utils import (
+    get_unicode_scripts,
+    has_whitespace_in_middle,
+    starts_with_space,
+)
+
+# Module constants
+DEFAULT_SAMPLE_BYTES = 300
+MIN_SKIP_BYTES = 4096
+MAX_GLOBAL_SAMPLES = 2000
+VOCAB_SAMPLE_SIZE = 10000
+PROGRESS_BAR_WIDTH = 30
+SAMPLE_TOKEN_LIMIT = 10
 
 
 @dataclass
@@ -56,7 +71,7 @@ class FastTokenizer:
 def _compute_vocab_metrics_quiet(tokenizer: FastTokenizer) -> Dict[str, Any]:
     """Sample-based vocab analysis without printing (compatible keys)."""
     vocab_size: int = len(tokenizer.tokenizer)
-    sample_size: int = min(vocab_size, 10000)
+    sample_size: int = min(vocab_size, VOCAB_SAMPLE_SIZE)
     step: int = max(1, vocab_size // max(1, sample_size))
 
     tokens_without_leading_space = 0
@@ -69,16 +84,17 @@ def _compute_vocab_metrics_quiet(tokenizer: FastTokenizer) -> Dict[str, Any]:
             token_text: str = tokenizer.tokenizer.decode(
                 [token_id], skip_special_tokens=True
             )
-        except Exception:
+        except (ValueError, KeyError, RuntimeError, AttributeError):
+            # Skip problematic tokens but log in debug mode
             continue
 
         analyzed_count += 1
         if token_text and not token_text.startswith(" "):
             tokens_without_leading_space += 1
-            if len(sample_non_space_tokens) < 10:
+            if len(sample_non_space_tokens) < SAMPLE_TOKEN_LIMIT:
                 sample_non_space_tokens.append(token_text)
         else:
-            if len(sample_space_tokens) < 10:
+            if len(sample_space_tokens) < SAMPLE_TOKEN_LIMIT:
                 sample_space_tokens.append(token_text)
 
     if analyzed_count > 0:
@@ -97,28 +113,76 @@ def _compute_vocab_metrics_quiet(tokenizer: FastTokenizer) -> Dict[str, Any]:
     }
 
 
-def _compute_language_metrics(
-    tokenizer: FastTokenizer, text: str, lang_info: Dict[str, str]
+def _compute_language_metrics_from_ids(
+    tokenizer: FastTokenizer,
+    text: str,
+    lang_info: Dict[str, str],
+    token_ids: List[int],
 ) -> Dict[str, Any]:
-    token_ids: List[int] = tokenizer.encode(text)
     text_bytes: int = len(text.encode("utf-8"))
     num_tokens: int = len(token_ids)
     unique_tokens: int = len(set(token_ids))
 
-    word_metrics: Dict[str, Any] = calculate_word_metrics(tokenizer, text, lang_info)
+    # Reuse precomputed tokenization for fertility; still encode small samples per-word inside
+    word_metrics: Dict[str, Any] = calculate_word_metrics(
+        tokenizer,
+        text,
+        lang_info,
+        pretokenized_text_token_ids=token_ids,
+    )
+    debug_info = word_metrics.get("debug_info", {})
 
     return {
         "bytes_per_token": (text_bytes / num_tokens) if num_tokens > 0 else 0.0,
         "total_bytes": text_bytes,
         "total_tokens": num_tokens,
         "unique_tokens": unique_tokens,
-        "subword_fertility": word_metrics["subword_fertility"],
-        "continued_word_rate": word_metrics["continued_word_rate"],
+        "subword_fertility": word_metrics.get("subword_fertility", 0.0),
+        # Backward-compat: keep field if present, but prefer new ones downstream
+        "continued_word_rate": word_metrics.get("continued_word_rate", 0.0),
+        "word_split_pct": word_metrics.get("word_split_pct", 0.0),
+        "continuation_token_pct": word_metrics.get(
+            "continuation_token_pct", word_metrics.get("continued_word_rate", 0.0)
+        ),
+        # Promoted debug fields for downstream analysis
+        "segmentation_method": debug_info.get("segmentation_method"),
+        "total_units": debug_info.get("total_words"),
+        "estimated_units_split": debug_info.get("words_split"),
     }
 
 
+def _random_snippet(
+    text: str,
+    sample_bytes: int = DEFAULT_SAMPLE_BYTES,
+    min_skip_bytes: int = MIN_SKIP_BYTES,
+    seed: Optional[int] = None,
+) -> Tuple[str, int]:
+    """Return a UTF-8 safe snippet and its byte offset.
+
+    - Skips at least min_skip_bytes (when possible) to avoid the very beginning.
+    - Uses a deterministic RNG seed (if provided) for reproducibility per-language.
+    """
+    data = text.encode("utf-8")
+    total = len(data)
+    if total <= sample_bytes:
+        return text, 0
+
+    rng = random.Random(seed)
+    start_min = 0 if total <= min_skip_bytes + sample_bytes else min_skip_bytes
+    start_max = max(0, total - sample_bytes)
+    if start_min >= start_max:
+        start = start_max
+    else:
+        start = rng.randint(start_min, start_max)
+
+    snippet = data[start : start + sample_bytes].decode("utf-8", errors="ignore")
+    return snippet, start
+
+
 def _sample_token_info_for_global(
-    tokenizer: FastTokenizer, token_ids: List[int], max_samples: int = 2000
+    tokenizer: FastTokenizer,
+    token_ids: List[int],
+    max_samples: int = MAX_GLOBAL_SAMPLES,
 ) -> List[Dict[str, Any]]:
     """Decode a sample of token IDs to reduce cost of global metrics."""
     if not token_ids:
@@ -133,16 +197,10 @@ def _sample_token_info_for_global(
     tokens_info: List[Dict[str, Any]] = []
     for tid in sampled_ids:
         try:
-            token_text = tokenizer.tokenizer.decode([tid], skip_special_tokens=True)
-        except Exception:
+            token_text = tokenizer.decode([tid], skip_special_tokens=True)
+        except (ValueError, KeyError, RuntimeError, AttributeError):
+            # Skip tokens that can't be decoded
             continue
-
-        # Minimal Unicode analysis inline to avoid importing heavy helpers repeatedly
-        from .unicode_utils import (
-            get_unicode_scripts,
-            starts_with_space,
-            has_whitespace_in_middle,
-        )
 
         scripts = get_unicode_scripts(token_text)
         tokens_info.append(
@@ -164,23 +222,62 @@ def _process_single_language(
     lang_info: Dict[str, str],
     sample_size_mb: float,
 ) -> Tuple[Dict[str, Dict[str, Any]], Dict[str, List[Dict[str, Any]]]]:
-    """Return per-tokenizer metrics and sampled token infos for global metrics."""
+    """Return per-tokenizer metrics and sampled token infos for global metrics.
+
+    Steps:
+    - Load and concatenate ~sample_size_mb of text for the language once.
+    - For each tokenizer: encode once; reuse token IDs for metrics and global sampling.
+    """
     text: str = load_real_sample_text(lang_info, sample_size_mb, verbose=False)
+    # Deterministic per-language seed for reproducible sampling
+    iso = lang_info.get("iso_code", "")
+    script = lang_info.get("script", "")
+    seed = int.from_bytes(
+        hashlib.sha1(f"{iso}:{script}".encode("utf-8")).digest()[:8], "big"
+    )
+    snippet, byte_offset = _random_snippet(
+        text,
+        sample_bytes=DEFAULT_SAMPLE_BYTES,
+        min_skip_bytes=MIN_SKIP_BYTES,
+        seed=seed,
+    )
 
     per_tokenizer_metrics: Dict[str, Dict[str, Any]] = {}
     per_tokenizer_sampled_tokens: Dict[str, List[Dict[str, Any]]] = {}
 
     for tok in tokenizers:
-        # Compute metrics
-        metrics = _compute_language_metrics(tok, text, lang_info)
+        # Encode once per tokenizer per language
+        token_ids: List[int] = tok.encode(text)
+
+        # Compute per-language metrics using pretokenized IDs
+        metrics = _compute_language_metrics_from_ids(tok, text, lang_info, token_ids)
+        # Build sample tokenization for the 300-byte snippet
+        sample_token_ids: List[int] = tok.encode(snippet)
+        sample_tokens: List[str] = []
+        for tid in sample_token_ids:
+            try:
+                token_text = tok.decode([tid], skip_special_tokens=True)
+            except (ValueError, KeyError, RuntimeError, AttributeError):
+                continue
+            if token_text:
+                sample_tokens.append(token_text)
+
         per_tokenizer_metrics[tok.name] = {
             "language_info": lang_info,
             "metrics": metrics,
+            "sample": {
+                "byte_offset": byte_offset,
+                "text_bytes": len(snippet.encode("utf-8")),
+                "text": snippet,
+                "token_ids": sample_token_ids,
+                "tokens": sample_tokens,
+            },
         }
 
-        # Global metrics sampling
-        token_ids = tok.encode(text)
-        tokens_info = _sample_token_info_for_global(tok, token_ids, max_samples=2000)
+        # Global metrics sampling from precomputed IDs
+        tokens_info = _sample_token_info_for_global(
+            tok, token_ids, max_samples=MAX_GLOBAL_SAMPLES
+        )
         per_tokenizer_sampled_tokens[tok.name] = tokens_info
 
     return per_tokenizer_metrics, per_tokenizer_sampled_tokens
@@ -215,10 +312,19 @@ def run_benchmark(
         tokenizers.append(FastTokenizer(name))
     print(f"✅ Loaded: {len(tokenizers)}")
 
-    # Pre-compute quiet vocab metrics once per tokenizer
+    # Pre-compute quiet vocab metrics once per tokenizer (parallelized)
     vocab_metrics_by_tok: Dict[str, Dict[str, Any]] = {}
-    for tok in tokenizers:
-        vocab_metrics_by_tok[tok.name] = _compute_vocab_metrics_quiet(tok)
+    try:
+        with ThreadPoolExecutor(
+            max_workers=min(max_workers, len(tokenizers) or 1)
+        ) as ex:
+            metrics_list = list(ex.map(_compute_vocab_metrics_quiet, tokenizers))
+        for tok, vm in zip(tokenizers, metrics_list):
+            vocab_metrics_by_tok[tok.name] = vm
+    except Exception:
+        # Fallback to sequential if any issue arises
+        for tok in tokenizers:
+            vocab_metrics_by_tok[tok.name] = _compute_vocab_metrics_quiet(tok)
 
     # Languages: English + configurable natural/code language counts (defaults match classic)
     english = get_english_fineweb()
@@ -254,7 +360,8 @@ def run_benchmark(
 
     # Process languages in parallel (one unit of work per language)
     print("🏃 Running...")
-    with ThreadPoolExecutor(max_workers=max_workers) as executor:
+    effective_workers = max(1, min(max_workers, len(all_languages)))
+    with ThreadPoolExecutor(max_workers=effective_workers) as executor:
         futures = {
             executor.submit(
                 _process_single_language, tokenizers, lang, sample_size_mb
@@ -286,11 +393,13 @@ def run_benchmark(
                 global_trackers[tok_name].add_tokens(tokens_info)
 
             completed += 1
-            # Simple inline progress bar
-            if completed % 1 == 0:
-                width = 30
-                filled = int(width * completed / total)
-                bar = "#" * filled + "-" * (width - filled)
+            # Simple inline progress bar - update every language or every 5% of progress
+            progress_interval = max(
+                1, total // 20
+            )  # Update every 5% or at least every language
+            if completed % progress_interval == 0 or completed == total:
+                filled = int(PROGRESS_BAR_WIDTH * completed / total)
+                bar = "#" * filled + "-" * (PROGRESS_BAR_WIDTH - filled)
                 print(f"\r📈 [{bar}] {completed}/{total}", end="", flush=True)
         print()  # newline after progress bar
 
@@ -321,8 +430,9 @@ def run_benchmark(
     # Cleanup
     try:
         gc.collect()
-    except Exception:
-        pass
+    except (RuntimeError, MemoryError) as e:
+        # Log but don't fail on cleanup issues
+        print(f"Warning: Cleanup failed: {e}")
 
     print("✅ Done")
     if len(saved_files) > 1:

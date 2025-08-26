@@ -226,6 +226,7 @@ def test_word_metrics_no_splits(
 
     assert result["subword_fertility"] == expected_fertility
     assert result["continued_word_rate"] == expected_split_rate
+    assert result["continuation_token_pct"] == expected_split_rate
     assert result["debug_info"]["total_words"] == expected_words
     assert (
         result["debug_info"]["words_split"]
@@ -251,6 +252,9 @@ def test_word_metrics_with_splits(
 
     assert result["subword_fertility"] == expected_fertility
     assert result["continued_word_rate"] == pytest.approx(expected_split_rate, rel=1e-2)
+    assert result["continuation_token_pct"] == pytest.approx(
+        expected_split_rate, rel=1e-2
+    )
     assert result["debug_info"]["segmentation_method"] == "whitespace"
 
 
@@ -263,6 +267,7 @@ def test_word_metrics_edge_cases():
     result = calculate_word_metrics(mock_tokenizer, "   \t\n  ")
     assert result["subword_fertility"] == 0.0
     assert result["continued_word_rate"] == 0.0
+    assert result["continuation_token_pct"] == 0.0
     assert result["debug_info"]["total_words"] == 0
 
     # Test with punctuation-only text
@@ -270,6 +275,7 @@ def test_word_metrics_edge_cases():
     result = calculate_word_metrics(mock_tokenizer, "!@#$%")
     assert result["subword_fertility"] == 1.0  # 1 token / 1 word
     assert result["continued_word_rate"] == 0.0  # No splits
+    assert result["continuation_token_pct"] == 0.0
     assert result["debug_info"]["total_words"] == 1
 
     # Test with mixed whitespace and words
@@ -301,6 +307,7 @@ def test_chinese_character_segmentation(chinese_tokenizer):
     assert result["continued_word_rate"] == pytest.approx(
         33.33, rel=1e-2
     )  # 2 continuations / 6 tokens
+    assert result["continuation_token_pct"] == pytest.approx(33.33, rel=1e-2)
 
 
 def test_japanese_character_segmentation(chinese_tokenizer):
@@ -318,6 +325,7 @@ def test_japanese_character_segmentation(chinese_tokenizer):
     assert result["continued_word_rate"] == pytest.approx(
         33.33, rel=1e-2
     )  # 1 continuation / 3 tokens
+    assert result["continuation_token_pct"] == pytest.approx(33.33, rel=1e-2)
 
 
 def test_thai_character_segmentation(chinese_tokenizer):
@@ -342,6 +350,7 @@ def test_english_word_segmentation(simple_tokenizer):
     assert result["debug_info"]["total_words"] == 2  # 2 words
     assert result["subword_fertility"] == 1.0  # 2 tokens / 2 words
     assert result["continued_word_rate"] == 0.0  # No splits
+    assert result["continuation_token_pct"] == 0.0
 
 
 def test_mixed_script_text_character_based():

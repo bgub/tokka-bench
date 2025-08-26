@@ -8,6 +8,14 @@ which are used throughout the tokenizer benchmarking process.
 import unicodedata
 from typing import Dict, List, Set
 
+# Unicode category constants
+PUNCTUATION_CATEGORY_PREFIX = "P"
+SYMBOL_CATEGORY_PREFIX = "S"
+NUMBER_CATEGORY_PREFIX = "N"
+
+# Special symbol keywords
+MATHEMATICAL_KEYWORDS = {"MATHEMATICAL", "DOUBLE-STRUCK"}
+
 
 # Unicode script mappings for major writing systems
 # Order matters: more specific scripts should come first
@@ -27,28 +35,37 @@ UNICODE_SCRIPTS: Dict[str, List[str]] = {
 
 def get_unicode_scripts(text: str) -> Set[str]:
     """Get the set of Unicode scripts present in the text."""
+    if not text:
+        return set()
+
     scripts: Set[str] = set()
     for char in text:
         if char.isspace():
             continue
 
-        # Get character name and category
-        char_name: str = unicodedata.name(char, "")
-        category: str = unicodedata.category(char)
+        # Get character name and category with error handling
+        try:
+            char_name: str = unicodedata.name(char, "")
+            category: str = unicodedata.category(char)
+        except (ValueError, TypeError):
+            # Skip characters that can't be analyzed
+            continue
 
         # Check for mathematical symbols first (they're classified as Lu but should be Symbols)
-        if "MATHEMATICAL" in char_name or "DOUBLE-STRUCK" in char_name:
+        if any(keyword in char_name for keyword in MATHEMATICAL_KEYWORDS):
             scripts.add("Symbols")
             continue
 
-        # Check for punctuation, symbols, numbers
-        if category.startswith("P"):  # Punctuation (Po, Pc, Pd, Ps, Pe, Pi, Pf)
+        # Check for punctuation, symbols, numbers using category prefixes
+        if category.startswith(
+            PUNCTUATION_CATEGORY_PREFIX
+        ):  # Punctuation (Po, Pc, Pd, Ps, Pe, Pi, Pf)
             scripts.add("Punctuation")
             continue
-        elif category.startswith("S"):  # Symbols (Sm, Sc, Sk, So)
+        elif category.startswith(SYMBOL_CATEGORY_PREFIX):  # Symbols (Sm, Sc, Sk, So)
             scripts.add("Symbols")
             continue
-        elif category.startswith("N"):  # Numbers (Nd, Nl, No)
+        elif category.startswith(NUMBER_CATEGORY_PREFIX):  # Numbers (Nd, Nl, No)
             scripts.add("Numbers")
             continue
 
@@ -62,10 +79,13 @@ def get_unicode_scripts(text: str) -> Set[str]:
 
 def has_whitespace_in_middle(text: str) -> bool:
     """Check if text has whitespace characters in the middle (not at start/end)."""
+    if not text:
+        return False
+
     stripped = text.strip()
     return len(stripped) > 0 and any(char.isspace() for char in stripped)
 
 
 def starts_with_space(text: str) -> bool:
     """Check if text starts with a whitespace character."""
-    return len(text) > 0 and text[0].isspace()
+    return bool(text and text[0].isspace())

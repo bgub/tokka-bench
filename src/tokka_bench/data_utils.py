@@ -11,13 +11,29 @@ from typing import Dict, List
 
 import pandas as pd
 
+# Constants for data processing
+TB_TO_GB_FACTOR = 1000
+MB_TO_GB_FACTOR = 1000
+MB_TO_BYTES_FACTOR = 1024 * 1024
+FALLBACK_TEXT_REPETITIONS = 1000
+DEFAULT_CODING_LANGUAGES = 10
+DEFAULT_TOP_LANGUAGES = 5
+
+# Dataset constants
+FINEWEB2_DATASET = "HuggingFaceFW/fineweb-2"
+FINEWEB_DATASET = "HuggingFaceFW/fineweb"
+STARCODER_DATASET = "bigcode/starcoderdata"
+FINEWEB_SAMPLE_NAME = "sample-10BT"
+TRAIN_SPLIT = "train"
+
 # Try to disable datasets/tqdm progress bars globally to avoid noisy logs and
 # potential tqdm issues in some environments.
 try:  # pragma: no cover - best-effort safety
     from datasets.utils.logging import disable_progress_bar
 
     disable_progress_bar()
-except Exception:
+except (ImportError, AttributeError, ModuleNotFoundError):
+    # Datasets library not available or progress bar control failed
     pass
 
 
@@ -107,7 +123,8 @@ def load_real_sample_text(
     """Load real sample text from appropriate dataset based on source."""
     from datasets import load_dataset
 
-    target_bytes: int = int(sample_size_mb * 1024 * 1024)
+    # Use the module constant for bytes-per-MB conversion
+    target_bytes: int = int(sample_size_mb * MB_TO_BYTES_FACTOR)
     source: str = language_info.get("source", "fineweb2")
 
     if verbose:
@@ -186,20 +203,22 @@ def load_real_sample_text(
 
         return full_text
 
-    except Exception as e:
+    except (ValueError, KeyError, ImportError, ConnectionError, OSError) as e:
         if verbose:
             print(f"    Warning: Could not load real data ({e}), using fallback text")
         # Fallback to a simple sample if dataset loading fails
-        fallback_text: str = (
-            f"Sample text for {language_info['name']} tokenizer testing. " * 1000
+        lang_name = language_info.get("name", "unknown language")
+        base_text: str = (
+            f"Sample text for {lang_name} tokenizer testing. "
+            * FALLBACK_TEXT_REPETITIONS
         )
 
-        # Adjust size to target
-        text_bytes = fallback_text.encode("utf-8")
-        if len(text_bytes) > target_bytes:
-            fallback_text = text_bytes[:target_bytes].decode("utf-8", errors="ignore")
-        elif len(text_bytes) < target_bytes:
-            repeat_count: int = (target_bytes // len(text_bytes)) + 1
-            fallback_text = (fallback_text * repeat_count)[:target_bytes]
+        # Adjust size to target exactly in UTF-8 bytes
+        base_bytes: bytes = base_text.encode("utf-8")
+        if len(base_bytes) >= target_bytes:
+            adjusted = base_bytes[:target_bytes]
+        else:
+            repeat_count: int = (target_bytes // len(base_bytes)) + 1
+            adjusted = (base_bytes * repeat_count)[:target_bytes]
 
-        return fallback_text
+        return adjusted.decode("utf-8", errors="ignore")
