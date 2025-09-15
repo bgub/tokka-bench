@@ -168,6 +168,7 @@ def parse_config():
         "max_workers": config.get("max_workers", DEFAULT_MAX_WORKERS),
         "natural_n": config.get("natural_n", None),
         "code_n": config.get("code_n", None),
+        "natural_lang_list": config.get("natural_lang_list", None)
     }
 
 
@@ -315,6 +316,9 @@ def main():
             config["natural_n"]
             if config["natural_n"] is not None
             else DEFAULT_NATURAL_LANGUAGES,
+            config['natural_lang_list'].split(",")
+            if config['natural_lang_list'] is not None
+            else [],
             config["code_n"]
             if config["code_n"] is not None
             else DEFAULT_CODE_LANGUAGES,
