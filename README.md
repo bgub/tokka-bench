@@ -35,6 +35,9 @@ uv run benchmark tokenizer=openai-community/gpt2 sample_size=0.1
 # Custom output filename
 uv run benchmark tokenizer=meta-llama/Meta-Llama-3-8B output_name=llama_results
 
+# Run on a custom set of natural languages
+uv run benchmark tokenizers=openai-community/gpt2 natural_lang_list=hin_Deva,jpn_Jpan,fra_Latn max_workers=8
+
 # Example: comprehensive multi-tokenizer run
 uv run benchmark tokenizer=openai-community/gpt2,google/gemma-3-27b-it,Xenova/gpt-4,meta-llama/Llama-3.1-8B,moonshotai/Kimi-K2-Instruct,Qwen/Qwen3-30B-A3B-Instruct-2507,openai/gpt-oss-120b max_workers=10
 ```
@@ -82,6 +85,35 @@ Tips:
 ### How It Works (one paragraph)
 
 Tokka-Bench streams real text from FineWeb-2 (top N natural languages), FineWeb (English), and StarCoder (top N coding languages). It tokenizes equal-sized samples per language, computes metrics, aggregates global Unicode/script stats, and saves results in a simple JSON format for the dashboard.
+
+### Reference: Command Line Arguments
+- `--tokenizer`: 
+	- **Description**: Describes the tokenizer to benchmark. Usually a HuggingFace model tag e.g `openai-community/gpt2`.
+	- **Usage**: `--tokenizer=openai-community/gpt2`
+- `--tokenizers`: 
+	- **Description**: Alternative to `--tokenizer` if multiple tokenizers are to be benchmarked. Separate different tokenizers by a *comma*(,).
+	- **Usage**: `--tokenizers="openai-community/gpt2,meta-llama/Llama-3.1-8B"`
+- `--sample_size`: 
+	- **Description**: Size of the data to be benchmarked on (in MBs).
+	- **Usage**: `--sample_size=100` (Benchmark on 100 MBs).
+- `--output_name`:
+	- **Description**: Directory name for benchmark output JSON.
+	- **Usage**: `--output_name=MyOutput`
+- `--output_names`:
+	- **Description**: If multiple tokenizers are being benchmarked and their results are to be stored separately you can use this field.
+	- **Usage**: `--output_names="TokenizerBenchmark1,TokenizerBenchmark2"` (Counts should match tokenizer count).
+- `--max_workers`:
+	- **Description**: Maximum CPU workers assigned to the benchmarking task.
+	- **Usage**: `--max_workers=8`
+- `--natural_n`:
+	- **Description**: Top N natural languages to benchmark on based on their total size in the FineWeb-2 corpus.
+	- **Usage**: `--natural_n=10` (Defaults to 99)
+- `--code_n`:
+	- **Description**: Number of programming languages to benchmark on.
+	- **Usage**: `--code_n=10` (Defaults to 20)
+- `--natural_lang_list`:
+	- **Description**: Use this if you want to test on specific set of natural languages rather than the top languages based on size. To specify a language use it's ISO-639 code along with it's script indicator e.g `fra_Latn` for french in latin script. Refer `src/fineweb-2-languages.csv`'s `Subset` column to get these values for your desired language and script pairs.
+	- **Usage**: `--natural_lang_list="hin_Deva,fra_Latn"` (Test against Hindi and French).
 
 ### Troubleshooting
 
