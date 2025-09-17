@@ -75,6 +75,13 @@ def load_coding_languages(n: int = 10) -> List[Dict[str, str]]:
 
     return coding_langs
 
+def get_natural_languages(df: pd.DataFrame, lang_list: List[str], n: int = 5) -> List[Dict[str, str]]:
+    """Identify which natural language loader to use."""
+    if len(lang_list) > 0:
+        return get_listed_languages(df, lang_list)
+    else:
+        return get_top_languages(df, n)
+
 
 def get_top_languages(df: pd.DataFrame, n: int = 5) -> List[Dict[str, str]]:
     """Get the top N natural languages by size."""
@@ -104,6 +111,23 @@ def get_top_languages(df: pd.DataFrame, n: int = 5) -> List[Dict[str, str]]:
             "source": "fineweb2",
         }
         for _, row in top_langs.iterrows()
+    ]
+
+
+def get_listed_languages(df: pd.DataFrame, lang_list: List[str]) -> List[Dict[str, str]]:
+    """Get the mentioned languages."""
+    df = df.dropna(subset=["Name", "Script"])
+    # Only keep languages that are mentioned by the user.
+    df = df[df["Subset"].isin(lang_list)]
+
+    return [
+        {
+            "iso_code": row["ISO 639-3 code"],
+            "script": row["Script"],
+            "name": row["Name"],
+            "source": "fineweb2",
+        }
+        for _, row in df.iterrows()
     ]
 
 

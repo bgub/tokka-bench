@@ -24,7 +24,7 @@ from transformers import AutoTokenizer
 
 from .data_utils import (
     get_english_fineweb,
-    get_top_languages,
+    get_natural_languages,
     load_coding_languages,
     load_language_data,
     load_real_sample_text,
@@ -289,6 +289,7 @@ def run_benchmark(
     sample_size_mb: float = 2.0,
     max_workers: int = 8,
     natural_n: int = 99,
+    natural_lang_list: List[str] = [],
     code_n: int = 20,
 ) -> Dict[str, Any]:
     """Benchmark multiple tokenizers across many languages quickly.
@@ -329,8 +330,9 @@ def run_benchmark(
     # Languages: English + configurable natural/code language counts (defaults match classic)
     english = get_english_fineweb()
     df = load_language_data()
-    natural_languages = get_top_languages(df, n=natural_n)
+    natural_languages = get_natural_languages(df, lang_list=natural_lang_list, n=natural_n)
     coding_languages = load_coding_languages(n=code_n)
+
     all_languages: List[Dict[str, str]] = (
         [english] + natural_languages + coding_languages
     )
