@@ -125,6 +125,20 @@ Tokka-Bench streams real text from FineWeb-2 (top N natural languages), FineWeb 
 
 PRs welcome! See `CONTRIBUTING.md` for guidelines.
 
+### Citation
+
+```bibtex
+@misc{gubler2025tokka-bench,
+  author       = {Ben Gubler},
+  title        = {{Tokka-Bench: A framework for evaluating and benchmarking tokenizers across multilingual and programming languages}},
+  year         = {2025},
+  howpublished = {\url{https://github.com/bgub/tokka-bench}},
+  note         = {Software and accompanying project description at https://www.bengubler.com/posts/2025-08-25-tokka-bench-evaluate-tokenizers-multilingual},
+  url          = {https://github.com/bgub/tokka-bench},
+  month        = aug
+}
+```
+
 ### License
 
 MIT (or project license) — see LICENSE if provided.
