@@ -1,0 +1,269 @@
+% Tokka-Bench: Evaluating Tokenizers Across Languages
+% ACL-style paper for ArXiv cs.CL
+\documentclass[11pt]{article}
+\usepackage[preprint]{acl}
+\usepackage{graphicx}
+\usepackage{booktabs}
+\usepackage{amsmath}
+
+\title{Tokka-Bench: Evaluating Tokenizers Across\\100 Natural and 20 Programming Languages}
+
+\author{Benjamin Gubler \\
+  \texttt{github.com/bgub/tokka-bench}}
+
+\begin{document}
+\maketitle
+
+% ===================================================================
+\begin{abstract}
+Large language models rely on subword tokenizers whose quality varies across languages, yet no standardized multi-metric framework exists for broad comparative evaluation.
+We introduce \textsc{Tokka-Bench}, an open-source benchmarking framework and dataset that evaluates tokenizers on five complementary metrics---bytes per token, unique token coverage, subword fertility, word-split rate, and vocabulary composition---across 100 natural languages spanning 30+ scripts and 20 programming languages.
+The framework uses language-aware segmentation that adapts the definition of a linguistic unit to each writing system, and includes an interactive visualization dashboard.
+As a demonstration, we compare seven BPE tokenizers (GPT-2, GPT-4, gpt-oss, Llama~3.1, Gemma~3, Qwen3, and Kimi~K2) spanning three generations of design.
+Comparing tokenizers within individual languages, we find that vocabulary allocation strategy matters more than raw vocabulary size, and that programming-language efficiency has converged among recent tokenizers despite divergent natural-language profiles.
+The framework, data, and dashboard are publicly available.
+\end{abstract}
+
+% ===================================================================
+\section{Introduction}
+
+Tokenization is the first computational step in every modern large language model (LLM), converting raw text into a fixed vocabulary of subword units.
+Byte Pair Encoding \citep{sennrich2016bpe} and its SentencePiece variant \citep{kudo2018sentencepiece} have become the dominant approach, but the quality of the resulting vocabulary varies dramatically across languages.
+
+These disparities have far-reaching consequences.
+During pretraining, a tokenizer that requires many tokens to represent the same semantic content in a low-resource language effectively reduces the amount of knowledge the model can learn per training step for that language.
+At inference time, inefficient tokenization leads to slower throughput, higher cost, and faster context-window exhaustion \citep{ahia2023all,petrov2023language}.
+
+Despite growing awareness of these issues, the community lacks a standardized, multi-metric framework for comparing tokenizers across a broad set of languages.
+Prior work has focused on individual metrics such as subword fertility \citep{acs2019bert,rust2021good} or cost parity \citep{ahia2023all}, typically for a narrow set of languages.
+
+We present \textsc{Tokka-Bench}, an open-source evaluation framework designed to make tokenizer comparison easy and reproducible.
+Our contributions are:
+
+\begin{enumerate}
+\item \textbf{A reusable benchmark and tool} covering 100 natural languages (30+ scripts) and 20 programming languages, with curated samples from FineWeb \citep{penedo2024fineweb}, FineWeb-2, and StarCoder \citep{li2023starcoder}, plus an interactive Streamlit dashboard.
+\item \textbf{Five complementary metrics} that capture different facets of tokenizer quality: compression efficiency, vocabulary coverage, subword granularity, word-boundary alignment, and vocabulary composition.
+\item \textbf{Language-aware segmentation} that adapts the notion of a ``linguistic unit'' to each language's writing system---using whitespace-delimited words for alphabetic scripts, characters for logographic/abugida scripts (Chinese, Thai, Khmer), and syllable boundaries for Tibetan-family scripts.
+\item \textbf{A demonstration analysis} comparing seven BPE tokenizers across three generations, illustrating the kinds of within-language comparisons the framework enables.
+\end{enumerate}
+
+% ===================================================================
+\section{Related Work}
+
+\citet{sennrich2016bpe} introduced Byte Pair Encoding for neural machine translation, and \citet{kudo2018sentencepiece} generalized subword segmentation with SentencePiece, enabling language-independent tokenization.
+
+\citet{acs2019bert} first introduced subword fertility and continuation-token percentage as metrics for comparing BERT tokenizers across languages.
+\citet{rust2021good} expanded on these ideas, demonstrating that monolingual performance of multilingual models correlates with tokenizer quality, and proposed fertility-based evaluation across 22 typologically diverse languages.
+
+More recently, \citet{petrov2023language} showed that tokenizer disparities introduce systematic unfairness between languages in commercial LLMs, with low-resource languages requiring up to 15$\times$ more tokens for equivalent content.
+\citet{ahia2023all} quantified the economic implications, showing that speakers of many supported languages are systematically overcharged by token-based API pricing.
+
+\textsc{Tokka-Bench} extends this line of work by providing a unified, multi-metric evaluation framework covering an order of magnitude more languages than prior studies, with language-aware segmentation and an interactive visualization dashboard.
+
+% ===================================================================
+\section{Methodology}
+
+\subsection{Datasets}
+
+We draw evaluation text from three sources:
+\textbf{FineWeb} \citep{penedo2024fineweb} for English web text,
+\textbf{FineWeb-2} for 99 additional natural languages, and
+\textbf{StarCoder} \citep{li2023starcoder} for 20 programming languages.
+For each language, we sample a contiguous 2\,MB UTF-8 block, ensuring sufficient context for stable metric estimates.
+We discuss important caveats of this design in Section~\ref{sec:limitations}.
+
+\subsection{Tokenizers Evaluated}
+
+Table~\ref{tab:tokenizers} lists the seven tokenizers we evaluate, spanning vocabulary sizes from 50K (GPT-2) to 262K (Gemma~3) and release dates from 2019 to 2025.
+
+\begin{table}[t]
+\centering
+\small
+\begin{tabular}{@{}lrr@{}}
+\toprule
+\textbf{Tokenizer} & \textbf{Vocab Size} & \textbf{Year} \\
+\midrule
+GPT-2         &  50{,}257  & 2019 \\
+GPT-4         & 100{,}263  & 2023 \\
+gpt-oss       & 200{,}019  & 2025 \\
+Llama~3.1     & 128{,}256  & 2024 \\
+Gemma~3       & 262{,}145  & 2025 \\
+Qwen3         & 151{,}669  & 2025 \\
+Kimi~K2       & 163{,}842  & 2025 \\
+\bottomrule
+\end{tabular}
+\caption{Tokenizers evaluated in \textsc{Tokka-Bench}.}
+\label{tab:tokenizers}
+\end{table}
+
+\subsection{Metrics}
+\label{sec:metrics}
+
+Table~\ref{tab:metrics} summarizes our five per-language metrics.
+All are computed from a single tokenization pass over the 2\,MB sample.
+
+\begin{table}[t]
+\centering
+\small
+\begin{tabular}{@{}lp{4.6cm}@{}}
+\toprule
+\textbf{Metric} & \textbf{Description} \\
+\midrule
+Bytes/Token & Average UTF-8 bytes per token ($\frac{\text{total\_bytes}}{\text{total\_tokens}}$). Higher = more efficient. \\[2pt]
+Unique Tokens & Count of distinct token IDs used. Higher = better vocabulary coverage. \\[2pt]
+Subword Fertility & Tokens per linguistic unit ($\frac{\text{total\_tokens}}{\text{total\_units}}$). Lower = closer to 1:1 mapping. \\[2pt]
+Word-Split \% & Percentage of units requiring $>$1 token. Lower = better boundary alignment. \\[2pt]
+Vocab Composition & Script distribution across decoded vocabulary (aggregated). \\
+\bottomrule
+\end{tabular}
+\caption{Per-language metrics in \textsc{Tokka-Bench}.}
+\label{tab:metrics}
+\end{table}
+
+\subsection{Language-Aware Segmentation}
+
+A key design decision is how to define a ``linguistic unit'' for fertility and word-split metrics.
+We implement three strategies:
+\begin{itemize}
+\item \textbf{Whitespace segmentation} for alphabetic scripts (Latin, Cyrillic, Arabic, Devanagari, etc.): units are space-delimited words.
+\item \textbf{Character segmentation} for logographic and abugida scripts (Chinese, Japanese, Thai, Khmer, Lao, Myanmar): each non-whitespace character is one unit.
+\item \textbf{Syllable segmentation} for Tibetan-family scripts: units are tsheg-delimited syllables, with a character-based fallback when too few segments are found.
+\end{itemize}
+
+This approach ensures that subword fertility remains interpretable across writing systems---a fertility of 2.0 means ``two tokens per word'' in English but ``two tokens per character'' in Chinese.
+
+% ===================================================================
+\section{Results}
+
+\subsection{Tokenization Efficiency}
+
+Figure~\ref{fig:efficiency} shows bytes-per-token across 10 typologically diverse languages for all seven tokenizers.
+This metric is best interpreted by comparing tokenizers \emph{within} a single language rather than across languages, since UTF-8 encoding overhead inflates values for multi-byte scripts (see Section~\ref{sec:limitations}).
+
+\begin{figure}[t]
+\centering
+\includegraphics[width=\columnwidth]{figures/efficiency.pdf}
+\caption{Tokenization efficiency (bytes per token) across 10 languages. Best interpreted by comparing tokenizers within a single language; cross-linguistic differences partly reflect UTF-8 encoding overhead.}
+\label{fig:efficiency}
+\end{figure}
+
+Within each language, clear generational patterns emerge.
+GPT-2, with its smaller vocabulary, consistently trails modern tokenizers.
+Among recent models, Kimi~K2 and Qwen3 show notably strong performance on Chinese, consistent with their CJK-heavy training data, while Gemma~3's larger vocabulary does not uniformly translate to higher efficiency.
+
+\subsection{Vocabulary Coverage}
+
+Figure~\ref{fig:coverage} plots unique token counts.
+When comparing tokenizers on the same language, coverage reflects how much vocabulary has been allocated to that script: a tokenizer with more unique tokens for a given language has dedicated more of its vocabulary to that writing system.
+
+\begin{figure}[t]
+\centering
+\includegraphics[width=\columnwidth]{figures/coverage.pdf}
+\caption{Unique token count when encoding 2\,MB per language. Cross-linguistic differences are confounded by varying text volume per byte budget (Section~\ref{sec:limitations}).}
+\label{fig:coverage}
+\end{figure}
+
+Within each language, Kimi~K2 stands out with exceptionally high Chinese coverage, reflecting dedicated vocabulary allocation.
+Across all tokenizers, English consistently uses the most unique tokens, though cross-linguistic differences in this metric are confounded by the fixed byte budget (Section~\ref{sec:limitations}).
+
+\subsection{Subword Fertility}
+
+Figure~\ref{fig:fertility} presents a heatmap of subword fertility across 17 languages and all seven tokenizers.
+Fertility values near 1.0 indicate that, on average, each linguistic unit maps to a single token---the ideal case.
+Values above 2.0 suggest that the tokenizer fragments most units into multiple subwords.
+
+\begin{figure*}[t]
+\centering
+\includegraphics[width=\textwidth]{figures/fertility_heatmap.pdf}
+\caption{Subword fertility (tokens per linguistic unit) across 17 languages and 7 tokenizers. Values near 1.0 are optimal; red cells indicate high fragmentation. Units are language-dependent: words for alphabetic scripts, characters for CJK/Thai/Khmer.}
+\label{fig:fertility}
+\end{figure*}
+
+Comparing tokenizers within a language, English, French, and German consistently show low fertility across modern tokenizers ($\leq$1.5), while Khmer and Thai exhibit fertility above 2.0 for most tokenizers.
+Notably, Kimi~K2 achieves sub-1.0 fertility for Chinese, meaning each token represents more than one character on average.
+
+We caution against comparing fertility values \emph{across} languages in this heatmap: alphabetic-script rows report tokens per word, while CJK/Thai/Khmer rows report tokens per character---these are fundamentally different units (Section~\ref{sec:limitations}).
+
+\subsection{Programming-Language Convergence}
+
+Figure~\ref{fig:code} compares bytes-per-token for 8 programming languages.
+We highlight the contrast between GPT-2 (2019) and three modern tokenizers (Llama~3.1, Kimi~K2, gpt-oss).
+
+\begin{figure}[t]
+\centering
+\includegraphics[width=\columnwidth]{figures/code_convergence.pdf}
+\caption{Code tokenization efficiency. Modern tokenizers show near-identical performance despite differing natural-language profiles.}
+\label{fig:code}
+\end{figure}
+
+While natural-language efficiency varies dramatically between tokenizers, programming-language performance has largely converged among post-2023 models.
+Llama~3.1, Kimi~K2, and gpt-oss achieve nearly identical bytes-per-token for each programming language, despite very different natural-language profiles.
+We do not have a definitive explanation for this convergence; possible factors include overlapping code training data (e.g., GitHub), the constrained ASCII character set of programming languages, and the fact that sufficiently large BPE vocabularies may saturate the limited set of common code tokens.
+GPT-2, trained before large-scale code inclusion became standard, consistently lags by 10--20\%.
+
+\subsection{Vocabulary Size vs.\ Efficiency}
+
+Figure~\ref{fig:vocab_eff} plots mean bytes-per-token against vocabulary size for each tokenizer.
+If vocabulary size were the sole determinant of efficiency, we would expect a monotonic relationship.
+
+\begin{figure}[t]
+\centering
+\includegraphics[width=\columnwidth]{figures/vocab_vs_efficiency.pdf}
+\caption{Vocabulary size vs.\ mean efficiency across natural languages.}
+\label{fig:vocab_eff}
+\end{figure}
+
+Instead, the relationship is noisy.
+Gemma~3, with the largest vocabulary (262K), does not achieve the highest mean efficiency.
+Kimi~K2, with a moderate vocabulary (164K), achieves competitive efficiency by concentrating vocabulary on frequently used CJK subwords.
+This suggests that \emph{how} vocabulary is allocated across scripts matters as much as total vocabulary size.
+
+% ===================================================================
+\section{Conclusion}
+
+We presented \textsc{Tokka-Bench}, an open-source framework and dataset for evaluating tokenizers across 100 natural and 20 programming languages.
+The primary contribution is the tool itself: a reproducible benchmark with language-aware segmentation, five complementary metrics, and an interactive dashboard that makes tokenizer comparison accessible.
+Our demonstration analysis of seven BPE tokenizers illustrates the kinds of within-language comparisons the framework enables, suggesting that vocabulary allocation strategy matters more than raw vocabulary size and that programming-language tokenization has converged among recent models.
+
+The framework, all benchmark data, and the dashboard are available at \url{https://github.com/bgub/tokka-bench}.
+
+\paragraph{Future work.}
+Key directions include (1)~correlating tokenizer metrics with downstream task performance to determine which metrics best predict model quality, (2)~developing normalization methods for fair cross-linguistic comparison that account for UTF-8 encoding differences, (3)~adding variance estimates by sampling multiple text blocks per language, and (4)~extending coverage to non-BPE tokenization approaches such as WordPiece and Unigram.
+
+% ===================================================================
+\section{Limitations}
+\label{sec:limitations}
+
+\paragraph{Fixed byte budget.}
+Each language is evaluated on a contiguous 2\,MB UTF-8 sample.
+Because different scripts require different numbers of bytes per character (1 for ASCII, 2--3 for Cyrillic/Arabic/Devanagari, 3--4 for CJK), this fixed budget represents vastly different amounts of semantic content across languages.
+Consequently, all metrics---especially unique token counts---are confounded when compared \emph{across} languages.
+The metrics are most reliable when comparing different tokenizers \emph{on the same language}.
+
+\paragraph{Bytes-per-token and UTF-8 overhead.}
+The bytes-per-token metric conflates genuine tokenization quality with UTF-8 encoding properties.
+A tokenizer that naively assigns one token per Devanagari character achieves $\sim$3 bytes/token simply because each character is 3 bytes in UTF-8---not because it tokenizes Hindi well.
+We report this metric because it remains useful for within-language comparisons, but readers should not interpret cross-linguistic differences in Figure~\ref{fig:efficiency} as reflecting tokenization quality differences.
+
+\paragraph{Cross-linguistic fertility.}
+Subword fertility uses language-dependent units (words for alphabetic scripts, characters for CJK/Thai/Khmer, syllables for Tibetan).
+This makes fertility interpretable within each language family but means that values are not directly comparable across rows of the heatmap in Figure~\ref{fig:fertility}.
+A fertility of 1.3 (tokens per word) for English and 0.67 (tokens per character) for Chinese measure fundamentally different quantities.
+
+\paragraph{Single sample, no variance estimates.}
+Metrics are computed from a single 2\,MB block per language.
+We do not report confidence intervals or test stability across different samples from the same corpus.
+Topic or domain shifts within the corpus could affect results, particularly for unique token counts.
+
+\paragraph{BPE only.}
+All seven tokenizers evaluated use BPE variants.
+The framework can evaluate any tokenizer compatible with the HuggingFace \texttt{transformers} API, but our demonstration analysis does not cover WordPiece, Unigram, or byte-level approaches.
+
+\paragraph{No downstream validation.}
+We report tokenizer-intrinsic metrics only.
+We do not measure whether these metrics predict downstream task performance, which remains an important open question.
+
+% ===================================================================
+\bibliography{references}
+
+\end{document}
