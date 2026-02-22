@@ -8,7 +8,7 @@
 
 \title{Tokka-Bench: Evaluating Tokenizers Across\\100 Natural and 20 Programming Languages}
 
-\author{Benjamin Gubler \\
+\author{Ben Gubler \\
   \texttt{github.com/bgub/tokka-bench}}
 
 \begin{document}
@@ -215,7 +215,7 @@ This suggests that \emph{how} vocabulary is allocated matters as much as total s
 
 \textsc{Tokka-Bench} provides a reproducible, open-source benchmark for evaluating tokenizers across 100 natural and 20 programming languages with language-aware segmentation, five complementary metrics, and an interactive dashboard.
 Our demonstration analysis suggests that vocabulary allocation strategy matters more than raw vocabulary size and that programming-language tokenization has converged among recent models.
-The framework and data are available at \url{https://github.com/bgub/tokka-bench}.
+The framework and data are available at \url{https://github.com/bgub/tokka-bench}, with an interactive dashboard at \url{https://tokka-bench.streamlit.app/}.
 
 \paragraph{Future work.}
 Key directions include (1)~correlating tokenizer metrics with downstream task performance, (2)~developing normalization for fair cross-linguistic comparison, (3)~adding variance estimates via multiple samples per language, and (4)~extending to non-BPE approaches (WordPiece, Unigram).
