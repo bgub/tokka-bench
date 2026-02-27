@@ -1,0 +1,68 @@
+\begin{thebibliography}{8}
+\providecommand{\natexlab}[1]{#1}
+
+\bibitem[{{\'{A}}cs(2019)}]{acs2019bert}
+Judit {\'{A}}cs. 2019.
+\newblock Exploring {BERT}'s vocabulary.
+\newblock
+  \url{https://juditacs.github.io/2019/02/19/bert-tokenization-stats.html}.
+\newblock Blog post.
+
+\bibitem[{Ahia et~al.(2023)Ahia, Kumar, Gonen, Kasai, Mortensen, Smith, and
+  Tsvetkov}]{ahia2023all}
+Orevaoghene Ahia, Sachin Kumar, Hila Gonen, Jungo Kasai, David Mortensen, Noah
+  Smith, and Yulia Tsvetkov. 2023.
+\newblock Do all languages cost the same? {T}okenization in the era of
+  commercial language models.
+\newblock In \emph{Proceedings of the 2023 Conference on Empirical Methods in
+  Natural Language Processing}, pages 9904--9923. Association for Computational
+  Linguistics.
+
+\bibitem[{Kudo and Richardson(2018)}]{kudo2018sentencepiece}
+Taku Kudo and John Richardson. 2018.
+\newblock {S}entence{P}iece: A simple and language independent subword
+  tokenizer and detokenizer for neural text processing.
+\newblock In \emph{Proceedings of the 2018 Conference on Empirical Methods in
+  Natural Language Processing: System Demonstrations}, pages 66--71.
+  Association for Computational Linguistics.
+
+\bibitem[{Li et~al.(2023)Li, Allal, Zi et~al.}]{li2023starcoder}
+Raymond Li, Loubna~Ben Allal, Yangtian Zi, and 1 others. 2023.
+\newblock {S}tar{C}oder: May the source be with you!
+\newblock \emph{Transactions on Machine Learning Research}.
+
+\bibitem[{Penedo et~al.(2024)Penedo, Kydl{\'{i}}{\v{c}}ek, Lozhkov
+  et~al.}]{penedo2024fineweb}
+Guilherme Penedo, Hynek Kydl{\'{i}}{\v{c}}ek, Anton Lozhkov, and 1 others.
+  2024.
+\newblock The {F}ine{W}eb datasets: Decanting the web for the finest text data
+  at scale.
+\newblock In \emph{Advances in Neural Information Processing Systems},
+  volume~37.
+
+\bibitem[{Petrov et~al.(2023)Petrov, La~Malfa, Torr, and
+  Bibi}]{petrov2023language}
+Aleksandar Petrov, Emanuele La~Malfa, Philip Torr, and Adel Bibi. 2023.
+\newblock Language model tokenizers introduce unfairness between languages.
+\newblock In \emph{Advances in Neural Information Processing Systems},
+  volume~36.
+
+\bibitem[{Rust et~al.(2021)Rust, Pfeiffer, Vuli{\'c}, Ruder, and
+  Gurevych}]{rust2021good}
+Phillip Rust, Jonas Pfeiffer, Ivan Vuli{\'c}, Sebastian Ruder, and Iryna
+  Gurevych. 2021.
+\newblock How good is your tokenizer? {O}n the monolingual performance of
+  multilingual language models.
+\newblock In \emph{Proceedings of the 59th Annual Meeting of the Association
+  for Computational Linguistics and the 11th International Joint Conference on
+  Natural Language Processing (Volume 1: Long Papers)}, pages 3118--3135.
+  Association for Computational Linguistics.
+
+\bibitem[{Sennrich et~al.(2016)Sennrich, Haddow, and Birch}]{sennrich2016bpe}
+Rico Sennrich, Barry Haddow, and Alexandra Birch. 2016.
+\newblock Neural machine translation of rare words with subword units.
+\newblock In \emph{Proceedings of the 54th Annual Meeting of the Association
+  for Computational Linguistics (Volume 1: Long Papers)}, pages 1715--1725.
+  Association for Computational Linguistics.
+
+\end{thebibliography}
