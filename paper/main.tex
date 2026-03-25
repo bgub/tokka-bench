@@ -149,7 +149,7 @@ Figure~\ref{fig:efficiency} shows bytes-per-token across 10 typologically divers
 
 Clear generational patterns emerge.
 GPT-2 consistently trails modern tokenizers, often dramatically: for Hindi, Gemma~3 achieves 9.3 bytes/token versus GPT-2's 1.7 (5.5$\times$), and for Khmer the gap reaches 5.7$\times$.
-Even for Russian, modern tokenizers achieve 3--4$\times$ higher efficiency.
+Even for Russian, modern tokenizers achieve 2.6--3.8$\times$ higher efficiency.
 The gains are smallest for English ($<$1.1$\times$), reflecting GPT-2's English-centric vocabulary.
 Among recent models, Kimi~K2 and Qwen3 show notably strong performance on Chinese, consistent with CJK-heavy training data, while Gemma~3's larger vocabulary does not uniformly translate to higher efficiency.
 
@@ -195,7 +195,7 @@ Figure~\ref{fig:code} compares bytes-per-token for 8 programming languages, cont
 
 Programming-language efficiency has largely converged among post-2023 models: Llama~3.1, Kimi~K2, and gpt-oss achieve nearly identical bytes-per-token despite very different natural-language profiles.
 This likely reflects overlapping code corpora and the constrained ASCII character set of programming languages.
-GPT-2, trained before large-scale code inclusion, lags by 10--20\%.
+GPT-2, trained before large-scale code inclusion, lags by 29--51\%.
 
 \subsection{Vocabulary Size vs.\ Efficiency}
 
@@ -240,11 +240,15 @@ All evaluated tokenizers use BPE variants; the demonstration does not cover Word
 We report tokenizer-intrinsic metrics only and do not validate whether they predict downstream task performance.
 
 % ===================================================================
+\section*{Acknowledgments}
+
+Vin Howe, Sachin Raja, and Jacob Holloway reviewed early drafts and provided useful feedback.
+Harsha Vardhan Khurdula helped gather relevant research and think through metrics systematically.
+
 \bigskip
 \noindent\textit{AI assistance.}
 \textit{Claude (Anthropic) was used to assist with drafting, editing, and code generation during the development of this paper and the Tokka-Bench framework.}
 
-\vfill\columnbreak
 \bibliography{references}
 
 \end{document}
